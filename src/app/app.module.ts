@@ -17,6 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { LoginComponent } from './login/login.component';
 import { MainFormComponent } from './main-form/main-form.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
