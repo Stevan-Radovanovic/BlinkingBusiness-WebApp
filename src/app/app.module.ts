@@ -15,11 +15,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
+import { LoginComponent } from './login/login.component';
+import { MainFormComponent } from './main-form/main-form.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    MainFormComponent
   ],
   imports: [
     BrowserModule,
