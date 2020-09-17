@@ -13,8 +13,8 @@
 
 @include mat-core();
 
-$primary: mat-palette($mat-blue, A200);
-$accent: mat-palette($mat-yellow);
+$primary: mat-palette($mat-red, A200);
+$accent: mat-palette($mat-black,A300);
 $warn: mat-palette($mat-red);
 
 $theme: mat-light-theme($primary, $accent, $warn);
