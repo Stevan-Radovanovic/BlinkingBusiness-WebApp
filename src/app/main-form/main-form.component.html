@@ -4,7 +4,7 @@
       <mat-card-title>Business Details</mat-card-title>
       <mat-card-content>
         <form [formGroup]="businessForm">
-          <mat-form-field>
+          <mat-form-field appearance="fill">
             <mat-label>Color</mat-label>
             <input matInput formControlName="color" />
           </mat-form-field>
@@ -18,32 +18,20 @@
             This field is required
           </p>
           <div style="margin-bottom: 8px">
-            <mat-label>Favicon: </mat-label>
-            <input type="file" formControlName="favicon" />
-
-            <p
-              *ngIf="
-                !businessForm.controls.favicon.valid &&
-                businessForm.controls.favicon.touched
-              "
-              class="help is-danger"
-            >
-              This field is required
-            </p>
+            <mat-label style="display: block">Favicon: </mat-label>
+            <input
+              type="file"
+              formControlName="favicon"
+              accept=".jpeg,.jpg,.png,.ico"
+            />
           </div>
           <div>
-            <mat-label>Logo: </mat-label>
-            <input type="file" formControlName="logo" />
-
-            <p
-              *ngIf="
-                !businessForm.controls.logo.valid &&
-                businessForm.controls.logo.touched
-              "
-              class="help is-danger"
-            >
-              This field is required
-            </p>
+            <mat-label style="display: block">Logo: </mat-label>
+            <input
+              type="file"
+              formControlName="logo"
+              accept=".jpeg,.jpg,.png,.ico"
+            />
           </div>
         </form>
       </mat-card-content>
@@ -51,12 +39,64 @@
       <mat-card-title style="margin-top: 40px"
         >Session Configuration</mat-card-title
       >
-      <mat-card-content> Hello </mat-card-content>
+      <mat-card-content>
+        <form [formGroup]="sessionForm">
+          <mat-form-field appearance="fill">
+            <mat-label>Base Redirect Url</mat-label>
+            <input matInput formControlName="baseRedirectUrl" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Blinking Params</mat-label>
+            <mat-select formControlName="blinkingParams" multiple>
+              <mat-option>Status</mat-option>
+              <mat-option>Document Expiry Date</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Skippable Steps</mat-label>
+            <mat-select formControlName="skippableSteps" multiple>
+              <mat-option>Account Number</mat-option>
+              <mat-option>Contact Data</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Steps That Require Proof of Documents</mat-label>
+            <mat-select
+              formControlName="stepsThatRequireProofOfDocuments"
+              multiple
+            >
+              <mat-option>Account Number</mat-option>
+              <mat-option>Address</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Initial Session Config</mat-label>
+            <mat-select formControlName="initialSessionConfig" multiple>
+              <mat-option>Document</mat-option>
+              <mat-option>Document with Country</mat-option>
+              <mat-option>Front Side</mat-option>
+              <mat-option>Back Side</mat-option>
+              <mat-option>Address</mat-option>
+              <mat-option>Faceprint</mat-option>
+              <mat-option>Account Number</mat-option>
+              <mat-option>Contact Data</mat-option>
+              <mat-option>Video Session</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Steps That Require Attention</mat-label>
+            <mat-select formControlName="stepsThatRequireAttention" multiple>
+              <mat-option>Account Number</mat-option>
+              <mat-option>Address</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
       <mat-card-actions style="display: flex; justify-content: center">
         <button
           mat-raised-button
           color="primary"
-          [disabled]="!businessForm.valid"
+          [disabled]="!businessForm.valid || !sessionForm.valid"
         >
           Submit
         </button>
