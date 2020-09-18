@@ -7,15 +7,21 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./main-form.component.css'],
 })
 export class MainFormComponent implements OnInit {
-  mainForm: FormGroup;
+  businessForm: FormGroup;
+  sessionForm: FormGroup;
 
   constructor() {}
 
-  initForm() {
-    this.mainForm = new FormGroup({
+  initBusinessForm() {
+    this.businessForm = new FormGroup({
       color: new FormControl('', [Validators.required]),
       favicon: new FormControl('', [Validators.required]),
       logo: new FormControl('', [Validators.required]),
+    });
+  }
+
+  initSessionForm() {
+    this.sessionForm = new FormGroup({
       baseRedirectUrl: new FormControl('', [Validators.required]),
       blinkingParams: new FormControl('', [Validators.required]),
       willEmbedInIframe: new FormControl(false),
@@ -27,6 +33,7 @@ export class MainFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initForm();
+    this.initBusinessForm();
+    this.initSessionForm();
   }
 }

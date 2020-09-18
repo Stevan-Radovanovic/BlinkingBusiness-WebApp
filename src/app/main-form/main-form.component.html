@@ -1,1 +1,66 @@
-<p>main-form works!</p>
+<div class="columns is-centered" style="margin-top: 20px">
+  <div class="column is-8">
+    <mat-card>
+      <mat-card-title>Business Details</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="businessForm">
+          <mat-form-field>
+            <mat-label>Color</mat-label>
+            <input matInput formControlName="color" />
+          </mat-form-field>
+          <p
+            *ngIf="
+              !businessForm.controls.color.valid &&
+              businessForm.controls.color.touched
+            "
+            class="help is-danger"
+          >
+            This field is required
+          </p>
+          <div style="margin-bottom: 8px">
+            <mat-label>Favicon: </mat-label>
+            <input type="file" formControlName="favicon" />
+
+            <p
+              *ngIf="
+                !businessForm.controls.favicon.valid &&
+                businessForm.controls.favicon.touched
+              "
+              class="help is-danger"
+            >
+              This field is required
+            </p>
+          </div>
+          <div>
+            <mat-label>Logo: </mat-label>
+            <input type="file" formControlName="logo" />
+
+            <p
+              *ngIf="
+                !businessForm.controls.logo.valid &&
+                businessForm.controls.logo.touched
+              "
+              class="help is-danger"
+            >
+              This field is required
+            </p>
+          </div>
+        </form>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-title style="margin-top: 40px"
+        >Session Configuration</mat-card-title
+      >
+      <mat-card-content> Hello </mat-card-content>
+      <mat-card-actions style="display: flex; justify-content: center">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="!businessForm.valid"
+        >
+          Submit
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
