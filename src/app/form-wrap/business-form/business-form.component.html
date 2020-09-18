@@ -1,16 +1,26 @@
 <form [formGroup]="businessForm">
-  <mat-form-field appearance="fill">
-    <mat-label>Color</mat-label>
-    <input matInput formControlName="color" />
-  </mat-form-field>
-  <p
-    *ngIf="
-      !businessForm.controls.color.valid && businessForm.controls.color.touched
-    "
-    class="help is-danger"
-  >
-    This field is required
-  </p>
+  <div style="display: flex; justify-content: space-between">
+    <mat-form-field appearance="fill" style="width: 80%">
+      <mat-label>Color</mat-label>
+      <input matInput formControlName="color" />
+    </mat-form-field>
+    <div
+      style="
+        height: 50px;
+        width: 50px;
+        border: 2px solid #448aff;
+        text-align: center;
+        font-size: 8pt;
+        margin-right: 12px;
+      "
+      [style.background]="selectedColor"
+    >
+      <p *ngIf="!businessForm.get('color').valid" style="font-weight: bold">
+        No color selected
+      </p>
+    </div>
+  </div>
+
   <div style="margin-bottom: 8px">
     <mat-label style="display: block">Favicon: </mat-label>
     <input

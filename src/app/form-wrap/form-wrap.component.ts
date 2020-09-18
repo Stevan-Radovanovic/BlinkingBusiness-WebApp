@@ -14,7 +14,10 @@ export class FormWrapComponent implements OnInit {
 
   initBusinessForm() {
     this.businessForm = new FormGroup({
-      color: new FormControl('', [Validators.required]),
+      color: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$'),
+      ]),
       favicon: new FormControl('', [Validators.required]),
       logo: new FormControl('', [Validators.required]),
     });
