@@ -9,7 +9,7 @@ import { AuthService } from './shared/auth.service';
 export class AppComponent {
   title = 'blinking';
 
-  constructor(private authService: AuthService) {}
+  constructor(public authService: AuthService) {}
 
   logOut() {
     this.authService.logOut();
