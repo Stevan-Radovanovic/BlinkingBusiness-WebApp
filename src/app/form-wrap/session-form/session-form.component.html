@@ -6,8 +6,8 @@
   <mat-form-field appearance="fill">
     <mat-label>Blinking Params</mat-label>
     <mat-select formControlName="blinkingParams" multiple>
-      <mat-option>Status</mat-option>
-      <mat-option>Document Expiry Date</mat-option>
+      <mat-option value="Status">Status</mat-option>
+      <mat-option value="Document Expiry Date">Document Expiry Date</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-checkbox formControlName="willEmbedInIframe"
@@ -16,15 +16,15 @@
   <mat-form-field appearance="fill" style="margin-top: 10px">
     <mat-label>Skippable Steps</mat-label>
     <mat-select formControlName="skippableSteps" multiple>
-      <mat-option>Account Number</mat-option>
-      <mat-option>Contact Data</mat-option>
+      <mat-option value="Account Number">Account Number</mat-option>
+      <mat-option value="Contact Data">Contact Data</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Steps That Require Proof of Documents</mat-label>
     <mat-select formControlName="stepsThatRequireProofOfDocuments" multiple>
-      <mat-option>Account Number</mat-option>
-      <mat-option>Address</mat-option>
+      <mat-option value="Account Number">Account Number</mat-option>
+      <mat-option value="Address">Address</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
@@ -46,8 +46,8 @@
   <mat-form-field appearance="fill">
     <mat-label>Steps That Require Attention</mat-label>
     <mat-select formControlName="stepsThatRequireAttention" multiple>
-      <mat-option>Account Number</mat-option>
-      <mat-option>Address</mat-option>
+      <mat-option value="Account Number">Account Number</mat-option>
+      <mat-option value="Address">Address</mat-option>
     </mat-select>
   </mat-form-field>
 </form>
