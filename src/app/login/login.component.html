@@ -1,7 +1,15 @@
 <div class="columns is-centered" style="margin-top: 20px">
   <div class="column is-6">
     <mat-card style="border: 2px solid #448aff">
-      <mat-card-title>Welcome, Please Log In</mat-card-title>
+      <mat-card-title
+        style="display: flex; justify-content: space-between; align-items: top"
+        >Welcome, Please Log In
+        <img
+          src="../assets/logo3.png"
+          alt="Logo Placeholder"
+          style="width: 8%; height: 8%"
+        />
+      </mat-card-title>
       <mat-card-content>
         <form [formGroup]="authForm">
           <mat-form-field>
