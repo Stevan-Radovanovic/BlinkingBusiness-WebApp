@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-main-form',
-  templateUrl: './main-form.component.html',
-  styleUrls: ['./main-form.component.css'],
+  selector: 'app-form-wrap',
+  templateUrl: './form-wrap.component.html',
+  styleUrls: ['./form-wrap.component.css'],
 })
-export class MainFormComponent implements OnInit {
+export class FormWrapComponent implements OnInit {
   businessForm: FormGroup;
   sessionForm: FormGroup;
 
@@ -33,7 +33,7 @@ export class MainFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initBusinessForm();
     this.initSessionForm();
+    this.initBusinessForm();
   }
 }

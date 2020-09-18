@@ -16,15 +16,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { LoginComponent } from './login/login.component';
-import { MainFormComponent } from './main-form/main-form.component';
-import { RouterModule } from '@angular/router';
-
+import { FormWrapComponent } from './form-wrap/form-wrap.component';
+import { BusinessFormComponent } from './form-wrap/business-form/business-form.component';
+import { SessionFormComponent } from './form-wrap/session-form/session-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MainFormComponent
+    FormWrapComponent,
+    BusinessFormComponent,
+    SessionFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,9 +41,9 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatToolbarModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

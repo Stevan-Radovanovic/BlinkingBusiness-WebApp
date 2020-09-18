@@ -1,0 +1,26 @@
+<form [formGroup]="businessForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Color</mat-label>
+    <input matInput formControlName="color" />
+  </mat-form-field>
+  <p
+    *ngIf="
+      !businessForm.controls.color.valid && businessForm.controls.color.touched
+    "
+    class="help is-danger"
+  >
+    This field is required
+  </p>
+  <div style="margin-bottom: 8px">
+    <mat-label style="display: block">Favicon: </mat-label>
+    <input
+      type="file"
+      formControlName="favicon"
+      accept=".jpeg,.jpg,.png,.ico"
+    />
+  </div>
+  <div>
+    <mat-label style="display: block">Logo: </mat-label>
+    <input type="file" formControlName="logo" accept=".jpeg,.jpg,.png,.ico" />
+  </div>
+</form>

@@ -1,0 +1,47 @@
+<div class="columns is-centered" style="margin-top: 20px">
+  <div class="column is-8">
+    <mat-card style="border: 2px solid #448aff">
+      <mat-card-title
+        style="display: flex; justify-content: space-between; align-items: top"
+        >Business Details
+        <img
+          src="../assets/logo3.png"
+          alt="Logo Placeholder"
+          style="width: 6%; height: 6%"
+        />
+      </mat-card-title>
+      <mat-card-content>
+        <app-business-form
+          [businessForm]="this.businessForm"
+        ></app-business-form>
+      </mat-card-content>
+      <mat-divider style="border: 1px solid #448aff"></mat-divider>
+      <mat-card-title
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: top;
+          margin-top: 40px;
+        "
+        >Session Configuration
+        <img
+          src="../assets/logo3.png"
+          alt="Logo Placeholder"
+          style="width: 6%; height: 6%"
+        />
+      </mat-card-title>
+      <mat-card-content>
+        <app-session-form [sessionForm]="this.sessionForm"></app-session-form>
+      </mat-card-content>
+      <mat-card-actions style="display: flex; justify-content: center">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="!businessForm.valid || !sessionForm.valid"
+        >
+          Submit
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
