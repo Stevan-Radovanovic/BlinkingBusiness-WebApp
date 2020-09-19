@@ -28,7 +28,7 @@ export class SessionFormComponent implements OnInit {
   }
 
   getSpecialErrorMessage() {
-    return 'Back Side and Front Side either be selected together, or not selected at all';
+    return 'Back Side and Front Side should either be selected together, or not selected at all';
   }
 
   ngOnInit(): void {}
