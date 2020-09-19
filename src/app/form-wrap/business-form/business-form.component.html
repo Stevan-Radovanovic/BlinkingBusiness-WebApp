@@ -3,6 +3,21 @@
     <mat-form-field appearance="fill" style="width: 80%">
       <mat-label>Color</mat-label>
       <input matInput formControlName="color" />
+      <mat-error
+        *ngIf="
+          this.businessForm.controls.color.hasError('required') &&
+          this.businessForm.controls.color.touched
+        "
+        >This field is required</mat-error
+      >
+      <mat-error
+        *ngIf="
+          this.businessForm.controls.color.hasError('pattern') &&
+          this.businessForm.controls.color.touched
+        "
+        >The value of this field must be valid color hex (starts with a #, has 3
+        or 6 hexadecimal numbers)</mat-error
+      >
     </mat-form-field>
     <div
       style="
