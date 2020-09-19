@@ -24,102 +24,73 @@
       </p>
     </div>
   </div>
-  <div
-    style="
-      display: flex;
-      justify-content: space-between;
-      margin-top: 4px;
-      margin-bottom: 8px;
-    "
-  >
-    <div>
-      <mat-label style="display: block">Favicon: </mat-label>
-      <input
-        matNativeInput
-        #favicon
-        type="file"
-        formControlName="favicon"
-        accept=".jpeg,.jpg,.png,.ico"
-      />
 
-      <mat-error
-        *ngIf="
-          this.businessForm.controls.favicon.hasError('required') &&
-          this.businessForm.controls.favicon.touched
-        "
-        style="font-size: 8pt"
-        >This field is required</mat-error
-      >
-      <mat-error
-        *ngIf="
-          !this.businessForm.controls.favicon.hasError('required') &&
-          this.businessForm.controls.favicon.invalid &&
-          this.businessForm.controls.favicon.touched
-        "
-        style="font-size: 8pt"
-        >The selected picture must be smaller than 3 MB</mat-error
-      >
-    </div>
-    <div
-      style="
-        height: 50px;
-        width: 50px;
-        border: 2px solid #448aff;
-        border-radius: 3px;
-        text-align: center;
-        font-size: 8pt;
-        margin-right: 12px;
-      "
-    >
-      <p *ngIf="!businessForm.get('favicon').valid" style="font-weight: bold">
-        Favicon Preview
-      </p>
-      <img *ngIf="businessForm.get('favicon').valid" [src]="faviconPath" />
-    </div>
-  </div>
-  <div style="display: flex; justify-content: space-between">
-    <div>
-      <mat-label style="display: block">Logo: </mat-label>
-      <input
-        #logo
-        type="file"
-        formControlName="logo"
-        accept=".jpeg,.jpg,.png,.ico"
-      />
+  <div class="columns">
+    <div class="column is-5" style="margin-top: 4px; margin-bottom: 8px">
+      <div>
+        <mat-label style="display: block">Favicon: </mat-label>
+        <input
+          matNativeInput
+          #favicon
+          type="file"
+          formControlName="favicon"
+          accept=".jpeg,.jpg,.png,.ico"
+        />
 
-      <mat-error
-        *ngIf="
-          this.businessForm.controls.logo.hasError('required') &&
-          this.businessForm.controls.logo.touched
-        "
-        style="font-size: 8pt"
-        >This field is required</mat-error
-      >
-      <mat-error
-        *ngIf="
-          !this.businessForm.controls.logo.hasError('required') &&
-          this.businessForm.controls.logo.invalid &&
-          this.businessForm.controls.logo.touched
-        "
-        style="font-size: 8pt"
-        >The selected picture must be smaller than 3 MB</mat-error
-      >
+        <mat-error
+          *ngIf="
+            this.businessForm.controls.favicon.hasError('required') &&
+            this.businessForm.controls.favicon.touched
+          "
+          style="font-size: 8pt"
+          >This field is required</mat-error
+        >
+        <mat-error
+          *ngIf="
+            !this.businessForm.controls.favicon.hasError('required') &&
+            this.businessForm.controls.favicon.invalid &&
+            this.businessForm.controls.favicon.touched
+          "
+          style="font-size: 8pt"
+          >The selected picture must be smaller than 3 MB</mat-error
+        >
+      </div>
+      <div style="margin-top: 10px">
+        <mat-label style="display: block">Logo: </mat-label>
+        <input
+          #logo
+          type="file"
+          formControlName="logo"
+          accept=".jpeg,.jpg,.png,.ico"
+        />
+
+        <mat-error
+          *ngIf="
+            this.businessForm.controls.logo.hasError('required') &&
+            this.businessForm.controls.logo.touched
+          "
+          style="font-size: 8pt"
+          >This field is required</mat-error
+        >
+        <mat-error
+          *ngIf="
+            !this.businessForm.controls.logo.hasError('required') &&
+            this.businessForm.controls.logo.invalid &&
+            this.businessForm.controls.logo.touched
+          "
+          style="font-size: 8pt"
+          >The selected picture must be smaller than 3 MB</mat-error
+        >
+      </div>
     </div>
-    <div
-      style="
-        height: 50px;
-        width: 50px;
-        border: 2px solid #448aff;
-        border-radius: 3px;
-        text-align: center;
-        font-size: 8pt;
-        margin-right: 12px;
-      "
-    >
-      <p *ngIf="!businessForm.get('logo').valid" style="font-weight: bold">
-        Logo Preview
-      </p>
-      <img *ngIf="businessForm.get('logo').valid" [src]="logoPath" />
+    <div class="column is-6" style="display: flex">
+      <div *ngIf="businessForm.get('favicon').valid" class="picturePreview">
+        <img style="max-height: 100%; max-width: 100%" [src]="faviconPath" />
+      </div>
+
+      <div class="picturePreview" *ngIf="businessForm.get('logo').valid">
+        <img style="max-height: 100%; max-width: 100%" [src]="logoPath" />
+      </div>
     </div>
   </div>
 </form>

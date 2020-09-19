@@ -6,6 +6,24 @@
   text-align: center;
   font-size: 8pt;
   margin-left: 12px;
+  margin-right: 20px;
+}
+
+@media (max-height: 750px) {
+  .picturePreview {
+    margin-bottom: 8px;
+  }
+}
+
+.picturePreview {
+  height: 110px;
+  width: 110px;
+  border: 1px solid #eee;
+  box-shadow: 2px 3px #ccc;
+  text-align: center;
+  font-size: 8pt;
+  margin-left: 12px;
+  margin-right: 12px;
 }
 
 .spaceBetween {
