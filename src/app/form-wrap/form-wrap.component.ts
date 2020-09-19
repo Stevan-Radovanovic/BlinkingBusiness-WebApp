@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { v4 as uuidv4 } from 'uuid';
 import { FormObject } from '../shared/form-object.model';
 import { FormSubmitComponent } from './form-submit/form-submit.component';
+import { frontBack } from '../shared/validators/front-back.validator';
 
 @Component({
   selector: 'app-form-wrap',
@@ -34,7 +35,10 @@ export class FormWrapComponent implements OnInit {
       willEmbedInIframe: new FormControl(false),
       skippableSteps: new FormControl([]),
       stepsThatRequireProofOfDocuments: new FormControl([]),
-      initialSessionConfig: new FormControl('', [Validators.required]),
+      initialSessionConfig: new FormControl('', [
+        Validators.required,
+        frontBack,
+      ]),
       stepsThatRequireAttention: new FormControl([]),
     });
   }

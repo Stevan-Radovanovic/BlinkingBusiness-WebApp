@@ -30,8 +30,22 @@
   <mat-form-field appearance="fill">
     <mat-label>Initial Session Config</mat-label>
     <mat-select formControlName="initialSessionConfig" multiple>
-      <mat-option value="Document">Document</mat-option>
-      <mat-option value="Document with Country"
+      <mat-option
+        [disabled]="
+          this.sessionForm
+            .get('initialSessionConfig')
+            .value.includes('Document with Country')
+        "
+        value="Document"
+        >Document</mat-option
+      >
+      <mat-option
+        [disabled]="
+          this.sessionForm
+            .get('initialSessionConfig')
+            .value.includes('Document')
+        "
+        value="Document with Country"
         >Document with Country</mat-option
       >
       <mat-option value="Front Side">Front Side</mat-option>
