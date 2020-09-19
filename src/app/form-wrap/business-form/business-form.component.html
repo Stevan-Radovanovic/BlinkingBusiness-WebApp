@@ -1,7 +1,7 @@
 <form [formGroup]="businessForm">
   <div style="display: flex; justify-content: space-between">
     <mat-form-field appearance="fill" style="width: 80%">
-      <mat-label>Color</mat-label>
+      <mat-label>Color Hex Value:</mat-label>
       <input matInput formControlName="color" />
       <mat-error
         *ngIf="
@@ -15,8 +15,8 @@
           this.businessForm.controls.color.hasError('pattern') &&
           this.businessForm.controls.color.touched
         "
-        >The value of this field must be valid color hex (starts with a #, has 3
-        or 6 hexadecimal numbers)</mat-error
+        >The value of this field must be valid color hex value (starts with a #,
+        has 3 or 6 hexadecimal numbers)</mat-error
       >
     </mat-form-field>
     <div
