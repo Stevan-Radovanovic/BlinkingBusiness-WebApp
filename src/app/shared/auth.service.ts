@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class AuthService {
   constructor(private router: Router) {}
 
-  loggedIn = true;
+  loggedIn = false;
 
   logIn() {
     localStorage.setItem('token', uuidv4());
