@@ -15,6 +15,7 @@ export class BusinessFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedColor = '';
+
     this.businessForm.get('color').valueChanges.subscribe((value) => {
       this.selectedColor = value;
       if (!this.businessForm.get('color').valid) {
