@@ -26,6 +26,7 @@ export class BusinessFormComponent implements OnInit {
     });
 
     this.businessForm.get('favicon').valueChanges.subscribe((value) => {
+      if (this.favicon.nativeElement.files.length === 0) return;
       const fileSize = this.favicon.nativeElement.files[0].size / 1024 / 1024;
       const fileType = this.favicon.nativeElement.files[0].type;
 
@@ -44,6 +45,7 @@ export class BusinessFormComponent implements OnInit {
     });
 
     this.businessForm.get('logo').valueChanges.subscribe((value) => {
+      if (this.logo.nativeElement.files.length === 0) return;
       const fileSize = this.logo.nativeElement.files[0].size / 1024 / 1024;
       const fileType = this.logo.nativeElement.files[0].type;
 
