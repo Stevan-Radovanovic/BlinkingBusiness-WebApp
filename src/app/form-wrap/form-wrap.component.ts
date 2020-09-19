@@ -30,7 +30,7 @@ export class FormWrapComponent implements OnInit {
   initSessionForm() {
     this.sessionForm = new FormGroup({
       baseRedirectUrl: new FormControl('', [Validators.required]),
-      blinkingParams: new FormControl('', [Validators.required]),
+      blinkingParams: new FormControl([], [Validators.required]),
       willEmbedInIframe: new FormControl(false),
       skippableSteps: new FormControl([]),
       stepsThatRequireProofOfDocuments: new FormControl([]),
@@ -60,7 +60,12 @@ export class FormWrapComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.sessionForm.reset();
+      this.sessionForm.reset({
+        willEmbedInIframe: false,
+        skippableSteps: [],
+        stepsThatRequireProofOfDocuments: [],
+        stepsThatRequireAttention: [],
+      });
       this.businessForm.reset();
     });
 
