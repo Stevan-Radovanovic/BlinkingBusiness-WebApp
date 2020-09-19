@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { v4 as uuidv4 } from 'uuid';
 import { FormObject } from '../shared/form-object.model';
+import { FormSubmitComponent } from './form-submit/form-submit.component';
 
 @Component({
   selector: 'app-form-wrap',
@@ -12,7 +14,7 @@ export class FormWrapComponent implements OnInit {
   businessForm: FormGroup;
   sessionForm: FormGroup;
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   initBusinessForm() {
     this.businessForm = new FormGroup({
@@ -33,7 +35,7 @@ export class FormWrapComponent implements OnInit {
       skippableSteps: new FormControl([]),
       stepsThatRequireProofOfDocuments: new FormControl([]),
       initialSessionConfig: new FormControl('', [Validators.required]),
-      stepsThatRequireAttention: new FormControl([], [Validators.required]),
+      stepsThatRequireAttention: new FormControl([]),
     });
   }
 
@@ -51,6 +53,17 @@ export class FormWrapComponent implements OnInit {
           .value,
       },
     };
+
+    const dialogRef = this.dialog.open(FormSubmitComponent, {
+      width: '500px',
+      data: { formObject, id: uuidv4() },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.sessionForm.reset();
+      this.businessForm.reset();
+    });
+
     console.log(formObject);
   }
 

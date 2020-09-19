@@ -1,0 +1,50 @@
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <img
+    src="../assets/logo3.png"
+    alt="Logo Placeholder"
+    style="width: 20%; height: 20%"
+  />
+  <h2>Form Succesfully Submited.</h2>
+</div>
+<p><strong>Session Config Id:</strong> {{ data.id }}</p>
+<p><strong>Base Redirect Url:</strong> {{ data.formObject.baseRedirectUrl }}</p>
+<p>
+  <strong>Blinking Params:</strong>
+  {{ data.formObject.blinkingParams }}
+</p>
+<p>
+  <strong>Skippable Steps:</strong>
+  {{
+    data.formObject.serviceConfiguration.skippableSteps.length !== 0
+      ? data.formObject.serviceConfiguration.skippableSteps
+      : "None selected"
+  }}
+</p>
+<p>
+  <strong>Steps That Require Proof of Documents:</strong>
+  {{
+    data.formObject.serviceConfiguration.stepsThatRequireProofOfDocuments
+      .length !== 0
+      ? data.formObject.serviceConfiguration.stepsThatRequireProofOfDocuments
+      : "None selected"
+  }}
+</p>
+<p>
+  <strong>Initial Session Config:</strong>
+  {{ data.formObject.serviceConfiguration.initialSessionConfig }}
+</p>
+<p>
+  <strong>Steps That Require Attenton:</strong>
+  {{
+    data.formObject.serviceConfiguration.stepsThatRequireAttention.length !== 0
+      ? data.formObject.serviceConfiguration.stepsThatRequireAttention
+      : "None selected"
+  }}
+</p>

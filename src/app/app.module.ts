@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { FormWrapComponent } from './form-wrap/form-wrap.component';
 import { BusinessFormComponent } from './form-wrap/business-form/business-form.component';
 import { SessionFormComponent } from './form-wrap/session-form/session-form.component';
+import { FormSubmitComponent } from './form-wrap/form-submit/form-submit.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SessionFormComponent } from './form-wrap/session-form/session-form.comp
     FormWrapComponent,
     BusinessFormComponent,
     SessionFormComponent,
+    FormSubmitComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,5 +47,6 @@ import { SessionFormComponent } from './form-wrap/session-form/session-form.comp
   ],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [FormSubmitComponent],
 })
 export class AppModule {}
