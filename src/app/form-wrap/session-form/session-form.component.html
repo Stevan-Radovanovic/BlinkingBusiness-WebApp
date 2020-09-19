@@ -7,7 +7,7 @@
         this.sessionForm.controls.baseRedirectUrl.invalid &&
         this.sessionForm.controls.baseRedirectUrl.touched
       "
-      >{{ getErrorMessage() }}</mat-error
+      >This field is required</mat-error
     >
   </mat-form-field>
   <mat-form-field appearance="fill">
@@ -21,7 +21,7 @@
         this.sessionForm.controls.blinkingParams.invalid &&
         this.sessionForm.controls.blinkingParams.touched
       "
-      >{{ getErrorMessage() }}</mat-error
+      >This field is required</mat-error
     >
   </mat-form-field>
   <mat-checkbox formControlName="willEmbedInIframe"
@@ -77,7 +77,7 @@
         this.sessionForm.controls.initialSessionConfig.hasError('required') &&
         this.sessionForm.controls.initialSessionConfig.touched
       "
-      >{{ getErrorMessage() }}</mat-error
+      >This field is required</mat-error
     >
     <mat-error
       *ngIf="
@@ -85,7 +85,8 @@
         this.sessionForm.controls.initialSessionConfig.touched &&
         !this.sessionForm.controls.initialSessionConfig.valid
       "
-      >{{ getSpecialErrorMessage() }}</mat-error
+      >Back Side and Front Side should either be selected together, or not
+      selected at all</mat-error
     >
   </mat-form-field>
   <mat-form-field appearance="fill">
