@@ -15,8 +15,7 @@
           this.businessForm.controls.color.hasError('pattern') &&
           this.businessForm.controls.color.touched
         "
-        >The value of this field must be a valid color hex (starts with a #, has
-        3 or 6 hexadecimal numbers)</mat-error
+        >Must be a valid color hex (e.g. #ae3 or #aaa434)</mat-error
       >
     </mat-form-field>
     <div class="colorPreview" [style.background]="selectedColor">
@@ -26,7 +25,12 @@
     </div>
   </div>
   <div
-    style="display: flex; justify-content: space-between; margin-bottom: 8px"
+    style="
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4px;
+      margin-bottom: 8px;
+    "
   >
     <div>
       <mat-label style="display: block">Favicon: </mat-label>
