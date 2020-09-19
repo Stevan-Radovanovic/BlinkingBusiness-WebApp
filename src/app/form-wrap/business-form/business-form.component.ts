@@ -11,6 +11,8 @@ export class BusinessFormComponent implements OnInit {
 
   @ViewChild('favicon') favicon: ElementRef<HTMLInputElement>;
   @ViewChild('logo') logo: ElementRef;
+  logoPath = '';
+  faviconPath = '';
 
   selectedColor = '';
 
@@ -42,6 +44,12 @@ export class BusinessFormComponent implements OnInit {
       if (fileSize > 3) {
         this.businessForm.get('favicon').setErrors(new Error('custom'));
       }
+
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.faviconPath = event.target.result;
+      };
+      reader.readAsDataURL(this.favicon.nativeElement.files[0]);
     });
 
     this.businessForm.get('logo').valueChanges.subscribe((value) => {
@@ -61,6 +69,12 @@ export class BusinessFormComponent implements OnInit {
       if (fileSize > 3) {
         this.businessForm.get('logo').setErrors(new Error('custom'));
       }
+
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.logoPath = event.target.result;
+      };
+      reader.readAsDataURL(this.logo.nativeElement.files[0]);
     });
   }
 }

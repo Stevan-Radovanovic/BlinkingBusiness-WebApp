@@ -77,11 +77,11 @@
         font-size: 8pt;
         margin-right: 12px;
       "
-      [style.background]="selectedColor"
     >
       <p *ngIf="!businessForm.get('favicon').valid" style="font-weight: bold">
         Favicon Preview
       </p>
+      <img *ngIf="businessForm.get('favicon').valid" [src]="faviconPath" />
     </div>
   </div>
   <div style="display: flex; justify-content: space-between">
@@ -122,11 +122,11 @@
         font-size: 8pt;
         margin-right: 12px;
       "
-      [style.background]="selectedColor"
     >
       <p *ngIf="!businessForm.get('logo').valid" style="font-weight: bold">
         Logo Preview
       </p>
+      <img *ngIf="businessForm.get('logo').valid" [src]="logoPath" />
     </div>
   </div>
 </form>
