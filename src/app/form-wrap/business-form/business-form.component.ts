@@ -17,7 +17,9 @@ export class BusinessFormComponent implements OnInit {
     this.selectedColor = '';
     this.businessForm.get('color').valueChanges.subscribe((value) => {
       this.selectedColor = value;
-      console.log(this.selectedColor);
+      if (!this.businessForm.get('color').valid) {
+        this.selectedColor = '';
+      }
     });
   }
 }
