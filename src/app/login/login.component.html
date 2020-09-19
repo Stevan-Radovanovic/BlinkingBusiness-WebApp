@@ -12,32 +12,28 @@
       </mat-card-title>
       <mat-card-content>
         <form [formGroup]="authForm">
-          <mat-form-field>
+          <mat-form-field appearance="fill">
             <mat-label>UserName</mat-label>
             <input matInput formControlName="userName" />
+            <mat-error
+              *ngIf="
+                this.authForm.controls.userName.invalid &&
+                this.authForm.controls.userName.touched
+              "
+              >{{ getErrorMessage() }}</mat-error
+            >
           </mat-form-field>
-          <p
-            *ngIf="
-              !authForm.controls.userName.valid &&
-              authForm.controls.userName.touched
-            "
-            class="help is-danger"
-          >
-            This field is required
-          </p>
-          <mat-form-field>
+          <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
             <input type="password" matInput formControlName="password" />
+            <mat-error
+              *ngIf="
+                this.authForm.controls.password.invalid &&
+                this.authForm.controls.password.touched
+              "
+              >{{ getErrorMessage() }}</mat-error
+            >
           </mat-form-field>
-          <p
-            *ngIf="
-              !authForm.controls.password.valid &&
-              authForm.controls.password.touched
-            "
-            class="help is-danger"
-          >
-            This field is required
-          </p>
         </form>
       </mat-card-content>
       <mat-card-actions style="display: flex; justify-content: center">

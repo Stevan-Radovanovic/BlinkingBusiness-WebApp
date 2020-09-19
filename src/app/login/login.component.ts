@@ -23,6 +23,18 @@ export class LoginComponent implements OnInit {
     this.authService.logIn();
   }
 
+  getErrorMessage() {
+    if (this.authForm.controls.userName.hasError('required')) {
+      return 'This field is required';
+    }
+
+    if (this.authForm.controls.password.hasError('required')) {
+      return 'This field is required';
+    }
+
+    return '';
+  }
+
   ngOnInit(): void {
     this.initForm();
   }

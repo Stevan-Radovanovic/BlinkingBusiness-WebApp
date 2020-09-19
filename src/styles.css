@@ -12,6 +12,7 @@ body {
 
 form mat-form-field {
   width: 98%;
+  margin-bottom: 3px;
 }
 
 .mat-card {
