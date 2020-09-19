@@ -11,5 +11,25 @@ export class SessionFormComponent implements OnInit {
 
   constructor() {}
 
+  getErrorMessage() {
+    if (this.sessionForm.controls.blinkingParams.hasError('required')) {
+      return 'This field is required';
+    }
+
+    if (this.sessionForm.controls.initialSessionConfig.hasError('required')) {
+      return 'This field is required';
+    }
+
+    if (this.sessionForm.controls.baseRedirectUrl.hasError('required')) {
+      return 'This field is required';
+    }
+
+    return '';
+  }
+
+  getSpecialErrorMessage() {
+    return 'Back Side and Front Side either be selected together, or not selected at all';
+  }
+
   ngOnInit(): void {}
 }

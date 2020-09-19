@@ -5,11 +5,11 @@ export function frontBack(control: FormControl): { [s: string]: boolean } {
     control.value.includes('Front Side') &&
     !control.value.includes('Back Side')
   )
-    return { doesNotIncludeBoth: true };
+    return { frontBack: true };
   if (
     !control.value.includes('Front Side') &&
     control.value.includes('Back Side')
   )
-    return { doesNotIncludeBoth: true };
+    return { frontBack: true };
   return null;
 }

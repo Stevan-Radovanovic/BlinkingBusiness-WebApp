@@ -2,6 +2,13 @@
   <mat-form-field appearance="fill">
     <mat-label>Base Redirect Url</mat-label>
     <input matInput formControlName="baseRedirectUrl" />
+    <mat-error
+      *ngIf="
+        this.sessionForm.controls.baseRedirectUrl.invalid &&
+        this.sessionForm.controls.baseRedirectUrl.touched
+      "
+      >{{ getErrorMessage() }}</mat-error
+    >
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Blinking Params</mat-label>
@@ -9,6 +16,13 @@
       <mat-option value="Status">Status</mat-option>
       <mat-option value="Document Expiry Date">Document Expiry Date</mat-option>
     </mat-select>
+    <mat-error
+      *ngIf="
+        this.sessionForm.controls.blinkingParams.invalid &&
+        this.sessionForm.controls.blinkingParams.touched
+      "
+      >{{ getErrorMessage() }}</mat-error
+    >
   </mat-form-field>
   <mat-checkbox formControlName="willEmbedInIframe"
     >Embed in IFrame?</mat-checkbox
@@ -56,6 +70,21 @@
       <mat-option value="Contact Data">Contact Data</mat-option>
       <mat-option value="Video Session">Video Session</mat-option>
     </mat-select>
+    <mat-error
+      *ngIf="
+        this.sessionForm.controls.initialSessionConfig.hasError('required') &&
+        this.sessionForm.controls.initialSessionConfig.touched
+      "
+      >{{ getErrorMessage() }}</mat-error
+    >
+    <mat-error
+      *ngIf="
+        !this.sessionForm.controls.initialSessionConfig.hasError('required') &&
+        this.sessionForm.controls.initialSessionConfig.touched &&
+        !this.sessionForm.controls.initialSessionConfig.valid
+      "
+      >{{ getSpecialErrorMessage() }}</mat-error
+    >
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Steps That Require Attention</mat-label>
