@@ -1,4 +1,4 @@
-export interface Object {
+export interface FormObject {
   baseRedirectUrl: string;
   blinkingParams: string[];
   serviceConfiguration: {

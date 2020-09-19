@@ -37,7 +37,8 @@
         <button
           mat-raised-button
           color="primary"
-          [disabled]="!businessForm.valid || !sessionForm.valid"
+          [disabled]="!sessionForm.valid"
+          (click)="submit()"
         >
           Submit
         </button>
