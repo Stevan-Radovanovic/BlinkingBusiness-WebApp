@@ -1,0 +1,15 @@
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+}
+
+img {
+  width: 6%;
+  height: 6%;
+}
