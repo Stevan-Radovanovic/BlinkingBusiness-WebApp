@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
+import { AuthData } from '../shared/models/auth-data.model';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +11,7 @@ import { AuthService } from '../shared/auth.service';
 export class LoginComponent implements OnInit {
   authForm: FormGroup;
 
-  constructor(private authService: AuthService) {}
+  constructor(public authService: AuthService) {}
 
   initForm() {
     this.authForm = new FormGroup({
@@ -20,19 +21,11 @@ export class LoginComponent implements OnInit {
   }
 
   logIn() {
-    this.authService.logIn();
-  }
-
-  getErrorMessage() {
-    if (this.authForm.controls.userName.hasError('required')) {
-      return 'This field is required';
-    }
-
-    if (this.authForm.controls.password.hasError('required')) {
-      return 'This field is required';
-    }
-
-    return '';
+    const authData: AuthData = {
+      userName: this.authForm.controls.userName.value,
+      password: this.authForm.controls.password.value,
+    };
+    this.authService.logIn(authData);
   }
 
   ngOnInit(): void {

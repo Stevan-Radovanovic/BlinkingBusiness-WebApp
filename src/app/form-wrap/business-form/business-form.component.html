@@ -1,7 +1,7 @@
 <form [formGroup]="businessForm">
   <div class="spaceBetween">
     <mat-form-field appearance="fill" style="width: 80%">
-      <mat-label>Color Hex Value:</mat-label>
+      <mat-label>Color Hex Value: *</mat-label>
       <input matInput formControlName="color" />
       <mat-error
         *ngIf="
@@ -28,7 +28,7 @@
   <div class="columns">
     <div class="column is-5" style="margin-top: 4px; margin-bottom: 8px">
       <div>
-        <mat-label style="display: block">Favicon: </mat-label>
+        <mat-label style="display: block">Favicon: *</mat-label>
         <input
           matNativeInput
           #favicon
@@ -56,7 +56,7 @@
         >
       </div>
       <div style="margin-top: 10px">
-        <mat-label style="display: block">Logo: </mat-label>
+        <mat-label style="display: block">Logo: *</mat-label>
         <input
           #logo
           type="file"

@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormObject } from 'src/app/shared/form-object.model';
+import { FormObject } from 'src/app/shared/models/form-object.model';
 
 @Component({
   selector: 'app-form-submit',

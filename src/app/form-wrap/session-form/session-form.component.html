@@ -1,6 +1,6 @@
 <form [formGroup]="sessionForm">
   <mat-form-field appearance="fill">
-    <mat-label>Base Redirect Url</mat-label>
+    <mat-label>Base Redirect Url *</mat-label>
     <input matInput formControlName="baseRedirectUrl" />
     <mat-error
       *ngIf="
@@ -11,7 +11,7 @@
     >
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Blinking Params</mat-label>
+    <mat-label>Blinking Params *</mat-label>
     <mat-select formControlName="blinkingParams" multiple>
       <mat-option value="Status">Status</mat-option>
       <mat-option value="Document Expiry Date">Document Expiry Date</mat-option>
@@ -42,7 +42,7 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Initial Session Config</mat-label>
+    <mat-label>Initial Session Config *</mat-label>
     <mat-select formControlName="initialSessionConfig" multiple>
       <mat-option
         [disabled]="

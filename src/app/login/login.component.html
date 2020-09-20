@@ -2,7 +2,7 @@
   <div class="column is-6">
     <mat-card>
       <mat-card-title
-        ><strong>Welcome, Please Log In</strong>
+        ><strong>Welcome, please log in</strong>
         <img src="../assets/logo3.png" alt="Logo Placeholder" />
       </mat-card-title>
       <mat-card-content>
@@ -15,7 +15,7 @@
                 this.authForm.controls.userName.invalid &&
                 this.authForm.controls.userName.touched
               "
-              >{{ getErrorMessage() }}</mat-error
+              >This field is required</mat-error
             >
           </mat-form-field>
           <mat-form-field appearance="fill">
@@ -26,7 +26,7 @@
                 this.authForm.controls.password.invalid &&
                 this.authForm.controls.password.touched
               "
-              >{{ getErrorMessage() }}</mat-error
+              >This field is required</mat-error
             >
           </mat-form-field>
         </form>
@@ -42,5 +42,8 @@
         </button>
       </mat-card-actions>
     </mat-card>
+    <mat-error style="text-align: center" *ngIf="!this.authService.validAuth"
+      >User Name or Password invalid!</mat-error
+    >
   </div>
 </div>

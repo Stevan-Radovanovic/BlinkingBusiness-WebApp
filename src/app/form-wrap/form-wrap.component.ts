@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { v4 as uuidv4 } from 'uuid';
-import { FormObject } from '../shared/form-object.model';
+import { FormObject } from '../shared/models/form-object.model';
 import { FormSubmitComponent } from './form-submit/form-submit.component';
 import { frontBack } from '../shared/validators/front-back.validator';
 
