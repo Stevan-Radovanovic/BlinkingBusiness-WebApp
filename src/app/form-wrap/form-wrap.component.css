@@ -6,7 +6,7 @@ mat-card-actions {
 mat-card-title {
   display: flex;
   justify-content: space-between;
-  align-items: top;
+  align-items: center;
 }
 
 img {

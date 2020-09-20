@@ -14,10 +14,10 @@ mat-card-actions {
 mat-card-title {
   display: flex;
   justify-content: space-between;
-  align-items: top;
+  align-items: center;
 }
 
 mat-card-title img {
-  width: 8%;
-  height: 8%;
+  width: 40px;
+  height: 40px;
 }
