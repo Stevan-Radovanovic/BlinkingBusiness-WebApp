@@ -20,10 +20,11 @@
   width: 110px;
   border: 1px solid #eee;
   box-shadow: 2px 3px #ccc;
-  text-align: center;
-  font-size: 8pt;
   margin-left: 12px;
   margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .spaceBetween {
