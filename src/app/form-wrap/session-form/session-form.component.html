@@ -24,9 +24,6 @@
       >This field is required</mat-error
     >
   </mat-form-field>
-  <mat-checkbox color="primary" formControlName="willEmbedInIframe">
-    Embed in IFrame?
-  </mat-checkbox>
   <mat-form-field appearance="fill" style="margin-top: 10px">
     <mat-label>Skippable Steps</mat-label>
     <mat-select formControlName="skippableSteps" multiple>
@@ -96,4 +93,18 @@
       <mat-option value="Address">Address</mat-option>
     </mat-select>
   </mat-form-field>
+  <div>
+    <mat-checkbox
+      color="primary"
+      formControlName="willEmbedInIframe"
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        margin-right: 12px;
+      "
+    >
+      Embed in IFrame?
+    </mat-checkbox>
+  </div>
 </form>

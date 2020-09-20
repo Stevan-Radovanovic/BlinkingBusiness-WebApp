@@ -85,11 +85,11 @@
     </div>
     <div class="column is-6" style="display: flex">
       <div *ngIf="businessForm.get('favicon').valid" class="picturePreview">
-        <img style="max-height: 100%; max-width: 100%" [src]="faviconPath" />
+        <img [src]="faviconPath" />
       </div>
 
       <div class="picturePreview" *ngIf="businessForm.get('logo').valid">
-        <img style="max-height: 100%; max-width: 100%" [src]="logoPath" />
+        <img [src]="logoPath" />
       </div>
     </div>
   </div>
