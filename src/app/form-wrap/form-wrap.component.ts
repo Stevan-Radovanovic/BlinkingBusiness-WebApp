@@ -47,6 +47,7 @@ export class FormWrapComponent implements OnInit {
     const formObject: FormObject = {
       baseRedirectUrl: this.sessionForm.controls.baseRedirectUrl.value,
       blinkingParams: this.sessionForm.controls.blinkingParams.value,
+      willEmbedInIframe: this.sessionForm.controls.willEmbedInIframe.value,
       serviceConfiguration: {
         skippableSteps: this.sessionForm.controls.skippableSteps.value,
         stepsThatRequireAttention: this.sessionForm.controls
