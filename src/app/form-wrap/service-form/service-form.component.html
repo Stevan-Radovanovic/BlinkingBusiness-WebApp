@@ -120,7 +120,9 @@
     </mat-error>
   </mat-form-field>
   <div class="flex-div">
-    <button color="warn" mat-raised-button>Save</button>
+    <button color="warn" mat-raised-button [disabled]="!serviceForm.valid">
+      Save
+    </button>
     <mat-checkbox color="primary" formControlName="shouldAskForFaceEnroll">
       Ask for Face Enroll?
     </mat-checkbox>

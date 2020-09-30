@@ -28,6 +28,7 @@ export class AuthService {
 
   logOut() {
     localStorage.removeItem('token');
+    this.validAuth = true;
     this.loggedIn = false;
     this.router.navigateByUrl('/login');
   }
