@@ -9,14 +9,24 @@
         <app-business-form></app-business-form>
       </mat-card-content>
     </mat-card>
-    <mat-card class="sessionCard">
-      <mat-card-title>
-        <strong>Session Configuration</strong>
-        <img src="../assets/logo3.png" alt="Logo Placeholder" />
-      </mat-card-title>
-      <mat-card-content>
-        <app-session-form></app-session-form>
-      </mat-card-content>
-    </mat-card>
+    <div *ngFor="let form of sessionForms; let i = index">
+      <mat-card class="sessionCard">
+        <div *ngIf="sessionForms.length != 1">
+          <button (click)="deleteSession(i)" mat-raised-button>Delete</button>
+        </div>
+        <mat-card-title>
+          <strong>Session Configuration</strong>
+          <img src="../assets/logo3.png" alt="Logo Placeholder" />
+        </mat-card-title>
+        <mat-card-content>
+          <app-session-form></app-session-form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="add-button">
+      <button mat-raised-button color="warn">
+        <mat-icon (click)="addNewSession()" class="add-icon">add</mat-icon>
+      </button>
+    </div>
   </div>
 </div>

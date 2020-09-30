@@ -21,4 +21,14 @@ img {
 
 .sessionCard {
   border: 2px solid #ccc;
+  margin-bottom: 4px;
+}
+
+.add-icon {
+  color: black;
+}
+
+.add-button {
+  display: flex;
+  justify-content: center;
 }

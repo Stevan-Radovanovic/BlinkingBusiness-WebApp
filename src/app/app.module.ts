@@ -20,6 +20,7 @@ import { FormWrapComponent } from './form-wrap/form-wrap.component';
 import { BusinessFormComponent } from './form-wrap/business-form/business-form.component';
 import { SessionFormComponent } from './form-wrap/session-form/session-form.component';
 import { FormSubmitComponent } from './form-wrap/form-submit/form-submit.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { FormSubmitComponent } from './form-wrap/form-submit/form-submit.compone
     MatInputModule,
     MatToolbarModule,
     MatSelectModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
