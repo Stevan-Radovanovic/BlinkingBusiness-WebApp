@@ -9,24 +9,14 @@
         <app-business-form></app-business-form>
       </mat-card-content>
     </mat-card>
-    <mat-card>
-      <mat-card-title style="margin-top: 40px"
-        ><strong>Session Configuration</strong>
+    <mat-card class="sessionCard">
+      <mat-card-title>
+        <strong>Session Configuration</strong>
         <img src="../assets/logo3.png" alt="Logo Placeholder" />
       </mat-card-title>
       <mat-card-content>
-        <app-session-form [sessionForm]="this.sessionForm"></app-session-form>
+        <app-session-form></app-session-form>
       </mat-card-content>
-      <mat-card-actions>
-        <button
-          mat-raised-button
-          color="primary"
-          [disabled]="!sessionForm.valid"
-          (click)="submit()"
-        >
-          Submit
-        </button>
-      </mat-card-actions>
     </mat-card>
   </div>
 </div>
