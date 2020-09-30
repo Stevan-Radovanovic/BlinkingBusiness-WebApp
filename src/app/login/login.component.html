@@ -34,7 +34,8 @@
       <mat-card-actions>
         <button
           mat-raised-button
-          color="primary"
+          color="warn"
+          class="button-blinking"
           [disabled]="!authForm.valid"
           (click)="logIn()"
         >

@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./business-form.component.css'],
 })
 export class BusinessFormComponent implements OnInit {
-  @Input() businessForm: FormGroup;
+  businessForm: FormGroup;
 
   @ViewChild('favicon') favicon: ElementRef<HTMLInputElement>;
   @ViewChild('logo') logo: ElementRef;
@@ -18,8 +18,21 @@ export class BusinessFormComponent implements OnInit {
 
   constructor() {}
 
+  initBusinessForm() {
+    this.businessForm = new FormGroup({
+      color: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$'),
+      ]),
+      favicon: new FormControl('', [Validators.required]),
+      logo: new FormControl('', [Validators.required]),
+    });
+  }
+
   ngOnInit(): void {
+    this.initBusinessForm();
     this.selectedColor = '';
+
     this.businessForm.get('color').valueChanges.subscribe((value) => {
       this.selectedColor = value;
       if (!this.businessForm.get('color').valid) {

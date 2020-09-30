@@ -12,21 +12,9 @@ import { frontBack } from '../shared/validators/front-back.validator';
   styleUrls: ['./form-wrap.component.css'],
 })
 export class FormWrapComponent implements OnInit {
-  businessForm: FormGroup;
   sessionForm: FormGroup;
 
   constructor(public dialog: MatDialog) {}
-
-  initBusinessForm() {
-    this.businessForm = new FormGroup({
-      color: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$'),
-      ]),
-      favicon: new FormControl('', [Validators.required]),
-      logo: new FormControl('', [Validators.required]),
-    });
-  }
 
   initSessionForm() {
     this.sessionForm = new FormGroup({
@@ -71,7 +59,6 @@ export class FormWrapComponent implements OnInit {
         stepsThatRequireProofOfDocuments: [],
         stepsThatRequireAttention: [],
       });
-      this.businessForm.reset();
     });
 
     console.log(formObject);
@@ -79,6 +66,5 @@ export class FormWrapComponent implements OnInit {
 
   ngOnInit(): void {
     this.initSessionForm();
-    this.initBusinessForm();
   }
 }

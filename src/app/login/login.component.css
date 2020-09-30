@@ -3,7 +3,8 @@
 }
 
 mat-card {
-  border: 2px solid #448aff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px;
 }
 
 mat-card-actions {
@@ -20,4 +21,8 @@ mat-card-title {
 mat-card-title img {
   width: 40px;
   height: 40px;
+}
+
+.button-blinking {
+  color: black;
 }

@@ -1,16 +1,15 @@
 <div class="columns is-centered" style="margin-top: 20px">
   <div class="column is-8">
-    <mat-card style="border: 2px solid #448aff">
+    <mat-card class="businessCard">
       <mat-card-title
         ><strong>Business Details</strong>
         <img src="../assets/logo3.png" alt="Logo Placeholder" />
       </mat-card-title>
       <mat-card-content>
-        <app-business-form
-          [businessForm]="this.businessForm"
-        ></app-business-form>
+        <app-business-form></app-business-form>
       </mat-card-content>
-      <mat-divider style="border: 1px solid #448aff"></mat-divider>
+    </mat-card>
+    <mat-card>
       <mat-card-title style="margin-top: 40px"
         ><strong>Session Configuration</strong>
         <img src="../assets/logo3.png" alt="Logo Placeholder" />
@@ -22,7 +21,7 @@
         <button
           mat-raised-button
           color="primary"
-          [disabled]="!businessForm.valid || !sessionForm.valid"
+          [disabled]="!sessionForm.valid"
           (click)="submit()"
         >
           Submit
