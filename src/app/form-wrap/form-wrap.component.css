@@ -9,9 +9,14 @@ mat-card-title {
   align-items: center;
 }
 
-img {
+.img-business {
   width: 40px;
   height: 40px;
+}
+
+.img-session {
+  width: 27px;
+  height: 27px;
 }
 
 .businessCard {
@@ -24,11 +29,11 @@ img {
   margin-bottom: 4px;
 }
 
-.add-icon {
-  color: black;
-}
-
 .add-button {
   display: flex;
   justify-content: center;
+}
+
+mat-icon {
+  color: black;
 }

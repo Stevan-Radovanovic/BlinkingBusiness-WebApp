@@ -1,9 +1,13 @@
 <div class="columns is-centered" style="margin-top: 20px">
   <div class="column is-8">
     <mat-card class="businessCard">
-      <mat-card-title
-        ><strong>Business Details</strong>
-        <img src="../assets/logo3.png" alt="Logo Placeholder" />
+      <mat-card-title>
+        <strong>Business Details</strong>
+        <img
+          class="img-business"
+          src="../assets/logo3.png"
+          alt="Logo Placeholder"
+        />
       </mat-card-title>
       <mat-card-content>
         <app-business-form></app-business-form>
@@ -11,12 +15,19 @@
     </mat-card>
     <div *ngFor="let form of sessionForms; let i = index">
       <mat-card class="sessionCard">
-        <div *ngIf="sessionForms.length != 1">
-          <button (click)="deleteSession(i)" mat-raised-button>Delete</button>
-        </div>
         <mat-card-title>
-          <strong>Session Configuration</strong>
-          <img src="../assets/logo3.png" alt="Logo Placeholder" />
+          <div>
+            <img
+              class="img-session"
+              src="../assets/logo3.png"
+              alt="Logo Placeholder"
+            /><strong>Session Configuration</strong>
+          </div>
+          <div *ngIf="sessionForms.length != 1">
+            <button (click)="deleteSession(i)" color="warn" mat-raised-button>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </mat-card-title>
         <mat-card-content>
           <app-session-form></app-session-form>
@@ -25,7 +36,7 @@
     </div>
     <div class="add-button">
       <button mat-raised-button color="warn">
-        <mat-icon (click)="addNewSession()" class="add-icon">add</mat-icon>
+        <mat-icon (click)="addNewSession()">add</mat-icon>
       </button>
     </div>
   </div>
