@@ -10,12 +10,13 @@ export class MainServiceFormComponent implements OnInit {
   serviceForm: FormGroup;
 
   countries: string[];
-  sessionForms = ['sessionForm'];
+  serviceConfigForms = ['serviceConfigForm'];
 
   constructor() {}
 
   initServiceForm() {
     this.serviceForm = new FormGroup({
+      serviceName: new FormControl(null, [Validators.required]),
       maxNumberOfTries: new FormControl(null, [Validators.required]),
       shouldAskForFaceEnroll: new FormControl(false, [Validators.required]),
       defaultCountry: new FormControl('', [Validators.required]),
@@ -24,12 +25,12 @@ export class MainServiceFormComponent implements OnInit {
     });
   }
 
-  addSessionForm() {
-    this.sessionForms.push('sessionForm');
+  addServiceConfigForm() {
+    this.serviceConfigForms.push('serviceConfigForm');
   }
 
-  deleteSessionForm(id: number) {
-    this.sessionForms.splice(id, 1);
+  deleteServiceConfigFOrm(id: number) {
+    this.serviceConfigForms.splice(id, 1);
   }
 
   ngOnInit(): void {

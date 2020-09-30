@@ -7,15 +7,16 @@ import { v4 as uuidv4 } from 'uuid';
 import { frontBack } from 'src/app/shared/validators/front-back.validator';
 
 @Component({
-  selector: 'app-session-form',
-  templateUrl: './session-form.component.html',
-  styleUrls: ['./session-form.component.css'],
+  selector: 'app-service-form',
+  templateUrl: './service-form.component.html',
+  styleUrls: ['./service-form.component.css'],
 })
-export class SessionFormComponent implements OnInit {
-  sessionForm: FormGroup;
+export class ServiceFormComponent implements OnInit {
+  countries: string[];
+  serviceForm: FormGroup;
 
-  initSessionForm() {
-    this.sessionForm = new FormGroup({
+  initServiceForm() {
+    this.serviceForm = new FormGroup({
       baseRedirectUrl: new FormControl('', [Validators.required]),
       blinkingParams: new FormControl([], [Validators.required]),
       willEmbedInIframe: new FormControl(false),
@@ -26,21 +27,24 @@ export class SessionFormComponent implements OnInit {
         frontBack,
       ]),
       stepsThatRequireAttention: new FormControl([]),
+      maxNumberOfTries: new FormControl(null, [Validators.required]),
+      shouldAskForFaceEnroll: new FormControl(false, [Validators.required]),
+      defaultCountry: new FormControl('', [Validators.required]),
     });
   }
 
   submit() {
     const formObject: FormObject = {
-      baseRedirectUrl: this.sessionForm.controls.baseRedirectUrl.value,
-      blinkingParams: this.sessionForm.controls.blinkingParams.value,
-      willEmbedInIframe: this.sessionForm.controls.willEmbedInIframe.value,
+      baseRedirectUrl: this.serviceForm.controls.baseRedirectUrl.value,
+      blinkingParams: this.serviceForm.controls.blinkingParams.value,
+      willEmbedInIframe: this.serviceForm.controls.willEmbedInIframe.value,
       serviceConfiguration: {
-        skippableSteps: this.sessionForm.controls.skippableSteps.value,
-        stepsThatRequireAttention: this.sessionForm.controls
+        skippableSteps: this.serviceForm.controls.skippableSteps.value,
+        stepsThatRequireAttention: this.serviceForm.controls
           .stepsThatRequireAttention.value,
-        stepsThatRequireProofOfDocuments: this.sessionForm.controls
+        stepsThatRequireProofOfDocuments: this.serviceForm.controls
           .stepsThatRequireProofOfDocuments.value,
-        initialSessionConfig: this.sessionForm.controls.initialSessionConfig
+        initialSessionConfig: this.serviceForm.controls.initialSessionConfig
           .value,
       },
     };
@@ -51,7 +55,7 @@ export class SessionFormComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.sessionForm.reset({
+      this.serviceForm.reset({
         willEmbedInIframe: false,
         skippableSteps: [],
         stepsThatRequireProofOfDocuments: [],
@@ -65,6 +69,7 @@ export class SessionFormComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.initSessionForm();
+    this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
+    this.initServiceForm();
   }
 }

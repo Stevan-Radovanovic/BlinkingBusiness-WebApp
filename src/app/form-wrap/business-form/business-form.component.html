@@ -94,6 +94,8 @@
     </div>
   </div>
   <div class="update-button">
-    <button mat-raised-button color="warn">Update</button>
+    <button mat-raised-button color="warn" [disabled]="!businessForm.valid">
+      Update
+    </button>
   </div>
 </form>

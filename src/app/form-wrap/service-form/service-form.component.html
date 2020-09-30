@@ -1,11 +1,11 @@
-<form [formGroup]="sessionForm">
+<form [formGroup]="serviceForm">
   <mat-form-field appearance="fill">
     <mat-label>Base Redirect Url *</mat-label>
     <input matInput formControlName="baseRedirectUrl" />
     <mat-error
       *ngIf="
-        this.sessionForm.controls.baseRedirectUrl.invalid &&
-        this.sessionForm.controls.baseRedirectUrl.touched
+        this.serviceForm.controls.baseRedirectUrl.invalid &&
+        this.serviceForm.controls.baseRedirectUrl.touched
       "
       >This field is required</mat-error
     >
@@ -18,8 +18,8 @@
     </mat-select>
     <mat-error
       *ngIf="
-        this.sessionForm.controls.blinkingParams.invalid &&
-        this.sessionForm.controls.blinkingParams.touched
+        this.serviceForm.controls.blinkingParams.invalid &&
+        this.serviceForm.controls.blinkingParams.touched
       "
       >This field is required</mat-error
     >
@@ -43,8 +43,8 @@
     <mat-select formControlName="initialSessionConfig" multiple>
       <mat-option
         [disabled]="
-          this.sessionForm.get('initialSessionConfig').value === null ||
-          this.sessionForm
+          this.serviceForm.get('initialSessionConfig').value === null ||
+          this.serviceForm
             .get('initialSessionConfig')
             .value.includes('Document with Country')
         "
@@ -53,8 +53,8 @@
       >
       <mat-option
         [disabled]="
-          this.sessionForm.get('initialSessionConfig').value === null ||
-          this.sessionForm
+          this.serviceForm.get('initialSessionConfig').value === null ||
+          this.serviceForm
             .get('initialSessionConfig')
             .value.includes('Document')
         "
@@ -71,16 +71,16 @@
     </mat-select>
     <mat-error
       *ngIf="
-        this.sessionForm.controls.initialSessionConfig.hasError('required') &&
-        this.sessionForm.controls.initialSessionConfig.touched
+        this.serviceForm.controls.initialSessionConfig.hasError('required') &&
+        this.serviceForm.controls.initialSessionConfig.touched
       "
       >This field is required</mat-error
     >
     <mat-error
       *ngIf="
-        !this.sessionForm.controls.initialSessionConfig.hasError('required') &&
-        this.sessionForm.controls.initialSessionConfig.touched &&
-        !this.sessionForm.controls.initialSessionConfig.valid
+        !this.serviceForm.controls.initialSessionConfig.hasError('required') &&
+        this.serviceForm.controls.initialSessionConfig.touched &&
+        !this.serviceForm.controls.initialSessionConfig.valid
       "
       >Back Side and Front Side should either be selected together, or not
       selected at all</mat-error
@@ -93,16 +93,41 @@
       <mat-option value="Address">Address</mat-option>
     </mat-select>
   </mat-form-field>
-  <div>
+  <mat-form-field appearance="fill">
+    <mat-label>Max Number of Tries *</mat-label>
+    <input type="number" matInput formControlName="maxNumberOfTries" />
+    <mat-error
+      *ngIf="
+        this.serviceForm.controls.maxNumberOfTries.invalid &&
+        this.serviceForm.controls.maxNumberOfTries.touched
+      "
+      >This field is required</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Default Country *</mat-label>
+    <mat-select formControlName="defaultCountry">
+      <mat-option *ngFor="let country of countries" [value]="country">
+        {{ country }}
+      </mat-option>
+    </mat-select>
+    <mat-error
+      *ngIf="
+        this.serviceForm.controls.defaultCountry.invalid &&
+        this.serviceForm.controls.defaultCountry.touched
+      "
+      >This field is required
+    </mat-error>
+  </mat-form-field>
+  <div class="flex-div">
+    <button color="warn" mat-raised-button>Save</button>
+    <mat-checkbox color="primary" formControlName="shouldAskForFaceEnroll">
+      Ask for Face Enroll?
+    </mat-checkbox>
     <mat-checkbox
       color="primary"
       formControlName="willEmbedInIframe"
-      style="
-        display: flex;
-        flex-direction: column;
-        justify-content: end;
-        margin-right: 12px;
-      "
+      style="margin-right: 12px"
     >
       Embed in IFrame?
     </mat-checkbox>

@@ -24,7 +24,11 @@
             /><strong>Service Configuration</strong>
           </div>
           <div *ngIf="serviceForms.length != 1">
-            <button (click)="deleteSession(i)" color="warn" mat-raised-button>
+            <button
+              (click)="deleteServiceForm(i)"
+              color="warn"
+              mat-raised-button
+            >
               <mat-icon>delete</mat-icon>
             </button>
           </div>
@@ -36,7 +40,7 @@
     </div>
     <div class="add-button">
       <button mat-raised-button color="warn">
-        <mat-icon (click)="addNewSession()">add</mat-icon>
+        <mat-icon (click)="addNewServiceForm()">add</mat-icon>
       </button>
     </div>
   </div>

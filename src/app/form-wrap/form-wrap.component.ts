@@ -10,13 +10,11 @@ export class FormWrapComponent implements OnInit {
 
   constructor() {}
 
-  addNewSession() {
-    console.log('Added new session');
+  addNewServiceForm() {
     this.serviceForms.push('serviceForm');
   }
 
-  deleteSession(id: number) {
-    console.log('Deleted session');
+  deleteServiceForm(id: number) {
     this.serviceForms.splice(id, 1);
   }
 

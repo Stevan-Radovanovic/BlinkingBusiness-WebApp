@@ -18,7 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { LoginComponent } from './login/login.component';
 import { FormWrapComponent } from './form-wrap/form-wrap.component';
 import { BusinessFormComponent } from './form-wrap/business-form/business-form.component';
-import { SessionFormComponent } from './form-wrap/session-form/session-form.component';
+import { ServiceFormComponent } from './form-wrap/service-form/service-form.component';
 import { FormSubmitComponent } from './form-wrap/form-submit/form-submit.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MainServiceFormComponent } from './form-wrap/main-service-form/main-service-form.component';
@@ -29,7 +29,7 @@ import { MainServiceFormComponent } from './form-wrap/main-service-form/main-ser
     LoginComponent,
     FormWrapComponent,
     BusinessFormComponent,
-    SessionFormComponent,
+    ServiceFormComponent,
     FormSubmitComponent,
     MainServiceFormComponent,
   ],

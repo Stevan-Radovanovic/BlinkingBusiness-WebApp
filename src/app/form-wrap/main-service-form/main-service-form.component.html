@@ -1,5 +1,16 @@
 <form [formGroup]="serviceForm">
   <mat-form-field appearance="fill">
+    <mat-label>Service Name *</mat-label>
+    <input matInput formControlName="serviceName" />
+    <mat-error
+      *ngIf="
+        this.serviceForm.controls.serviceName.invalid &&
+        this.serviceForm.controls.serviceName.touched
+      "
+      >This field is required</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
     <mat-label>Max Number of Tries *</mat-label>
     <input matInput type="number" formControlName="maxNumberOfTries" />
     <mat-error
@@ -26,7 +37,7 @@
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Allowed Countries</mat-label>
+    <mat-label>Allowed Countries *</mat-label>
     <mat-select formControlName="allowedCountries" multiple>
       <mat-option *ngFor="let country of countries" [value]="country">
         {{ country }}
@@ -61,23 +72,27 @@
     </mat-checkbox>
   </div>
 </form>
-<div *ngFor="let sessionForm of sessionForms; let i = index">
+<div *ngFor="let serviceConfigForm of serviceConfigForms; let i = index">
   <mat-card class="session-card">
     <mat-card-title>
-      <strong>Session Config</strong>
-      <div *ngIf="sessionForms.length !== 1">
-        <button color="warn" mat-raised-button (click)="deleteSessionForm(i)">
+      <strong>Service Config</strong>
+      <div *ngIf="serviceConfigForms.length !== 1">
+        <button
+          color="warn"
+          mat-raised-button
+          (click)="deleteServiceConfigForm(i)"
+        >
           <mat-icon>delete</mat-icon>
         </button>
       </div>
     </mat-card-title>
     <mat-card-content>
-      <app-session-form></app-session-form>
+      <app-service-form></app-service-form>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="warn" (click)="addSessionForm()">
-        <mat-icon>add</mat-icon>
-      </button>
-    </mat-card-actions>
   </mat-card>
+</div>
+<div class="add-button">
+  <button mat-raised-button color="warn" (click)="addServiceConfigForm()">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>
