@@ -11,17 +11,41 @@ export class MainServiceFormComponent implements OnInit {
 
   countries: string[];
   serviceConfigForms = ['serviceConfigForm'];
+  editing = false;
 
   constructor() {}
 
+  controlNames = [
+    'serviceName',
+    'maxNumberOfTries',
+    'shouldAskForFaceEnroll',
+    'defaultCountry',
+    'allowedCountries',
+    'sessionValidityDuration',
+  ];
+
   initServiceForm() {
     this.serviceForm = new FormGroup({
-      serviceName: new FormControl(null, [Validators.required]),
-      maxNumberOfTries: new FormControl(null, [Validators.required]),
-      shouldAskForFaceEnroll: new FormControl(false, [Validators.required]),
-      defaultCountry: new FormControl('', [Validators.required]),
-      allowedCountries: new FormControl([], [Validators.required]),
-      sessionValidityDuration: new FormControl(null, [Validators.required]),
+      serviceName: new FormControl({ value: null, disabled: true }, [
+        Validators.required,
+      ]),
+      maxNumberOfTries: new FormControl({ value: null, disabled: true }, [
+        Validators.required,
+      ]),
+      shouldAskForFaceEnroll: new FormControl(
+        { value: false, disabled: true },
+        [Validators.required]
+      ),
+      defaultCountry: new FormControl({ value: '', disabled: true }, [
+        Validators.required,
+      ]),
+      allowedCountries: new FormControl({ value: [], disabled: true }, [
+        Validators.required,
+      ]),
+      sessionValidityDuration: new FormControl(
+        { value: null, disabled: true },
+        [Validators.required]
+      ),
     });
   }
 
@@ -29,8 +53,28 @@ export class MainServiceFormComponent implements OnInit {
     this.serviceConfigForms.push('serviceConfigForm');
   }
 
-  deleteServiceConfigFOrm(id: number) {
+  deleteServiceConfigForm(id: number) {
     this.serviceConfigForms.splice(id, 1);
+  }
+
+  enableEditing() {
+    if (this.editing) {
+      this.disableEditing();
+      return;
+    }
+
+    this.controlNames.forEach((control) => {
+      this.serviceForm.get(control).enable();
+    });
+    this.editing = true;
+  }
+
+  disableEditing() {
+    //..updating
+    this.controlNames.forEach((control) => {
+      this.serviceForm.get(control).disable();
+    });
+    this.editing = false;
   }
 
   ngOnInit(): void {

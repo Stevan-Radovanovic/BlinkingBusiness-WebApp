@@ -21,3 +21,8 @@ mat-card-title {
   display: flex;
   justify-content: center;
 }
+
+.update-button {
+  margin-right: 4px;
+  color: black;
+}
