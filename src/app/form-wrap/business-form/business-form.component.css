@@ -36,3 +36,12 @@
   display: flex;
   justify-content: space-between;
 }
+
+.update-button {
+  display: flex;
+  justify-content: center;
+}
+
+.update-button button {
+  color: black;
+}
