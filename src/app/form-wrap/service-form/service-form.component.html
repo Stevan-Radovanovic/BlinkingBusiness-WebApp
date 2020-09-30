@@ -119,13 +119,21 @@
       >This field is required
     </mat-error>
   </mat-form-field>
+  <div>
+    <mat-radio-group formControlName="shouldAskForFaceEnroll">
+      <p class="enroll-question">Ask for Face Enroll?</p>
+      <mat-radio-button color="warn" value="true" style="margin-right: 9px">
+        Yes
+      </mat-radio-button>
+      <mat-radio-button color="warn" value="false" [checked]="true">
+        No
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
   <div class="flex-div">
     <button color="warn" mat-raised-button [disabled]="!serviceForm.valid">
       Save
     </button>
-    <mat-checkbox color="primary" formControlName="shouldAskForFaceEnroll">
-      Ask for Face Enroll?
-    </mat-checkbox>
     <mat-checkbox
       color="primary"
       formControlName="willEmbedInIframe"

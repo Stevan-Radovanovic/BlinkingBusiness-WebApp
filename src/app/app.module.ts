@@ -22,6 +22,7 @@ import { ServiceFormComponent } from './form-wrap/service-form/service-form.comp
 import { FormSubmitComponent } from './form-wrap/form-submit/form-submit.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MainServiceFormComponent } from './form-wrap/main-service-form/main-service-form.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { MainServiceFormComponent } from './form-wrap/main-service-form/main-ser
     MatToolbarModule,
     MatSelectModule,
     MatIconModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

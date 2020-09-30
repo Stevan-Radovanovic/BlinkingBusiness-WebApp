@@ -6,5 +6,12 @@
 }
 
 .flex-div button {
+  margin-top: 6px;
   color: black;
+}
+
+.enroll-question {
+  display: inline;
+  margin-right: 9px;
+  margin-left: 1px;
 }

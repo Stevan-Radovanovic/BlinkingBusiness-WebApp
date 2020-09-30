@@ -26,3 +26,9 @@ mat-card-title {
   margin-right: 4px;
   color: black;
 }
+
+.enroll-question {
+  display: inline;
+  margin-right: 9px;
+  margin-left: 3px;
+}

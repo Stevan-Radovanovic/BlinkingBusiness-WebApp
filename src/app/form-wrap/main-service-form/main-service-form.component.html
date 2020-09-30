@@ -63,13 +63,15 @@
     >
   </mat-form-field>
   <div>
-    <mat-checkbox
-      color="warn"
-      formControlName="shouldAskForFaceEnroll"
-      class="face-enroll-checkbox"
-    >
-      Ask for Face Enroll?
-    </mat-checkbox>
+    <mat-radio-group formControlName="shouldAskForFaceEnroll">
+      <p class="enroll-question">Ask for Face Enroll?</p>
+      <mat-radio-button color="warn" value="true" style="margin-right: 9px">
+        Yes
+      </mat-radio-button>
+      <mat-radio-button color="warn" value="false" [checked]="true">
+        No
+      </mat-radio-button>
+    </mat-radio-group>
   </div>
 </form>
 <div class="add-button">
