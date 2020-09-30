@@ -1,7 +1,7 @@
 <form [formGroup]="serviceForm">
   <mat-form-field appearance="fill">
     <mat-label>Max Number of Tries *</mat-label>
-    <input matInput formControlName="maxNumberOfTries" />
+    <input matInput type="number" formControlName="maxNumberOfTries" />
     <mat-error
       *ngIf="
         this.serviceForm.controls.maxNumberOfTries.invalid &&
@@ -42,7 +42,7 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Session Validity *</mat-label>
-    <input matInput formControlName="sessionValidityDuration" />
+    <input matInput formControlName="sessionValidityDuration" type="number" />
     <mat-error
       *ngIf="
         this.serviceForm.controls.sessionValidityDuration.invalid &&
