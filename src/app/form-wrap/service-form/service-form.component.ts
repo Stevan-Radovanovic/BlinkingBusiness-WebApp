@@ -68,6 +68,28 @@ export class ServiceFormComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
+  requiredValidator(controlName: string) {
+    return (
+      this.serviceForm.get(controlName).hasError('required') &&
+      this.serviceForm.get(controlName).touched
+    );
+  }
+
+  frontBackValidator() {
+    return (
+      !this.serviceForm.controls.initialSessionConfig.hasError('required') &&
+      this.serviceForm.controls.initialSessionConfig.touched &&
+      !this.serviceForm.controls.initialSessionConfig.valid
+    );
+  }
+
+  documentDisabler(document: string) {
+    return (
+      this.serviceForm.get('initialSessionConfig').value === null ||
+      this.serviceForm.get('initialSessionConfig').value.includes(document)
+    );
+  }
+
   ngOnInit(): void {
     this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
     this.initServiceForm();

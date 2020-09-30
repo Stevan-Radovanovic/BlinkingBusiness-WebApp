@@ -2,11 +2,7 @@
   <mat-form-field appearance="fill">
     <mat-label>Base Redirect Url *</mat-label>
     <input matInput formControlName="baseRedirectUrl" />
-    <mat-error
-      *ngIf="
-        this.serviceForm.controls.baseRedirectUrl.invalid &&
-        this.serviceForm.controls.baseRedirectUrl.touched
-      "
+    <mat-error *ngIf="requiredValidator('baseRedirectUrl')"
       >This field is required</mat-error
     >
   </mat-form-field>
@@ -16,15 +12,11 @@
       <mat-option value="Status">Status</mat-option>
       <mat-option value="Document Expiry Date">Document Expiry Date</mat-option>
     </mat-select>
-    <mat-error
-      *ngIf="
-        this.serviceForm.controls.blinkingParams.invalid &&
-        this.serviceForm.controls.blinkingParams.touched
-      "
+    <mat-error *ngIf="requiredValidator('blinkingParams')"
       >This field is required</mat-error
     >
   </mat-form-field>
-  <mat-form-field appearance="fill" style="margin-top: 10px">
+  <mat-form-field appearance="fill">
     <mat-label>Skippable Steps</mat-label>
     <mat-select formControlName="skippableSteps" multiple>
       <mat-option value="Account Number">Account Number</mat-option>
@@ -42,22 +34,12 @@
     <mat-label>Initial Session Config *</mat-label>
     <mat-select formControlName="initialSessionConfig" multiple>
       <mat-option
-        [disabled]="
-          this.serviceForm.get('initialSessionConfig').value === null ||
-          this.serviceForm
-            .get('initialSessionConfig')
-            .value.includes('Document with Country')
-        "
+        [disabled]="documentDisabler('Document with Country')"
         value="Document"
         >Document</mat-option
       >
       <mat-option
-        [disabled]="
-          this.serviceForm.get('initialSessionConfig').value === null ||
-          this.serviceForm
-            .get('initialSessionConfig')
-            .value.includes('Document')
-        "
+        [disabled]="documentDisabler('Document')"
         value="Document with Country"
         >Document with Country</mat-option
       >
@@ -69,19 +51,10 @@
       <mat-option value="Contact Data">Contact Data</mat-option>
       <mat-option value="Video Session">Video Session</mat-option>
     </mat-select>
-    <mat-error
-      *ngIf="
-        this.serviceForm.controls.initialSessionConfig.hasError('required') &&
-        this.serviceForm.controls.initialSessionConfig.touched
-      "
+    <mat-error *ngIf="requiredValidator('initialSessionConfig')"
       >This field is required</mat-error
     >
-    <mat-error
-      *ngIf="
-        !this.serviceForm.controls.initialSessionConfig.hasError('required') &&
-        this.serviceForm.controls.initialSessionConfig.touched &&
-        !this.serviceForm.controls.initialSessionConfig.valid
-      "
+    <mat-error *ngIf="frontBackValidator()"
       >Back Side and Front Side should either be selected together, or not
       selected at all</mat-error
     >
@@ -96,11 +69,7 @@
   <mat-form-field appearance="fill">
     <mat-label>Max Number of Tries *</mat-label>
     <input type="number" matInput formControlName="maxNumberOfTries" />
-    <mat-error
-      *ngIf="
-        this.serviceForm.controls.maxNumberOfTries.invalid &&
-        this.serviceForm.controls.maxNumberOfTries.touched
-      "
+    <mat-error *ngIf="requiredValidator('maxNumberOfTries')"
       >This field is required</mat-error
     >
   </mat-form-field>
@@ -111,11 +80,7 @@
         {{ country }}
       </mat-option>
     </mat-select>
-    <mat-error
-      *ngIf="
-        this.serviceForm.controls.defaultCountry.invalid &&
-        this.serviceForm.controls.defaultCountry.touched
-      "
+    <mat-error *ngIf="requiredValidator('defaultCountry')"
       >This field is required
     </mat-error>
   </mat-form-field>
