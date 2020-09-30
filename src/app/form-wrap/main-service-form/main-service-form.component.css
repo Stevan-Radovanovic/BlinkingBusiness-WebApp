@@ -4,3 +4,19 @@
   justify-content: end;
   margin-right: 12px;
 }
+
+.session-card {
+  border: 2px solid #ccc;
+  margin-top: 9px;
+}
+
+mat-card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+}

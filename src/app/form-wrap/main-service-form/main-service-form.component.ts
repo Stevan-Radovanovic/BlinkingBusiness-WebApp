@@ -10,6 +10,7 @@ export class MainServiceFormComponent implements OnInit {
   serviceForm: FormGroup;
 
   countries: string[];
+  sessionForms = ['sessionForm'];
 
   constructor() {}
 
@@ -21,6 +22,14 @@ export class MainServiceFormComponent implements OnInit {
       allowedCountries: new FormControl([], [Validators.required]),
       sessionValidityDuration: new FormControl(null, [Validators.required]),
     });
+  }
+
+  addSessionForm() {
+    this.sessionForms.push('sessionForm');
+  }
+
+  deleteSessionForm(id: number) {
+    this.sessionForms.splice(id, 1);
   }
 
   ngOnInit(): void {

@@ -6,13 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-wrap.component.css'],
 })
 export class FormWrapComponent implements OnInit {
-  serviceForms = ['sessionForm'];
+  serviceForms = ['serviceForm'];
 
   constructor() {}
 
   addNewSession() {
     console.log('Added new session');
-    this.serviceForms.push('sessionForm');
+    this.serviceForms.push('serviceForm');
   }
 
   deleteSession(id: number) {
