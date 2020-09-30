@@ -12,7 +12,11 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Default Country *</mat-label>
-    <mat-select formControlName="defaultCountry"> </mat-select>
+    <mat-select formControlName="defaultCountry">
+      <mat-option *ngFor="let country of countries" [value]="country">
+        {{ country }}
+      </mat-option>
+    </mat-select>
     <mat-error
       *ngIf="
         this.serviceForm.controls.defaultCountry.invalid &&
@@ -23,7 +27,11 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Allowed Countries</mat-label>
-    <mat-select formControlName="allowedCountries" multiple> </mat-select>
+    <mat-select formControlName="allowedCountries" multiple>
+      <mat-option *ngFor="let country of countries" [value]="country">
+        {{ country }}
+      </mat-option>
+    </mat-select>
     <mat-error
       *ngIf="
         this.serviceForm.controls.allowedCountries.invalid &&

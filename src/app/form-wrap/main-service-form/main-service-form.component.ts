@@ -9,6 +9,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class MainServiceFormComponent implements OnInit {
   serviceForm: FormGroup;
 
+  countries: string[];
+
   constructor() {}
 
   initServiceForm() {
@@ -22,6 +24,7 @@ export class MainServiceFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
     this.initServiceForm();
   }
 }
