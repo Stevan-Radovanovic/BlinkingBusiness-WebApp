@@ -1,0 +1,55 @@
+<form [formGroup]="serviceForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Max Number of Tries *</mat-label>
+    <input matInput formControlName="maxNumberOfTries" />
+    <mat-error
+      *ngIf="
+        this.serviceForm.controls.maxNumberOfTries.invalid &&
+        this.serviceForm.controls.maxNumberOfTries.touched
+      "
+      >This field is required</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Default Country *</mat-label>
+    <mat-select formControlName="defaultCountry"> </mat-select>
+    <mat-error
+      *ngIf="
+        this.serviceForm.controls.defaultCountry.invalid &&
+        this.serviceForm.controls.defaultCountry.touched
+      "
+      >This field is required</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Allowed Countries</mat-label>
+    <mat-select formControlName="allowedCountries" multiple> </mat-select>
+    <mat-error
+      *ngIf="
+        this.serviceForm.controls.allowedCountries.invalid &&
+        this.serviceForm.controls.allowedCountries.touched
+      "
+      >This field is required</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Session Validity *</mat-label>
+    <input matInput formControlName="sessionValidityDuration" />
+    <mat-error
+      *ngIf="
+        this.serviceForm.controls.sessionValidityDuration.invalid &&
+        this.serviceForm.controls.sessionValidityDuration.touched
+      "
+      >This field is required</mat-error
+    >
+  </mat-form-field>
+  <div>
+    <mat-checkbox
+      color="warn"
+      formControlName="shouldAskForFaceEnroll"
+      class="face-enroll-checkbox"
+    >
+      Ask for Face Enroll?
+    </mat-checkbox>
+  </div>
+</form>

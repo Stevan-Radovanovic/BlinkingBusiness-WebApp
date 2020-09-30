@@ -13,7 +13,7 @@
         <app-business-form></app-business-form>
       </mat-card-content>
     </mat-card>
-    <div *ngFor="let form of sessionForms; let i = index">
+    <div *ngFor="let form of serviceForms; let i = index">
       <mat-card class="sessionCard">
         <mat-card-title>
           <div>
@@ -23,14 +23,14 @@
               alt="Logo Placeholder"
             /><strong>Session Configuration</strong>
           </div>
-          <div *ngIf="sessionForms.length != 1">
+          <div *ngIf="serviceForms.length != 1">
             <button (click)="deleteSession(i)" color="warn" mat-raised-button>
               <mat-icon>delete</mat-icon>
             </button>
           </div>
         </mat-card-title>
         <mat-card-content>
-          <app-session-form></app-session-form>
+          <app-main-service-form></app-main-service-form>
         </mat-card-content>
       </mat-card>
     </div>

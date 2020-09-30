@@ -1,0 +1,6 @@
+.face-enroll-checkbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin-right: 12px;
+}

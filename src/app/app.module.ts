@@ -21,6 +21,7 @@ import { BusinessFormComponent } from './form-wrap/business-form/business-form.c
 import { SessionFormComponent } from './form-wrap/session-form/session-form.component';
 import { FormSubmitComponent } from './form-wrap/form-submit/form-submit.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MainServiceFormComponent } from './form-wrap/main-service-form/main-service-form.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatIconModule } from '@angular/material/icon';
     BusinessFormComponent,
     SessionFormComponent,
     FormSubmitComponent,
+    MainServiceFormComponent,
   ],
   imports: [
     BrowserModule,
