@@ -18,6 +18,82 @@ export class BusinessFormComponent implements OnInit {
 
   constructor() {}
 
+  requiredValidator(controlName: string) {
+    return (
+      this.businessForm.get(controlName).hasError('required') &&
+      this.businessForm.get(controlName).touched
+    );
+  }
+
+  patternValidator(controlName: string) {
+    return (
+      this.businessForm.get(controlName).hasError('pattern') &&
+      this.businessForm.get(controlName).touched
+    );
+  }
+
+  fileValidator(controlName: string) {
+    return (
+      !this.businessForm.get(controlName).hasError('required') &&
+      this.businessForm.get(controlName).touched &&
+      this.businessForm.get(controlName).invalid
+    );
+  }
+
+  checkFaviconValidity() {
+    if (this.favicon.nativeElement.files.length === 0) return;
+    const fileSize = this.favicon.nativeElement.files[0].size / 1024 / 1024;
+    const fileType = this.favicon.nativeElement.files[0].type;
+
+    if (
+      fileType !== 'image/png' &&
+      fileType !== 'image/jpg' &&
+      fileType !== 'image/jpeg' &&
+      fileType !== 'image/ico'
+    ) {
+      this.businessForm.get('favicon').setErrors(new Error('custom'));
+      return;
+    }
+
+    if (fileSize > 3) {
+      this.businessForm.get('favicon').setErrors(new Error('custom'));
+      return;
+    }
+
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.faviconPath = event.target.result;
+    };
+    reader.readAsDataURL(this.favicon.nativeElement.files[0]);
+  }
+
+  checkLogoValidity() {
+    if (this.logo.nativeElement.files.length === 0) return;
+    const fileSize = this.logo.nativeElement.files[0].size / 1024 / 1024;
+    const fileType = this.logo.nativeElement.files[0].type;
+
+    if (
+      fileType !== 'image/png' &&
+      fileType !== 'image/jpg' &&
+      fileType !== 'image/jpeg' &&
+      fileType !== 'image/ico'
+    ) {
+      this.businessForm.get('logo').setErrors(new Error('custom'));
+      return;
+    }
+
+    if (fileSize > 3) {
+      this.businessForm.get('logo').setErrors(new Error('custom'));
+      return;
+    }
+
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.logoPath = event.target.result;
+    };
+    reader.readAsDataURL(this.logo.nativeElement.files[0]);
+  }
+
   initBusinessForm() {
     this.businessForm = new FormGroup({
       color: new FormControl('', [
@@ -41,53 +117,11 @@ export class BusinessFormComponent implements OnInit {
     });
 
     this.businessForm.get('favicon').valueChanges.subscribe((value) => {
-      if (this.favicon.nativeElement.files.length === 0) return;
-      const fileSize = this.favicon.nativeElement.files[0].size / 1024 / 1024;
-      const fileType = this.favicon.nativeElement.files[0].type;
-
-      if (
-        fileType !== 'image/png' &&
-        fileType !== 'image/jpg' &&
-        fileType !== 'image/jpeg' &&
-        fileType !== 'image/ico'
-      ) {
-        this.businessForm.get('favicon').setErrors(new Error('custom'));
-      }
-
-      if (fileSize > 3) {
-        this.businessForm.get('favicon').setErrors(new Error('custom'));
-      }
-
-      var reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.faviconPath = event.target.result;
-      };
-      reader.readAsDataURL(this.favicon.nativeElement.files[0]);
+      this.checkFaviconValidity();
     });
 
     this.businessForm.get('logo').valueChanges.subscribe((value) => {
-      if (this.logo.nativeElement.files.length === 0) return;
-      const fileSize = this.logo.nativeElement.files[0].size / 1024 / 1024;
-      const fileType = this.logo.nativeElement.files[0].type;
-
-      if (
-        fileType !== 'image/png' &&
-        fileType !== 'image/jpg' &&
-        fileType !== 'image/jpeg' &&
-        fileType !== 'image/ico'
-      ) {
-        this.businessForm.get('logo').setErrors(new Error('custom'));
-      }
-
-      if (fileSize > 3) {
-        this.businessForm.get('logo').setErrors(new Error('custom'));
-      }
-
-      var reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.logoPath = event.target.result;
-      };
-      reader.readAsDataURL(this.logo.nativeElement.files[0]);
+      this.checkLogoValidity();
     });
   }
 }

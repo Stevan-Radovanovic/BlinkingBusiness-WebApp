@@ -3,18 +3,10 @@
     <mat-form-field appearance="fill" style="width: 80%">
       <mat-label>Primary Color Hex Value: *</mat-label>
       <input matInput formControlName="color" />
-      <mat-error
-        *ngIf="
-          this.businessForm.controls.color.hasError('required') &&
-          this.businessForm.controls.color.touched
-        "
+      <mat-error *ngIf="requiredValidator('color')"
         >This field is required</mat-error
       >
-      <mat-error
-        *ngIf="
-          this.businessForm.controls.color.hasError('pattern') &&
-          this.businessForm.controls.color.touched
-        "
+      <mat-error *ngIf="patternValidator('color')"
         >Must be a valid color hex (e.g. #ae3 or #aaa434)</mat-error
       >
     </mat-form-field>
@@ -37,21 +29,10 @@
           accept=".jpeg,.jpg,.png,.ico"
         />
 
-        <mat-error
-          *ngIf="
-            this.businessForm.controls.favicon.hasError('required') &&
-            this.businessForm.controls.favicon.touched
-          "
-          style="font-size: 8pt"
+        <mat-error *ngIf="requiredValidator('favicon')" style="font-size: 8pt"
           >This field is required</mat-error
         >
-        <mat-error
-          *ngIf="
-            !this.businessForm.controls.favicon.hasError('required') &&
-            this.businessForm.controls.favicon.invalid &&
-            this.businessForm.controls.favicon.touched
-          "
-          style="font-size: 8pt"
+        <mat-error *ngIf="fileValidator('favicon')" style="font-size: 8pt"
           >The selected picture must be smaller than 3 MB</mat-error
         >
       </div>
@@ -64,21 +45,10 @@
           accept=".jpeg,.jpg,.png,.ico"
         />
 
-        <mat-error
-          *ngIf="
-            this.businessForm.controls.logo.hasError('required') &&
-            this.businessForm.controls.logo.touched
-          "
-          style="font-size: 8pt"
+        <mat-error *ngIf="requiredValidator('logo')" style="font-size: 8pt"
           >This field is required</mat-error
         >
-        <mat-error
-          *ngIf="
-            !this.businessForm.controls.logo.hasError('required') &&
-            this.businessForm.controls.logo.invalid &&
-            this.businessForm.controls.logo.touched
-          "
-          style="font-size: 8pt"
+        <mat-error *ngIf="fileValidator('logo')" style="font-size: 8pt"
           >The selected picture must be smaller than 3 MB</mat-error
         >
       </div>

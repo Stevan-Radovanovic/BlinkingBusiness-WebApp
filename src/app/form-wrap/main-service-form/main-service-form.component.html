@@ -2,23 +2,15 @@
   <mat-form-field appearance="fill">
     <mat-label>Service Name *</mat-label>
     <input matInput formControlName="serviceName" />
-    <mat-error
-      *ngIf="
-        serviceForm.controls.serviceName.invalid &&
-        serviceForm.controls.serviceName.touched
-      "
+    <mat-error *ngIf="requiredValidator('serviceName')"
       >This field is required</mat-error
     >
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Max Number of Tries *</mat-label>
     <input matInput type="number" formControlName="maxNumberOfTries" />
-    <mat-error
-      *ngIf="
-        serviceForm.controls.maxNumberOfTries.invalid &&
-        serviceForm.controls.maxNumberOfTries.touched
-      "
-      >This field is required</mat-error
+    <mat-error *ngIf="requiredValidator('maxNumberOfTries')"
+      >This field is required and should be a number</mat-error
     >
   </mat-form-field>
   <mat-form-field appearance="fill">
@@ -28,11 +20,7 @@
         {{ country }}
       </mat-option>
     </mat-select>
-    <mat-error
-      *ngIf="
-        serviceForm.controls.defaultCountry.invalid &&
-        serviceForm.controls.defaultCountry.touched
-      "
+    <mat-error *ngIf="requiredValidator('defaultCountry')"
       >This field is required
     </mat-error>
   </mat-form-field>
@@ -43,23 +31,15 @@
         {{ country }}
       </mat-option>
     </mat-select>
-    <mat-error
-      *ngIf="
-        serviceForm.controls.allowedCountries.invalid &&
-        serviceForm.controls.allowedCountries.touched
-      "
+    <mat-error *ngIf="requiredValidator('allowedCountries')"
       >This field is required</mat-error
     >
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Session Validity *</mat-label>
     <input matInput formControlName="sessionValidityDuration" type="number" />
-    <mat-error
-      *ngIf="
-        serviceForm.controls.sessionValidityDuration.invalid &&
-        serviceForm.controls.sessionValidityDuration.touched
-      "
-      >This field is required</mat-error
+    <mat-error *ngIf="requiredValidator('sessionValidityDuration')"
+      >This field is required and should be a number</mat-error
     >
   </mat-form-field>
   <div>

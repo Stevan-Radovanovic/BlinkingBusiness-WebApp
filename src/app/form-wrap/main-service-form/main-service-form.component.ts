@@ -70,11 +70,17 @@ export class MainServiceFormComponent implements OnInit {
   }
 
   disableEditing() {
-    //..updating
     this.controlNames.forEach((control) => {
       this.serviceForm.get(control).disable();
     });
     this.editing = false;
+  }
+
+  requiredValidator(controlName: string) {
+    return (
+      this.serviceForm.get(controlName).hasError('required') &&
+      this.serviceForm.get(controlName).touched
+    );
   }
 
   ngOnInit(): void {
