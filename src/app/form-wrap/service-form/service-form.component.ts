@@ -41,8 +41,8 @@ export class ServiceFormComponent implements OnInit {
       maxNumberOfTries: new FormControl(null, [Validators.required]),
       shouldAskForFaceEnroll: new FormControl(null, [Validators.required]),
       defaultCountry: new FormControl('', [Validators.required]),
-      additionalDocSubType: new FormControl('', [Validators.required]),
-      additionalDocDescription: new FormControl('', [Validators.required]),
+      additionalDocSubType: new FormControl(''),
+      additionalDocDescription: new FormControl(''),
     });
   }
 
@@ -83,10 +83,8 @@ export class ServiceFormComponent implements OnInit {
 
   requiredValidator(controlName: string) {
     return (
-      this.serviceForm.get('additionalDocDescription').value &&
-      this.serviceForm.get('additionalDocDescription').value !== '' &&
-      this.serviceForm.get('additionalDocSubType').value &&
-      this.serviceForm.get('additionalDocSubType').value !== ''
+      this.serviceForm.get(controlName).hasError('required') &&
+      this.serviceForm.get(controlName).touched
     );
   }
 
@@ -103,6 +101,14 @@ export class ServiceFormComponent implements OnInit {
       this.serviceForm.get('initialSessionConfig').value === null ||
       this.serviceForm.get('initialSessionConfig').value.includes(document)
     );
+  }
+
+  addNewAditionalDocument() {
+    //..Creating a new additional document
+    this.serviceForm.patchValue({
+      additionalDocSubType: '',
+      additionalDocDescription: '',
+    });
   }
 
   ngOnInit(): void {

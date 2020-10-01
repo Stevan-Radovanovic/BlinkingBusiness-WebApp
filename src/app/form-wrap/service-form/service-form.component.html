@@ -74,10 +74,16 @@
     <mat-form-field appearance="fill">
       <mat-label>Additional Doc Sub Type *</mat-label>
       <input matInput formControlName="additionalDocSubType" />
+      <mat-error *ngIf="requiredValidator('additionalDocSubType')"
+        >This field is required</mat-error
+      >
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Additional Doc Description *</mat-label>
       <input matInput formControlName="additionalDocDescription" />
+      <mat-error *ngIf="requiredValidator('additionalDocDescription')"
+        >This field is required</mat-error
+      >
     </mat-form-field>
     <div class="flex-div">
       <button
@@ -89,6 +95,7 @@
           serviceForm.get('additionalDocDescription').value === '' ||
           serviceForm.get('additionalDocSubType').value === ''
         "
+        (click)="addNewAditionalDocument()"
       >
         Add
       </button>
