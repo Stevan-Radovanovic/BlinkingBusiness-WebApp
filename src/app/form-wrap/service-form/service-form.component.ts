@@ -19,7 +19,7 @@ export class ServiceFormComponent implements OnInit {
     this.serviceForm = new FormGroup({
       baseRedirectUrl: new FormControl('', [Validators.required]),
       blinkingParams: new FormControl([], [Validators.required]),
-      willEmbedInIframe: new FormControl(false),
+      willEmbedInIframe: new FormControl(false, [Validators.required]),
       skippableSteps: new FormControl([]),
       stepsThatRequireProofOfDocuments: new FormControl([]),
       initialSessionConfig: new FormControl('', [

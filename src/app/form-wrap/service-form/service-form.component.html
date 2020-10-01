@@ -1,4 +1,6 @@
 <form [formGroup]="serviceForm">
+  <mat-divider class="divider"></mat-divider>
+  <h2 class="title-redirect">Redirect Info</h2>
   <mat-form-field appearance="fill">
     <mat-label>Base Redirect Url *</mat-label>
     <input matInput formControlName="baseRedirectUrl" />
@@ -6,31 +8,37 @@
       >This field is required</mat-error
     >
   </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Blinking Params *</mat-label>
-    <mat-select formControlName="blinkingParams" multiple>
-      <mat-option value="Status">Status</mat-option>
-      <mat-option value="Document Expiry Date">Document Expiry Date</mat-option>
-    </mat-select>
-    <mat-error *ngIf="requiredValidator('blinkingParams')"
-      >This field is required</mat-error
-    >
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Skippable Steps</mat-label>
-    <mat-select formControlName="skippableSteps" multiple>
-      <mat-option value="Account Number">Account Number</mat-option>
-      <mat-option value="Contact Data">Contact Data</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Steps That Require Proof of Documents</mat-label>
-    <mat-select formControlName="stepsThatRequireProofOfDocuments" multiple>
-      <mat-option value="Account Number">Account Number</mat-option>
-      <mat-option value="Address">Address</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
+  <div class="columns redirect-div" style="margin-bottom: 0px">
+    <div class="column is-7">
+      <mat-form-field appearance="fill">
+        <mat-label>Blinking Params *</mat-label>
+        <mat-select formControlName="blinkingParams" multiple>
+          <mat-option value="Status">Status</mat-option>
+          <mat-option value="Document Expiry Date"
+            >Document Expiry Date</mat-option
+          >
+        </mat-select>
+        <mat-error *ngIf="requiredValidator('blinkingParams')"
+          >This field is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="column is-5">
+      <mat-form-field appearance="fill">
+        <mat-label>Embed in IFrame? *</mat-label>
+        <mat-select formControlName="willEmbedInIframe">
+          <mat-option value="true">Yes</mat-option>
+          <mat-option value="false">No</mat-option>
+        </mat-select>
+        <mat-error *ngIf="requiredValidator('willEmbedInIframe')"
+          >This field is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+  </div>
+
+  <mat-divider class="divider"></mat-divider>
+  <mat-form-field appearance="fill" class="initial-session-field">
     <mat-label>Initial Session Config *</mat-label>
     <mat-select formControlName="initialSessionConfig" multiple>
       <mat-option
@@ -60,47 +68,66 @@
     >
   </mat-form-field>
   <mat-form-field appearance="fill">
+    <mat-label>Skippable Steps</mat-label>
+    <mat-select formControlName="skippableSteps" multiple>
+      <mat-option value="Account Number">Account Number</mat-option>
+      <mat-option value="Contact Data">Contact Data</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Steps That Require Proof of Documents</mat-label>
+    <mat-select formControlName="stepsThatRequireProofOfDocuments" multiple>
+      <mat-option value="Account Number">Account Number</mat-option>
+      <mat-option value="Address">Address</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
     <mat-label>Steps That Require Attention</mat-label>
     <mat-select formControlName="stepsThatRequireAttention" multiple>
       <mat-option value="Account Number">Account Number</mat-option>
       <mat-option value="Address">Address</mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Max Number of Tries *</mat-label>
-    <input type="number" matInput formControlName="maxNumberOfTries" />
-    <mat-error *ngIf="requiredValidator('maxNumberOfTries')"
-      >This field is required and should be a number</mat-error
-    >
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Default Country *</mat-label>
-    <mat-select formControlName="defaultCountry">
-      <mat-option *ngFor="let country of countries" [value]="country">
-        {{ country }}
-      </mat-option>
-    </mat-select>
-    <mat-error *ngIf="requiredValidator('defaultCountry')"
-      >This field is required
-    </mat-error>
-  </mat-form-field>
-  <div>
-    <mat-radio-group formControlName="shouldAskForFaceEnroll">
-      <p class="enroll-question">Ask for Face Enroll?</p>
-      <mat-radio-button color="warn" value="true" class="radio-button-left">
-        Yes
-      </mat-radio-button>
-      <mat-radio-button color="warn" value="false" [checked]="true">
-        No
-      </mat-radio-button>
-    </mat-radio-group>
+  <mat-divider class="divider"></mat-divider>
+  <div class="columns separator-div redirect-div">
+    <div class="column is-4">
+      <mat-form-field appearance="fill">
+        <mat-label>Max Number of Tries *</mat-label>
+        <input type="number" matInput formControlName="maxNumberOfTries" />
+        <mat-error *ngIf="requiredValidator('maxNumberOfTries')"
+          >This field is required and should be a number</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="column is-4">
+      <mat-form-field appearance="fill">
+        <mat-label>Default Country *</mat-label>
+        <mat-select formControlName="defaultCountry">
+          <mat-option *ngFor="let country of countries" [value]="country">
+            {{ country }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="requiredValidator('defaultCountry')"
+          >This field is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="column is-4">
+      <mat-form-field appearance="fill">
+        <mat-label>Ask for Face Enroll? *</mat-label>
+        <mat-select formControlName="shouldAskForFaceEnroll">
+          <mat-option value="true">Yes</mat-option>
+          <mat-option value="false">No</mat-option>
+        </mat-select>
+        <mat-error *ngIf="requiredValidator('shouldAskForFaceEnroll')"
+          >This field is required
+        </mat-error>
+      </mat-form-field>
+    </div>
   </div>
   <div class="flex-div">
     <button color="warn" mat-raised-button [disabled]="!serviceForm.valid">
       Save
     </button>
-    <mat-checkbox color="primary" formControlName="willEmbedInIframe">
-      Embed in IFrame?
-    </mat-checkbox>
   </div>
 </form>

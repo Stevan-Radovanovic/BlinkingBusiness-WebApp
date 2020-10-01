@@ -1,6 +1,6 @@
 .flex-div {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -16,10 +16,24 @@
   margin-left: 1px;
 }
 
-.radio-button-left {
-  margin-right: 9px;
+.divider {
+  border: 1px solid #ccc;
 }
 
-.mat-checkbox {
-  margin-left: 12px;
+.title-redirect {
+  font-weight: bold;
+  padding-top: 14px;
+}
+
+.redirect-div {
+  margin-right: 0px;
+}
+
+.initial-session-field {
+  padding-top: 14px;
+}
+
+.separator-div {
+  margin-top: 10px;
+  margin-bottom: 0px;
 }
