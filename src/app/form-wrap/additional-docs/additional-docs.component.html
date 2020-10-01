@@ -1,0 +1,28 @@
+<mat-accordion>
+  <mat-expansion-panel class="accordion">
+    <mat-expansion-panel-header>
+      <mat-panel-title> Added Aditional Docs </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <div *ngIf="additionalDocs.length !== 0" class="table-additional-docs">
+        <table class="table is-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Sub Type</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let doc of additionalDocs; let i = index">
+              <th>{{ i + 1 }}</th>
+              <th>{{ doc.subType }}</th>
+              <td>{{ doc.description }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

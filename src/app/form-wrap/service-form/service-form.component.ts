@@ -5,6 +5,7 @@ import { ServiceFormObject } from 'src/app/shared/models/service-form-object.mod
 import { FormSubmitComponent } from '../form-submit/form-submit.component';
 import { v4 as uuidv4 } from 'uuid';
 import { frontBack } from 'src/app/shared/validators/front-back.validator';
+import { AdditionalDoc } from 'src/app/shared/models/additional-doc.model';
 
 @Component({
   selector: 'app-service-form',
@@ -12,6 +13,7 @@ import { frontBack } from 'src/app/shared/validators/front-back.validator';
   styleUrls: ['./service-form.component.css'],
 })
 export class ServiceFormComponent implements OnInit {
+  additionalDocArray: AdditionalDoc[] = [];
   additional: boolean = false;
   countries: string[];
   serviceForm: FormGroup;
@@ -104,7 +106,11 @@ export class ServiceFormComponent implements OnInit {
   }
 
   addNewAditionalDocument() {
-    //..Creating a new additional document
+    const addDoc: AdditionalDoc = {
+      subType: this.serviceForm.get('additionalDocSubType').value,
+      description: this.serviceForm.get('additionalDocDescription').value,
+    };
+    this.additionalDocArray.push(addDoc);
     this.serviceForm.patchValue({
       additionalDocSubType: '',
       additionalDocDescription: '',

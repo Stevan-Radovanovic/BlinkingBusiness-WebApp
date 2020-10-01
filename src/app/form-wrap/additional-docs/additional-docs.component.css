@@ -1,0 +1,9 @@
+.accordion {
+  width: 98%;
+}
+
+.table-additional-docs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
