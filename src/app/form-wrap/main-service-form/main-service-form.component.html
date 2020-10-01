@@ -1,19 +1,35 @@
 <form [formGroup]="serviceForm">
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="mat-form-field-service">
     <mat-label>Service Name *</mat-label>
     <input matInput formControlName="serviceName" />
     <mat-error *ngIf="requiredValidator('serviceName')"
       >This field is required</mat-error
     >
   </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Max Number of Tries *</mat-label>
-    <input matInput type="number" formControlName="maxNumberOfTries" />
-    <mat-error *ngIf="requiredValidator('maxNumberOfTries')"
-      >This field is required and should be a number</mat-error
-    >
-  </mat-form-field>
-  <mat-form-field appearance="fill">
+  <div class="columns wrapper-div">
+    <div class="column is-6">
+      <mat-form-field appearance="fill">
+        <mat-label>Max Number of Tries *</mat-label>
+        <input matInput type="number" formControlName="maxNumberOfTries" />
+        <mat-error *ngIf="requiredValidator('maxNumberOfTries')"
+          >This field is required and should be a number</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="column is-6">
+      <mat-form-field appearance="fill">
+        <mat-label>Face Enroll? *</mat-label>
+        <mat-select formControlName="shouldAskForFaceEnroll">
+          <mat-option value="true">Yes</mat-option>
+          <mat-option value="false">No</mat-option>
+        </mat-select>
+        <mat-error *ngIf="requiredValidator('shouldAskForFaceEnroll')"
+          >This field is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-form-field appearance="fill" class="mat-form-field-country">
     <mat-label>Default Country *</mat-label>
     <mat-select formControlName="defaultCountry">
       <mat-option *ngFor="let country of countries" [value]="country">
@@ -42,17 +58,6 @@
       >This field is required and should be a number</mat-error
     >
   </mat-form-field>
-  <div>
-    <mat-radio-group formControlName="shouldAskForFaceEnroll">
-      <p class="enroll-question">Ask for Face Enroll?</p>
-      <mat-radio-button color="warn" value="true" class="radio-button-left">
-        Yes
-      </mat-radio-button>
-      <mat-radio-button color="warn" value="false" [checked]="true">
-        No
-      </mat-radio-button>
-    </mat-radio-group>
-  </div>
 </form>
 <div class="add-button">
   <button

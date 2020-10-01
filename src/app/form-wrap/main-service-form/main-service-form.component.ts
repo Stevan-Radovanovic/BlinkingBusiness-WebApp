@@ -32,10 +32,9 @@ export class MainServiceFormComponent implements OnInit {
       maxNumberOfTries: new FormControl({ value: null, disabled: true }, [
         Validators.required,
       ]),
-      shouldAskForFaceEnroll: new FormControl(
-        { value: false, disabled: true },
-        [Validators.required]
-      ),
+      shouldAskForFaceEnroll: new FormControl({ value: null, disabled: true }, [
+        Validators.required,
+      ]),
       defaultCountry: new FormControl({ value: '', disabled: true }, [
         Validators.required,
       ]),
