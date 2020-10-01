@@ -73,12 +73,26 @@
     <h2 class="title-redirect">Additional Documents Info</h2>
     <mat-form-field appearance="fill">
       <mat-label>Additional Doc Sub Type *</mat-label>
-      <input matInput />
+      <input matInput formControlName="additionalDocSubType" />
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Additional Doc Description *</mat-label>
-      <input matInput />
+      <input matInput formControlName="additionalDocDescription" />
     </mat-form-field>
+    <div class="flex-div">
+      <button
+        color="warn"
+        type="button"
+        class="add-doc-button"
+        mat-raised-button
+        [disabled]="
+          serviceForm.get('additionalDocDescription').value === '' ||
+          serviceForm.get('additionalDocSubType').value === ''
+        "
+      >
+        Add
+      </button>
+    </div>
     <mat-divider class="divider"></mat-divider>
   </div>
   <mat-form-field

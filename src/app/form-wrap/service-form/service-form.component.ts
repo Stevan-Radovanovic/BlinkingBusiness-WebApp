@@ -15,6 +15,7 @@ export class ServiceFormComponent implements OnInit {
   additional: boolean = false;
   countries: string[];
   serviceForm: FormGroup;
+  disableAdditionalDocs = true;
 
   skippableSteps: string[] = [];
   skippableStepOptions: string[] = [];
@@ -40,6 +41,8 @@ export class ServiceFormComponent implements OnInit {
       maxNumberOfTries: new FormControl(null, [Validators.required]),
       shouldAskForFaceEnroll: new FormControl(null, [Validators.required]),
       defaultCountry: new FormControl('', [Validators.required]),
+      additionalDocSubType: new FormControl('', [Validators.required]),
+      additionalDocDescription: new FormControl('', [Validators.required]),
     });
   }
 
@@ -80,8 +83,10 @@ export class ServiceFormComponent implements OnInit {
 
   requiredValidator(controlName: string) {
     return (
-      this.serviceForm.get(controlName).hasError('required') &&
-      this.serviceForm.get(controlName).touched
+      this.serviceForm.get('additionalDocDescription').value &&
+      this.serviceForm.get('additionalDocDescription').value !== '' &&
+      this.serviceForm.get('additionalDocSubType').value &&
+      this.serviceForm.get('additionalDocSubType').value !== ''
     );
   }
 
