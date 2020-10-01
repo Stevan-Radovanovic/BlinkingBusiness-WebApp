@@ -35,9 +35,14 @@
 
 .separator-div {
   margin-top: 10px;
-  margin-bottom: 0px;
+  margin-bottom: -5px;
 }
 
 .add-doc-button {
   margin-bottom: 10px;
+}
+
+.save-button {
+  height: 40px;
+  width: 100px;
 }

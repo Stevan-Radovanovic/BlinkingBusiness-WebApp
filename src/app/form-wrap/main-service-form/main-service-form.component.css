@@ -22,6 +22,10 @@ mat-card-title {
   justify-content: center;
 }
 
+.add-button button {
+  color: black;
+}
+
 .update-button {
   margin-right: 4px;
   color: black;

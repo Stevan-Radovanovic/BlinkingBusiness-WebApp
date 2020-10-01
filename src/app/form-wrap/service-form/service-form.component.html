@@ -173,7 +173,13 @@
     </div>
   </div>
   <div class="flex-div">
-    <button color="warn" mat-raised-button [disabled]="!serviceForm.valid">
+    <button
+      color="warn"
+      mat-raised-button
+      class="save-button"
+      [disabled]="!serviceForm.valid"
+    >
+      <mat-icon>save</mat-icon>
       Save
     </button>
   </div>

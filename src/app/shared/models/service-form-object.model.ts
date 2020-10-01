@@ -1,4 +1,5 @@
-export interface FormObject {
+export interface ServiceFormObject {
+  sessionId?: string;
   baseRedirectUrl: string;
   blinkingParams: string[];
   willEmbedInIframe: boolean;

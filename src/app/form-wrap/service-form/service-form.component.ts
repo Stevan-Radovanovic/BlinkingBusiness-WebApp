@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { FormObject } from 'src/app/shared/models/form-object.model';
+import { ServiceFormObject } from 'src/app/shared/models/service-form-object.model';
 import { FormSubmitComponent } from '../form-submit/form-submit.component';
 import { v4 as uuidv4 } from 'uuid';
 import { frontBack } from 'src/app/shared/validators/front-back.validator';
@@ -47,7 +47,7 @@ export class ServiceFormComponent implements OnInit {
   }
 
   submit() {
-    const formObject: FormObject = {
+    const formObject: ServiceFormObject = {
       baseRedirectUrl: this.serviceForm.controls.baseRedirectUrl.value,
       blinkingParams: this.serviceForm.controls.blinkingParams.value,
       willEmbedInIframe: this.serviceForm.controls.willEmbedInIframe.value,
