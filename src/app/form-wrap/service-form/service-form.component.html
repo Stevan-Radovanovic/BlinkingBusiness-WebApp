@@ -70,7 +70,7 @@
     <mat-label>Max Number of Tries *</mat-label>
     <input type="number" matInput formControlName="maxNumberOfTries" />
     <mat-error *ngIf="requiredValidator('maxNumberOfTries')"
-      >This field is required</mat-error
+      >This field is required and should be a number</mat-error
     >
   </mat-form-field>
   <mat-form-field appearance="fill">
