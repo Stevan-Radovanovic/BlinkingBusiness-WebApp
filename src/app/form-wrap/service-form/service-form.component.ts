@@ -15,6 +15,15 @@ export class ServiceFormComponent implements OnInit {
   countries: string[];
   serviceForm: FormGroup;
 
+  skippableSteps: string[] = [];
+  skippableStepOptions: string[] = [];
+
+  stepsThatRequireProof: string[] = [];
+  stepsThatRequireProofOptions: string[] = [];
+
+  stepsThatRequireAttention: string[] = [];
+  stepsThatRequireAttentionOptions: string[] = [];
+
   initServiceForm() {
     this.serviceForm = new FormGroup({
       baseRedirectUrl: new FormControl('', [Validators.required]),
@@ -91,7 +100,31 @@ export class ServiceFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.skippableSteps = ['Account Number', 'Contact Data'];
+    this.stepsThatRequireAttention = ['Account Number', 'Address'];
+    this.stepsThatRequireProof = ['Account Number', 'Address'];
     this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
     this.initServiceForm();
+
+    this.serviceForm
+      .get('initialSessionConfig')
+      .valueChanges.subscribe((value: string[]) => {
+        console.log(value);
+        this.skippableStepOptions = [];
+        this.stepsThatRequireAttentionOptions = [];
+        this.stepsThatRequireProofOptions = [];
+
+        value.forEach((step) => {
+          if (this.skippableSteps.includes(step)) {
+            this.skippableStepOptions.push(step);
+          }
+          if (this.stepsThatRequireProof.includes(step)) {
+            this.stepsThatRequireProofOptions.push(step);
+          }
+          if (this.stepsThatRequireAttention.includes(step)) {
+            this.stepsThatRequireAttentionOptions.push(step);
+          }
+        });
+      });
   }
 }

@@ -70,29 +70,38 @@
   <mat-form-field appearance="fill">
     <mat-label>Skippable Steps</mat-label>
     <mat-select formControlName="skippableSteps" multiple>
-      <mat-option value="Account Number">Account Number</mat-option>
-      <mat-option value="Contact Data">Contact Data</mat-option>
+      <mat-option *ngFor="let step of skippableStepOptions" [value]="step">
+        {{ step }}
+      </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Steps That Require Proof of Documents</mat-label>
     <mat-select formControlName="stepsThatRequireProofOfDocuments" multiple>
-      <mat-option value="Account Number">Account Number</mat-option>
-      <mat-option value="Address">Address</mat-option>
+      <mat-option
+        *ngFor="let step of stepsThatRequireProofOptions"
+        [value]="step"
+      >
+        {{ step }}
+      </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Steps That Require Attention</mat-label>
     <mat-select formControlName="stepsThatRequireAttention" multiple>
-      <mat-option value="Account Number">Account Number</mat-option>
-      <mat-option value="Address">Address</mat-option>
+      <mat-option
+        *ngFor="let step of stepsThatRequireAttentionOptions"
+        [value]="step"
+      >
+        {{ step }}
+      </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-divider class="divider"></mat-divider>
   <div class="columns separator-div redirect-div">
     <div class="column is-4">
       <mat-form-field appearance="fill">
-        <mat-label>Max Number of Tries *</mat-label>
+        <mat-label>Max No. of Tries *</mat-label>
         <input type="number" matInput formControlName="maxNumberOfTries" />
         <mat-error *ngIf="requiredValidator('maxNumberOfTries')"
           >This field is required and should be a number</mat-error
@@ -114,7 +123,7 @@
     </div>
     <div class="column is-4">
       <mat-form-field appearance="fill">
-        <mat-label>Ask for Face Enroll? *</mat-label>
+        <mat-label>Face Enroll? *</mat-label>
         <mat-select formControlName="shouldAskForFaceEnroll">
           <mat-option value="true">Yes</mat-option>
           <mat-option value="false">No</mat-option>
