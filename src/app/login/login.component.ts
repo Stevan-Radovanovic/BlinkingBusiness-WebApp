@@ -28,6 +28,13 @@ export class LoginComponent implements OnInit {
     this.authService.logIn(authData);
   }
 
+  requiredValidator(controlName: string) {
+    return (
+      this.authForm.get(controlName).hasError('required') &&
+      this.authForm.get(controlName).touched
+    );
+  }
+
   ngOnInit(): void {
     this.initForm();
   }

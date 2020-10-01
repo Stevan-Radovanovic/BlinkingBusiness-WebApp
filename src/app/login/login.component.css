@@ -26,3 +26,7 @@ mat-card-title img {
 .button-blinking {
   color: black;
 }
+
+.login-error {
+  text-align: center;
+}

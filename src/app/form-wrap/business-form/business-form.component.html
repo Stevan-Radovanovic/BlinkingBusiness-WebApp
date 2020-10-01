@@ -1,6 +1,6 @@
 <form [formGroup]="businessForm">
   <div class="spaceBetween">
-    <mat-form-field appearance="fill" style="width: 80%">
+    <mat-form-field appearance="fill" class="color-form-field">
       <mat-label>Primary Color Hex Value: *</mat-label>
       <input matInput formControlName="color" />
       <mat-error *ngIf="requiredValidator('color')"
@@ -20,7 +20,7 @@
   <div class="columns">
     <div class="column is-5" style="margin-top: 4px; margin-bottom: 8px">
       <div>
-        <mat-label style="display: block">Favicon: *</mat-label>
+        <mat-label class="picture-label">Favicon: *</mat-label>
         <input
           matNativeInput
           #favicon
@@ -37,7 +37,7 @@
         >
       </div>
       <div style="margin-top: 10px">
-        <mat-label style="display: block">Logo: *</mat-label>
+        <mat-label class="picture-label">Logo: *</mat-label>
         <input
           #logo
           type="file"
@@ -45,12 +45,12 @@
           accept=".jpeg,.jpg,.png,.ico"
         />
 
-        <mat-error *ngIf="requiredValidator('logo')" style="font-size: 8pt"
+        <mat-error *ngIf="requiredValidator('logo')" class="picture-error"
           >This field is required</mat-error
         >
-        <mat-error *ngIf="fileValidator('logo')" style="font-size: 8pt"
-          >The selected picture must be smaller than 3 MB</mat-error
-        >
+        <mat-error *ngIf="fileValidator('logo')" class="picture-error">
+          The selected picture must be smaller than 3 MB
+        </mat-error>
       </div>
     </div>
     <div class="column is-6" style="display: flex">

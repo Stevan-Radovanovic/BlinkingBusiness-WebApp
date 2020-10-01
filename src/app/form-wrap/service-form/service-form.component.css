@@ -15,3 +15,11 @@
   margin-right: 9px;
   margin-left: 1px;
 }
+
+.radio-button-left {
+  margin-right: 9px;
+}
+
+.mat-checkbox {
+  margin-left: 12px;
+}

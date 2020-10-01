@@ -10,22 +10,14 @@
           <mat-form-field appearance="fill">
             <mat-label>UserName</mat-label>
             <input matInput formControlName="userName" />
-            <mat-error
-              *ngIf="
-                this.authForm.controls.userName.invalid &&
-                this.authForm.controls.userName.touched
-              "
+            <mat-error *ngIf="requiredValidator('userName')"
               >This field is required</mat-error
             >
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
             <input type="password" matInput formControlName="password" />
-            <mat-error
-              *ngIf="
-                this.authForm.controls.password.invalid &&
-                this.authForm.controls.password.touched
-              "
+            <mat-error *ngIf="requiredValidator('password')"
               >This field is required</mat-error
             >
           </mat-form-field>
@@ -43,7 +35,7 @@
         </button>
       </mat-card-actions>
     </mat-card>
-    <mat-error style="text-align: center" *ngIf="!this.authService.validAuth"
+    <mat-error class="login-error" *ngIf="!authService.validAuth"
       >User Name or Password invalid!</mat-error
     >
   </div>

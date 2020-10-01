@@ -87,7 +87,7 @@
   <div>
     <mat-radio-group formControlName="shouldAskForFaceEnroll">
       <p class="enroll-question">Ask for Face Enroll?</p>
-      <mat-radio-button color="warn" value="true" style="margin-right: 9px">
+      <mat-radio-button color="warn" value="true" class="radio-button-left">
         Yes
       </mat-radio-button>
       <mat-radio-button color="warn" value="false" [checked]="true">
@@ -99,11 +99,7 @@
     <button color="warn" mat-raised-button [disabled]="!serviceForm.valid">
       Save
     </button>
-    <mat-checkbox
-      color="primary"
-      formControlName="willEmbedInIframe"
-      style="margin-right: 12px"
-    >
+    <mat-checkbox color="primary" formControlName="willEmbedInIframe">
       Embed in IFrame?
     </mat-checkbox>
   </div>

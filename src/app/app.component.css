@@ -6,3 +6,13 @@
   color: #ccc;
   box-shadow: 2px 2px;
 }
+
+.wrapper {
+  min-height: 100vh;
+  background-color: #eee;
+}
+
+.log-out {
+  color: black;
+  font-weight: bold;
+}

@@ -45,3 +45,15 @@
 .update-button button {
   color: black;
 }
+
+.color-form-field {
+  width: 80%;
+}
+
+.picture-error {
+  font-size: 8pt;
+}
+
+.picture-label {
+  display: block;
+}

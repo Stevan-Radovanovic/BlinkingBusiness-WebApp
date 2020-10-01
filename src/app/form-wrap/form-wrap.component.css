@@ -37,3 +37,8 @@ mat-card-title {
 mat-icon {
   color: black;
 }
+
+.form-wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
