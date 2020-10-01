@@ -12,6 +12,7 @@ import { frontBack } from 'src/app/shared/validators/front-back.validator';
   styleUrls: ['./service-form.component.css'],
 })
 export class ServiceFormComponent implements OnInit {
+  additional: boolean = false;
   countries: string[];
   serviceForm: FormGroup;
 
@@ -125,6 +126,12 @@ export class ServiceFormComponent implements OnInit {
             this.stepsThatRequireAttentionOptions.push(step);
           }
         });
+
+        if (value.includes('Additional Documents')) {
+          this.additional = true;
+        } else {
+          this.additional = false;
+        }
       });
   }
 }

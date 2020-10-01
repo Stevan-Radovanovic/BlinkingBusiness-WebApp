@@ -58,7 +58,7 @@
       <mat-option value="Account Number">Account Number</mat-option>
       <mat-option value="Contact Data">Contact Data</mat-option>
       <mat-option value="Video Session">Video Session</mat-option>
-      <mat-option value="Aditional Documents">Aditional Documents</mat-option>
+      <mat-option value="Additional Documents">Additional Documents</mat-option>
     </mat-select>
     <mat-error *ngIf="requiredValidator('initialSessionConfig')"
       >This field is required</mat-error
@@ -68,7 +68,23 @@
       selected at all</mat-error
     >
   </mat-form-field>
-  <mat-form-field appearance="fill">
+  <div *ngIf="additional">
+    <mat-divider class="divider"></mat-divider>
+    <h2 class="title-redirect">Additional Documents Info</h2>
+    <mat-form-field appearance="fill">
+      <mat-label>Additional Doc Sub Type *</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Additional Doc Description *</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-divider class="divider"></mat-divider>
+  </div>
+  <mat-form-field
+    appearance="fill"
+    [ngStyle]="{ 'margin-top': additional ? '12px' : '0px' }"
+  >
     <mat-label>Skippable Steps</mat-label>
     <mat-select formControlName="skippableSteps" multiple>
       <mat-option *ngFor="let step of skippableStepOptions" [value]="step">
