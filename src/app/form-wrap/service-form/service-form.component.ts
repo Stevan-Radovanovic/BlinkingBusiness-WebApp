@@ -28,7 +28,7 @@ export class ServiceFormComponent implements OnInit {
     this.serviceForm = new FormGroup({
       baseRedirectUrl: new FormControl('', [Validators.required]),
       blinkingParams: new FormControl([], [Validators.required]),
-      willEmbedInIframe: new FormControl(false, [Validators.required]),
+      willEmbedInIframe: new FormControl(null, [Validators.required]),
       skippableSteps: new FormControl([]),
       stepsThatRequireProofOfDocuments: new FormControl([]),
       initialSessionConfig: new FormControl('', [
@@ -37,7 +37,7 @@ export class ServiceFormComponent implements OnInit {
       ]),
       stepsThatRequireAttention: new FormControl([]),
       maxNumberOfTries: new FormControl(null, [Validators.required]),
-      shouldAskForFaceEnroll: new FormControl(false, [Validators.required]),
+      shouldAskForFaceEnroll: new FormControl(null, [Validators.required]),
       defaultCountry: new FormControl('', [Validators.required]),
     });
   }
