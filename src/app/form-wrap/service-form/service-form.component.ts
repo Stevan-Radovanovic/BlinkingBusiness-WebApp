@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { frontBack } from 'src/app/shared/validators/front-back.validator';
 import { AdditionalDoc } from 'src/app/shared/models/additional-doc.model';
 import { SubType } from 'src/app/shared/models/sub-type.model';
+import { StepType } from 'src/app/shared/models/step-type.model';
 
 @Component({
   selector: 'app-service-form',
@@ -15,6 +16,7 @@ import { SubType } from 'src/app/shared/models/sub-type.model';
 })
 export class ServiceFormComponent implements OnInit {
   subtype = SubType;
+  steptype = StepType;
   additionalDocArray: AdditionalDoc[] = [];
   additional: boolean = false;
   countries: string[];
@@ -156,6 +158,7 @@ export class ServiceFormComponent implements OnInit {
       'Additional Document',
     ];
     this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
+
     this.initServiceForm();
 
     this.serviceForm

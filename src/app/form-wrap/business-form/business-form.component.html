@@ -1,4 +1,11 @@
 <form [formGroup]="businessForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Business Name: *</mat-label>
+    <input matInput formControlName="businessName" />
+    <mat-error *ngIf="requiredValidator('businessName')"
+      >This field is required</mat-error
+    >
+  </mat-form-field>
   <div class="spaceBetween">
     <mat-form-field appearance="fill" class="color-form-field">
       <mat-label>Primary Color Hex Value: *</mat-label>

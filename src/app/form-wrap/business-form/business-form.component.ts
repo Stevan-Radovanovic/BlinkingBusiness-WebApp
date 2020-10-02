@@ -96,6 +96,7 @@ export class BusinessFormComponent implements OnInit {
 
   initBusinessForm() {
     this.businessForm = new FormGroup({
+      businessName: new FormControl('', [Validators.required]),
       color: new FormControl('', [
         Validators.required,
         Validators.pattern('^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$'),

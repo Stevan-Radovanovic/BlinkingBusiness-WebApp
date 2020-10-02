@@ -43,22 +43,22 @@
     <mat-select formControlName="initialSessionConfig" multiple>
       <mat-option
         [disabled]="documentDisabler('Document with Country')"
-        value="Document"
+        value="Document type"
         >Document</mat-option
       >
       <mat-option
         [disabled]="documentDisabler('Document')"
-        value="Document with Country"
+        value="Document type with country"
         >Document with Country</mat-option
       >
-      <mat-option value="Front Side">Front Side</mat-option>
-      <mat-option value="Back Side">Back Side</mat-option>
+      <mat-option value="Front side">Front Side</mat-option>
+      <mat-option value="Back side">Back Side</mat-option>
       <mat-option value="Address">Address</mat-option>
       <mat-option value="Faceprint">Faceprint</mat-option>
-      <mat-option value="Account Number">Account Number</mat-option>
-      <mat-option value="Contact Data">Contact Data</mat-option>
-      <mat-option value="Video Session">Video Session</mat-option>
-      <mat-option value="Additional Documents">Additional Documents</mat-option>
+      <mat-option value="Account umber">Account Number</mat-option>
+      <mat-option value="Contact data">Contact Data</mat-option>
+      <mat-option value="Video session">Video Session</mat-option>
+      <mat-option value="Additional document">Additional Documents</mat-option>
     </mat-select>
     <mat-error *ngIf="requiredValidator('initialSessionConfig')"
       >This field is required</mat-error
