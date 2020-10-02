@@ -54,9 +54,17 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Session Validity *</mat-label>
-    <input matInput formControlName="sessionValidityDuration" type="number" />
+    <input
+      matInput
+      formControlName="sessionValidityDuration"
+      #sessionInput
+      type="number"
+    />
     <mat-error *ngIf="requiredValidator('sessionValidityDuration')"
       >This field is required and should be a number</mat-error
+    >
+    <mat-hint *ngIf="!requiredValidator('sessionValidityDuration') && editing"
+      >This number represents the duration of the session in minutes</mat-hint
     >
   </mat-form-field>
 </form>

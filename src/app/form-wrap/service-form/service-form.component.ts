@@ -37,7 +37,13 @@ export class ServiceFormComponent implements OnInit {
 
   initServiceForm() {
     this.serviceForm = new FormGroup({
-      baseRedirectUrl: new FormControl('', [Validators.required]),
+      serviceConfigName: new FormControl('', Validators.required),
+      baseRedirectUrl: new FormControl('', [
+        Validators.required,
+        Validators.pattern(
+          'https?://(?:www.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9].[^s]{2,}|www.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9].[^s]{2,}|https?://(?:www.|(?!www))[a-zA-Z0-9]+.[^s]{2,}|www.[a-zA-Z0-9]+.[^s]{2,}'
+        ),
+      ]),
       blinkingParams: new FormControl([], [Validators.required]),
       willEmbedInIframe: new FormControl(null, [Validators.required]),
       skippableSteps: new FormControl([]),
@@ -147,6 +153,13 @@ export class ServiceFormComponent implements OnInit {
       additionalDocSubType: '',
       additionalDocDescription: '',
     });
+  }
+
+  patternValidator(controlName: string) {
+    return (
+      this.serviceForm.get(controlName).hasError('pattern') &&
+      this.serviceForm.get(controlName).touched
+    );
   }
 
   ngOnInit(): void {
