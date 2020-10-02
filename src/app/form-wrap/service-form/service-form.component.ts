@@ -166,6 +166,7 @@ export class ServiceFormComponent implements OnInit {
           this.additional = true;
         } else {
           this.additional = false;
+          this.additionalDocArray = [];
         }
       });
 
