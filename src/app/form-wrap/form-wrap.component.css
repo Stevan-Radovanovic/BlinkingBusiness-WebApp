@@ -32,6 +32,11 @@ mat-card-title {
 .add-button {
   display: flex;
   justify-content: center;
+  margin-top: 6px;
+}
+
+.add-button button {
+  color: black;
 }
 
 mat-icon {

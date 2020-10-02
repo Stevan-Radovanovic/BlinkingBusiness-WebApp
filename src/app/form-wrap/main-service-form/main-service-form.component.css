@@ -52,5 +52,9 @@ mat-card-title {
 }
 
 .mat-form-field-service {
-  margin-bottom: -13px;
+  margin-bottom: 2px;
+}
+
+.divider {
+  border: 1px solid #ccc;
 }

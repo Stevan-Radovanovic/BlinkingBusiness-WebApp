@@ -6,6 +6,7 @@
       >This field is required</mat-error
     >
   </mat-form-field>
+  <mat-divider class="divider"></mat-divider>
   <div class="columns wrapper-div">
     <div class="column is-6">
       <mat-form-field appearance="fill">
@@ -68,7 +69,7 @@
   >
     <mat-icon *ngIf="!editing">edit</mat-icon>
     <mat-icon *ngIf="editing">close</mat-icon>
-    {{ editing == true ? "Cancel" : "Edit" }}
+    {{ editing == true ? "Cancel" : "Edit Service Details" }}
   </button>
   <button
     mat-raised-button
@@ -77,7 +78,7 @@
     [disabled]="!serviceForm.valid"
   >
     <mat-icon>update</mat-icon>
-    Update
+    Update Service Details
   </button>
 </div>
 <div *ngFor="let serviceConfigForm of serviceConfigForms; let i = index">
@@ -101,6 +102,6 @@
 </div>
 <div class="add-button">
   <button mat-raised-button color="warn" (click)="addServiceConfigForm()">
-    <mat-icon>add</mat-icon> Add
+    <mat-icon>add</mat-icon> Add new Service Config
   </button>
 </div>
