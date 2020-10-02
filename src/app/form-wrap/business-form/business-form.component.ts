@@ -13,6 +13,8 @@ export class BusinessFormComponent implements OnInit {
   @ViewChild('logo') logo: ElementRef;
   logoPath = '';
   faviconPath = '';
+  editing = false;
+  controlNames = ['businessName', 'favicon', 'logo', 'color'];
 
   selectedColor = '';
 
@@ -104,6 +106,25 @@ export class BusinessFormComponent implements OnInit {
       favicon: new FormControl('', [Validators.required]),
       logo: new FormControl('', [Validators.required]),
     });
+  }
+
+  enableEditing() {
+    if (this.editing) {
+      this.disableEditing();
+      return;
+    }
+
+    this.controlNames.forEach((control) => {
+      this.businessForm.get(control).enable();
+    });
+    this.editing = true;
+  }
+
+  disableEditing() {
+    this.controlNames.forEach((control) => {
+      this.businessForm.get(control).disable();
+    });
+    this.editing = false;
   }
 
   ngOnInit(): void {

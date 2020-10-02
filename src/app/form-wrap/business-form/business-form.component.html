@@ -71,7 +71,22 @@
     </div>
   </div>
   <div class="update-button">
-    <button mat-raised-button color="warn" [disabled]="!businessForm.valid">
+    <button
+      mat-raised-button
+      color="warn"
+      type="button"
+      (click)="enableEditing()"
+    >
+      <mat-icon *ngIf="!editing">edit</mat-icon>
+      <mat-icon *ngIf="editing">close</mat-icon>
+      {{ editing == true ? "Cancel" : "Edit Business Details" }}
+    </button>
+    <button
+      type="button"
+      mat-raised-button
+      color="warn"
+      [disabled]="!businessForm.valid"
+    >
       <mat-icon>update</mat-icon>
       Update Business Details
     </button>
