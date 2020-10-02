@@ -52,12 +52,12 @@
     <mat-label>Initial Session Config *</mat-label>
     <mat-select formControlName="initialSessionConfig" multiple>
       <mat-option
-        [disabled]="documentDisabler('Document with Country')"
+        [disabled]="documentDisabler('Document type with country')"
         value="Document type"
         >Document</mat-option
       >
       <mat-option
-        [disabled]="documentDisabler('Document')"
+        [disabled]="documentDisabler('Document type')"
         value="Document type with country"
         >Document with Country</mat-option
       >

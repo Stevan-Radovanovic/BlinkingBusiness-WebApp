@@ -18,7 +18,7 @@ export class ServiceFormComponent implements OnInit {
   subtype = SubType;
   steptype = StepType;
   additionalDocArray: AdditionalDoc[] = [];
-  additional: boolean = false;
+  additional = false;
   countries: string[];
   serviceForm: FormGroup;
   disableAdditionalDocs = true;
@@ -200,7 +200,7 @@ export class ServiceFormComponent implements OnInit {
           }
         });
 
-        if (value.includes('Additional Documents')) {
+        if (value.includes('Additional document')) {
           this.additional = true;
         } else {
           this.additional = false;
