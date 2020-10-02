@@ -6,6 +6,7 @@ import { FormSubmitComponent } from '../form-submit/form-submit.component';
 import { v4 as uuidv4 } from 'uuid';
 import { frontBack } from 'src/app/shared/validators/front-back.validator';
 import { AdditionalDoc } from 'src/app/shared/models/additional-doc.model';
+import { SubType } from 'src/app/shared/models/sub-type.model';
 
 @Component({
   selector: 'app-service-form',
@@ -13,6 +14,7 @@ import { AdditionalDoc } from 'src/app/shared/models/additional-doc.model';
   styleUrls: ['./service-form.component.css'],
 })
 export class ServiceFormComponent implements OnInit {
+  subtype = SubType;
   additionalDocArray: AdditionalDoc[] = [];
   additional: boolean = false;
   countries: string[];

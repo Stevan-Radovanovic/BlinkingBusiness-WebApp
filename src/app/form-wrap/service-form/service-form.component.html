@@ -73,10 +73,11 @@
     <h2 class="title-redirect">Additional Documents Info</h2>
     <mat-form-field appearance="fill">
       <mat-label>Additional Doc Sub Type *</mat-label>
-      <input matInput formControlName="additionalDocSubType" />
-      <mat-error *ngIf="requiredValidator('additionalDocSubType')"
-        >This field is required</mat-error
-      >
+      <mat-select formControlName="additionalDocSubType">
+        <mat-option *ngFor="let sub of subtype | keyvalue" [value]="sub.key">
+          {{ sub.value }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Additional Doc Description *</mat-label>
