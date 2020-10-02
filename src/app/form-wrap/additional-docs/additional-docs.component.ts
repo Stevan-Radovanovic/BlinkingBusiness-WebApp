@@ -11,6 +11,10 @@ export class AdditionalDocsComponent implements OnInit {
 
   constructor() {}
 
+  removeAdditionalDoc(i: number) {
+    this.additionalDocs.splice(i, 1);
+  }
+
   ngOnInit(): void {
     console.log(this.additionalDocs);
   }

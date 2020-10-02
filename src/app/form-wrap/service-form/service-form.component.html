@@ -126,6 +126,12 @@
       >
         {{ step }}
       </mat-option>
+      <mat-option
+        value="Additional Document"
+        *ngIf="additionalDocArray.length > 0"
+      >
+        Additional Document
+      </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">

@@ -24,8 +24,8 @@ export class ServiceFormComponent implements OnInit {
   skippableSteps: string[] = [];
   skippableStepOptions: string[] = [];
 
-  stepsThatRequireProof: string[] = [];
-  stepsThatRequireProofOptions: string[] = [];
+  stepsThatRequireProof: Object[] = [];
+  stepsThatRequireProofOptions: Object[] = [];
 
   stepsThatRequireAttention: string[] = [];
   stepsThatRequireAttentionOptions: string[] = [];
@@ -102,6 +102,10 @@ export class ServiceFormComponent implements OnInit {
     );
   }
 
+  additionalProofValidator() {
+    return this.serviceForm.controls.initialSessionConfig.hasError('required');
+  }
+
   documentDisabler(document: string) {
     return (
       this.serviceForm.get('initialSessionConfig').value === null ||
@@ -124,9 +128,19 @@ export class ServiceFormComponent implements OnInit {
   ngOnInit(): void {
     this.skippableSteps = ['Account Number', 'Contact Data'];
     this.stepsThatRequireAttention = ['Account Number', 'Address'];
-    this.stepsThatRequireProof = ['Account Number', 'Address'];
+    this.stepsThatRequireProof = [
+      'Account Number',
+      'Address',
+      'Additional Document',
+    ];
     this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
     this.initServiceForm();
+
+    this.serviceForm
+      .get('stepsThatRequireProofOfDocuments')
+      .valueChanges.subscribe((value: string[]) => {
+        console.log(value);
+      });
 
     this.serviceForm
       .get('initialSessionConfig')

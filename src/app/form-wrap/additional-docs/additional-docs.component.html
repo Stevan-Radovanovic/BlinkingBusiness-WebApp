@@ -11,14 +11,24 @@
               <th scope="col">#</th>
               <th scope="col">Sub Type</th>
               <th scope="col">Description</th>
+              <th scope="col">
+                <mat-icon>delete</mat-icon>
+              </th>
             </tr>
           </thead>
 
           <tbody>
             <tr *ngFor="let doc of additionalDocs; let i = index">
-              <th>{{ i + 1 }}</th>
-              <th>{{ doc.subType }}</th>
+              <td>{{ i + 1 }}</td>
+              <td>{{ doc.subType }}</td>
               <td>{{ doc.description }}</td>
+              <td>
+                <mat-icon
+                  class="delete-additional"
+                  (click)="removeAdditionalDoc(i)"
+                  >cancel</mat-icon
+                >
+              </td>
             </tr>
           </tbody>
         </table>
