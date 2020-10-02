@@ -46,3 +46,9 @@
   height: 40px;
   width: 100px;
 }
+
+.error-class {
+  font-size: 9px;
+  margin-top: -21px;
+  margin-left: 13px;
+}

@@ -133,6 +133,9 @@
         Additional Document
       </mat-option>
     </mat-select>
+    <mat-error *ngIf="showError"
+      >Additional Documents must be selected</mat-error
+    >
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Steps That Require Attention</mat-label>
@@ -152,7 +155,7 @@
         <mat-label>Max No. of Tries *</mat-label>
         <input type="number" matInput formControlName="maxNumberOfTries" />
         <mat-error *ngIf="requiredValidator('maxNumberOfTries')"
-          >This field is required and should be a number</mat-error
+          >This field is required</mat-error
         >
       </mat-form-field>
     </div>

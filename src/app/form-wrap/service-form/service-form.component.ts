@@ -20,6 +20,7 @@ export class ServiceFormComponent implements OnInit {
   countries: string[];
   serviceForm: FormGroup;
   disableAdditionalDocs = true;
+  showError = false;
 
   skippableSteps: string[] = [];
   skippableStepOptions: string[] = [];
@@ -102,8 +103,28 @@ export class ServiceFormComponent implements OnInit {
     );
   }
 
-  additionalProofValidator() {
-    return this.serviceForm.controls.initialSessionConfig.hasError('required');
+  checkValidityProofOfDocs() {
+    if (this.additional) {
+      console.log(1);
+      this.serviceForm
+        .get('stepsThatRequireProofOfDocuments')
+        .setValidators(Validators.required);
+      this.serviceForm
+        .get('stepsThatRequireProofOfDocuments')
+        .updateValueAndValidity();
+      this.showError = true;
+      this.serviceForm.get('stepsThatRequireProofOfDocuments').markAsTouched();
+    } else {
+      console.log(2);
+      this.serviceForm
+        .get('stepsThatRequireProofOfDocuments')
+        .clearValidators();
+      this.serviceForm
+        .get('stepsThatRequireProofOfDocuments')
+        .updateValueAndValidity();
+      this.showError = false;
+    }
+    console.log(this.serviceForm.get('stepsThatRequireProofOfDocuments'));
   }
 
   documentDisabler(document: string) {
@@ -119,6 +140,7 @@ export class ServiceFormComponent implements OnInit {
       description: this.serviceForm.get('additionalDocDescription').value,
     };
     this.additionalDocArray.push(addDoc);
+    this.checkValidityProofOfDocs();
     this.serviceForm.patchValue({
       additionalDocSubType: '',
       additionalDocDescription: '',
@@ -166,6 +188,7 @@ export class ServiceFormComponent implements OnInit {
           this.additional = true;
         } else {
           this.additional = false;
+          this.checkValidityProofOfDocs();
           this.additionalDocArray = [];
         }
       });
