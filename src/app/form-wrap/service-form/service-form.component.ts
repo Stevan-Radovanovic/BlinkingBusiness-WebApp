@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ServiceFormObject } from 'src/app/shared/models/service-form-object.model';
@@ -29,6 +29,8 @@ export class ServiceFormComponent implements OnInit {
 
   stepsThatRequireAttention: string[] = [];
   stepsThatRequireAttentionOptions: string[] = [];
+
+  @ViewChild('docDesc') additionalDocDesc: ElementRef<HTMLInputElement>;
 
   initServiceForm() {
     this.serviceForm = new FormGroup({
@@ -150,6 +152,41 @@ export class ServiceFormComponent implements OnInit {
           this.additional = true;
         } else {
           this.additional = false;
+        }
+      });
+
+    this.serviceForm
+      .get('additionalDocSubType')
+      .valueChanges.subscribe((value: string) => {
+        switch (value) {
+          case this.subtype.DOCUMENT_COPY: {
+            this.serviceForm.patchValue({
+              additionalDocDescription: this.subtype.DOCUMENT_COPY,
+            });
+            this.additionalDocDesc.nativeElement.disabled = true;
+            break;
+          }
+          case this.subtype.PROOF_OF_ADDRESS: {
+            this.serviceForm.patchValue({
+              additionalDocDescription: this.subtype.PROOF_OF_ADDRESS,
+            });
+            this.additionalDocDesc.nativeElement.disabled = true;
+            break;
+          }
+          case this.subtype.PROOF_OF_INCOME: {
+            this.serviceForm.patchValue({
+              additionalDocDescription: this.subtype.PROOF_OF_INCOME,
+            });
+            this.additionalDocDesc.nativeElement.disabled = true;
+            break;
+          }
+          case this.subtype.OTHER: {
+            this.serviceForm.patchValue({
+              additionalDocDescription: '',
+            });
+            this.additionalDocDesc.nativeElement.disabled = false;
+            break;
+          }
         }
       });
   }

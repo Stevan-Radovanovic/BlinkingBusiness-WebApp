@@ -74,14 +74,14 @@
     <mat-form-field appearance="fill">
       <mat-label>Additional Doc Sub Type *</mat-label>
       <mat-select formControlName="additionalDocSubType">
-        <mat-option *ngFor="let sub of subtype | keyvalue" [value]="sub.key">
+        <mat-option *ngFor="let sub of subtype | keyvalue" [value]="sub.value">
           {{ sub.value }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Additional Doc Description *</mat-label>
-      <input matInput formControlName="additionalDocDescription" />
+      <input #docDesc matInput formControlName="additionalDocDescription" />
       <mat-error *ngIf="requiredValidator('additionalDocDescription')"
         >This field is required</mat-error
       >
