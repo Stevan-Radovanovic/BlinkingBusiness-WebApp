@@ -25,6 +25,7 @@ import { StepType } from 'src/app/shared/models/step-type.model';
 export class ServiceFormComponent implements OnInit {
   @Input() allowedCountries: string[] = [];
 
+  editing = false;
   savedOnce = false;
   @Output() saved = new EventEmitter<boolean>();
   prepopulated = false; //for later use
@@ -45,6 +46,22 @@ export class ServiceFormComponent implements OnInit {
 
   stepsThatRequireAttention: string[] = [];
   stepsThatRequireAttentionOptions: string[] = [];
+
+  controlNames = [
+    'serviceConfigName',
+    'baseRedirectUrl',
+    'blinkingParams',
+    'willEmbedInIframe',
+    'skippableSteps',
+    'stepsThatRequireProofOfDocuments',
+    'maxNumberOfTries',
+    'stepsThatRequireAttention',
+    'shouldAskForFaceEnroll',
+    'defaultCountry',
+    'additionalDocSubType',
+    'additionalDocDescription',
+    'initialSessionConfig',
+  ];
 
   @ViewChild('docDesc') additionalDocDesc: ElementRef<HTMLInputElement>;
 
@@ -108,6 +125,24 @@ export class ServiceFormComponent implements OnInit {
   }
 
   constructor(public dialog: MatDialog) {}
+
+  enableEditing() {
+    if (this.editing) {
+      this.disableEditing();
+      return;
+    }
+    this.controlNames.forEach((control) => {
+      this.serviceForm.get(control).enable();
+    });
+    this.editing = true;
+  }
+
+  disableEditing() {
+    this.controlNames.forEach((control) => {
+      this.serviceForm.get(control).disable();
+    });
+    this.editing = false;
+  }
 
   requiredValidator(controlName: string) {
     return (
@@ -183,12 +218,12 @@ export class ServiceFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.skippableSteps = ['Account Number', 'Contact Data'];
-    this.stepsThatRequireAttention = ['Account Number', 'Address'];
+    this.skippableSteps = ['Account number', 'Contact data'];
+    this.stepsThatRequireAttention = ['Account number', 'Address'];
     this.stepsThatRequireProof = [
-      'Account Number',
+      'Account number',
       'Address',
-      'Additional Document',
+      'Additional document',
     ];
 
     this.initServiceForm();
@@ -206,6 +241,8 @@ export class ServiceFormComponent implements OnInit {
         this.skippableStepOptions = [];
         this.stepsThatRequireAttentionOptions = [];
         this.stepsThatRequireProofOptions = [];
+
+        if (!value) return;
 
         value.forEach((step) => {
           if (this.skippableSteps.includes(step)) {

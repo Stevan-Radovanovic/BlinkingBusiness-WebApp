@@ -213,6 +213,17 @@
   </div>
   <div class="flex-div">
     <button
+      class="edit-button"
+      mat-raised-button
+      color="warn"
+      type="button"
+      (click)="enableEditing()"
+    >
+      <mat-icon *ngIf="!editing">edit</mat-icon>
+      <mat-icon *ngIf="editing">close</mat-icon>
+      {{ editing == true ? "Cancel" : "Edit Service Config" }}
+    </button>
+    <button
       color="warn"
       mat-raised-button
       class="save-button"
@@ -220,8 +231,7 @@
       (click)="saveServiceConfig()"
     >
       <mat-icon>save</mat-icon>
-      {{ savedOnce ? "Edit" : "Save" }}
-      Service Config
+      Save Service Config
     </button>
   </div>
 </form>
