@@ -11,13 +11,14 @@ export class FormWrapComponent implements OnInit {
 
   constructor() {}
 
-  addNewServiceForm() {
-    this.serviceForms.push('serviceForm');
+  addNewServiceForm(number: number) {
+    this.serviceForms.push('serviceForm' + number);
+    console.log(this.serviceForms);
   }
 
   onDeleteService(id: number) {
-    //console.log(id);
-    //this.serviceForms.splice(id, 1);
+    console.log(id);
+    this.serviceForms.splice(id, 1);
   }
 
   ngOnInit(): void {}

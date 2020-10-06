@@ -24,7 +24,7 @@
       <button
         mat-raised-button
         color="warn"
-        (click)="addNewServiceForm()"
+        (click)="addNewServiceForm(serviceForms.length + 1)"
         [disabled]="savedServiceForms !== serviceForms.length"
       >
         <mat-icon>add</mat-icon>
