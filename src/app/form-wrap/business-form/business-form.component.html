@@ -86,6 +86,8 @@
       mat-raised-button
       color="warn"
       [disabled]="!businessForm.valid"
+      *ngIf="editing"
+      (click)="onUpdateBusiness()"
     >
       <mat-icon>update</mat-icon>
       Update Business Details

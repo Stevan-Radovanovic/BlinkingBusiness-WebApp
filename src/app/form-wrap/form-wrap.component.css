@@ -55,3 +55,7 @@ mat-icon {
 .service-header {
   font-size: 18pt;
 }
+
+mat-panel-title {
+  padding-bottom: 4px;
+}

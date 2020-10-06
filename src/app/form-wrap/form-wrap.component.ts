@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-wrap.component.css'],
 })
 export class FormWrapComponent implements OnInit {
-  serviceForms = ['serviceForm'];
+  serviceForms = [];
   savedServiceForms = 0;
+  name = '';
 
   constructor() {}
 
@@ -20,6 +21,10 @@ export class FormWrapComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  onNameChange(name: string) {
+    this.name = name;
+  }
 
   onSavedServiceForm(saved: boolean) {
     if (saved) {

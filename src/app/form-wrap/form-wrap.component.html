@@ -22,7 +22,9 @@
                 class="img-session"
                 src="../assets/logo3.png"
                 alt="Logo Placeholder"
-              /><strong>Service Details</strong>
+              /><strong
+                >Service Details <span *ngIf="name">[{{ name }}]</span></strong
+              >
             </div>
           </mat-panel-title>
           <mat-panel-description>
@@ -39,6 +41,7 @@
         </mat-expansion-panel-header>
         <app-main-service-form
           (saved)="onSavedServiceForm($event)"
+          (nameChange)="onNameChange($event)"
         ></app-main-service-form>
       </mat-expansion-panel>
     </div>
@@ -50,7 +53,7 @@
         [disabled]="savedServiceForms !== serviceForms.length"
       >
         <mat-icon>add</mat-icon>
-        Add new Service Details Section
+        Add new Service
       </button>
     </div>
   </div>

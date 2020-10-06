@@ -229,6 +229,7 @@
       class="save-button"
       [disabled]="!serviceForm.valid"
       (click)="saveServiceConfig()"
+      *ngIf="editing"
     >
       <mat-icon>save</mat-icon>
       Save Service Config

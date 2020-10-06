@@ -133,6 +133,10 @@ export class BusinessFormComponent implements OnInit {
     this.editing = false;
   }
 
+  onUpdateBusiness() {
+    this.disableEditing();
+  }
+
   ngOnInit(): void {
     this.initBusinessForm();
     this.selectedColor = '';

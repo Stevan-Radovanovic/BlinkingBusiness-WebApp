@@ -28,6 +28,7 @@ export class ServiceFormComponent implements OnInit {
   editing = false;
   savedOnce = false;
   @Output() saved = new EventEmitter<boolean>();
+  @Output() nameChange = new EventEmitter<string>();
   prepopulated = false; //for later use
 
   subtype = SubType;
@@ -245,9 +246,9 @@ export class ServiceFormComponent implements OnInit {
     this.initServiceForm();
 
     this.serviceForm
-      .get('stepsThatRequireProofOfDocuments')
-      .valueChanges.subscribe((value: string[]) => {
-        console.log(value);
+      .get('serviceConfigName')
+      .valueChanges.subscribe((value) => {
+        this.nameChange.emit(value);
       });
 
     this.serviceForm

@@ -17,13 +17,20 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class MainServiceFormComponent implements OnInit {
   serviceForm: FormGroup;
   countries: string[];
-  serviceConfigForms = ['serviceConfigForm'];
+  serviceConfigForms = [];
   editing = false;
   savedOnce = false;
   @Output() saved = new EventEmitter<boolean>();
+  @Output() nameChange = new EventEmitter<string>();
   prepopulated = false; //for later use
 
+  name = '';
+
   savedServiceConfigForms = 0;
+
+  onNameChange(name: string) {
+    this.name = name;
+  }
 
   constructor() {}
 
@@ -99,6 +106,10 @@ export class MainServiceFormComponent implements OnInit {
   ngOnInit(): void {
     this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
     this.initServiceForm();
+
+    this.serviceForm.get('serviceName').valueChanges.subscribe((value) => {
+      this.nameChange.emit(value);
+    });
   }
 
   updateServiceDetails() {
