@@ -66,7 +66,8 @@ export class MainServiceFormComponent implements OnInit {
 
   deleteServiceConfigForm(id: number) {
     this.serviceConfigForms.splice(id, 1);
-    this.savedServiceConfigForms--;
+    console.log(this.savedServiceConfigForms);
+    console.log(this.serviceConfigForms.length);
   }
 
   enableEditing() {

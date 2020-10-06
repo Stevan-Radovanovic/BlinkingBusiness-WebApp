@@ -242,7 +242,6 @@ export class ServiceFormComponent implements OnInit {
             value.splice(index2, 1);
           }
 
-          console.log('HEY' + value);
           this.serviceForm.patchValue({
             initialSessionConfig: value,
           });
