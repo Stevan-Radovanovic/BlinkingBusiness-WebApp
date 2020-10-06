@@ -63,8 +63,8 @@ export class MainServiceFormComponent implements OnInit {
     });
   }
 
-  addServiceConfigForm() {
-    this.serviceConfigForms.push('serviceConfigForm');
+  addServiceConfigForm(number) {
+    this.serviceConfigForms.push('serviceConfigForm' + number);
   }
 
   onDeleteService() {
@@ -73,8 +73,6 @@ export class MainServiceFormComponent implements OnInit {
 
   deleteServiceConfigForm(id: number) {
     this.serviceConfigForms.splice(id, 1);
-    console.log(this.savedServiceConfigForms);
-    console.log(this.serviceConfigForms.length);
   }
 
   enableEditing() {

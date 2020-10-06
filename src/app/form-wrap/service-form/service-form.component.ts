@@ -25,6 +25,7 @@ export class ServiceFormComponent implements OnInit {
   editing = false;
   savedOnce = false;
   @Output() saved = new EventEmitter<boolean>();
+  @Output() deleting = new EventEmitter<number>();
   prepopulated = false; //for later use
 
   subtype = SubType;
@@ -35,6 +36,7 @@ export class ServiceFormComponent implements OnInit {
   disableAdditionalDocs = true;
   showError = false;
   name = '';
+  index: number;
 
   skippableSteps: string[] = [];
   skippableStepOptions: string[] = [];
@@ -62,6 +64,10 @@ export class ServiceFormComponent implements OnInit {
   ];
 
   @ViewChild('docDesc') additionalDocDesc: ElementRef<HTMLInputElement>;
+
+  onDeleteService() {
+    this.deleting.emit(this.index);
+  }
 
   initServiceForm() {
     this.serviceForm = new FormGroup({
@@ -196,6 +202,7 @@ export class ServiceFormComponent implements OnInit {
       this.savedOnce = true;
       this.saved.emit(true);
     }
+    this.disableEditing();
   }
 
   ngOnInit(): void {

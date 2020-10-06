@@ -249,6 +249,7 @@
         color="warn"
         class="delete-button"
         *ngIf="editing"
+        (click)="onDeleteService()"
         mat-raised-button
       >
         <mat-icon>delete</mat-icon> Delete Service Config
