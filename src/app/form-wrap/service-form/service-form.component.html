@@ -18,8 +18,8 @@
       >Must be a valid URL</mat-error
     >
   </mat-form-field>
-  <div class="columns redirect-div" style="margin-bottom: 0px">
-    <div class="column is-7">
+  <div class="redirect-div">
+    <div style="width: 60%">
       <mat-form-field appearance="fill">
         <mat-label>Blinking Params *</mat-label>
         <mat-select formControlName="blinkingParams" multiple>
@@ -33,7 +33,7 @@
         >
       </mat-form-field>
     </div>
-    <div class="column is-5">
+    <div style="width: 35%">
       <mat-form-field appearance="fill">
         <mat-label>Embed in IFrame? *</mat-label>
         <mat-select formControlName="willEmbedInIframe">
@@ -46,7 +46,6 @@
       </mat-form-field>
     </div>
   </div>
-
   <mat-divider class="divider"></mat-divider>
   <mat-form-field appearance="fill" class="initial-session-field">
     <mat-label>Initial Session Config *</mat-label>
@@ -159,8 +158,8 @@
     </mat-select>
   </mat-form-field>
   <mat-divider class="divider"></mat-divider>
-  <div class="columns separator-div redirect-div">
-    <div class="column is-4">
+  <div class="redirect-div top-margin">
+    <div style="width: 30%">
       <mat-form-field appearance="fill">
         <mat-label>Max No. of Tries *</mat-label>
         <input type="number" matInput formControlName="maxNumberOfTries" />
@@ -169,7 +168,7 @@
         >
       </mat-form-field>
     </div>
-    <div class="column is-4">
+    <div style="width: 30%">
       <mat-form-field appearance="fill">
         <mat-label>Default Country *</mat-label>
         <mat-select formControlName="defaultCountry">
@@ -185,7 +184,7 @@
         </mat-error>
       </mat-form-field>
     </div>
-    <div class="column is-4">
+    <div style="width: 30%">
       <mat-form-field appearance="fill">
         <mat-label>Face Enroll? *</mat-label>
         <mat-select formControlName="shouldAskForFaceEnroll">

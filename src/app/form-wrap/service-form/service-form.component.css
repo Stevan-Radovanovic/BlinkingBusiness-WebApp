@@ -18,6 +18,8 @@
 
 .divider {
   border: 1px solid #ccc;
+  margin-left: -25px;
+  margin-right: -25px;
 }
 
 .title-redirect {
@@ -26,9 +28,14 @@
 }
 
 .redirect-div {
-  margin-right: 0px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
+.top-margin {
+  margin-top: 16px;
+}
 .initial-session-field {
   padding-top: 14px;
 }
