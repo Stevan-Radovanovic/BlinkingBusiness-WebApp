@@ -1,4 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -11,6 +19,9 @@ export class MainServiceFormComponent implements OnInit {
   countries: string[];
   serviceConfigForms = ['serviceConfigForm'];
   editing = false;
+  savedOnce = false;
+  @Output() saved = new EventEmitter<boolean>();
+  prepopulated = false; //for later use
 
   constructor() {}
 
@@ -84,5 +95,13 @@ export class MainServiceFormComponent implements OnInit {
   ngOnInit(): void {
     this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
     this.initServiceForm();
+  }
+
+  updateServiceDetails() {
+    if (!this.savedOnce) {
+      this.savedOnce = true;
+      this.saved.emit(true);
+    }
+    this.disableEditing();
   }
 }

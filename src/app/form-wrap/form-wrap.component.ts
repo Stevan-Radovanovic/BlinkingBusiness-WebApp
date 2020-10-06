@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormWrapComponent implements OnInit {
   serviceForms = ['serviceForm'];
+  savedServiceForms = 0;
 
   constructor() {}
 
@@ -19,4 +20,10 @@ export class FormWrapComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  onSavedServiceForm(saved: boolean) {
+    if (saved) {
+      this.savedServiceForms++;
+    }
+  }
 }

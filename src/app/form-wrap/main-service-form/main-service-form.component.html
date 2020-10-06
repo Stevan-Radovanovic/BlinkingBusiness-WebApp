@@ -88,6 +88,7 @@
     class="update-button"
     color="warn"
     [disabled]="!serviceForm.valid"
+    (click)="updateServiceDetails()"
   >
     <mat-icon>update</mat-icon>
     Update Service Details

@@ -37,11 +37,18 @@
             </div>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <app-main-service-form></app-main-service-form>
+        <app-main-service-form
+          (saved)="onSavedServiceForm($event)"
+        ></app-main-service-form>
       </mat-expansion-panel>
     </div>
     <div class="add-button">
-      <button mat-raised-button color="warn" (click)="addNewServiceForm()">
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="addNewServiceForm()"
+        [disabled]="savedServiceForms !== serviceForms.length"
+      >
         <mat-icon>add</mat-icon>
         Add new Service Details Section
       </button>
