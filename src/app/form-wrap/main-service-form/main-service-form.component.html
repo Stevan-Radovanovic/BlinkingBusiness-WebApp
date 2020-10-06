@@ -114,11 +114,17 @@
     </mat-expansion-panel-header>
     <app-service-form
       [allowedCountries]="serviceForm.get('allowedCountries').value"
+      (saved)="onSavedServiceForm($event)"
     ></app-service-form>
   </mat-expansion-panel>
 </div>
 <div class="add-button">
-  <button mat-raised-button color="warn" (click)="addServiceConfigForm()">
+  <button
+    mat-raised-button
+    color="warn"
+    (click)="addServiceConfigForm()"
+    [disabled]="savedServiceConfigForms !== serviceConfigForms.length"
+  >
     <mat-icon>add</mat-icon> Add new Service Config
   </button>
 </div>

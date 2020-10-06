@@ -23,6 +23,8 @@ export class MainServiceFormComponent implements OnInit {
   @Output() saved = new EventEmitter<boolean>();
   prepopulated = false; //for later use
 
+  savedServiceConfigForms = 0;
+
   constructor() {}
 
   controlNames = [
@@ -64,6 +66,7 @@ export class MainServiceFormComponent implements OnInit {
 
   deleteServiceConfigForm(id: number) {
     this.serviceConfigForms.splice(id, 1);
+    this.savedServiceConfigForms--;
   }
 
   enableEditing() {
@@ -103,5 +106,11 @@ export class MainServiceFormComponent implements OnInit {
       this.saved.emit(true);
     }
     this.disableEditing();
+  }
+
+  onSavedServiceForm(saved: boolean) {
+    if (saved) {
+      this.savedServiceConfigForms++;
+    }
   }
 }

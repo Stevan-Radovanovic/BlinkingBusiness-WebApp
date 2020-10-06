@@ -1,4 +1,12 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ServiceFormObject } from 'src/app/shared/models/service-form-object.model';
@@ -16,6 +24,10 @@ import { StepType } from 'src/app/shared/models/step-type.model';
 })
 export class ServiceFormComponent implements OnInit {
   @Input() allowedCountries: string[] = [];
+
+  savedOnce = false;
+  @Output() saved = new EventEmitter<boolean>();
+  prepopulated = false; //for later use
 
   subtype = SubType;
   steptype = StepType;
@@ -161,6 +173,13 @@ export class ServiceFormComponent implements OnInit {
       this.serviceForm.get(controlName).hasError('pattern') &&
       this.serviceForm.get(controlName).touched
     );
+  }
+
+  saveServiceConfig() {
+    if (!this.savedOnce) {
+      this.savedOnce = true;
+      this.saved.emit(true);
+    }
   }
 
   ngOnInit(): void {

@@ -17,6 +17,7 @@ export class FormWrapComponent implements OnInit {
 
   deleteServiceForm(id: number) {
     this.serviceForms.splice(id, 1);
+    this.savedServiceForms--;
   }
 
   ngOnInit(): void {}
