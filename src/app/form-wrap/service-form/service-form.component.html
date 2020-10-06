@@ -173,7 +173,10 @@
       <mat-form-field appearance="fill">
         <mat-label>Default Country *</mat-label>
         <mat-select formControlName="defaultCountry">
-          <mat-option *ngFor="let country of countries" [value]="country">
+          <mat-option
+            *ngFor="let country of allowedCountries"
+            [value]="country"
+          >
             {{ country }}
           </mat-option>
         </mat-select>

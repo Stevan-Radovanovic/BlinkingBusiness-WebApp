@@ -15,11 +15,12 @@ import { StepType } from 'src/app/shared/models/step-type.model';
   styleUrls: ['./service-form.component.css'],
 })
 export class ServiceFormComponent implements OnInit {
+  @Input() allowedCountries: string[] = [];
+
   subtype = SubType;
   steptype = StepType;
   additionalDocArray: AdditionalDoc[] = [];
   additional = false;
-  countries: string[];
   serviceForm: FormGroup;
   disableAdditionalDocs = true;
   showError = false;
@@ -170,7 +171,6 @@ export class ServiceFormComponent implements OnInit {
       'Address',
       'Additional Document',
     ];
-    this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
 
     this.initServiceForm();
 

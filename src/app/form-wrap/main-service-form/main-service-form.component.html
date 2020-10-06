@@ -31,17 +31,6 @@
     </div>
   </div>
   <mat-form-field appearance="fill" class="mat-form-field-country">
-    <mat-label>Default Country *</mat-label>
-    <mat-select formControlName="defaultCountry">
-      <mat-option *ngFor="let country of countries" [value]="country">
-        {{ country }}
-      </mat-option>
-    </mat-select>
-    <mat-error *ngIf="requiredValidator('defaultCountry')"
-      >This field is required
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
     <mat-label>Allowed Countries *</mat-label>
     <mat-select formControlName="allowedCountries" multiple>
       <mat-option *ngFor="let country of countries" [value]="country">
@@ -52,6 +41,21 @@
       >This field is required</mat-error
     >
   </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Default Country *</mat-label>
+    <mat-select formControlName="defaultCountry">
+      <mat-option
+        *ngFor="let country of serviceForm.get('allowedCountries').value"
+        [value]="country"
+      >
+        {{ country }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="requiredValidator('defaultCountry')"
+      >This field is required
+    </mat-error>
+  </mat-form-field>
+
   <mat-form-field appearance="fill">
     <mat-label>Session Validity *</mat-label>
     <input
@@ -104,7 +108,9 @@
       </div>
     </mat-card-title>
     <mat-card-content>
-      <app-service-form></app-service-form>
+      <app-service-form
+        [allowedCountries]="serviceForm.get('allowedCountries').value"
+      ></app-service-form>
     </mat-card-content>
   </mat-card>
 </div>

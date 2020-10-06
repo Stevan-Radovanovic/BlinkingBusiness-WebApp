@@ -11,12 +11,17 @@ body {
 }
 
 form mat-form-field {
-  width: 98%;
+  width: 100%;
   margin-bottom: 3px;
 }
 
 .mat-card {
   margin: auto;
+  width: 90%;
+}
+
+.mat-expansion-panel {
+  margin: auto !important;
   width: 90%;
 }
 

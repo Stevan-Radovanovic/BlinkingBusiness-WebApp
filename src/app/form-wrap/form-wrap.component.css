@@ -9,6 +9,10 @@ mat-card-title {
   align-items: center;
 }
 
+mat-panel-description {
+  justify-content: right;
+}
+
 .img-business {
   width: 40px;
   height: 40px;
@@ -26,7 +30,7 @@ mat-card-title {
 
 .sessionCard {
   border: 2px solid #ccc;
-  margin-bottom: 4px;
+  margin-bottom: 5px !important;
 }
 
 .add-button {
@@ -46,4 +50,8 @@ mat-icon {
 .form-wrapper {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.service-header {
+  font-size: 18pt;
 }
