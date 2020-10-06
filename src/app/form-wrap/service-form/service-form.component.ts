@@ -67,27 +67,43 @@ export class ServiceFormComponent implements OnInit {
 
   initServiceForm() {
     this.serviceForm = new FormGroup({
-      serviceConfigName: new FormControl('', Validators.required),
-      baseRedirectUrl: new FormControl('', [
+      serviceConfigName: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
+      baseRedirectUrl: new FormControl({ value: '', disabled: true }, [
         Validators.required,
         Validators.pattern(
           'https?://(?:www.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9].[^s]{2,}|www.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9].[^s]{2,}|https?://(?:www.|(?!www))[a-zA-Z0-9]+.[^s]{2,}|www.[a-zA-Z0-9]+.[^s]{2,}'
         ),
       ]),
-      blinkingParams: new FormControl([], [Validators.required]),
-      willEmbedInIframe: new FormControl(null, [Validators.required]),
-      skippableSteps: new FormControl([]),
-      stepsThatRequireProofOfDocuments: new FormControl([]),
-      initialSessionConfig: new FormControl('', [
+      blinkingParams: new FormControl({ value: [], disabled: true }, [
+        Validators.required,
+      ]),
+      willEmbedInIframe: new FormControl({ value: null, disabled: true }, [
+        Validators.required,
+      ]),
+      skippableSteps: new FormControl({ value: [], disabled: true }),
+      stepsThatRequireProofOfDocuments: new FormControl({
+        value: [],
+        disabled: true,
+      }),
+      initialSessionConfig: new FormControl({ value: '', disabled: true }, [
         Validators.required,
         frontBack,
       ]),
-      stepsThatRequireAttention: new FormControl([]),
-      maxNumberOfTries: new FormControl(null, [Validators.required]),
-      shouldAskForFaceEnroll: new FormControl(null, [Validators.required]),
-      defaultCountry: new FormControl('', [Validators.required]),
-      additionalDocSubType: new FormControl(''),
-      additionalDocDescription: new FormControl(''),
+      stepsThatRequireAttention: new FormControl({ value: [], disabled: true }),
+      maxNumberOfTries: new FormControl({ value: null, disabled: true }, [
+        Validators.required,
+      ]),
+      shouldAskForFaceEnroll: new FormControl({ value: null, disabled: true }, [
+        Validators.required,
+      ]),
+      defaultCountry: new FormControl({ value: '', disabled: true }, [
+        Validators.required,
+      ]),
+      additionalDocSubType: new FormControl({ value: '', disabled: true }),
+      additionalDocDescription: new FormControl({ value: '', disabled: true }),
     });
   }
 

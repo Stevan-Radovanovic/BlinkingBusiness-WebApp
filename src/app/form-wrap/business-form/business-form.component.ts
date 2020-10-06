@@ -98,13 +98,19 @@ export class BusinessFormComponent implements OnInit {
 
   initBusinessForm() {
     this.businessForm = new FormGroup({
-      businessName: new FormControl('', [Validators.required]),
-      color: new FormControl('', [
+      businessName: new FormControl({ value: '', disabled: true }, [
+        Validators.required,
+      ]),
+      color: new FormControl({ value: '', disabled: true }, [
         Validators.required,
         Validators.pattern('^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$'),
       ]),
-      favicon: new FormControl('', [Validators.required]),
-      logo: new FormControl('', [Validators.required]),
+      favicon: new FormControl({ value: '', disabled: true }, [
+        Validators.required,
+      ]),
+      logo: new FormControl({ value: '', disabled: true }, [
+        Validators.required,
+      ]),
     });
   }
 
