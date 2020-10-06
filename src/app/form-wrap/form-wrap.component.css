@@ -18,19 +18,9 @@ mat-panel-description {
   height: 40px;
 }
 
-.img-session {
-  width: 27px;
-  height: 27px;
-}
-
 .businessCard {
   border: 2px solid #ccc;
   margin-bottom: 9px;
-}
-
-.sessionCard {
-  border: 2px solid #ccc;
-  margin-bottom: 5px !important;
 }
 
 .add-button {
@@ -50,10 +40,6 @@ mat-icon {
 .form-wrapper {
   margin-top: 20px;
   margin-bottom: 20px;
-}
-
-.service-header {
-  font-size: 18pt;
 }
 
 mat-panel-title {

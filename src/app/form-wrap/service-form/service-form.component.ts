@@ -28,7 +28,6 @@ export class ServiceFormComponent implements OnInit {
   editing = false;
   savedOnce = false;
   @Output() saved = new EventEmitter<boolean>();
-  @Output() nameChange = new EventEmitter<string>();
   prepopulated = false; //for later use
 
   subtype = SubType;
@@ -38,6 +37,7 @@ export class ServiceFormComponent implements OnInit {
   serviceForm: FormGroup;
   disableAdditionalDocs = true;
   showError = false;
+  name = '';
 
   skippableSteps: string[] = [];
   skippableStepOptions: string[] = [];
@@ -248,7 +248,7 @@ export class ServiceFormComponent implements OnInit {
     this.serviceForm
       .get('serviceConfigName')
       .valueChanges.subscribe((value) => {
-        this.nameChange.emit(value);
+        this.name = value;
       });
 
     this.serviceForm

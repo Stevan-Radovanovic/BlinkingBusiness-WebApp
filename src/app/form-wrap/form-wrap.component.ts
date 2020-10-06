@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class FormWrapComponent implements OnInit {
   serviceForms = [];
   savedServiceForms = 0;
-  name = '';
 
   constructor() {}
 
@@ -16,15 +15,12 @@ export class FormWrapComponent implements OnInit {
     this.serviceForms.push('serviceForm');
   }
 
-  deleteServiceForm(id: number) {
-    this.serviceForms.splice(id, 1);
+  onDeleteService(id: number) {
+    //console.log(id);
+    //this.serviceForms.splice(id, 1);
   }
 
   ngOnInit(): void {}
-
-  onNameChange(name: string) {
-    this.name = name;
-  }
 
   onSavedServiceForm(saved: boolean) {
     if (saved) {

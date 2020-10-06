@@ -19,18 +19,14 @@ export class MainServiceFormComponent implements OnInit {
   countries: string[];
   serviceConfigForms = [];
   editing = false;
+  name = '';
   savedOnce = false;
+  @Input() index: number;
   @Output() saved = new EventEmitter<boolean>();
-  @Output() nameChange = new EventEmitter<string>();
+  @Output() deleting = new EventEmitter<number>();
   prepopulated = false; //for later use
 
-  name = '';
-
   savedServiceConfigForms = 0;
-
-  onNameChange(name: string) {
-    this.name = name;
-  }
 
   constructor() {}
 
@@ -71,6 +67,10 @@ export class MainServiceFormComponent implements OnInit {
     this.serviceConfigForms.push('serviceConfigForm');
   }
 
+  onDeleteService() {
+    this.deleting.emit(this.index);
+  }
+
   deleteServiceConfigForm(id: number) {
     this.serviceConfigForms.splice(id, 1);
     console.log(this.savedServiceConfigForms);
@@ -108,7 +108,7 @@ export class MainServiceFormComponent implements OnInit {
     this.initServiceForm();
 
     this.serviceForm.get('serviceName').valueChanges.subscribe((value) => {
-      this.nameChange.emit(value);
+      this.name = value;
     });
   }
 

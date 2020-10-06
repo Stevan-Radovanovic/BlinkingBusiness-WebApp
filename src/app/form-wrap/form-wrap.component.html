@@ -14,36 +14,11 @@
       </mat-card-content>
     </mat-card>
     <div *ngFor="let form of serviceForms; let i = index">
-      <mat-expansion-panel class="sessionCard">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <div class="service-header">
-              <img
-                class="img-session"
-                src="../assets/logo3.png"
-                alt="Logo Placeholder"
-              /><strong
-                >Service Details <span *ngIf="name">[{{ name }}]</span></strong
-              >
-            </div>
-          </mat-panel-title>
-          <mat-panel-description>
-            <div *ngIf="serviceForms.length != 1">
-              <button
-                (click)="deleteServiceForm(i)"
-                color="warn"
-                mat-raised-button
-              >
-                <mat-icon>delete</mat-icon>
-              </button>
-            </div>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <app-main-service-form
-          (saved)="onSavedServiceForm($event)"
-          (nameChange)="onNameChange($event)"
-        ></app-main-service-form>
-      </mat-expansion-panel>
+      <app-main-service-form
+        (saved)="onSavedServiceForm($event)"
+        (deleting)="onDeleteService($event)"
+        [index]="i"
+      ></app-main-service-form>
     </div>
     <div class="add-button">
       <button

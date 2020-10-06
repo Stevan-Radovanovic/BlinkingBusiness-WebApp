@@ -5,11 +5,6 @@
   margin-right: 12px;
 }
 
-.session-card {
-  border: 2px solid #ccc;
-  margin-top: 5px !important;
-}
-
 mat-panel-title {
   align-items: center;
 }
@@ -68,15 +63,24 @@ mat-card-title {
   margin-right: -25px;
 }
 
-.service-config-title {
-  font-weight: bold;
-  font-size: 16pt;
-}
-
 mat-panel-description {
   justify-content: right;
 }
 
+.service-header {
+  font-size: 18pt;
+}
+
 mat-panel-title {
-  padding-bottom: 2px;
+  padding-bottom: 4px;
+}
+
+.img-session {
+  width: 27px;
+  height: 27px;
+}
+
+.sessionCard {
+  border: 2px solid #ccc;
+  margin-bottom: 5px !important;
 }
