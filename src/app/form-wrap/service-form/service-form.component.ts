@@ -207,6 +207,27 @@ export class ServiceFormComponent implements OnInit {
           this.checkValidityProofOfDocs();
           this.additionalDocArray = [];
         }
+
+        if (
+          !value.includes('Document type') &&
+          !value.includes('Document type with country') &&
+          (value.includes('Front side') || value.includes('Back side'))
+        ) {
+          const index1 = value.indexOf('Front side');
+          if (index1 !== -1) {
+            value.splice(index1, 1);
+          }
+
+          const index2 = value.indexOf('Back side');
+          if (index2 !== -1) {
+            value.splice(index2, 1);
+          }
+
+          console.log('HEY' + value);
+          this.serviceForm.patchValue({
+            initialSessionConfig: value,
+          });
+        }
       });
 
     this.serviceForm

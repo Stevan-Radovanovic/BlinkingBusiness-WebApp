@@ -60,8 +60,22 @@
         value="Document type with country"
         >Document with Country</mat-option
       >
-      <mat-option value="Front side">Front Side</mat-option>
-      <mat-option value="Back side">Back Side</mat-option>
+      <mat-option
+        [disabled]="
+          !documentDisabler('Document type') &&
+          !documentDisabler('Document type with country')
+        "
+        value="Front side"
+        >Front Side</mat-option
+      >
+      <mat-option
+        [disabled]="
+          !documentDisabler('Document type') &&
+          !documentDisabler('Document type with country')
+        "
+        value="Back side"
+        >Back Side</mat-option
+      >
       <mat-option value="Address">Address</mat-option>
       <mat-option value="Face">Face</mat-option>
       <mat-option value="Account number">Account Number</mat-option>
@@ -73,8 +87,8 @@
       >This field is required</mat-error
     >
     <mat-error *ngIf="frontBackValidator()"
-      >Back Side and Front Side should either be selected together, or not
-      selected at all</mat-error
+      >When either Document or Document with country are selected, both Front
+      side and Back side must be selected</mat-error
     >
   </mat-form-field>
   <div *ngIf="additional">

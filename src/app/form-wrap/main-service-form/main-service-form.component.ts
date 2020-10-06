@@ -8,7 +8,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class MainServiceFormComponent implements OnInit {
   serviceForm: FormGroup;
-
   countries: string[];
   serviceConfigForms = ['serviceConfigForm'];
   editing = false;
