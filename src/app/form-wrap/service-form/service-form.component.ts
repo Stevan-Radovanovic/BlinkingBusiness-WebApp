@@ -9,9 +9,6 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ServiceFormObject } from 'src/app/shared/models/service-form-object.model';
-import { FormSubmitComponent } from '../form-submit/form-submit.component';
-import { v4 as uuidv4 } from 'uuid';
 import { frontBack } from 'src/app/shared/validators/front-back.validator';
 import { AdditionalDoc } from 'src/app/shared/models/additional-doc.model';
 import { SubType } from 'src/app/shared/models/sub-type.model';
@@ -106,39 +103,6 @@ export class ServiceFormComponent implements OnInit {
       additionalDocSubType: new FormControl({ value: '', disabled: true }),
       additionalDocDescription: new FormControl({ value: '', disabled: true }),
     });
-  }
-
-  submit() {
-    const formObject: ServiceFormObject = {
-      baseRedirectUrl: this.serviceForm.controls.baseRedirectUrl.value,
-      blinkingParams: this.serviceForm.controls.blinkingParams.value,
-      willEmbedInIframe: this.serviceForm.controls.willEmbedInIframe.value,
-      serviceConfiguration: {
-        skippableSteps: this.serviceForm.controls.skippableSteps.value,
-        stepsThatRequireAttention: this.serviceForm.controls
-          .stepsThatRequireAttention.value,
-        stepsThatRequireProofOfDocuments: this.serviceForm.controls
-          .stepsThatRequireProofOfDocuments.value,
-        initialSessionConfig: this.serviceForm.controls.initialSessionConfig
-          .value,
-      },
-    };
-
-    const dialogRef = this.dialog.open(FormSubmitComponent, {
-      width: '500px',
-      data: { formObject, id: uuidv4() },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      this.serviceForm.reset({
-        willEmbedInIframe: false,
-        skippableSteps: [],
-        stepsThatRequireProofOfDocuments: [],
-        stepsThatRequireAttention: [],
-      });
-    });
-
-    console.log(formObject);
   }
 
   constructor(public dialog: MatDialog) {}
@@ -244,6 +208,10 @@ export class ServiceFormComponent implements OnInit {
     ];
 
     this.initServiceForm();
+
+    if (this.serviceForm.get('serviceConfigName').value === '') {
+      this.enableEditing();
+    }
 
     this.serviceForm
       .get('serviceConfigName')

@@ -107,6 +107,10 @@ export class MainServiceFormComponent implements OnInit {
     this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
     this.initServiceForm();
 
+    if (this.serviceForm.get('serviceName').value === null) {
+      this.enableEditing();
+    }
+
     this.serviceForm.get('serviceName').valueChanges.subscribe((value) => {
       this.name = value;
     });

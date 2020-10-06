@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ServiceFormObject } from 'src/app/shared/models/service-form-object.model';
+import { ServiceObject } from 'src/app/shared/models/service-object.model';
 
 @Component({
   selector: 'app-form-submit',
@@ -11,7 +11,7 @@ export class FormSubmitComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<FormSubmitComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public data: { formObject: ServiceFormObject; id: string }
+    public data: { formObject: ServiceObject; id: string }
   ) {
     console.log(data);
   }
