@@ -13,42 +13,17 @@ import { BusinessObject } from '../shared/models/business-object.model';
 })
 export class FormWrapComponent implements OnInit {
   serviceForms: ServiceObject[] = [];
+
   businessObject: BusinessObject = {
     businessName: '',
     primaryColor: '',
     businessUrl: '',
   };
+
   expandServicePanels = false;
   savedServiceForms = 0;
 
   constructor() {}
-
-  addNewServiceForm() {
-    const newService = {
-      serviceId: uuidv4(),
-      serviceName: '',
-      shouldAskForFaceEnroll: true,
-      defaultCountry: null,
-      allowedCountries: [],
-      maxNumberOfTries: null,
-      sessionValidity: null,
-    };
-    this.serviceForms.push(newService);
-    this.expandServicePanels = true;
-    console.log(this.serviceForms);
-  }
-
-  onDeleteService(id: string) {
-    console.log(id);
-
-    console.log(
-      (this.serviceForms = this.serviceForms.filter((elem) => {
-        return elem.serviceId !== id;
-      }))
-    );
-
-    this.serviceForms;
-  }
 
   ngOnInit(): void {
     this.businessObject = {
@@ -112,6 +87,31 @@ export class FormWrapComponent implements OnInit {
         sessionValidity: 121,
       },
     ];
+  }
+
+  addNewServiceForm() {
+    const newService = {
+      serviceId: uuidv4(),
+      serviceName: '',
+      shouldAskForFaceEnroll: true,
+      defaultCountry: null,
+      allowedCountries: [],
+      maxNumberOfTries: null,
+      sessionValidity: null,
+    };
+    this.serviceForms.push(newService);
+    this.expandServicePanels = true;
+    console.log(this.serviceForms);
+  }
+
+  onDeleteService(id: string) {
+    console.log(id);
+
+    this.serviceForms = this.serviceForms.filter((elem) => {
+      return elem.serviceId !== id;
+    });
+
+    this.serviceForms;
   }
 
   onSavedServiceForm(saved: boolean) {

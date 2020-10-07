@@ -22,15 +22,14 @@ import { ServiceConfig } from 'src/app/shared/models/service-config.model';
 })
 export class ServiceFormComponent implements OnInit {
   @Input() allowedCountries: string[] = [];
-
-  editing = false;
-  savedOnce = false;
   @Output() saved = new EventEmitter<boolean>();
   @Output() deleting = new EventEmitter<string>();
   @Input() configObject: ServiceConfig;
   @Input() expand: boolean;
-  prepopulated = false; //for later use
+  @ViewChild('docDesc') additionalDocDesc: ElementRef<HTMLInputElement>;
 
+  editing = false;
+  savedOnce = false;
   subtype = SubType;
   steptype = StepType;
   additionalDocArray: AdditionalDoc[] = [];
@@ -65,7 +64,102 @@ export class ServiceFormComponent implements OnInit {
     'initialSessionConfig',
   ];
 
-  @ViewChild('docDesc') additionalDocDesc: ElementRef<HTMLInputElement>;
+  ngOnInit(): void {
+    this.name = this.configObject.serviceConfigName;
+    this.skippableSteps = ['Account number', 'Contact data'];
+    this.stepsThatRequireAttention = ['Account number', 'Address'];
+    this.stepsThatRequireProof = ['Account number', 'Address'];
+
+    this.initServiceForm();
+    this.changeStepOptions(this.configObject.initialSessionConfig);
+
+    if (
+      this.configObject.additionalDocuments &&
+      this.configObject.additionalDocuments.length > 0
+    ) {
+      this.additionalDocArray = this.configObject.additionalDocuments;
+      this.disableAdditionalDocs = false;
+    }
+
+    if (this.serviceForm.get('serviceConfigName').value === '') {
+      this.enableEditing();
+    }
+
+    this.serviceForm
+      .get('serviceConfigName')
+      .valueChanges.subscribe((value) => {
+        this.name = value;
+      });
+
+    this.serviceForm
+      .get('initialSessionConfig')
+      .valueChanges.subscribe((value: string[]) => {
+        this.changeStepOptions(value);
+
+        if (value.includes('Additional document')) {
+          this.additional = true;
+        } else {
+          this.additional = false;
+          this.checkValidityProofOfDocs();
+          this.additionalDocArray = [];
+        }
+
+        if (
+          !value.includes('Document type') &&
+          !value.includes('Document type with country') &&
+          (value.includes('Front side') || value.includes('Back side'))
+        ) {
+          const index1 = value.indexOf('Front side');
+          if (index1 !== -1) {
+            value.splice(index1, 1);
+          }
+
+          const index2 = value.indexOf('Back side');
+          if (index2 !== -1) {
+            value.splice(index2, 1);
+          }
+
+          this.serviceForm.patchValue({
+            initialSessionConfig: value,
+          });
+        }
+      });
+
+    this.serviceForm
+      .get('additionalDocSubType')
+      .valueChanges.subscribe((value: string) => {
+        switch (value) {
+          case this.subtype.DOCUMENT_COPY: {
+            this.serviceForm.patchValue({
+              additionalDocDescription: this.subtype.DOCUMENT_COPY,
+            });
+            this.additionalDocDesc.nativeElement.disabled = true;
+            break;
+          }
+          case this.subtype.PROOF_OF_ADDRESS: {
+            this.serviceForm.patchValue({
+              additionalDocDescription: this.subtype.PROOF_OF_ADDRESS,
+            });
+            this.additionalDocDesc.nativeElement.disabled = true;
+            break;
+          }
+          case this.subtype.PROOF_OF_INCOME: {
+            this.serviceForm.patchValue({
+              additionalDocDescription: this.subtype.PROOF_OF_INCOME,
+            });
+            this.additionalDocDesc.nativeElement.disabled = true;
+            break;
+          }
+          case this.subtype.OTHER: {
+            this.serviceForm.patchValue({
+              additionalDocDescription: '',
+            });
+            this.additionalDocDesc.nativeElement.disabled = false;
+            break;
+          }
+        }
+      });
+  }
 
   onDeleteService() {
     this.deleting.emit(this.configObject.serviceConfigId);
@@ -247,102 +341,5 @@ export class ServiceFormComponent implements OnInit {
       this.checkValidityProofOfDocs();
       this.additionalDocArray = [];
     }
-  }
-
-  ngOnInit(): void {
-    this.name = this.configObject.serviceConfigName;
-    this.skippableSteps = ['Account number', 'Contact data'];
-    this.stepsThatRequireAttention = ['Account number', 'Address'];
-    this.stepsThatRequireProof = ['Account number', 'Address'];
-
-    this.initServiceForm();
-    this.changeStepOptions(this.configObject.initialSessionConfig);
-
-    if (
-      this.configObject.additionalDocuments &&
-      this.configObject.additionalDocuments.length > 0
-    ) {
-      this.additionalDocArray = this.configObject.additionalDocuments;
-      this.disableAdditionalDocs = false;
-    }
-
-    if (this.serviceForm.get('serviceConfigName').value === '') {
-      this.enableEditing();
-    }
-
-    this.serviceForm
-      .get('serviceConfigName')
-      .valueChanges.subscribe((value) => {
-        this.name = value;
-      });
-
-    this.serviceForm
-      .get('initialSessionConfig')
-      .valueChanges.subscribe((value: string[]) => {
-        this.changeStepOptions(value);
-
-        if (value.includes('Additional document')) {
-          this.additional = true;
-        } else {
-          this.additional = false;
-          this.checkValidityProofOfDocs();
-          this.additionalDocArray = [];
-        }
-
-        if (
-          !value.includes('Document type') &&
-          !value.includes('Document type with country') &&
-          (value.includes('Front side') || value.includes('Back side'))
-        ) {
-          const index1 = value.indexOf('Front side');
-          if (index1 !== -1) {
-            value.splice(index1, 1);
-          }
-
-          const index2 = value.indexOf('Back side');
-          if (index2 !== -1) {
-            value.splice(index2, 1);
-          }
-
-          this.serviceForm.patchValue({
-            initialSessionConfig: value,
-          });
-        }
-      });
-
-    this.serviceForm
-      .get('additionalDocSubType')
-      .valueChanges.subscribe((value: string) => {
-        switch (value) {
-          case this.subtype.DOCUMENT_COPY: {
-            this.serviceForm.patchValue({
-              additionalDocDescription: this.subtype.DOCUMENT_COPY,
-            });
-            this.additionalDocDesc.nativeElement.disabled = true;
-            break;
-          }
-          case this.subtype.PROOF_OF_ADDRESS: {
-            this.serviceForm.patchValue({
-              additionalDocDescription: this.subtype.PROOF_OF_ADDRESS,
-            });
-            this.additionalDocDesc.nativeElement.disabled = true;
-            break;
-          }
-          case this.subtype.PROOF_OF_INCOME: {
-            this.serviceForm.patchValue({
-              additionalDocDescription: this.subtype.PROOF_OF_INCOME,
-            });
-            this.additionalDocDesc.nativeElement.disabled = true;
-            break;
-          }
-          case this.subtype.OTHER: {
-            this.serviceForm.patchValue({
-              additionalDocDescription: '',
-            });
-            this.additionalDocDesc.nativeElement.disabled = false;
-            break;
-          }
-        }
-      });
   }
 }

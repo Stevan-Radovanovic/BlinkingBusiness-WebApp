@@ -13,6 +13,10 @@ export class LoginComponent implements OnInit {
 
   constructor(public authService: AuthService) {}
 
+  ngOnInit(): void {
+    this.initForm();
+  }
+
   initForm() {
     this.authForm = new FormGroup({
       userName: new FormControl('', [Validators.required]),
@@ -33,9 +37,5 @@ export class LoginComponent implements OnInit {
       this.authForm.get(controlName).hasError('required') &&
       this.authForm.get(controlName).touched
     );
-  }
-
-  ngOnInit(): void {
-    this.initForm();
   }
 }

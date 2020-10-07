@@ -27,15 +27,32 @@ export class MainServiceFormComponent implements OnInit {
   name = '';
   savedOnce = false;
   expandConfigPanels = false;
+
   @Input() expand: boolean;
   @Input() serviceObject: ServiceObject;
   @Output() saved = new EventEmitter<boolean>();
   @Output() deleting = new EventEmitter<string>();
-  prepopulated = false; //for later use
 
   savedServiceConfigForms = 0;
 
   constructor() {}
+
+  ngOnInit(): void {
+    this.serviceConfigForms = this.serviceObject.serviceConfigs;
+    this.name = this.serviceObject.serviceName;
+    console.log('Form', this.serviceObject);
+
+    this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
+    this.initServiceForm();
+
+    if (this.serviceForm.get('serviceName').value === '') {
+      this.enableEditing();
+    }
+
+    this.serviceForm.get('serviceName').valueChanges.subscribe((value) => {
+      this.name = value;
+    });
+  }
 
   controlNames = [
     'serviceName',
@@ -129,23 +146,6 @@ export class MainServiceFormComponent implements OnInit {
       this.serviceForm.get(controlName).hasError('required') &&
       this.serviceForm.get(controlName).touched
     );
-  }
-
-  ngOnInit(): void {
-    this.serviceConfigForms = this.serviceObject.serviceConfigs;
-    this.name = this.serviceObject.serviceName;
-    console.log('Form', this.serviceObject);
-
-    this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
-    this.initServiceForm();
-
-    if (this.serviceForm.get('serviceName').value === '') {
-      this.enableEditing();
-    }
-
-    this.serviceForm.get('serviceName').valueChanges.subscribe((value) => {
-      this.name = value;
-    });
   }
 
   updateServiceDetails() {

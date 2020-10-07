@@ -12,7 +12,6 @@ export class BusinessFormComponent implements OnInit {
 
   @ViewChild('favicon') favicon: ElementRef<HTMLInputElement>;
   @ViewChild('logo') logo: ElementRef;
-
   @Input() businessObject: BusinessObject;
 
   logoPath = '';
@@ -23,6 +22,30 @@ export class BusinessFormComponent implements OnInit {
   selectedColor = '';
 
   constructor() {}
+
+  ngOnInit(): void {
+    this.initBusinessForm();
+    this.selectedColor = '';
+
+    if (this.businessForm.get('businessName').value === '') {
+      this.enableEditing();
+    }
+
+    this.businessForm.get('color').valueChanges.subscribe((value) => {
+      this.selectedColor = value;
+      if (!this.businessForm.get('color').valid) {
+        this.selectedColor = '';
+      }
+    });
+
+    this.businessForm.get('favicon').valueChanges.subscribe(() => {
+      this.checkFaviconValidity();
+    });
+
+    this.businessForm.get('logo').valueChanges.subscribe(() => {
+      this.checkLogoValidity();
+    });
+  }
 
   requiredValidator(controlName: string) {
     return (
@@ -152,29 +175,5 @@ export class BusinessFormComponent implements OnInit {
 
   onUpdateBusiness() {
     this.disableEditing();
-  }
-
-  ngOnInit(): void {
-    this.initBusinessForm();
-    this.selectedColor = '';
-
-    if (this.businessForm.get('businessName').value === '') {
-      this.enableEditing();
-    }
-
-    this.businessForm.get('color').valueChanges.subscribe((value) => {
-      this.selectedColor = value;
-      if (!this.businessForm.get('color').valid) {
-        this.selectedColor = '';
-      }
-    });
-
-    this.businessForm.get('favicon').valueChanges.subscribe(() => {
-      this.checkFaviconValidity();
-    });
-
-    this.businessForm.get('logo').valueChanges.subscribe(() => {
-      this.checkLogoValidity();
-    });
   }
 }
