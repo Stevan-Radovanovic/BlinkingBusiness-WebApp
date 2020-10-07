@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
 import { AuthData } from '../shared/models/auth-data.model';
+import { CallBrokerService } from '../shared/services/call-broker.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +12,10 @@ import { AuthData } from '../shared/models/auth-data.model';
 export class LoginComponent implements OnInit {
   authForm: FormGroup;
 
-  constructor(public authService: AuthService) {}
+  constructor(
+    public authService: AuthService,
+    public callBroker: CallBrokerService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -25,11 +29,11 @@ export class LoginComponent implements OnInit {
   }
 
   logIn() {
-    const authData: AuthData = {
-      userName: this.authForm.controls.userName.value,
-      password: this.authForm.controls.password.value,
-    };
-    this.authService.logIn(authData);
+    const username = this.authForm.get('userName').value;
+    const password = this.authForm.get('password').value;
+    this.callBroker.login(username, password).subscribe((response) => {
+      console.log(response);
+    });
   }
 
   requiredValidator(controlName: string) {

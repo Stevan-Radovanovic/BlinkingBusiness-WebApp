@@ -28,6 +28,7 @@ import { AdditionalDocsComponent } from './form-wrap/additional-docs/additional-
 import { MatTableModule } from '@angular/material/table';
 import { BusinessListComponent } from './business-list/business-list.component';
 import { BusinessItemComponent } from './business-list/business-item/business-item.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { BusinessItemComponent } from './business-list/business-item/business-it
     MatRadioModule,
     MatExpansionModule,
     MatTableModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

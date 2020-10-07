@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class RouteConstantsService {
-  public login = '/login';
-  public getAllBusinesses = '/business/getAllBusinesses';
+  public baseUrl = 'https://onboarding-api-local-dev.blinking.services';
+  public login = this.baseUrl + '/login';
+  public getAllBusinesses = this.baseUrl + '/business/getAllBusinesses';
 }
