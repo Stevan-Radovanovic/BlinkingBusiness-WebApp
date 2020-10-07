@@ -28,7 +28,8 @@ import { AdditionalDocsComponent } from './form-wrap/additional-docs/additional-
 import { MatTableModule } from '@angular/material/table';
 import { BusinessListComponent } from './business-list/business-list.component';
 import { BusinessItemComponent } from './business-list/business-item/business-item.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorsService } from './shared/services/interceptors.service';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorsService, multi: true },
+  ],
   bootstrap: [AppComponent],
   entryComponents: [FormSubmitComponent],
 })
