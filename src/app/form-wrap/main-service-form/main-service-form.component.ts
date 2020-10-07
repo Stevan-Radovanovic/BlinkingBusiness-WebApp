@@ -12,6 +12,7 @@ import { Country } from 'src/app/shared/models/country.model';
 import { ServiceConfig } from 'src/app/shared/models/service-config.model';
 import { ServiceObject } from 'src/app/shared/models/service-object.model';
 import { StepType } from 'src/app/shared/models/step-type.model';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-main-service-form',
@@ -74,7 +75,7 @@ export class MainServiceFormComponent implements OnInit {
 
   addServiceConfigForm() {
     const newConfig: ServiceConfig = {
-      serviceConfigId: '',
+      serviceConfigId: uuidv4(),
       baseRedirectUrl: '',
       defaultCountry: null,
       blinkingParams: [],
@@ -96,8 +97,8 @@ export class MainServiceFormComponent implements OnInit {
 
   deleteServiceConfigForm(id: string) {
     console.log(id);
-    this.serviceConfigForms.filter((elem) => {
-      elem.serviceConfigId !== id;
+    this.serviceConfigForms = this.serviceConfigForms.filter((elem) => {
+      return elem.serviceConfigId !== id;
     });
   }
 

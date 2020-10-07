@@ -21,12 +21,7 @@
       ></app-main-service-form>
     </div>
     <div class="add-button">
-      <button
-        mat-raised-button
-        color="warn"
-        (click)="addNewServiceForm()"
-        [disabled]="savedServiceForms !== serviceForms.length"
-      >
+      <button mat-raised-button color="warn" (click)="addNewServiceForm()">
         <mat-icon>add</mat-icon>
         Add new Service
       </button>

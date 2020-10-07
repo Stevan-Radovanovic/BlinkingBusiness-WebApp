@@ -35,8 +35,8 @@
         <mat-form-field appearance="fill">
           <mat-label>Face Enroll? *</mat-label>
           <mat-select formControlName="shouldAskForFaceEnroll">
-            <mat-option value="true">Yes</mat-option>
-            <mat-option value="false">No</mat-option>
+            <mat-option [value]="true">Yes</mat-option>
+            <mat-option [value]="false">No</mat-option>
           </mat-select>
           <mat-error *ngIf="requiredValidator('shouldAskForFaceEnroll')"
             >This field is required
@@ -127,15 +127,7 @@
     ></app-service-form>
   </div>
   <div class="add-button">
-    <button
-      mat-raised-button
-      color="warn"
-      (click)="addServiceConfigForm()"
-      [disabled]="
-        !serviceConfigForms ||
-        savedServiceConfigForms !== serviceConfigForms.length
-      "
-    >
+    <button mat-raised-button color="warn" (click)="addServiceConfigForm()">
       <mat-icon>add</mat-icon> Add new Service Config
     </button>
   </div>

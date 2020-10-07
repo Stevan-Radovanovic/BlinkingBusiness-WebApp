@@ -43,8 +43,8 @@
         <mat-form-field appearance="fill">
           <mat-label>Embed in IFrame? *</mat-label>
           <mat-select formControlName="willEmbedInIframe">
-            <mat-option value="true">Yes</mat-option>
-            <mat-option value="false">No</mat-option>
+            <mat-option [value]="true">Yes</mat-option>
+            <mat-option [value]="false">No</mat-option>
           </mat-select>
           <mat-error *ngIf="requiredValidator('willEmbedInIframe')"
             >This field is required</mat-error
@@ -213,8 +213,8 @@
         <mat-form-field appearance="fill">
           <mat-label>Face Enroll? *</mat-label>
           <mat-select formControlName="shouldAskForFaceEnroll">
-            <mat-option value="true">Yes</mat-option>
-            <mat-option value="false">No</mat-option>
+            <mat-option [value]="true">Yes</mat-option>
+            <mat-option [value]="false">No</mat-option>
           </mat-select>
           <mat-error *ngIf="requiredValidator('shouldAskForFaceEnroll')"
             >This field is required

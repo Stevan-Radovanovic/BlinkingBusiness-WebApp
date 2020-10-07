@@ -26,7 +26,7 @@ export class ServiceFormComponent implements OnInit {
   editing = false;
   savedOnce = false;
   @Output() saved = new EventEmitter<boolean>();
-  @Output() deleting = new EventEmitter<number>();
+  @Output() deleting = new EventEmitter<string>();
   @Input() configObject: ServiceConfig;
   prepopulated = false; //for later use
 
@@ -38,7 +38,6 @@ export class ServiceFormComponent implements OnInit {
   disableAdditionalDocs = true;
   showError = false;
   name = '';
-  index: number;
 
   skippableSteps: string[] = [];
   skippableStepOptions: string[] = [];
@@ -68,13 +67,13 @@ export class ServiceFormComponent implements OnInit {
   @ViewChild('docDesc') additionalDocDesc: ElementRef<HTMLInputElement>;
 
   onDeleteService() {
-    this.deleting.emit(this.index);
+    this.deleting.emit(this.configObject.serviceConfigId);
   }
 
   initServiceForm() {
     this.serviceForm = new FormGroup({
       serviceConfigName: new FormControl(
-        { value: '', disabled: true },
+        { value: this.configObject.serviceConfigName, disabled: true },
         Validators.required
       ),
       baseRedirectUrl: new FormControl(
@@ -250,6 +249,7 @@ export class ServiceFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.name = this.configObject.serviceConfigName;
     this.skippableSteps = ['Account number', 'Contact data'];
     this.stepsThatRequireAttention = ['Account number', 'Address'];
     this.stepsThatRequireProof = [

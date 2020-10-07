@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Country } from '../shared/models/country.model';
 import { ServiceObject } from '../shared/models/service-object.model';
 import { StepType } from '../shared/models/step-type.model';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-form-wrap',
@@ -17,6 +18,7 @@ export class FormWrapComponent implements OnInit {
 
   addNewServiceForm() {
     const newService = {
+      serviceId: uuidv4(),
       serviceName: '',
       shouldAskForFaceEnroll: true,
       defaultCountry: null,
@@ -30,9 +32,14 @@ export class FormWrapComponent implements OnInit {
 
   onDeleteService(id: string) {
     console.log(id);
-    this.serviceForms.filter((elem) => {
-      elem.serviceId !== id;
-    });
+
+    console.log(
+      (this.serviceForms = this.serviceForms.filter((elem) => {
+        return elem.serviceId !== id;
+      }))
+    );
+
+    this.serviceForms;
   }
 
   ngOnInit(): void {
