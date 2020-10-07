@@ -17,14 +17,14 @@
       <app-main-service-form
         (saved)="onSavedServiceForm($event)"
         (deleting)="onDeleteService($event)"
-        [index]="i"
+        [serviceObject]="form"
       ></app-main-service-form>
     </div>
     <div class="add-button">
       <button
         mat-raised-button
         color="warn"
-        (click)="addNewServiceForm(serviceForms.length + 1)"
+        (click)="addNewServiceForm()"
         [disabled]="savedServiceForms !== serviceForms.length"
       >
         <mat-icon>add</mat-icon>

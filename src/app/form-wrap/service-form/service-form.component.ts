@@ -13,6 +13,7 @@ import { frontBack } from 'src/app/shared/validators/front-back.validator';
 import { AdditionalDoc } from 'src/app/shared/models/additional-doc.model';
 import { SubType } from 'src/app/shared/models/sub-type.model';
 import { StepType } from 'src/app/shared/models/step-type.model';
+import { ServiceConfig } from 'src/app/shared/models/service-config.model';
 
 @Component({
   selector: 'app-service-form',
@@ -26,6 +27,7 @@ export class ServiceFormComponent implements OnInit {
   savedOnce = false;
   @Output() saved = new EventEmitter<boolean>();
   @Output() deleting = new EventEmitter<number>();
+  @Input() configObject: ServiceConfig;
   prepopulated = false; //for later use
 
   subtype = SubType;
@@ -75,37 +77,51 @@ export class ServiceFormComponent implements OnInit {
         { value: '', disabled: true },
         Validators.required
       ),
-      baseRedirectUrl: new FormControl({ value: '', disabled: true }, [
-        Validators.required,
-        Validators.pattern(
-          'https?://(?:www.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9].[^s]{2,}|www.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9].[^s]{2,}|https?://(?:www.|(?!www))[a-zA-Z0-9]+.[^s]{2,}|www.[a-zA-Z0-9]+.[^s]{2,}'
-        ),
-      ]),
-      blinkingParams: new FormControl({ value: [], disabled: true }, [
-        Validators.required,
-      ]),
-      willEmbedInIframe: new FormControl({ value: null, disabled: true }, [
-        Validators.required,
-      ]),
-      skippableSteps: new FormControl({ value: [], disabled: true }),
-      stepsThatRequireProofOfDocuments: new FormControl({
-        value: [],
+      baseRedirectUrl: new FormControl(
+        { value: this.configObject.baseRedirectUrl, disabled: true },
+        [
+          Validators.required,
+          Validators.pattern(
+            'https?://(?:www.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9].[^s]{2,}|www.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9].[^s]{2,}|https?://(?:www.|(?!www))[a-zA-Z0-9]+.[^s]{2,}|www.[a-zA-Z0-9]+.[^s]{2,}'
+          ),
+        ]
+      ),
+      blinkingParams: new FormControl(
+        { value: this.configObject.blinkingParams, disabled: true },
+        [Validators.required]
+      ),
+      willEmbedInIframe: new FormControl(
+        { value: this.configObject.willEmbedInIframe, disabled: true },
+        [Validators.required]
+      ),
+      skippableSteps: new FormControl({
+        value: this.configObject.skippableSteps,
         disabled: true,
       }),
-      initialSessionConfig: new FormControl({ value: '', disabled: true }, [
-        Validators.required,
-        frontBack,
-      ]),
-      stepsThatRequireAttention: new FormControl({ value: [], disabled: true }),
-      maxNumberOfTries: new FormControl({ value: null, disabled: true }, [
-        Validators.required,
-      ]),
-      shouldAskForFaceEnroll: new FormControl({ value: null, disabled: true }, [
-        Validators.required,
-      ]),
-      defaultCountry: new FormControl({ value: '', disabled: true }, [
-        Validators.required,
-      ]),
+      stepsThatRequireProofOfDocuments: new FormControl({
+        value: this.configObject.stepsThatRequireProofOfDocuments,
+        disabled: true,
+      }),
+      initialSessionConfig: new FormControl(
+        { value: this.configObject.initialSessionConfig, disabled: true },
+        [Validators.required, frontBack]
+      ),
+      stepsThatRequireAttention: new FormControl({
+        value: this.configObject.stepsThatRequireAttention,
+        disabled: true,
+      }),
+      maxNumberOfTries: new FormControl(
+        { value: this.configObject.maxNumberOfTries, disabled: true },
+        [Validators.required]
+      ),
+      shouldAskForFaceEnroll: new FormControl(
+        { value: this.configObject.shouldAskForFaceEnroll, disabled: true },
+        [Validators.required]
+      ),
+      defaultCountry: new FormControl(
+        { value: this.configObject.defaultCountry, disabled: true },
+        [Validators.required]
+      ),
       additionalDocSubType: new FormControl({ value: '', disabled: true }),
       additionalDocDescription: new FormControl({ value: '', disabled: true }),
     });
@@ -205,6 +221,34 @@ export class ServiceFormComponent implements OnInit {
     this.disableEditing();
   }
 
+  changeStepOptions(value: string[]) {
+    this.skippableStepOptions = [];
+    this.stepsThatRequireAttentionOptions = [];
+    this.stepsThatRequireProofOptions = [];
+
+    if (!value) return;
+
+    value.forEach((step) => {
+      if (this.skippableSteps.includes(step)) {
+        this.skippableStepOptions.push(step);
+      }
+      if (this.stepsThatRequireProof.includes(step)) {
+        this.stepsThatRequireProofOptions.push(step);
+      }
+      if (this.stepsThatRequireAttention.includes(step)) {
+        this.stepsThatRequireAttentionOptions.push(step);
+      }
+    });
+
+    if (value.includes('Additional document')) {
+      this.additional = true;
+    } else {
+      this.additional = false;
+      this.checkValidityProofOfDocs();
+      this.additionalDocArray = [];
+    }
+  }
+
   ngOnInit(): void {
     this.skippableSteps = ['Account number', 'Contact data'];
     this.stepsThatRequireAttention = ['Account number', 'Address'];
@@ -215,6 +259,7 @@ export class ServiceFormComponent implements OnInit {
     ];
 
     this.initServiceForm();
+    this.changeStepOptions(this.configObject.initialSessionConfig);
 
     if (this.serviceForm.get('serviceConfigName').value === '') {
       this.enableEditing();
@@ -229,24 +274,7 @@ export class ServiceFormComponent implements OnInit {
     this.serviceForm
       .get('initialSessionConfig')
       .valueChanges.subscribe((value: string[]) => {
-        console.log(value);
-        this.skippableStepOptions = [];
-        this.stepsThatRequireAttentionOptions = [];
-        this.stepsThatRequireProofOptions = [];
-
-        if (!value) return;
-
-        value.forEach((step) => {
-          if (this.skippableSteps.includes(step)) {
-            this.skippableStepOptions.push(step);
-          }
-          if (this.stepsThatRequireProof.includes(step)) {
-            this.stepsThatRequireProofOptions.push(step);
-          }
-          if (this.stepsThatRequireAttention.includes(step)) {
-            this.stepsThatRequireAttentionOptions.push(step);
-          }
-        });
+        this.changeStepOptions(value);
 
         if (value.includes('Additional document')) {
           this.additional = true;

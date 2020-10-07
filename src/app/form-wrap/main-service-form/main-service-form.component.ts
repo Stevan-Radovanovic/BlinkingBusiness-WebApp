@@ -8,6 +8,10 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Country } from 'src/app/shared/models/country.model';
+import { ServiceConfig } from 'src/app/shared/models/service-config.model';
+import { ServiceObject } from 'src/app/shared/models/service-object.model';
+import { StepType } from 'src/app/shared/models/step-type.model';
 
 @Component({
   selector: 'app-main-service-form',
@@ -17,13 +21,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class MainServiceFormComponent implements OnInit {
   serviceForm: FormGroup;
   countries: string[];
-  serviceConfigForms = [];
+  serviceConfigForms: ServiceConfig[] = [];
   editing = false;
   name = '';
   savedOnce = false;
-  @Input() index: number;
+  @Input() serviceObject: ServiceObject;
   @Output() saved = new EventEmitter<boolean>();
-  @Output() deleting = new EventEmitter<number>();
+  @Output() deleting = new EventEmitter<string>();
   prepopulated = false; //for later use
 
   savedServiceConfigForms = 0;
@@ -41,38 +45,60 @@ export class MainServiceFormComponent implements OnInit {
 
   initServiceForm() {
     this.serviceForm = new FormGroup({
-      serviceName: new FormControl({ value: null, disabled: true }, [
-        Validators.required,
-      ]),
-      maxNumberOfTries: new FormControl({ value: null, disabled: true }, [
-        Validators.required,
-      ]),
-      shouldAskForFaceEnroll: new FormControl({ value: null, disabled: true }, [
-        Validators.required,
-      ]),
-      defaultCountry: new FormControl({ value: '', disabled: true }, [
-        Validators.required,
-      ]),
-      allowedCountries: new FormControl({ value: [], disabled: true }, [
-        Validators.required,
-      ]),
+      serviceName: new FormControl(
+        { value: this.serviceObject.serviceName, disabled: true },
+        [Validators.required]
+      ),
+      maxNumberOfTries: new FormControl(
+        { value: this.serviceObject.maxNumberOfTries, disabled: true },
+        [Validators.required]
+      ),
+      shouldAskForFaceEnroll: new FormControl(
+        { value: this.serviceObject.shouldAskForFaceEnroll, disabled: true },
+        [Validators.required]
+      ),
+      defaultCountry: new FormControl(
+        { value: this.serviceObject.defaultCountry, disabled: true },
+        [Validators.required]
+      ),
+      allowedCountries: new FormControl(
+        { value: this.serviceObject.allowedCountries, disabled: true },
+        [Validators.required]
+      ),
       sessionValidityDuration: new FormControl(
-        { value: null, disabled: true },
+        { value: this.serviceObject.sessionValidity, disabled: true },
         [Validators.required]
       ),
     });
   }
 
-  addServiceConfigForm(number) {
-    this.serviceConfigForms.push('serviceConfigForm' + number);
+  addServiceConfigForm() {
+    const newConfig: ServiceConfig = {
+      serviceConfigId: '',
+      baseRedirectUrl: '',
+      defaultCountry: null,
+      blinkingParams: [],
+      maxNumberOfTries: null,
+      shouldAskForFaceEnroll: true,
+      initialSessionConfig: [],
+      serviceConfigName: '',
+      willEmbedInIframe: true,
+      skippableSteps: [],
+      stepsThatRequireAttention: [],
+      stepsThatRequireProofOfDocuments: [],
+    };
+    this.serviceConfigForms.push(newConfig);
   }
 
   onDeleteService() {
-    this.deleting.emit(this.index);
+    this.deleting.emit(this.serviceObject.serviceId);
   }
 
-  deleteServiceConfigForm(id: number) {
-    this.serviceConfigForms.splice(id, 1);
+  deleteServiceConfigForm(id: string) {
+    console.log(id);
+    this.serviceConfigForms.filter((elem) => {
+      elem.serviceConfigId !== id;
+    });
   }
 
   enableEditing() {
@@ -102,6 +128,10 @@ export class MainServiceFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.serviceConfigForms = this.serviceObject.serviceConfigs;
+    this.name = this.serviceObject.serviceName;
+    console.log('Form', this.serviceObject);
+
     this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
     this.initServiceForm();
 

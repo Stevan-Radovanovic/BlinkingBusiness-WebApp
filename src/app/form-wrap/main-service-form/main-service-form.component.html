@@ -123,15 +123,18 @@
       [allowedCountries]="serviceForm.get('allowedCountries').value"
       (saved)="onSavedServiceForm($event)"
       (deleting)="deleteServiceConfigForm($event)"
-      [index]="i"
+      [configObject]="serviceConfigForm"
     ></app-service-form>
   </div>
   <div class="add-button">
     <button
       mat-raised-button
       color="warn"
-      (click)="addServiceConfigForm(serviceConfigForms.length + 1)"
-      [disabled]="savedServiceConfigForms !== serviceConfigForms.length"
+      (click)="addServiceConfigForm()"
+      [disabled]="
+        !serviceConfigForms ||
+        savedServiceConfigForms !== serviceConfigForms.length
+      "
     >
       <mat-icon>add</mat-icon> Add new Service Config
     </button>

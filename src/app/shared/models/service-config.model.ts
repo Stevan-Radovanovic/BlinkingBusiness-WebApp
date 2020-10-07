@@ -1,4 +1,5 @@
 import { AdditionalDoc } from './additional-doc.model';
+import { StepType } from './step-type.model';
 
 export interface ServiceConfig {
   serviceConfigId?: string;
@@ -8,7 +9,7 @@ export interface ServiceConfig {
   willEmbedInIframe: boolean;
   skippableSteps?: string[];
   stepsThatRequireProofOfDocuments?: string[];
-  initialSessionConfig: string[];
+  initialSessionConfig: StepType[];
   stepsThatRequireAttention?: string[];
   shouldAskForFaceEnroll: boolean;
   defaultCountry: string;
