@@ -6,6 +6,16 @@
       >This field is required</mat-error
     >
   </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Business Url: *</mat-label>
+    <input matInput formControlName="businessUrl" />
+    <mat-error *ngIf="requiredValidator('businessUrl')"
+      >This field is required</mat-error
+    >
+    <mat-error *ngIf="patternValidator('businessUrl')"
+      >Must be a valid URL</mat-error
+    >
+  </mat-form-field>
   <div class="spaceBetween">
     <mat-form-field appearance="fill" class="color-form-field">
       <mat-label>Primary Color Hex Value: *</mat-label>

@@ -13,7 +13,11 @@ import { BusinessObject } from '../shared/models/business-object.model';
 })
 export class FormWrapComponent implements OnInit {
   serviceForms: ServiceObject[] = [];
-  businessObject: BusinessObject = { businessName: '', primaryColor: '' };
+  businessObject: BusinessObject = {
+    businessName: '',
+    primaryColor: '',
+    businessUrl: '',
+  };
   expandServicePanels = false;
   savedServiceForms = 0;
 
@@ -49,6 +53,7 @@ export class FormWrapComponent implements OnInit {
   ngOnInit(): void {
     this.businessObject = {
       businessName: 'Granice Mlekara',
+      businessUrl: 'www.granice.com',
       primaryColor: '#aaaede',
     };
 

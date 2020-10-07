@@ -18,7 +18,7 @@ export class BusinessFormComponent implements OnInit {
   logoPath = '';
   faviconPath = '';
   editing = false;
-  controlNames = ['businessName', 'favicon', 'logo', 'color'];
+  controlNames = ['businessName', 'businessUrl', 'favicon', 'logo', 'color'];
 
   selectedColor = '';
 
@@ -105,6 +105,15 @@ export class BusinessFormComponent implements OnInit {
       businessName: new FormControl(
         { value: this.businessObject.businessName, disabled: true },
         [Validators.required]
+      ),
+      businessUrl: new FormControl(
+        { value: this.businessObject.businessUrl, disabled: true },
+        [
+          Validators.required,
+          Validators.pattern(
+            'https?://(?:www.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9].[^s]{2,}|www.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9].[^s]{2,}|https?://(?:www.|(?!www))[a-zA-Z0-9]+.[^s]{2,}|www.[a-zA-Z0-9]+.[^s]{2,}'
+          ),
+        ]
       ),
       color: new FormControl(
         { value: this.businessObject.primaryColor, disabled: true },
