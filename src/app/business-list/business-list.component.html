@@ -1,1 +1,22 @@
-<p>business-list works!</p>
+<div class="columns is-centered business-wrapper">
+  <div class="column is-8">
+    <mat-card class="business-card">
+      <mat-card-title>
+        <img
+          class="img-business"
+          src="../assets/logo3.png"
+          alt="Logo Placeholder"
+        />
+        <strong>Business List</strong>
+      </mat-card-title>
+      <mat-card-content>
+        <h2 *ngIf="businessArray.length === 0" class="no-business-h2">
+          No businesses currently exist in our database
+        </h2>
+        <div *ngFor="let business of businessArray">
+          <app-business-item [businessObject]="business"></app-business-item>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

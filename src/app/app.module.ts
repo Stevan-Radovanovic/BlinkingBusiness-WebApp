@@ -27,6 +27,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { AdditionalDocsComponent } from './form-wrap/additional-docs/additional-docs.component';
 import { MatTableModule } from '@angular/material/table';
 import { BusinessListComponent } from './business-list/business-list.component';
+import { BusinessItemComponent } from './business-list/business-item/business-item.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { BusinessListComponent } from './business-list/business-list.component';
     MainServiceFormComponent,
     AdditionalDocsComponent,
     BusinessListComponent,
+    BusinessItemComponent,
   ],
   imports: [
     BrowserModule,

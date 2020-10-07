@@ -1,0 +1,17 @@
+.img-business {
+  width: 30px;
+  height: 30px;
+}
+
+.business-card {
+  border: 2px solid #ccc;
+}
+
+.business-wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.no-business-h2 {
+  text-align: center;
+}
