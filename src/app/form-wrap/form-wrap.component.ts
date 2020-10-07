@@ -4,6 +4,7 @@ import { ServiceObject } from '../shared/models/service-object.model';
 import { StepType } from '../shared/models/step-type.model';
 import { v4 as uuidv4 } from 'uuid';
 import { SubType } from '../shared/models/sub-type.model';
+import { BusinessObject } from '../shared/models/business-object.model';
 
 @Component({
   selector: 'app-form-wrap',
@@ -12,7 +13,8 @@ import { SubType } from '../shared/models/sub-type.model';
 })
 export class FormWrapComponent implements OnInit {
   serviceForms: ServiceObject[] = [];
-
+  businessObject: BusinessObject = { businessName: '', primaryColor: '' };
+  expandServicePanels = false;
   savedServiceForms = 0;
 
   constructor() {}
@@ -28,6 +30,7 @@ export class FormWrapComponent implements OnInit {
       sessionValidity: null,
     };
     this.serviceForms.push(newService);
+    this.expandServicePanels = true;
     console.log(this.serviceForms);
   }
 
@@ -44,6 +47,11 @@ export class FormWrapComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.businessObject = {
+      businessName: 'Granice Mlekara',
+      primaryColor: '#aaaede',
+    };
+
     this.serviceForms = [
       {
         serviceId: '1',

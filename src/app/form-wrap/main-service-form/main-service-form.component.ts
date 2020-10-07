@@ -26,6 +26,8 @@ export class MainServiceFormComponent implements OnInit {
   editing = false;
   name = '';
   savedOnce = false;
+  expandConfigPanels = false;
+  @Input() expand: boolean;
   @Input() serviceObject: ServiceObject;
   @Output() saved = new EventEmitter<boolean>();
   @Output() deleting = new EventEmitter<string>();
@@ -88,6 +90,7 @@ export class MainServiceFormComponent implements OnInit {
       stepsThatRequireAttention: [],
       stepsThatRequireProofOfDocuments: [],
     };
+    this.expandConfigPanels = true;
     this.serviceConfigForms.push(newConfig);
   }
 

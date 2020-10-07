@@ -28,6 +28,7 @@ export class ServiceFormComponent implements OnInit {
   @Output() saved = new EventEmitter<boolean>();
   @Output() deleting = new EventEmitter<string>();
   @Input() configObject: ServiceConfig;
+  @Input() expand: boolean;
   prepopulated = false; //for later use
 
   subtype = SubType;

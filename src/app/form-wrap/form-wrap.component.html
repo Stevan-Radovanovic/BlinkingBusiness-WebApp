@@ -10,7 +10,9 @@
         />
       </mat-card-title>
       <mat-card-content>
-        <app-business-form></app-business-form>
+        <app-business-form
+          [businessObject]="businessObject"
+        ></app-business-form>
       </mat-card-content>
     </mat-card>
     <mat-accordion multi="false">
@@ -19,6 +21,7 @@
           (saved)="onSavedServiceForm($event)"
           (deleting)="onDeleteService($event)"
           [serviceObject]="form"
+          [expand]="expandServicePanels"
         ></app-main-service-form>
       </div>
     </mat-accordion>

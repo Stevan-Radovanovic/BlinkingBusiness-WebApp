@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BusinessObject } from 'src/app/shared/models/business-object.model';
 
 @Component({
   selector: 'app-business-form',
@@ -11,6 +12,9 @@ export class BusinessFormComponent implements OnInit {
 
   @ViewChild('favicon') favicon: ElementRef<HTMLInputElement>;
   @ViewChild('logo') logo: ElementRef;
+
+  @Input() businessObject: BusinessObject;
+
   logoPath = '';
   faviconPath = '';
   editing = false;
@@ -98,13 +102,17 @@ export class BusinessFormComponent implements OnInit {
 
   initBusinessForm() {
     this.businessForm = new FormGroup({
-      businessName: new FormControl({ value: '', disabled: true }, [
-        Validators.required,
-      ]),
-      color: new FormControl({ value: '', disabled: true }, [
-        Validators.required,
-        Validators.pattern('^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$'),
-      ]),
+      businessName: new FormControl(
+        { value: this.businessObject.businessName, disabled: true },
+        [Validators.required]
+      ),
+      color: new FormControl(
+        { value: this.businessObject.primaryColor, disabled: true },
+        [
+          Validators.required,
+          Validators.pattern('^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$'),
+        ]
+      ),
       favicon: new FormControl({ value: '', disabled: true }, [
         Validators.required,
       ]),
@@ -141,6 +149,10 @@ export class BusinessFormComponent implements OnInit {
     this.initBusinessForm();
     this.selectedColor = '';
 
+    if (this.businessForm.get('businessName').value === '') {
+      this.enableEditing();
+    }
+
     this.businessForm.get('color').valueChanges.subscribe((value) => {
       this.selectedColor = value;
       if (!this.businessForm.get('color').valid) {
@@ -148,11 +160,11 @@ export class BusinessFormComponent implements OnInit {
       }
     });
 
-    this.businessForm.get('favicon').valueChanges.subscribe((value) => {
+    this.businessForm.get('favicon').valueChanges.subscribe(() => {
       this.checkFaviconValidity();
     });
 
-    this.businessForm.get('logo').valueChanges.subscribe((value) => {
+    this.businessForm.get('logo').valueChanges.subscribe(() => {
       this.checkLogoValidity();
     });
   }

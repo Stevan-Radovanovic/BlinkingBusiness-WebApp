@@ -1,4 +1,4 @@
-<mat-expansion-panel class="sessionCard" [expanded]="true">
+<mat-expansion-panel class="sessionCard" [expanded]="expand">
   <mat-expansion-panel-header>
     <mat-panel-title>
       <div class="service-header">
@@ -124,6 +124,7 @@
         [allowedCountries]="serviceForm.get('allowedCountries').value"
         (saved)="onSavedServiceForm($event)"
         (deleting)="deleteServiceConfigForm($event)"
+        [expand]="expandConfigPanels"
         [configObject]="serviceConfigForm"
       ></app-service-form>
     </div>
