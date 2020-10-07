@@ -11,9 +11,7 @@
               <th scope="col">#</th>
               <th scope="col">Sub Type</th>
               <th scope="col">Description</th>
-              <th scope="col">
-                <mat-icon>delete</mat-icon>
-              </th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
 
@@ -26,8 +24,9 @@
                 <mat-icon
                   class="delete-additional"
                   (click)="removeAdditionalDoc(i)"
-                  >cancel</mat-icon
+                  >delete</mat-icon
                 >
+                <mat-icon class="delete-additional">edit</mat-icon>
               </td>
             </tr>
           </tbody>

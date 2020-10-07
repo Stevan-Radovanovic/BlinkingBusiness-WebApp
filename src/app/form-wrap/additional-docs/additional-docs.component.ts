@@ -15,7 +15,5 @@ export class AdditionalDocsComponent implements OnInit {
     this.additionalDocs.splice(i, 1);
   }
 
-  ngOnInit(): void {
-    console.log(this.additionalDocs);
-  }
+  ngOnInit(): void {}
 }

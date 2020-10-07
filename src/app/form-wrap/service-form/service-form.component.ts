@@ -253,11 +253,7 @@ export class ServiceFormComponent implements OnInit {
     this.name = this.configObject.serviceConfigName;
     this.skippableSteps = ['Account number', 'Contact data'];
     this.stepsThatRequireAttention = ['Account number', 'Address'];
-    this.stepsThatRequireProof = [
-      'Account number',
-      'Address',
-      'Additional document',
-    ];
+    this.stepsThatRequireProof = ['Account number', 'Address'];
 
     this.initServiceForm();
     this.changeStepOptions(this.configObject.initialSessionConfig);
