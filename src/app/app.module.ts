@@ -26,6 +26,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AdditionalDocsComponent } from './form-wrap/additional-docs/additional-docs.component';
 import { MatTableModule } from '@angular/material/table';
+import { BusinessListComponent } from './business-list/business-list.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MatTableModule } from '@angular/material/table';
     FormSubmitComponent,
     MainServiceFormComponent,
     AdditionalDocsComponent,
+    BusinessListComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,7 @@ export class AuthService {
     if (this.validAuth) {
       localStorage.setItem('token', uuidv4());
       this.loggedIn = true;
-      this.router.navigateByUrl('/form');
+      this.router.navigateByUrl('/business');
     }
     this.validAuth = true;
     setTimeout(() => {

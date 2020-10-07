@@ -4,8 +4,14 @@ import { LoginComponent } from './login/login.component';
 import { FormWrapComponent } from './form-wrap/form-wrap.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { ReverseAuthGuard } from './shared/guards/reverse-auth.guard';
+import { BusinessListComponent } from './business-list/business-list.component';
 
 const routes: Routes = [
+  {
+    path: 'business',
+    component: BusinessListComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'form',
     component: FormWrapComponent,
@@ -19,11 +25,11 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'form',
+    redirectTo: 'business',
   },
   {
     path: '**',
-    redirectTo: 'form',
+    redirectTo: 'business',
   },
 ];
 
