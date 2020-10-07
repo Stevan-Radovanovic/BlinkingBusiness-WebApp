@@ -13,13 +13,16 @@
         <app-business-form></app-business-form>
       </mat-card-content>
     </mat-card>
-    <div *ngFor="let form of serviceForms; let i = index">
-      <app-main-service-form
-        (saved)="onSavedServiceForm($event)"
-        (deleting)="onDeleteService($event)"
-        [serviceObject]="form"
-      ></app-main-service-form>
-    </div>
+    <mat-accordion multi="false">
+      <div *ngFor="let form of serviceForms; let i = index">
+        <app-main-service-form
+          (saved)="onSavedServiceForm($event)"
+          (deleting)="onDeleteService($event)"
+          [serviceObject]="form"
+        ></app-main-service-form>
+      </div>
+    </mat-accordion>
+
     <div class="add-button">
       <button mat-raised-button color="warn" (click)="addNewServiceForm()">
         <mat-icon>add</mat-icon>

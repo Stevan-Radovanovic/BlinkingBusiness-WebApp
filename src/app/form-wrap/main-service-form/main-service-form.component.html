@@ -1,4 +1,4 @@
-<mat-expansion-panel class="sessionCard">
+<mat-expansion-panel class="sessionCard" [expanded]="true">
   <mat-expansion-panel-header>
     <mat-panel-title>
       <div class="service-header">
@@ -118,14 +118,17 @@
     </button>
   </div>
 
-  <div *ngFor="let serviceConfigForm of serviceConfigForms; let i = index">
-    <app-service-form
-      [allowedCountries]="serviceForm.get('allowedCountries').value"
-      (saved)="onSavedServiceForm($event)"
-      (deleting)="deleteServiceConfigForm($event)"
-      [configObject]="serviceConfigForm"
-    ></app-service-form>
-  </div>
+  <mat-accordion multi="false">
+    <div *ngFor="let serviceConfigForm of serviceConfigForms; let i = index">
+      <app-service-form
+        [allowedCountries]="serviceForm.get('allowedCountries').value"
+        (saved)="onSavedServiceForm($event)"
+        (deleting)="deleteServiceConfigForm($event)"
+        [configObject]="serviceConfigForm"
+      ></app-service-form>
+    </div>
+  </mat-accordion>
+
   <div class="add-button">
     <button mat-raised-button color="warn" (click)="addServiceConfigForm()">
       <mat-icon>add</mat-icon> Add new Service Config
