@@ -261,6 +261,14 @@ export class ServiceFormComponent implements OnInit {
     this.initServiceForm();
     this.changeStepOptions(this.configObject.initialSessionConfig);
 
+    if (
+      this.configObject.additionalDocuments &&
+      this.configObject.additionalDocuments.length > 0
+    ) {
+      this.additionalDocArray = this.configObject.additionalDocuments;
+      this.disableAdditionalDocs = false;
+    }
+
     if (this.serviceForm.get('serviceConfigName').value === '') {
       this.enableEditing();
     }

@@ -3,6 +3,7 @@ import { Country } from '../shared/models/country.model';
 import { ServiceObject } from '../shared/models/service-object.model';
 import { StepType } from '../shared/models/step-type.model';
 import { v4 as uuidv4 } from 'uuid';
+import { SubType } from '../shared/models/sub-type.model';
 
 @Component({
   selector: 'app-form-wrap',
@@ -63,6 +64,28 @@ export class FormWrapComponent implements OnInit {
             initialSessionConfig: [StepType.ACCOUNT, StepType.CONTACT],
             serviceConfigName: 'Config1',
             willEmbedInIframe: true,
+          },
+          {
+            serviceConfigId: '2',
+            baseRedirectUrl: 'www.proudsource.it',
+            defaultCountry: Country.SRB,
+            blinkingParams: ['Status'],
+            maxNumberOfTries: 1,
+            shouldAskForFaceEnroll: false,
+            initialSessionConfig: [
+              StepType.ACCOUNT,
+              StepType.CONTACT,
+              StepType.ADDITIONAL,
+            ],
+            serviceConfigName: 'Config2',
+            willEmbedInIframe: false,
+            additionalDocuments: [
+              { subType: SubType.OTHER, description: 'Blinkingcina' },
+              {
+                subType: SubType.DOCUMENT_COPY,
+                description: SubType.DOCUMENT_COPY,
+              },
+            ],
           },
         ],
       },
