@@ -23,4 +23,11 @@ export class CallBrokerService {
   getAllBusinesses() {
     return this.http.get<ResponseObject>(this.routes.getAllBusinesses);
   }
+
+  getBusinessById(businessId: number) {
+    const body = {
+      businessId,
+    };
+    return this.http.post<ResponseObject>(this.routes.getBusinessById, body);
+  }
 }

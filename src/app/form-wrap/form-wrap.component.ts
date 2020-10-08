@@ -5,6 +5,8 @@ import { StepType } from '../shared/models/step-type.model';
 import { v4 as uuidv4 } from 'uuid';
 import { SubType } from '../shared/models/sub-type.model';
 import { BusinessObject } from '../shared/models/business-object.model';
+import { CallBrokerService } from '../shared/services/call-broker.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-form-wrap',
@@ -23,9 +25,25 @@ export class FormWrapComponent implements OnInit {
   expandServicePanels = false;
   savedServiceForms = 0;
 
-  constructor() {}
+  constructor(
+    private callBroker: CallBrokerService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.callBroker.getBusinessById(id).subscribe((response) => {
+      this.businessObject = {
+        id: response.payload.id,
+        name: response.payload.name,
+        businessUrl: response.payload.businessUrl,
+        businessConfiguration: response.payload.businessConfiguration,
+      };
+      this.serviceForms = response.payload.services;
+    });
+  }
+
+  mockFillProperties() {
     this.businessObject = {
       name: 'Granice Mlekara',
       businessUrl: 'www.granice.com',
