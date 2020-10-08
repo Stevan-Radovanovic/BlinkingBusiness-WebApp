@@ -1,8 +1,8 @@
 <div class="columns is-centered margintop">
   <div class="column is-6">
     <mat-card>
-      <mat-card-title
-        ><strong>Welcome, please log in</strong>
+      <mat-card-title>
+        <strong>Welcome, please log in</strong>
         <img src="../assets/logo3.png" alt="Logo Placeholder" />
       </mat-card-title>
       <mat-card-content>
@@ -10,16 +10,16 @@
           <mat-form-field appearance="fill">
             <mat-label>UserName</mat-label>
             <input matInput formControlName="userName" />
-            <mat-error *ngIf="requiredValidator('userName')"
-              >This field is required</mat-error
-            >
+            <mat-error *ngIf="requiredValidator('userName')">
+              This field is required
+            </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
             <input type="password" matInput formControlName="password" />
-            <mat-error *ngIf="requiredValidator('password')"
-              >This field is required</mat-error
-            >
+            <mat-error *ngIf="requiredValidator('password')">
+              This field is required
+            </mat-error>
           </mat-form-field>
         </form>
       </mat-card-content>
@@ -35,8 +35,8 @@
         </button>
       </mat-card-actions>
     </mat-card>
-    <mat-error class="login-error" *ngIf="!authService.validAuth"
-      >User Name or Password invalid!</mat-error
-    >
+    <mat-error class="login-error" *ngIf="!authService.validAuth">
+      User Name or Password invalid!
+    </mat-error>
   </div>
 </div>
