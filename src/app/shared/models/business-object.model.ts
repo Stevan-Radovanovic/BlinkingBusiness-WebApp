@@ -1,4 +1,5 @@
 export interface BusinessObject {
+  businessId?: number;
   businessName: string;
   businessUrl: string;
   primaryColor: string;

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
-import { AuthData } from '../shared/models/auth-data.model';
+import { v4 as uuidv4 } from 'uuid';
 import { CallBrokerService } from '../shared/services/call-broker.service';
+import { ResponseObject } from '../shared/models/response-object.model';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    public callBroker: CallBrokerService
+    public callBroker: CallBrokerService,
+    public router: Router
   ) {}
 
   ngOnInit(): void {
@@ -31,9 +33,26 @@ export class LoginComponent implements OnInit {
   logIn() {
     const username = this.authForm.get('userName').value;
     const password = this.authForm.get('password').value;
-    this.callBroker.login(username, password).subscribe((response) => {
-      console.log(response);
-    });
+    this.callBroker.login(username, password).subscribe(
+      (response: ResponseObject) => {
+        if (response.statusCode === 20001) {
+          localStorage.setItem('token', uuidv4());
+          this.authService.loggedIn = true;
+          this.authService = response.payload.user;
+          this.router.navigate(['/business']);
+        }
+      },
+      () => {
+        this.invalidLogIn();
+      }
+    );
+  }
+
+  invalidLogIn() {
+    this.authService.validAuth = false;
+    setTimeout(() => {
+      this.authService.validAuth = true;
+    }, 3000);
   }
 
   requiredValidator(controlName: string) {

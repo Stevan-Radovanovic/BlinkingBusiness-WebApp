@@ -11,7 +11,9 @@ export class AuthService {
 
   loggedIn = localStorage.getItem('token') !== null;
   validAuth = true;
+  user = null;
 
+  /*
   logIn(authData: AuthData) {
     this.validAuth =
       authData.userName === 'admin' && authData.password === 'password';
@@ -25,6 +27,7 @@ export class AuthService {
       this.validAuth = false;
     }, 600);
   }
+  */
 
   logOut() {
     localStorage.removeItem('token');
