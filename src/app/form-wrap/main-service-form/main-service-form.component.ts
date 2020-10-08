@@ -31,7 +31,7 @@ export class MainServiceFormComponent implements OnInit {
   @Input() expand: boolean;
   @Input() serviceObject: ServiceObject;
   @Output() saved = new EventEmitter<boolean>();
-  @Output() deleting = new EventEmitter<string>();
+  @Output() deleting = new EventEmitter<number>();
 
   savedServiceConfigForms = 0;
 
@@ -39,7 +39,7 @@ export class MainServiceFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.serviceConfigForms = this.serviceObject.serviceConfigs;
-    this.name = this.serviceObject.serviceName;
+    this.name = this.serviceObject.name;
     console.log('Form', this.serviceObject);
 
     this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
@@ -66,27 +66,42 @@ export class MainServiceFormComponent implements OnInit {
   initServiceForm() {
     this.serviceForm = new FormGroup({
       serviceName: new FormControl(
-        { value: this.serviceObject.serviceName, disabled: true },
+        { value: this.serviceObject.name, disabled: true },
         [Validators.required]
       ),
       maxNumberOfTries: new FormControl(
-        { value: this.serviceObject.maxNumberOfTries, disabled: true },
+        {
+          value: this.serviceObject.serviceConfiguration.maxNumberOfTries,
+          disabled: true,
+        },
         [Validators.required]
       ),
       shouldAskForFaceEnroll: new FormControl(
-        { value: this.serviceObject.shouldAskForFaceEnroll, disabled: true },
+        {
+          value: this.serviceObject.serviceConfiguration.shouldAskForFaceEnroll,
+          disabled: true,
+        },
         [Validators.required]
       ),
       defaultCountry: new FormControl(
-        { value: this.serviceObject.defaultCountry, disabled: true },
+        {
+          value: this.serviceObject.serviceConfiguration.defaultCountry,
+          disabled: true,
+        },
         [Validators.required]
       ),
       allowedCountries: new FormControl(
-        { value: this.serviceObject.allowedCountries, disabled: true },
+        {
+          value: this.serviceObject.serviceConfiguration.allowedCountries,
+          disabled: true,
+        },
         [Validators.required]
       ),
       sessionValidityDuration: new FormControl(
-        { value: this.serviceObject.sessionValidity, disabled: true },
+        {
+          value: this.serviceObject.serviceConfiguration.sessionValidity,
+          disabled: true,
+        },
         [Validators.required]
       ),
     });
@@ -101,7 +116,7 @@ export class MainServiceFormComponent implements OnInit {
       maxNumberOfTries: null,
       shouldAskForFaceEnroll: true,
       initialSessionConfig: [],
-      serviceConfigName: '',
+      name: '',
       willEmbedInIframe: true,
       skippableSteps: [],
       stepsThatRequireAttention: [],
@@ -112,7 +127,7 @@ export class MainServiceFormComponent implements OnInit {
   }
 
   onDeleteService() {
-    this.deleting.emit(this.serviceObject.serviceId);
+    this.deleting.emit(this.serviceObject.id);
   }
 
   deleteServiceConfigForm(id: string) {

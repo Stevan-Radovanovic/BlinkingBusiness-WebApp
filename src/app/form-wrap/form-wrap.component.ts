@@ -36,13 +36,15 @@ export class FormWrapComponent implements OnInit {
 
     this.serviceForms = [
       {
-        serviceId: '1',
-        serviceName: 'Servis1',
-        shouldAskForFaceEnroll: true,
-        defaultCountry: Country.GBR,
-        allowedCountries: [Country.GBR, Country.SRB],
-        maxNumberOfTries: 3,
-        sessionValidity: 120,
+        id: 1,
+        name: 'Servis1',
+        serviceConfiguration: {
+          shouldAskForFaceEnroll: true,
+          defaultCountry: Country.GBR,
+          allowedCountries: [Country.GBR, Country.SRB],
+          maxNumberOfTries: 3,
+          sessionValidity: 120,
+        },
         serviceConfigs: [
           {
             serviceConfigId: '1',
@@ -52,7 +54,7 @@ export class FormWrapComponent implements OnInit {
             maxNumberOfTries: 3,
             shouldAskForFaceEnroll: true,
             initialSessionConfig: [StepType.ACCOUNT, StepType.CONTACT],
-            serviceConfigName: 'Config1',
+            name: 'Config1',
             willEmbedInIframe: true,
           },
           {
@@ -67,7 +69,7 @@ export class FormWrapComponent implements OnInit {
               StepType.CONTACT,
               StepType.ADDITIONAL,
             ],
-            serviceConfigName: 'Config2',
+            name: 'Config2',
             willEmbedInIframe: false,
             additionalDocuments: [
               { subType: SubType.OTHER, description: 'Blinkingcina' },
@@ -80,37 +82,41 @@ export class FormWrapComponent implements OnInit {
         ],
       },
       {
-        serviceId: '2',
-        serviceName: 'Servis2',
-        shouldAskForFaceEnroll: true,
-        defaultCountry: Country.SRB,
-        allowedCountries: [Country.MNE, Country.SRB],
-        maxNumberOfTries: 2,
-        sessionValidity: 121,
+        id: 2,
+        name: 'Servis2',
+        serviceConfiguration: {
+          shouldAskForFaceEnroll: true,
+          defaultCountry: Country.SRB,
+          allowedCountries: [Country.MNE, Country.SRB],
+          maxNumberOfTries: 2,
+          sessionValidity: 121,
+        },
       },
     ];
   }
 
   addNewServiceForm() {
     const newService = {
-      serviceId: uuidv4(),
-      serviceName: '',
-      shouldAskForFaceEnroll: true,
-      defaultCountry: null,
-      allowedCountries: [],
-      maxNumberOfTries: null,
-      sessionValidity: null,
+      id: uuidv4(),
+      name: '',
+      serviceConfiguration: {
+        shouldAskForFaceEnroll: false,
+        defaultCountry: null,
+        allowedCountries: [],
+        maxNumberOfTries: null,
+        sessionValidity: null,
+      },
     };
     this.serviceForms.push(newService);
     this.expandServicePanels = true;
     console.log(this.serviceForms);
   }
 
-  onDeleteService(id: string) {
+  onDeleteService(id: number) {
     console.log(id);
 
     this.serviceForms = this.serviceForms.filter((elem) => {
-      return elem.serviceId !== id;
+      return elem.id !== id;
     });
 
     this.serviceForms;

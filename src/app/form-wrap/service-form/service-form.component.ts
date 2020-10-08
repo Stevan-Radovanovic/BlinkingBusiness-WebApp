@@ -65,7 +65,7 @@ export class ServiceFormComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.name = this.configObject.serviceConfigName;
+    this.name = this.configObject.name;
     this.skippableSteps = ['Account number', 'Contact data'];
     this.stepsThatRequireAttention = ['Account number', 'Address'];
     this.stepsThatRequireProof = ['Account number', 'Address'];
@@ -168,7 +168,7 @@ export class ServiceFormComponent implements OnInit {
   initServiceForm() {
     this.serviceForm = new FormGroup({
       serviceConfigName: new FormControl(
-        { value: this.configObject.serviceConfigName, disabled: true },
+        { value: this.configObject.name, disabled: true },
         Validators.required
       ),
       baseRedirectUrl: new FormControl(
