@@ -9,7 +9,7 @@
           alt="Logo Placeholder"
         />
       </mat-card-title>
-      <mat-card-content>
+      <mat-card-content *ngIf="businessObject">
         <app-business-form
           [businessObject]="businessObject"
         ></app-business-form>

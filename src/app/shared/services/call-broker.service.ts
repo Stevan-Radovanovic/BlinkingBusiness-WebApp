@@ -30,4 +30,8 @@ export class CallBrokerService {
     };
     return this.http.post<ResponseObject>(this.routes.getBusinessById, body);
   }
+
+  getImageById(imageId: string) {
+    return this.routes.getImageById + imageId;
+  }
 }

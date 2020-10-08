@@ -16,11 +16,12 @@ import { ActivatedRoute } from '@angular/router';
 export class FormWrapComponent implements OnInit {
   serviceForms: ServiceObject[] = [];
 
-  businessObject: BusinessObject = {
-    name: '',
-    businessConfiguration: { primaryColor: '' },
-    businessUrl: '',
-  };
+  businessObject: BusinessObject;
+  //  = {
+  //   name: '',
+  //   businessConfiguration: { primaryColor: '' },
+  //   businessUrl: '',
+  // };
 
   expandServicePanels = false;
   savedServiceForms = 0;
@@ -39,6 +40,8 @@ export class FormWrapComponent implements OnInit {
         businessUrl: response.payload.businessUrl,
         businessConfiguration: response.payload.businessConfiguration,
       };
+      console.log(this.businessObject);
+
       this.serviceForms = response.payload.services;
     });
   }

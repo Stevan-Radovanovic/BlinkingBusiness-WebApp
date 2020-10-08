@@ -268,7 +268,6 @@ export class ServiceFormComponent implements OnInit {
       this.showError = true;
       this.serviceForm.get('stepsThatRequireProofOfDocuments').markAsTouched();
     } else {
-      console.log(2);
       this.serviceForm
         .get('stepsThatRequireProofOfDocuments')
         .clearValidators();

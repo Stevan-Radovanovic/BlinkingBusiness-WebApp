@@ -4,8 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class RouteConstantsService {
-  public baseUrl = 'https://onboarding-api-local-dev.blinking.services';
-  public login = this.baseUrl + '/login';
-  public getAllBusinesses = this.baseUrl + '/business/getAllBusinesses';
-  public getBusinessById = this.baseUrl + '/business/getBusinessById';
+  private onboardingBaseUrl =
+    'https://onboarding-api-local-dev.blinking.services';
+  public login = this.onboardingBaseUrl + '/login';
+  public getAllBusinesses =
+    this.onboardingBaseUrl + '/business/getAllBusinesses';
+  public getBusinessById = this.onboardingBaseUrl + '/business/getBusinessById';
+
+  private mediaServerBaseUrl = 'https://image-handler-dev.blinking.services';
+  public getImageById = this.mediaServerBaseUrl + '/media/public/download/';
 }

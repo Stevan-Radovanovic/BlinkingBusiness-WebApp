@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BusinessObject } from 'src/app/shared/models/business-object.model';
+import { CallBrokerService } from 'src/app/shared/services/call-broker.service';
 
 @Component({
   selector: 'app-business-item',
@@ -9,11 +10,20 @@ import { BusinessObject } from 'src/app/shared/models/business-object.model';
 })
 export class BusinessItemComponent implements OnInit {
   @Input() businessObject: BusinessObject;
+  logoLink = '';
+  faviconLink = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private callBroker: CallBrokerService) {}
 
   ngOnInit(): void {
-    console.log(this.businessObject);
+    this.logoLink = this.callBroker.getImageById(
+      this.businessObject.businessConfiguration.logoId
+    );
+    this.faviconLink = this.callBroker.getImageById(
+      this.businessObject.businessConfiguration.faviconId
+    );
+    console.log('logo link', this.logoLink);
+    console.log('favico link', this.faviconLink);
   }
 
   navigateToForm() {

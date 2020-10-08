@@ -40,7 +40,7 @@ export class MainServiceFormComponent implements OnInit {
   ngOnInit(): void {
     this.serviceConfigForms = this.serviceObject.serviceConfigs;
     this.name = this.serviceObject.name;
-    console.log('Form', this.serviceObject);
+    console.log('Service Form', this.serviceObject);
 
     this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
     this.initServiceForm();
