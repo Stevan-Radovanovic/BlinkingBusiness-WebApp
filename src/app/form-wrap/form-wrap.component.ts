@@ -34,15 +34,10 @@ export class FormWrapComponent implements OnInit {
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.callBroker.getBusinessById(id).subscribe((response) => {
-      this.businessObject = {
-        id: response.payload.id,
-        name: response.payload.name,
-        businessUrl: response.payload.businessUrl,
-        businessConfiguration: response.payload.businessConfiguration,
-      };
+      this.businessObject = response.payload;
       console.log(this.businessObject);
 
-      this.serviceForms = response.payload.services;
+      this.serviceForms = this.businessObject.services;
     });
   }
 

@@ -34,19 +34,7 @@ export class BusinessFormComponent implements OnInit {
       this.enableEditing();
     }
 
-    if (this.businessObject.businessConfiguration.faviconId) {
-      this.faviconPath = this.callBroker.getImageById(
-        this.businessObject.businessConfiguration.faviconId
-      );
-      this.prepopulatedFavicon = true;
-    }
-
-    if (this.businessObject.businessConfiguration.logoId) {
-      this.logoPath = this.callBroker.getImageById(
-        this.businessObject.businessConfiguration.logoId
-      );
-      this.prepopulatedLogo = true;
-    }
+    this.setPrepopulatedImages();
 
     this.businessForm.get('color').valueChanges.subscribe((value) => {
       this.selectedColor = value;
@@ -62,6 +50,38 @@ export class BusinessFormComponent implements OnInit {
     this.businessForm.get('logo').valueChanges.subscribe(() => {
       this.checkLogoValidity();
     });
+  }
+
+  setPrepopulatedImages() {
+    if (this.businessObject.businessConfiguration.faviconId) {
+      this.faviconPath = this.callBroker.getImageById(
+        this.businessObject.businessConfiguration.faviconId
+      );
+      this.prepopulatedFavicon = true;
+    }
+
+    if (this.businessObject.businessConfiguration.logoId) {
+      this.logoPath = this.callBroker.getImageById(
+        this.businessObject.businessConfiguration.logoId
+      );
+      this.prepopulatedLogo = true;
+    }
+
+    if (this.prepopulatedFavicon) {
+      this.businessForm.get('favicon').clearValidators();
+    } else {
+      this.businessForm.get('favicon').setValidators(Validators.required);
+    }
+
+    this.businessForm.get('favicon').updateValueAndValidity();
+
+    if (this.prepopulatedLogo) {
+      this.businessForm.get('logo').clearValidators();
+    } else {
+      this.businessForm.get('logo').setValidators(Validators.required);
+    }
+
+    this.businessForm.get('logo').updateValueAndValidity();
   }
 
   requiredValidator(controlName: string) {

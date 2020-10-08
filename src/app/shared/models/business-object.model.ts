@@ -1,3 +1,5 @@
+import { ServiceObject } from './service-object.model';
+
 export interface BusinessObject {
   id?: number;
   name: string;
@@ -7,4 +9,5 @@ export interface BusinessObject {
     faviconId?: string;
     logoId?: string;
   };
+  services?: ServiceObject[];
 }
