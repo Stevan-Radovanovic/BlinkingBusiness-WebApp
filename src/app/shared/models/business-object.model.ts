@@ -1,8 +1,10 @@
 export interface BusinessObject {
-  businessId?: number;
-  businessName: string;
+  id?: number;
+  name: string;
   businessUrl: string;
-  primaryColor: string;
-  favicon?: string;
-  logo?: string;
+  businessConfiguration: {
+    primaryColor: string;
+    faviconId?: string;
+    logoId?: string;
+  };
 }

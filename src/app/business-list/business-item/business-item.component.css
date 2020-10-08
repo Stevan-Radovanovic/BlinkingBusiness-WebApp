@@ -1,0 +1,55 @@
+mat-card-title {
+  font-weight: bold;
+}
+
+mat-card {
+  margin-bottom: 9px;
+  border: 2px solid #ccc;
+}
+
+.help-class {
+  align-items: center;
+}
+
+p {
+  font-size: 12pt;
+}
+
+.colorPreview {
+  height: 16px;
+  width: 16px;
+  border: 1px solid #eee;
+  box-shadow: 2px 3px #ccc;
+  text-align: center;
+  font-size: 8pt;
+  margin-left: 3px;
+  display: inline-block;
+}
+
+.picturePreview {
+  height: 110px;
+  width: 110px;
+  border: 1px solid #eee;
+  box-shadow: 2px 3px #ccc;
+  margin-left: 12px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.p-1 {
+  display: inline;
+}
+
+.display-div {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 750px) {
+  .display-div {
+    align-items: center;
+    justify-content: space-between;
+  }
+}

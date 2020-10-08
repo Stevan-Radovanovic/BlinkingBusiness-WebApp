@@ -126,7 +126,7 @@ export class BusinessFormComponent implements OnInit {
   initBusinessForm() {
     this.businessForm = new FormGroup({
       businessName: new FormControl(
-        { value: this.businessObject.businessName, disabled: true },
+        { value: this.businessObject.name, disabled: true },
         [Validators.required]
       ),
       businessUrl: new FormControl(
@@ -139,7 +139,10 @@ export class BusinessFormComponent implements OnInit {
         ]
       ),
       color: new FormControl(
-        { value: this.businessObject.primaryColor, disabled: true },
+        {
+          value: this.businessObject.businessConfiguration.primaryColor,
+          disabled: true,
+        },
         [
           Validators.required,
           Validators.pattern('^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$'),

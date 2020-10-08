@@ -15,8 +15,8 @@ export class FormWrapComponent implements OnInit {
   serviceForms: ServiceObject[] = [];
 
   businessObject: BusinessObject = {
-    businessName: '',
-    primaryColor: '',
+    name: '',
+    businessConfiguration: { primaryColor: '' },
     businessUrl: '',
   };
 
@@ -27,9 +27,11 @@ export class FormWrapComponent implements OnInit {
 
   ngOnInit(): void {
     this.businessObject = {
-      businessName: 'Granice Mlekara',
+      name: 'Granice Mlekara',
       businessUrl: 'www.granice.com',
-      primaryColor: '#aaaede',
+      businessConfiguration: {
+        primaryColor: '#aaaede',
+      },
     };
 
     this.serviceForms = [

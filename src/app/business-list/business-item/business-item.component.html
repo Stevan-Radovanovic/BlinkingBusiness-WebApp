@@ -1,1 +1,33 @@
-<p>Business Component</p>
+<mat-card>
+  <mat-card-title>{{ businessObject.name }}</mat-card-title>
+  <mat-card-content>
+    <div class="columns help-class">
+      <div class="column is-5">
+        <p><strong>Business Url:</strong> {{ businessObject.businessUrl }}</p>
+
+        <div>
+          <p class="p-1">
+            <strong>Primary Color:</strong>
+            {{ businessObject.businessConfiguration.primaryColor }}
+          </p>
+          <div
+            class="colorPreview"
+            [style.background]="
+              businessObject.businessConfiguration.primaryColor
+            "
+          ></div>
+        </div>
+      </div>
+
+      <div class="display-div column is-4">
+        <p><strong>Logo:</strong></p>
+        <div class="picturePreview"></div>
+      </div>
+
+      <div class="display-div column is-4">
+        <p><strong>Favicon:</strong></p>
+        <div class="picturePreview"></div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
