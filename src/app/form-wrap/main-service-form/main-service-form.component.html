@@ -125,6 +125,7 @@
         (saved)="onSavedServiceForm($event)"
         (deleting)="deleteServiceConfigForm($event)"
         [expand]="expandConfigPanels"
+        [allowedSteps]="serviceObject.serviceConfiguration.allowedSteps"
         [configObject]="serviceConfigForm"
       ></app-service-form>
     </div>

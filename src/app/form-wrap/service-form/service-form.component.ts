@@ -25,6 +25,7 @@ export class ServiceFormComponent implements OnInit {
   @Output() saved = new EventEmitter<boolean>();
   @Output() deleting = new EventEmitter<string>();
   @Input() configObject: ServiceConfig;
+  @Input() allowedSteps: string[];
   @Input() expand: boolean;
   @ViewChild('docDesc') additionalDocDesc: ElementRef<HTMLInputElement>;
 

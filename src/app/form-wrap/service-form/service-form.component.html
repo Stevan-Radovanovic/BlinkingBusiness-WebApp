@@ -57,18 +57,21 @@
       <mat-label>Initial Session Config *</mat-label>
       <mat-select formControlName="initialSessionConfig" multiple>
         <mat-option
+          *ngIf="allowedSteps.indexOf('Document type') != -1"
           [disabled]="documentDisabler('Document type with country')"
           value="Document type"
         >
           Document
         </mat-option>
         <mat-option
+          *ngIf="allowedSteps.indexOf('Document type with country') != -1"
           [disabled]="documentDisabler('Document type')"
           value="Document type with country"
         >
           Document with Country
         </mat-option>
         <mat-option
+          *ngIf="allowedSteps.indexOf('Front side') != -1"
           [disabled]="
             !documentDisabler('Document type') &&
             !documentDisabler('Document type with country')
@@ -78,6 +81,7 @@
           Front Side
         </mat-option>
         <mat-option
+          *ngIf="allowedSteps.indexOf('Back side') != -1"
           [disabled]="
             !documentDisabler('Document type') &&
             !documentDisabler('Document type with country')
@@ -86,12 +90,32 @@
         >
           Back Side
         </mat-option>
-        <mat-option value="Address">Address</mat-option>
-        <mat-option value="Face">Face</mat-option>
-        <mat-option value="Account number">Account Number</mat-option>
-        <mat-option value="Contact data">Contact Data</mat-option>
-        <mat-option value="Video session">Video Session</mat-option>
-        <mat-option value="Additional document"
+        <mat-option
+          *ngIf="allowedSteps.indexOf('Address') != -1"
+          value="Address"
+          >Address</mat-option
+        >
+        <mat-option *ngIf="allowedSteps.indexOf('Face') != -1" value="Face"
+          >Face</mat-option
+        >
+        <mat-option
+          *ngIf="allowedSteps.indexOf('Account number') != -1"
+          value="Account number"
+          >Account Number</mat-option
+        >
+        <mat-option
+          *ngIf="allowedSteps.indexOf('Contact data') != -1"
+          value="Contact data"
+          >Contact Data</mat-option
+        >
+        <mat-option
+          *ngIf="allowedSteps.indexOf('Video session') != -1"
+          value="Video session"
+          >Video Session</mat-option
+        >
+        <mat-option
+          *ngIf="allowedSteps.indexOf('Additional document') != -1"
+          value="Additional document"
           >Additional Documents</mat-option
         >
       </mat-select>
