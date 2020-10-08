@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     const username = this.authForm.get('userName').value;
     const password = this.authForm.get('password').value;
     this.callBroker.login(username, password).subscribe(
-      (response: ResponseObject) => {
+      (response) => {
         if (response.statusCode === 20001) {
           localStorage.setItem('token', uuidv4());
           this.authService.loggedIn = true;

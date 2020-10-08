@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ResponseObject } from '../models/response-object.model';
 import { RouteConstantsService } from './route-constants.service';
 
 @Injectable({
@@ -16,6 +17,10 @@ export class CallBrokerService {
       username,
       password,
     };
-    return this.http.post(this.routes.login, body);
+    return this.http.post<ResponseObject>(this.routes.login, body);
+  }
+
+  getAllBusinesses() {
+    return this.http.get<ResponseObject>(this.routes.getAllBusinesses);
   }
 }
