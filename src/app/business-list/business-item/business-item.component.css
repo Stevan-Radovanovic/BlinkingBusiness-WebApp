@@ -53,3 +53,12 @@ p {
     justify-content: space-between;
   }
 }
+
+.more-button-div {
+  display: flex;
+  justify-content: center;
+}
+
+.more-button-div button {
+  color: black;
+}

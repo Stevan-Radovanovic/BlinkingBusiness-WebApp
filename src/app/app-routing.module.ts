@@ -13,7 +13,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'form',
+    path: 'form/:id',
     component: FormWrapComponent,
     canActivate: [AuthGuard],
   },
