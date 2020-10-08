@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BusinessObject } from 'src/app/shared/models/business-object.model';
+import { CallBrokerService } from 'src/app/shared/services/call-broker.service';
 
 @Component({
   selector: 'app-business-form',
@@ -14,6 +15,8 @@ export class BusinessFormComponent implements OnInit {
   @ViewChild('logo') logo: ElementRef;
   @Input() businessObject: BusinessObject;
 
+  prepopulatedFavicon = false;
+  prepopulatedLogo = false;
   logoPath = '';
   faviconPath = '';
   editing = false;
@@ -21,7 +24,7 @@ export class BusinessFormComponent implements OnInit {
 
   selectedColor = '';
 
-  constructor() {}
+  constructor(private callBroker: CallBrokerService) {}
 
   ngOnInit(): void {
     this.initBusinessForm();
@@ -29,6 +32,20 @@ export class BusinessFormComponent implements OnInit {
 
     if (this.businessForm.get('businessName').value === '') {
       this.enableEditing();
+    }
+
+    if (this.businessObject.businessConfiguration.faviconId) {
+      this.faviconPath = this.callBroker.getImageById(
+        this.businessObject.businessConfiguration.faviconId
+      );
+      this.prepopulatedFavicon = true;
+    }
+
+    if (this.businessObject.businessConfiguration.logoId) {
+      this.logoPath = this.callBroker.getImageById(
+        this.businessObject.businessConfiguration.logoId
+      );
+      this.prepopulatedLogo = true;
     }
 
     this.businessForm.get('color').valueChanges.subscribe((value) => {

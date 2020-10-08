@@ -22,8 +22,6 @@ export class BusinessItemComponent implements OnInit {
     this.faviconLink = this.callBroker.getImageById(
       this.businessObject.businessConfiguration.faviconId
     );
-    console.log('logo link', this.logoLink);
-    console.log('favico link', this.faviconLink);
   }
 
   navigateToForm() {

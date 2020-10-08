@@ -71,11 +71,17 @@
       </div>
     </div>
     <div class="column is-6" style="display: flex">
-      <div *ngIf="businessForm.get('favicon').valid" class="picturePreview">
+      <div
+        *ngIf="businessForm.get('favicon').valid || prepopulatedFavicon"
+        class="picturePreview"
+      >
         <img [src]="faviconPath" />
       </div>
 
-      <div class="picturePreview" *ngIf="businessForm.get('logo').valid">
+      <div
+        class="picturePreview"
+        *ngIf="businessForm.get('logo').valid || prepopulatedLogo"
+      >
         <img [src]="logoPath" />
       </div>
     </div>
