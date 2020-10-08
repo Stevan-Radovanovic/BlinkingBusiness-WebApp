@@ -33,6 +33,31 @@
   flex-wrap: wrap;
 }
 
+.mini-control-width {
+  width: 30%;
+}
+
+.mini-control-width-2 {
+  width: 60%;
+}
+
+.mini-control-width-3 {
+  width: 35%;
+}
+
+@media (max-width: 750px) {
+  .redirect-div {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .mini-control-width,
+  .mini-control-width-2,
+  .mini-control-width-3 {
+    width: 100%;
+  }
+}
+
 .top-margin {
   margin-top: 16px;
 }
@@ -62,6 +87,7 @@
 .delete-button {
   height: 40px;
 }
+
 .error-class {
   font-size: 9px;
   margin-top: -21px;
@@ -80,4 +106,10 @@ mat-panel-title {
 .service-config-title {
   font-weight: bold;
   font-size: 16pt;
+}
+
+@media (max-width: 750px) {
+  .service-config-title {
+    font-size: 12pt;
+  }
 }
