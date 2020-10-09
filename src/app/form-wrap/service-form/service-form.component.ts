@@ -14,6 +14,7 @@ import { AdditionalDoc } from 'src/app/shared/models/additional-doc.model';
 import { SubType } from 'src/app/shared/models/sub-type.model';
 import { StepType } from 'src/app/shared/models/step-type.model';
 import { ServiceConfig } from 'src/app/shared/models/service-config.model';
+import { Country } from 'src/app/shared/models/country.model';
 
 @Component({
   selector: 'app-service-form',
@@ -39,6 +40,7 @@ export class ServiceFormComponent implements OnInit {
   disableAdditionalDocs = true;
   showError = false;
   name = '';
+  country = Country;
 
   skippableSteps: string[] = [];
   skippableStepOptions: string[] = [];

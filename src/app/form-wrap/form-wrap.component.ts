@@ -17,11 +17,6 @@ export class FormWrapComponent implements OnInit {
   serviceForms: ServiceObject[] = [];
 
   businessObject: BusinessObject;
-  //  = {
-  //   name: '',
-  //   businessConfiguration: { primaryColor: '' },
-  //   businessUrl: '',
-  // };
 
   expandServicePanels = false;
   savedServiceForms = 0;

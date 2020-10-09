@@ -227,10 +227,10 @@
           <mat-label>Default Country *</mat-label>  
           <mat-select formControlName="defaultCountry">
             <mat-option
-              *ngFor="let country of allowedCountries"
-              [value]="country"
+              *ngFor="let co of allowedCountries"
+              [value]="co"
             >
-              {{ country }}
+              {{ country[co] }}
             </mat-option>
           </mat-select>
           <mat-error *ngIf="requiredValidator('defaultCountry')">

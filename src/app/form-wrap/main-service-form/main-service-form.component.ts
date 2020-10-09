@@ -22,6 +22,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class MainServiceFormComponent implements OnInit {
   serviceForm: FormGroup;
   countries: string[];
+  country = Country;
   serviceConfigForms: ServiceConfig[] = [];
   editing = false;
   name = '';
@@ -40,10 +41,9 @@ export class MainServiceFormComponent implements OnInit {
   ngOnInit(): void {
     this.serviceConfigForms = this.serviceObject.serviceConfigs;
     this.name = this.serviceObject.name;
-    console.log('Service Form', this.serviceObject);
-
     this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
     this.initServiceForm();
+    console.log(this.country['GBR']);
 
     if (this.serviceForm.get('serviceName').value === '') {
       this.enableEditing();
@@ -51,6 +51,10 @@ export class MainServiceFormComponent implements OnInit {
 
     this.serviceForm.get('serviceName').valueChanges.subscribe((value) => {
       this.name = value;
+    });
+
+    this.serviceForm.get('defaultCountry').valueChanges.subscribe((value) => {
+      console.log('DefaultCountry', value);
     });
   }
 
