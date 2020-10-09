@@ -1,0 +1,26 @@
+mat-panel-title {
+  padding-bottom: 4px;
+}
+
+.user-panel {
+  border: 2px solid #ccc;
+  margin-top: 5px !important;
+}
+
+.user-title {
+  font-weight: bold;
+  font-size: 18pt;
+  display: flex;
+  align-items: center;
+}
+
+.user-logo {
+  width: 27px;
+  height: 27px;
+}
+
+@media (max-width: 750px) {
+  .user-title {
+    font-size: 12pt;
+  }
+}
