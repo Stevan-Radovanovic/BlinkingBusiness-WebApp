@@ -102,12 +102,23 @@
       class="update-button"
       color="warn"
       [disabled]="!serviceForm.valid"
-      *ngIf="editing"
+      *ngIf="editing && !flags.newBusiness"
       (click)="updateServiceDetails()"
     >
       <mat-icon>update</mat-icon>
       Update Service
     </button>
+    <button
+    mat-raised-button
+    class="update-button"
+    color="warn"
+    [disabled]="!serviceForm.valid"
+    *ngIf="editing && flags.newBusiness"
+    (click)="saveServiceDetails()"
+  >
+    <mat-icon>save</mat-icon>
+    Save Service
+  </button>
     <button
       *ngIf="editing"
       (click)="onDeleteService()"
@@ -132,7 +143,9 @@
   </mat-accordion>
 
   <div class="add-button">
-    <button mat-raised-button color="warn" (click)="addServiceConfigForm()">
+    <button mat-raised-button color="warn" 
+    (click)="addServiceConfigForm()" 
+    [disabled]="!serviceSaved && flags.newBusiness">
       <mat-icon>add</mat-icon> Add new Service Config
     </button>
   </div>

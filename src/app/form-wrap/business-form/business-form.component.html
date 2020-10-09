@@ -102,11 +102,22 @@
       mat-raised-button
       color="warn"
       [disabled]="!businessForm.valid"
-      *ngIf="editing"
+      *ngIf="editing && !flags.newBusiness"
       (click)="onUpdateBusiness()"
     >
       <mat-icon>update</mat-icon>
       Update Business Details
     </button>
+    <button
+    type="button"
+    mat-raised-button
+    color="warn"
+    [disabled]="!businessForm.valid"
+    *ngIf="editing && flags.newBusiness"
+    (click)="onSaveBusiness()"
+  >
+    <mat-icon>save</mat-icon>
+    Save Business Details
+  </button>
   </div>
 </form>

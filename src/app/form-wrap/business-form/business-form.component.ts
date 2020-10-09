@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BusinessObject } from 'src/app/shared/models/business-object.model';
 import { CallBrokerService } from 'src/app/shared/services/call-broker.service';
+import { FlagsService } from 'src/app/shared/services/flags.service';
 
 @Component({
   selector: 'app-business-form',
@@ -15,6 +16,7 @@ export class BusinessFormComponent implements OnInit {
   @ViewChild('logo') logo: ElementRef;
   @Input() businessObject: BusinessObject;
 
+
   prepopulatedFavicon = false;
   prepopulatedLogo = false;
   logoPath = '';
@@ -24,7 +26,7 @@ export class BusinessFormComponent implements OnInit {
 
   selectedColor = '';
 
-  constructor(private callBroker: CallBrokerService) {}
+  constructor(private callBroker: CallBrokerService, public flags: FlagsService) {}
 
   ngOnInit(): void {
     this.initBusinessForm();
@@ -215,5 +217,10 @@ export class BusinessFormComponent implements OnInit {
 
   onUpdateBusiness() {
     this.disableEditing();
+  }
+
+  onSaveBusiness() {
+    this.disableEditing();
+    this.flags.businessConfigCreated = true;
   }
 }

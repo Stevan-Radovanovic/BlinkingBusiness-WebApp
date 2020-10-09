@@ -7,6 +7,7 @@ import { SubType } from '../shared/models/sub-type.model';
 import { BusinessObject } from '../shared/models/business-object.model';
 import { CallBrokerService } from '../shared/services/call-broker.service';
 import { ActivatedRoute } from '@angular/router';
+import { FlagsService } from '../shared/services/flags.service';
 
 @Component({
   selector: 'app-form-wrap',
@@ -23,7 +24,8 @@ export class FormWrapComponent implements OnInit {
 
   constructor(
     private callBroker: CallBrokerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public flags: FlagsService
   ) {}
 
   ngOnInit(): void {
@@ -37,11 +39,15 @@ export class FormWrapComponent implements OnInit {
         services: [],
       };
       this.serviceForms = [];
+      this.flags.newBusiness = true;
+      this.flags.businessConfigCreated = false;
       return;
     }
 
     this.callBroker.getBusinessById(id).subscribe((response) => {
       this.businessObject = response.payload;
+      this.flags.businessConfigCreated = true;
+      this.flags.newBusiness = false;
       console.log(this.businessObject);
       this.serviceForms = this.businessObject.services;
     });

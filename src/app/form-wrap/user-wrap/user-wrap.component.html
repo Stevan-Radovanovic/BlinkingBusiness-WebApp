@@ -1,9 +1,7 @@
 <div class="wrap">
-    <mat-accordion multi="false">
-        <div *ngFor="let user of users">        
-            <app-user-form [services]="services" [user]="user"></app-user-form>
-        </div>
-    </mat-accordion>
+    <div *ngFor="let user of users">        
+        <app-user-form [services]="services" [user]="user"></app-user-form>
+    </div>
 </div>
 
 

@@ -27,7 +27,9 @@
     </mat-accordion>
 
     <div class="add-button">
-      <button mat-raised-button color="warn" (click)="addNewServiceForm()">
+      <button mat-raised-button color="warn" 
+      (click)="addNewServiceForm()" 
+      [disabled]="flags.newBusiness && !flags.businessConfigCreated">
         <mat-icon>add</mat-icon>
         Add new Service
       </button>

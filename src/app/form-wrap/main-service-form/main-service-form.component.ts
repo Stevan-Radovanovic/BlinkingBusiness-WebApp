@@ -12,6 +12,7 @@ import { Country } from 'src/app/shared/models/country.model';
 import { ServiceConfig } from 'src/app/shared/models/service-config.model';
 import { ServiceObject } from 'src/app/shared/models/service-object.model';
 import { StepType } from 'src/app/shared/models/step-type.model';
+import { FlagsService } from 'src/app/shared/services/flags.service';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
@@ -26,7 +27,7 @@ export class MainServiceFormComponent implements OnInit {
   serviceConfigForms: ServiceConfig[] = [];
   editing = false;
   name = '';
-  savedOnce = false;
+  serviceSaved = false;
   expandConfigPanels = false;
   allowedDefault = [
     'Document type with country',
@@ -47,7 +48,7 @@ export class MainServiceFormComponent implements OnInit {
 
   savedServiceConfigForms = 0;
 
-  constructor() {}
+  constructor(public flags: FlagsService) {}
 
   ngOnInit(): void {
     if (this.serviceObject.serviceConfigs) {
@@ -180,10 +181,15 @@ export class MainServiceFormComponent implements OnInit {
   }
 
   updateServiceDetails() {
-    if (!this.savedOnce) {
-      this.savedOnce = true;
+    if (!this.serviceSaved) {
+      this.serviceSaved = true;
       this.saved.emit(true);
     }
+    this.disableEditing();
+  }
+
+  saveServiceDetails() {
+    this.serviceSaved = true;
     this.disableEditing();
   }
 
