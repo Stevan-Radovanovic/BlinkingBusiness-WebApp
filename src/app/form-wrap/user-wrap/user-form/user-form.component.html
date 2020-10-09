@@ -18,6 +18,34 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
+          <mat-label>Services *</mat-label>
+          <mat-select formControlName="services" multiple>
+            <mat-option
+              *ngFor="let service of services"
+              [value]="service.id"
+            >
+              {{ service.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="requiredValidator('services')">
+            This field is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Roles *</mat-label>
+          <mat-select formControlName="roles" multiple>
+            <mat-option
+              *ngFor="let role of roles | keyvalue"
+              [value]="role.value"
+            >
+              {{ role.value }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="requiredValidator('services')">
+            This field is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Status *</mat-label>
           <input matInput formControlName="status" />
           <mat-error *ngIf="requiredValidator('status')">

@@ -10,7 +10,9 @@
         />
         <strong>Business List</strong>
         </div>
-        <button class="new-business-button" color="warn" [routerLink]="['form/new']" mat-raised-button><mat-icon>add</mat-icon> Add new Business</button>
+        <button class="new-business-button" color="warn" (click)="addNewBusiness()" mat-raised-button>
+          <mat-icon>add</mat-icon> Add new Business
+        </button>
       </mat-card-title>
       <mat-card-content>
         <h2 *ngIf="businessArray.length === 0" class="no-business-h2">

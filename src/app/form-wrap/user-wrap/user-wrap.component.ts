@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ServiceObject } from 'src/app/shared/models/service-object.model';
 import { User } from 'src/app/shared/models/user.model';
 
 @Component({
@@ -8,6 +9,7 @@ import { User } from 'src/app/shared/models/user.model';
 })
 export class UserWrapComponent implements OnInit {
   @Input() users: User[];
+  @Input() services: ServiceObject[];
 
   constructor() {}
 

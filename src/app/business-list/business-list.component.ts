@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BusinessObject } from '../shared/models/business-object.model';
 import { CallBrokerService } from '../shared/services/call-broker.service';
 
@@ -10,7 +11,7 @@ import { CallBrokerService } from '../shared/services/call-broker.service';
 export class BusinessListComponent implements OnInit {
   businessArray: BusinessObject[] = [];
 
-  constructor(public callBroker: CallBrokerService) {}
+  constructor(public callBroker: CallBrokerService, private router: Router) {}
 
   ngOnInit(): void {
     this.callBroker.getAllBusinesses().subscribe((response) => {
@@ -18,5 +19,9 @@ export class BusinessListComponent implements OnInit {
         this.businessArray = response.payload;
       }
     });
+  }
+
+  addNewBusiness() {
+    this.router.navigateByUrl('form/new');
   }
 }
