@@ -15,6 +15,7 @@ import { BusinessItemComponent } from './business-list/business-item/business-it
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorsService } from './shared/services/interceptors.service';
 import { MaterialModule } from './material.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MaterialModule } from './material.module';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    SharedModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorsService, multi: true },
