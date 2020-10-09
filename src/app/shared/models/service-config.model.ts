@@ -17,3 +17,22 @@ export interface ServiceConfig {
   additionalDocuments?: AdditionalDoc[];
   maxNumberOfTries: number;
 }
+
+export class ServiceConfigClass {
+  constructor(
+    public id: number,
+    public serviceConfigId: string,
+    public name: string,
+    public baseRedirectUrl: string,
+    public blinkingParams: string[],
+    public willEmbedInIframe: boolean,
+    public skippableSteps: string[],
+    public stepsThatRequireProofOfDocuments: string[],
+    public initialSessionConfig: StepType[],
+    public stepsThatRequireAttention: string[],
+    public shouldAskForFaceEnroll: boolean,
+    public defaultCountry: string,
+    public additionalDocuments: AdditionalDoc[],
+    public maxNumberOfTries: number
+  ) {}
+}

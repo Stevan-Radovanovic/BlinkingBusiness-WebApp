@@ -194,7 +194,7 @@
           *ngIf="additionalDocArray.length > 0"
         >
           Additional Document
-        </mat-option>
+        </mat-option> 
       </mat-select>
       <mat-error *ngIf="showError">
         Additional Documents must be selected
@@ -224,7 +224,7 @@
       </div>
       <div class="mini-control-width">
         <mat-form-field appearance="fill">
-          <mat-label>Default Country *</mat-label>
+          <mat-label>Default Country *</mat-label>  
           <mat-select formControlName="defaultCountry">
             <mat-option
               *ngFor="let country of allowedCountries"

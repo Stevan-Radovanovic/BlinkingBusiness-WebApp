@@ -16,3 +16,24 @@ export interface ServiceObject {
   };
   serviceConfigs?: ServiceConfig[];
 }
+
+export class ServiceConfigurationClass {
+  constructor(
+    public allowedSteps: string[],
+    public allowedCustomerBadges: Badge[],
+    public allowedCountries: Country[],
+    public shouldAskForFaceEnroll: boolean,
+    public defaultCountry: Country,
+    public maxNumberOfTries: number,
+    public sessionValidity: number
+  ) {}
+}
+
+export class ServiceClass {
+  constructor(
+    public id: number,
+    public name: string,
+    public serviceConfiguration: ServiceConfigurationClass,
+    public serviceConfigs: ServiceConfig[]
+  ) {}
+}

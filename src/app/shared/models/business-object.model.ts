@@ -1,4 +1,4 @@
-import { ServiceObject } from './service-object.model';
+import { ServiceClass, ServiceObject } from './service-object.model';
 
 export interface BusinessObject {
   id?: number;
@@ -10,4 +10,21 @@ export interface BusinessObject {
     logoId?: string;
   };
   services?: ServiceObject[];
+}
+
+export class BusinessConfigurationClass {
+  constructor(
+    public primaryColor: string,
+    public faviconId: string,
+    public logoId: string
+  ) {}
+}
+
+export class BusinessClass {
+  constructor(
+    public id: number,
+    public name: string,
+    public businessConfiguration: BusinessConfigurationClass,
+    public services: ServiceClass
+  ) {}
 }
