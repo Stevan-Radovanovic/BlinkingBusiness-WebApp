@@ -1,4 +1,5 @@
 import { ServiceClass, ServiceObject } from './service-object.model';
+import { User } from './user.model';
 
 export interface BusinessObject {
   id?: number;
@@ -10,6 +11,7 @@ export interface BusinessObject {
     logoId?: string;
   };
   services?: ServiceObject[];
+  users?: User[];
 }
 
 export class BusinessConfigurationClass {
@@ -25,6 +27,7 @@ export class BusinessClass {
     public id: number,
     public name: string,
     public businessConfiguration: BusinessConfigurationClass,
-    public services: ServiceClass
+    public services: ServiceClass,
+    public users: User[] //this is not yet a class
   ) {}
 }

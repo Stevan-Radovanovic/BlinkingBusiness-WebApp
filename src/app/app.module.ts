@@ -16,6 +16,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorsService } from './shared/services/interceptors.service';
 import { MaterialModule } from './material.module';
 import { SharedModule } from './shared/shared.module';
+import { UserWrapComponent } from './form-wrap/user-wrap/user-wrap.component';
+import { UserFormComponent } from './form-wrap/user-wrap/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { SharedModule } from './shared/shared.module';
     AdditionalDocsComponent,
     BusinessListComponent,
     BusinessItemComponent,
+    UserWrapComponent,
+    UserFormComponent,
   ],
   imports: [
     BrowserModule,

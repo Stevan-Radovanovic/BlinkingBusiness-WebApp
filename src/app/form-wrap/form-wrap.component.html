@@ -32,5 +32,9 @@
         Add new Service
       </button>
     </div>
+    <div *ngIf="businessObject">
+      <app-user-wrap [users]="businessObject.users"></app-user-wrap>
+    </div>
+    
   </div>
 </div>
