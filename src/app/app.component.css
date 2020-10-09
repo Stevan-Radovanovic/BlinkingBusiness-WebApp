@@ -16,3 +16,8 @@
   color: black;
   font-weight: bold;
 }
+
+.logo {
+  height: 60%;
+  cursor: pointer;
+}

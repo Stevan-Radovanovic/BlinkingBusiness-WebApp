@@ -30,8 +30,6 @@ export class FormWrapComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.callBroker.getBusinessById(id).subscribe((response) => {
       this.businessObject = response.payload;
-      console.log(this.businessObject);
-
       this.serviceForms = this.businessObject.services;
     });
   }
@@ -120,12 +118,9 @@ export class FormWrapComponent implements OnInit {
     };
     this.serviceForms.push(newService);
     this.expandServicePanels = true;
-    console.log(this.serviceForms);
   }
 
   onDeleteService(id: number) {
-    console.log(id);
-
     this.serviceForms = this.serviceForms.filter((elem) => {
       return elem.id !== id;
     });

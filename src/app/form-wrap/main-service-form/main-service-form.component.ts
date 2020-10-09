@@ -43,7 +43,6 @@ export class MainServiceFormComponent implements OnInit {
     this.name = this.serviceObject.name;
     this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
     this.initServiceForm();
-    console.log(this.country['GBR']);
 
     if (this.serviceForm.get('serviceName').value === '') {
       this.enableEditing();
@@ -51,10 +50,6 @@ export class MainServiceFormComponent implements OnInit {
 
     this.serviceForm.get('serviceName').valueChanges.subscribe((value) => {
       this.name = value;
-    });
-
-    this.serviceForm.get('defaultCountry').valueChanges.subscribe((value) => {
-      console.log('DefaultCountry', value);
     });
   }
 
@@ -135,7 +130,6 @@ export class MainServiceFormComponent implements OnInit {
   }
 
   deleteServiceConfigForm(id: string) {
-    console.log(id);
     this.serviceConfigForms = this.serviceConfigForms.filter((elem) => {
       return elem.serviceConfigId !== id;
     });

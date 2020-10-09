@@ -261,7 +261,6 @@ export class ServiceFormComponent implements OnInit {
 
   checkValidityProofOfDocs() {
     if (this.additional) {
-      console.log(1);
       this.serviceForm
         .get('stepsThatRequireProofOfDocuments')
         .setValidators(Validators.required);
@@ -279,7 +278,6 @@ export class ServiceFormComponent implements OnInit {
         .updateValueAndValidity();
       this.showError = false;
     }
-    console.log(this.serviceForm.get('stepsThatRequireProofOfDocuments'));
   }
 
   documentDisabler(document: string) {
