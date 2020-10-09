@@ -15,3 +15,18 @@
 .no-business-h2 {
   text-align: center;
 }
+
+.new-business-button {
+  color: black;
+}
+
+.title-business-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-with-logo {
+  display: flex;
+  align-items: center;
+}

@@ -1,13 +1,16 @@
 <div class="columns is-centered business-wrapper">
   <div class="column is-8">
     <mat-card class="business-card">
-      <mat-card-title>
-        <img
+      <mat-card-title class="title-business-list">
+        <div class="title-with-logo">
+          <img
           class="img-business"
           src="../assets/logo3.png"
           alt="Logo Placeholder"
         />
         <strong>Business List</strong>
+        </div>
+        <button class="new-business-button" color="warn" [routerLink]="['form/new']" mat-raised-button><mat-icon>add</mat-icon> Add new Business</button>
       </mat-card-title>
       <mat-card-content>
         <h2 *ngIf="businessArray.length === 0" class="no-business-h2">

@@ -13,6 +13,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'form/new',
+    component: FormWrapComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'form/:id',
     component: FormWrapComponent,
     canActivate: [AuthGuard],

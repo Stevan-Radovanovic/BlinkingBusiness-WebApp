@@ -28,6 +28,18 @@ export class FormWrapComponent implements OnInit {
 
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
+
+    if (id === 0) {
+      this.businessObject = {
+        name: '',
+        businessUrl: '',
+        businessConfiguration: { primaryColor: '' },
+        services: [],
+      };
+      this.serviceForms = [];
+      return;
+    }
+
     this.callBroker.getBusinessById(id).subscribe((response) => {
       this.businessObject = response.payload;
       this.serviceForms = this.businessObject.services;
