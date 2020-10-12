@@ -43,4 +43,5 @@ mat-panel-title {
 
 .table-border {
   border: 2px solid #ccc;
+  overflow-x: scroll;
 }

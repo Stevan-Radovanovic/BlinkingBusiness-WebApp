@@ -11,3 +11,8 @@
 .delete-additional {
   cursor: pointer;
 }
+
+.table-border {
+  border: 2px solid #ccc;
+  overflow-x: scroll;
+}
