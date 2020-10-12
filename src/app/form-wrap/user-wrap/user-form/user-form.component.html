@@ -57,6 +57,7 @@
       color="warn"
       *ngIf="!addingNew"
       [disabled]="!userForm.valid"
+      (click)="updateUser()"
     >
       <mat-icon>update</mat-icon>
       Update User
@@ -67,6 +68,7 @@
       color="warn"
       *ngIf="addingNew"
       [disabled]="!userForm.valid"
+      (click)="createUser()"
     >
       <mat-icon>update</mat-icon>
       Create User

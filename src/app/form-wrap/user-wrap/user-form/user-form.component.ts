@@ -1,6 +1,6 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Role } from 'src/app/shared/models/role.model';
 import { ServiceObject } from 'src/app/shared/models/service-object.model';
 import { User } from 'src/app/shared/models/user.model';
@@ -21,7 +21,8 @@ export class UserFormComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public data: { user: User; services: ServiceObject[] }
+    public data: { user: User; services: ServiceObject[] },
+    public dialogRef: MatDialogRef<UserFormComponent>
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +42,29 @@ export class UserFormComponent implements OnInit {
       this.userForm.get(controlName).hasError('required') &&
       this.userForm.get(controlName).touched
     );
+  }
+
+  updateUser() {
+    const user: User = {
+      id: this.data.user.id,
+      name: this.userForm.get('name').value,
+      roles: this.userForm.get('roles').value,
+      services: this.userForm.get('services').value,
+      status: this.userForm.get('status').value,
+    };
+
+    this.dialogRef.close(user);
+  }
+
+  createUser() {
+    const user: User = {
+      name: this.userForm.get('name').value,
+      roles: this.userForm.get('roles').value,
+      services: this.userForm.get('services').value,
+      status: this.userForm.get('status').value,
+    };
+
+    this.dialogRef.close(user);
   }
 
   initUserForm() {
