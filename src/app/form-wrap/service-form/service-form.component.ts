@@ -15,6 +15,7 @@ import { SubType } from 'src/app/shared/models/sub-type.model';
 import { StepType } from 'src/app/shared/models/step-type.model';
 import { ServiceConfig } from 'src/app/shared/models/service-config.model';
 import { Country } from 'src/app/shared/models/country.model';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-service-form',
@@ -289,6 +290,7 @@ export class ServiceFormComponent implements OnInit {
 
   addNewAditionalDocument() {
     const addDoc: AdditionalDoc = {
+      id: uuidv4(),
       subType: this.serviceForm.get('additionalDocSubType').value,
       description: this.serviceForm.get('additionalDocDescription').value,
     };

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AdditionalDoc } from 'src/app/shared/models/additional-doc.model';
+import { EditAdditionalDocComponent } from './edit-additional-doc/edit-additional-doc.component';
 
 @Component({
   selector: 'app-additional-docs',
@@ -9,11 +11,28 @@ import { AdditionalDoc } from 'src/app/shared/models/additional-doc.model';
 export class AdditionalDocsComponent implements OnInit {
   @Input() additionalDocs: AdditionalDoc[] = [];
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
   removeAdditionalDoc(i: number) {
     this.additionalDocs.splice(i, 1);
+  }
+
+  editAdditionalDoc(doc: AdditionalDoc) {
+    const dialogRef = this.dialog.open(EditAdditionalDocComponent, {
+      data: { doc },
+    });
+
+    dialogRef.afterClosed().subscribe((result: AdditionalDoc) => {
+      if (result) {
+        const index = this.additionalDocs.findIndex((elem) => {
+          return elem.id === result.id;
+        });
+        this.additionalDocs[index] = result;
+        console.log('Index', index);
+        console.log('Additional Doc', this.additionalDocs);
+      }
+    });
   }
 }

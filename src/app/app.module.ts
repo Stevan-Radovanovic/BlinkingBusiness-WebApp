@@ -18,6 +18,7 @@ import { MaterialModule } from './material.module';
 import { SharedModule } from './shared/shared.module';
 import { UserWrapComponent } from './form-wrap/user-wrap/user-wrap.component';
 import { UserFormComponent } from './form-wrap/user-wrap/user-form/user-form.component';
+import { EditAdditionalDocComponent } from './form-wrap/additional-docs/edit-additional-doc/edit-additional-doc.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { UserFormComponent } from './form-wrap/user-wrap/user-form/user-form.com
     BusinessItemComponent,
     UserWrapComponent,
     UserFormComponent,
+    EditAdditionalDocComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,7 @@ import { UserFormComponent } from './form-wrap/user-wrap/user-form/user-form.com
     HttpClientModule,
     SharedModule,
   ],
-  entryComponents: [UserFormComponent],
+  entryComponents: [UserFormComponent, EditAdditionalDocComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorsService, multi: true },
   ],

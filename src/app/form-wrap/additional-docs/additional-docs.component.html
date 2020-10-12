@@ -26,7 +26,11 @@
                   (click)="removeAdditionalDoc(i)"
                   >delete</mat-icon
                 >
-                <mat-icon class="delete-additional">edit</mat-icon>
+                <mat-icon
+                  class="delete-additional"
+                  (click)="editAdditionalDoc(doc)"
+                  >edit</mat-icon
+                >
               </td>
             </tr>
           </tbody>

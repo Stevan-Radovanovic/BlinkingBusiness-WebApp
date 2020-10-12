@@ -1,0 +1,45 @@
+<mat-card class="additional-panel">
+  <mat-card-header>
+    <mat-card-title class="additional-title">
+      <img
+        class="additional-logo"
+        src="../assets/logo3.png"
+        alt="Logo Placeholder"
+      />
+      User Panel
+    </mat-card-title>
+  </mat-card-header>
+  <form [formGroup]="docForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Additional Doc Sub Type *</mat-label>
+      <mat-select formControlName="subtype">
+        <mat-option *ngFor="let sub of subtype | keyvalue" [value]="sub.value">
+          {{ sub.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Additional Doc Description *</mat-label>
+      <input #description matInput formControlName="description" />
+      <mat-error *ngIf="requiredValidator('description')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" type="button" mat-dialog-close>
+      <mat-icon>cancel</mat-icon>
+      Cancel
+    </button>
+    <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      [disabled]="!docForm.valid"
+      (click)="updateAdditionalDoc()"
+    >
+      <mat-icon>update</mat-icon>
+      Update Additional Doc
+    </button>
+  </mat-card-actions>
+</mat-card>

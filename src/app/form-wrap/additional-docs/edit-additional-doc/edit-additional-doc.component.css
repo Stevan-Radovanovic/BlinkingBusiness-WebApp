@@ -1,0 +1,35 @@
+mat-card-title {
+  padding-bottom: 4px;
+}
+
+.additional-panel {
+  border: 2px solid #ccc;
+  margin-top: 5px !important;
+}
+
+.additional-title {
+  font-weight: bold;
+  font-size: 18pt;
+  display: flex;
+  align-items: center;
+}
+
+.additional-logo {
+  width: 27px;
+  height: 27px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card-actions button {
+  color: black;
+}
+
+@media (max-width: 750px) {
+  .additional-title {
+    font-size: 12pt;
+  }
+}
