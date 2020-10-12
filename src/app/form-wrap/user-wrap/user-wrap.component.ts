@@ -15,14 +15,17 @@ export class UserWrapComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
-  openDialog() {
-    this.dialog.open(UserFormComponent,
-      {
-        data:{user: this.users[0],services: this.services}
-      })
+  deleteUser(id: number) {
+    this.users = this.users.filter((user) => {
+      return user.id !== id;
+    });
   }
 
-  ngOnInit(): void {
-    this.openDialog();
+  openDialog() {
+    this.dialog.open(UserFormComponent, {
+      data: { user: this.users[0], services: this.services },
+    });
   }
+
+  ngOnInit(): void {}
 }

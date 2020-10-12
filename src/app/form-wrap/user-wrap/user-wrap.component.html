@@ -1,5 +1,45 @@
 <div class="wrap">
-  
+  <mat-expansion-panel class="user-card">
+    <mat-expansion-panel-header>
+      <mat-panel-title class="user-header">
+        <div>
+          <img
+            class="img-logo"
+            src="../assets/logo3.png"
+            alt="Logo Placeholder"
+          /><strong>User List</strong>
+        </div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="table-users">
+      <table class="table is-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Roles</th>
+            <th scope="col">Services</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.roles }}</td>
+            <td>{{ user.services }}</td>
+            <td>{{ user.status }}</td>
+            <td>
+              <mat-icon class="action-user" (click)="deleteUser(user.id)"
+                >delete</mat-icon
+              >
+              <mat-icon class="action-user">edit</mat-icon>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-expansion-panel>
 </div>
-
-

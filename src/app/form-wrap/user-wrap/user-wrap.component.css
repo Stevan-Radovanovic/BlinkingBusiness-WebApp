@@ -2,3 +2,37 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.user-header {
+  font-size: 18pt;
+}
+
+mat-panel-title {
+  padding-bottom: 4px;
+}
+
+@media (max-width: 750px) {
+  .user-header {
+    font-size: 10pt;
+  }
+}
+
+.img-logo {
+  width: 27px;
+  height: 27px;
+}
+
+.user-card {
+  border: 2px solid #ccc;
+  margin-bottom: 5px !important;
+}
+
+.action-user {
+  cursor: pointer;
+}
+
+.table-users {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
