@@ -3,9 +3,14 @@ import { User } from './user.model';
 
 export interface BusinessObject {
   id?: number;
+  businessId?: string;
   name: string;
   businessUrl: string;
+  userUpdateSchema?: Object;
+  requiredSchemaDocuments?: Object;
   businessConfiguration: {
+    id?: number;
+    businessConfigurationId?: string;
     primaryColor: string;
     faviconId?: string;
     logoId?: string;
@@ -16,6 +21,8 @@ export interface BusinessObject {
 
 export class BusinessConfigurationClass {
   constructor(
+    public id: number,
+    public businessId: string,
     public primaryColor: string,
     public faviconId: string,
     public logoId: string
@@ -26,6 +33,7 @@ export class BusinessClass {
   constructor(
     public id: number,
     public name: string,
+    public businessId: string,
     public businessConfiguration: BusinessConfigurationClass,
     public services: ServiceClass,
     public users: User[] //this is not yet a class
