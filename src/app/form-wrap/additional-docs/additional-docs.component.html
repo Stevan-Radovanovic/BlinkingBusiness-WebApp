@@ -4,8 +4,11 @@
       <mat-panel-title> Added Aditional Docs </mat-panel-title>
     </mat-expansion-panel-header>
     <div>
-      <div *ngIf="additionalDocs.length !== 0" class="table-additional-docs">
-        <table class="table is-striped">
+      <div class="table-additional-docs">
+        <h2 *ngIf="additionalDocs.length === 0">
+          No additional documents added!
+        </h2>
+        <table *ngIf="additionalDocs.length !== 0" class="table is-striped">
           <thead>
             <tr>
               <th scope="col">#</th>
