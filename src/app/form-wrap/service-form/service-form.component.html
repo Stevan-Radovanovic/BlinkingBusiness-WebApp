@@ -153,7 +153,7 @@
       ></app-additional-docs>
       <div class="flex-div">
         <button
-          color="warn"
+          color="primary"
           type="button"
           class="add-doc-button"
           mat-raised-button
@@ -194,7 +194,7 @@
           *ngIf="additionalDocArray.length > 0"
         >
           Additional Document
-        </mat-option> 
+        </mat-option>
       </mat-select>
       <mat-error *ngIf="showError">
         Additional Documents must be selected
@@ -224,12 +224,9 @@
       </div>
       <div class="mini-control-width">
         <mat-form-field appearance="fill">
-          <mat-label>Default Country *</mat-label>  
+          <mat-label>Default Country *</mat-label>
           <mat-select formControlName="defaultCountry">
-            <mat-option
-              *ngFor="let co of allowedCountries"
-              [value]="co"
-            >
+            <mat-option *ngFor="let co of allowedCountries" [value]="co">
               {{ country[co] }}
             </mat-option>
           </mat-select>
@@ -255,7 +252,7 @@
       <button
         class="edit-button"
         mat-raised-button
-        color="warn"
+        color="primary"
         type="button"
         (click)="enableEditing()"
       >
@@ -264,7 +261,7 @@
         {{ editing == true ? "Cancel" : "Edit Service Config" }}
       </button>
       <button
-        color="warn"
+        color="primary"
         mat-raised-button
         class="save-button"
         [disabled]="!serviceForm.valid"
@@ -275,7 +272,7 @@
         Save Service Config
       </button>
       <button
-        color="warn"
+        color="primary"
         class="delete-button"
         *ngIf="editing"
         (click)="onDeleteService()"

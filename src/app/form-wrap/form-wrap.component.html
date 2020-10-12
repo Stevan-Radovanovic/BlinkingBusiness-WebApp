@@ -27,18 +27,22 @@
     </mat-accordion>
 
     <div class="add-button">
-      <button mat-raised-button color="warn" 
-      (click)="addNewServiceForm()" 
-      [disabled]="flags.newBusiness && !flags.businessConfigCreated">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="addNewServiceForm()"
+        [disabled]="flags.newBusiness && !flags.businessConfigCreated"
+      >
         <mat-icon>add</mat-icon>
         Add new Service
       </button>
     </div>
     <div *ngIf="businessObject">
-      <app-user-wrap 
-      [users]="businessObject.users" 
-      [services]="businessObject.services">
-    </app-user-wrap>
+      <app-user-wrap
+        [users]="businessObject.users"
+        [services]="businessObject.services"
+      >
+      </app-user-wrap>
     </div>
   </div>
 </div>

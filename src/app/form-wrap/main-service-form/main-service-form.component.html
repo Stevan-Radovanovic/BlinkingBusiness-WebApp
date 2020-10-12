@@ -91,7 +91,7 @@
       (click)="enableEditing()"
       mat-raised-button
       class="update-button"
-      color="warn"
+      color="primary"
     >
       <mat-icon *ngIf="!editing">edit</mat-icon>
       <mat-icon *ngIf="editing">close</mat-icon>
@@ -100,7 +100,7 @@
     <button
       mat-raised-button
       class="update-button"
-      color="warn"
+      color="primary"
       [disabled]="!serviceForm.valid"
       *ngIf="editing && !flags.newBusiness"
       (click)="updateServiceDetails()"
@@ -109,20 +109,20 @@
       Update Service
     </button>
     <button
-    mat-raised-button
-    class="update-button"
-    color="warn"
-    [disabled]="!serviceForm.valid"
-    *ngIf="editing && flags.newBusiness"
-    (click)="saveServiceDetails()"
-  >
-    <mat-icon>save</mat-icon>
-    Save Service
-  </button>
+      mat-raised-button
+      class="update-button"
+      color="primary"
+      [disabled]="!serviceForm.valid"
+      *ngIf="editing && flags.newBusiness"
+      (click)="saveServiceDetails()"
+    >
+      <mat-icon>save</mat-icon>
+      Save Service
+    </button>
     <button
       *ngIf="editing"
       (click)="onDeleteService()"
-      color="warn"
+      color="primary"
       mat-raised-button
     >
       <mat-icon>delete</mat-icon> Delete Service
@@ -136,16 +136,23 @@
         (saved)="onSavedServiceForm($event)"
         (deleting)="deleteServiceConfigForm($event)"
         [expand]="expandConfigPanels"
-        [allowedSteps]="serviceObject.serviceConfiguration.allowedSteps ? serviceObject.serviceConfiguration.allowedSteps : allowedDefault"
+        [allowedSteps]="
+          serviceObject.serviceConfiguration.allowedSteps
+            ? serviceObject.serviceConfiguration.allowedSteps
+            : allowedDefault
+        "
         [configObject]="serviceConfigForm"
       ></app-service-form>
     </div>
   </mat-accordion>
 
   <div class="add-button">
-    <button mat-raised-button color="warn" 
-    (click)="addServiceConfigForm()" 
-    [disabled]="!serviceSaved && flags.newBusiness">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addServiceConfigForm()"
+      [disabled]="!serviceSaved && flags.newBusiness"
+    >
       <mat-icon>add</mat-icon> Add new Service Config
     </button>
   </div>

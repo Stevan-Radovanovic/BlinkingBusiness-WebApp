@@ -47,14 +47,14 @@
     </mat-form-field>
   </form>
   <mat-card-actions>
-    <button mat-raised-button color="warn" type="button" mat-dialog-close>
+    <button mat-raised-button color="primary" type="button" mat-dialog-close>
       <mat-icon>cancel</mat-icon>
       Cancel
     </button>
     <button
       type="button"
       mat-raised-button
-      color="warn"
+      color="primary"
       *ngIf="!addingNew"
       [disabled]="!userForm.valid"
       (click)="updateUser()"
@@ -65,7 +65,7 @@
     <button
       type="button"
       mat-raised-button
-      color="warn"
+      color="primary"
       *ngIf="addingNew"
       [disabled]="!userForm.valid"
       (click)="createUser()"

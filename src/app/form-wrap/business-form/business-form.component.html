@@ -90,7 +90,7 @@
   <div class="update-button">
     <button
       mat-raised-button
-      color="warn"
+      color="primary"
       type="button"
       (click)="enableEditing()"
     >
@@ -101,7 +101,7 @@
     <button
       type="button"
       mat-raised-button
-      color="warn"
+      color="primary"
       [disabled]="!businessForm.valid"
       *ngIf="editing && !flags.newBusiness"
       (click)="onUpdateBusiness()"
@@ -112,7 +112,7 @@
     <button
       type="button"
       mat-raised-button
-      color="warn"
+      color="primary"
       [disabled]="!businessForm.valid"
       *ngIf="editing && flags.newBusiness"
       (click)="onSaveBusiness()"
