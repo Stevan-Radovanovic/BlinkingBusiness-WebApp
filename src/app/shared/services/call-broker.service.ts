@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BusinessObject } from '../models/business-object.model';
 import { ResponseObject } from '../models/response-object.model';
 import { RouteConstantsService } from './route-constants.service';
 
@@ -33,5 +34,13 @@ export class CallBrokerService {
 
   getImageById(imageId: string) {
     return this.routes.getImageById + imageId;
+  }
+
+  addNewBusiness(business: BusinessObject) {
+    const body = {
+      ...business,
+    };
+
+    return this.http.post<ResponseObject>(this.routes.addNewBusiness, body);
   }
 }

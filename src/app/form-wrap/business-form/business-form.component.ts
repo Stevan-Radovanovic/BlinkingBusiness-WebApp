@@ -16,7 +16,6 @@ export class BusinessFormComponent implements OnInit {
   @ViewChild('logo') logo: ElementRef;
   @Input() businessObject: BusinessObject;
 
-
   prepopulatedFavicon = false;
   prepopulatedLogo = false;
   logoPath = '';
@@ -26,7 +25,10 @@ export class BusinessFormComponent implements OnInit {
 
   selectedColor = '';
 
-  constructor(private callBroker: CallBrokerService, public flags: FlagsService) {}
+  constructor(
+    private callBroker: CallBrokerService,
+    public flags: FlagsService
+  ) {}
 
   ngOnInit(): void {
     this.initBusinessForm();
@@ -220,6 +222,18 @@ export class BusinessFormComponent implements OnInit {
   }
 
   onSaveBusiness() {
+    const newBusiness: BusinessObject = {
+      name: 'Test',
+      businessUrl: 'http://test/api/blinking/user/update',
+      businessConfiguration: {
+        primaryColor: '#FFFFFF',
+        faviconId: 'i0992a46d-54c2-42a0-ae26-0a4a9029b4282',
+        logoId: 'i03322ff6-6dbf-4888-ac9e-ad61824f5d8f2',
+      },
+    };
+    this.callBroker
+      .addNewBusiness(newBusiness)
+      .subscribe((value) => console.log(value));
     this.disableEditing();
     this.flags.businessConfigCreated = true;
   }
