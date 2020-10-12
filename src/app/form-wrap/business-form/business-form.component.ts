@@ -223,27 +223,32 @@ export class BusinessFormComponent implements OnInit {
 
   onSaveBusiness() {
     const newBussines: BusinessObject = {
-      name: this.businessForm.get('name').value,
+      name: this.businessForm.get('businessName').value,
       businessUrl: this.businessForm.get('businessUrl').value,
       businessConfiguration: {
         primaryColor: this.businessForm.get('color').value,
-        faviconId: '', //Upload to a media server...
-        logoId: '', //upload to a media server...
+        faviconId: 'i3a7b3ad7-0e2b-4ef8-8851-c72858e169d72',
+        logoId: 'i3a7b3ad7-0e2b-4ef8-8851-c72858e169d72',
       },
     };
-
+    console.log(newBussines);
     const test: BusinessObject = {
       name: 'Test',
       businessUrl: 'http://test/api/blinking/user/update',
       businessConfiguration: {
         primaryColor: '#FFFFFF',
-        faviconId: 'i0992a46d-54c2-42a0-ae26-0a4a9029b4282',
-        logoId: 'i03322ff6-6dbf-4888-ac9e-ad61824f5d8f2',
+        faviconId: 'i3a7b3ad7-0e2b-4ef8-8851-c72858e169d72',
+        logoId: 'i3a7b3ad7-0e2b-4ef8-8851-c72858e169d72',
       },
     };
-    this.callBroker
-      .addNewBusiness(test)
-      .subscribe((value) => console.log(value));
+
+    this.callBroker.addNewBusiness(newBussines).subscribe((result) => {
+      console.log(result);
+      this.businessObject = newBussines;
+      this.businessObject.id = result.payload.business.id;
+      console.log(this.businessObject);
+    });
+
     this.disableEditing();
     this.flags.businessConfigCreated = true;
   }

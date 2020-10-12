@@ -40,3 +40,7 @@ mat-panel-title {
 .new-user-button {
   color: black;
 }
+
+.table-border {
+  border: 2px solid #ccc;
+}
