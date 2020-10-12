@@ -222,7 +222,17 @@ export class BusinessFormComponent implements OnInit {
   }
 
   onSaveBusiness() {
-    const newBusiness: BusinessObject = {
+    const newBussines: BusinessObject = {
+      name: this.businessForm.get('name').value,
+      businessUrl: this.businessForm.get('businessUrl').value,
+      businessConfiguration: {
+        primaryColor: this.businessForm.get('color').value,
+        faviconId: '', //Upload to a media server...
+        logoId: '', //upload to a media server...
+      },
+    };
+
+    const test: BusinessObject = {
       name: 'Test',
       businessUrl: 'http://test/api/blinking/user/update',
       businessConfiguration: {
@@ -232,7 +242,7 @@ export class BusinessFormComponent implements OnInit {
       },
     };
     this.callBroker
-      .addNewBusiness(newBusiness)
+      .addNewBusiness(test)
       .subscribe((value) => console.log(value));
     this.disableEditing();
     this.flags.businessConfigCreated = true;
