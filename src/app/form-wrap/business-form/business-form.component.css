@@ -60,6 +60,10 @@
   justify-content: space-around;
 }
 
+.bolded {
+  font-weight: bold;
+}
+
 @media (max-width: 750px) {
   .previews-flex {
     justify-content: left;

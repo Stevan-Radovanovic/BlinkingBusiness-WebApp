@@ -52,10 +52,8 @@ export class MainServiceFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.serviceObject.serviceConfigs) {
-      console.log(1);
       this.serviceConfigForms = this.serviceObject.serviceConfigs;
     } else {
-      console.log(2);
       this.serviceConfigForms = [];
     }
     this.name = this.serviceObject.name;
@@ -140,7 +138,6 @@ export class MainServiceFormComponent implements OnInit {
       stepsThatRequireProofOfDocuments: [],
     };
     this.expandConfigPanels = true;
-    console.log(this.serviceConfigForms);
     this.serviceConfigForms.push(newConfig);
   }
 

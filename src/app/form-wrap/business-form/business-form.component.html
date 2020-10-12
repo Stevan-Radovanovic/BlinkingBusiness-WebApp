@@ -28,7 +28,7 @@
       >
     </mat-form-field>
     <div class="colorPreview" [style.background]="selectedColor">
-      <p *ngIf="!businessForm.get('color').valid" style="font-weight: bold">
+      <p *ngIf="!businessForm.get('color').valid" class="bolded">
         No color selected
       </p>
     </div>
@@ -46,10 +46,10 @@
           accept=".jpeg,.jpg,.png,.ico"
         />
 
-        <mat-error *ngIf="requiredValidator('favicon')" style="font-size: 8pt"
+        <mat-error *ngIf="requiredValidator('favicon')" class="picture-error"
           >This field is required</mat-error
         >
-        <mat-error *ngIf="fileValidator('favicon')" style="font-size: 8pt"
+        <mat-error *ngIf="fileValidator('favicon')" class="picture-error"
           >The selected picture must be smaller than 3 MB</mat-error
         >
       </div>
@@ -62,7 +62,7 @@
     </div>
 
     <div>
-      <div style="margin-top: 10px">
+      <div>
         <mat-label class="picture-label">Logo: *</mat-label>
         <input
           #logo

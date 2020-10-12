@@ -35,4 +35,5 @@ form mat-form-field {
 
 .mat-button-disabled {
   background-color: rgba(0, 0, 0, 0.26) !important;
+  color: black !important;
 }

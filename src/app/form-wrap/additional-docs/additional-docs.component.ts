@@ -30,8 +30,6 @@ export class AdditionalDocsComponent implements OnInit {
           return elem.id === result.id;
         });
         this.additionalDocs[index] = result;
-        console.log('Index', index);
-        console.log('Additional Doc', this.additionalDocs);
       }
     });
   }

@@ -25,8 +25,7 @@ export class FormWrapComponent implements OnInit {
   constructor(
     private callBroker: CallBrokerService,
     private route: ActivatedRoute,
-    public flags: FlagsService,
-
+    public flags: FlagsService
   ) {}
 
   ngOnInit(): void {
@@ -49,7 +48,6 @@ export class FormWrapComponent implements OnInit {
       this.businessObject = response.payload;
       this.flags.businessConfigCreated = true;
       this.flags.newBusiness = false;
-      console.log(this.businessObject);
       this.serviceForms = this.businessObject.services;
     });
   }

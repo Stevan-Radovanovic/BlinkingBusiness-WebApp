@@ -93,3 +93,11 @@ mat-panel-title {
   border: 2px solid #ccc;
   margin-bottom: 5px !important;
 }
+
+.max-number-of-tries-div {
+  width: 60%;
+}
+
+.face-enroll-div {
+  width: 37%;
+}

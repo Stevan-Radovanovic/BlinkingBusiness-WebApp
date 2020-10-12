@@ -86,7 +86,6 @@ export class EditAdditionalDocComponent implements OnInit {
       subType: this.docForm.get('subtype').value,
       description: this.docForm.get('description').value,
     };
-    console.log('Updated Additional', updatedAdditional);
     this.dialogRef.close(updatedAdditional);
   }
 }

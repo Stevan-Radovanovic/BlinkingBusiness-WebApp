@@ -231,7 +231,6 @@ export class BusinessFormComponent implements OnInit {
         logoId: 'i3a7b3ad7-0e2b-4ef8-8851-c72858e169d72',
       },
     };
-    console.log(newBussines);
     const test: BusinessObject = {
       name: 'Test',
       businessUrl: 'http://test/api/blinking/user/update',
@@ -243,10 +242,8 @@ export class BusinessFormComponent implements OnInit {
     };
 
     this.callBroker.addNewBusiness(newBussines).subscribe((result) => {
-      console.log(result);
       this.businessObject = newBussines;
       this.businessObject.id = result.payload.business.id;
-      console.log(this.businessObject);
     });
 
     this.disableEditing();
