@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ServiceObject } from 'src/app/shared/models/service-object.model';
 import { User } from 'src/app/shared/models/user.model';
+import { FlagsService } from 'src/app/shared/services/flags.service';
 import { UserFormComponent } from './user-form/user-form.component';
 
 @Component({
@@ -13,7 +14,7 @@ export class UserWrapComponent implements OnInit {
   @Input() users: User[];
   @Input() services: ServiceObject[];
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, public flags: FlagsService) {}
 
   deleteUser(id: number) {
     this.users = this.users.filter((user) => {

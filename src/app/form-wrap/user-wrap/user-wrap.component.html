@@ -47,6 +47,7 @@
         mat-raised-button
         (click)="addNewUser()"
         color="warn"
+        [disabled]="flags.newBusiness && !flags.businessConfigCreated"
       >
         <mat-icon>add</mat-icon>Add New User
       </button>

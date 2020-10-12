@@ -34,8 +34,8 @@
     </div>
   </div>
 
-  <div class="columns">
-    <div class="column is-5" style="margin-top: 4px; margin-bottom: 8px">
+  <div class="previews-flex">
+    <div>
       <div>
         <mat-label class="picture-label">Favicon: *</mat-label>
         <input
@@ -53,6 +53,15 @@
           >The selected picture must be smaller than 3 MB</mat-error
         >
       </div>
+      <div
+        *ngIf="businessForm.get('favicon').valid || prepopulatedFavicon"
+        class="picturePreview"
+      >
+        <img [src]="faviconPath" />
+      </div>
+    </div>
+
+    <div>
       <div style="margin-top: 10px">
         <mat-label class="picture-label">Logo: *</mat-label>
         <input
@@ -68,14 +77,6 @@
         <mat-error *ngIf="fileValidator('logo')" class="picture-error">
           The selected picture must be smaller than 3 MB
         </mat-error>
-      </div>
-    </div>
-    <div class="column is-6" style="display: flex">
-      <div
-        *ngIf="businessForm.get('favicon').valid || prepopulatedFavicon"
-        class="picturePreview"
-      >
-        <img [src]="faviconPath" />
       </div>
 
       <div
@@ -109,15 +110,15 @@
       Update Business Details
     </button>
     <button
-    type="button"
-    mat-raised-button
-    color="warn"
-    [disabled]="!businessForm.valid"
-    *ngIf="editing && flags.newBusiness"
-    (click)="onSaveBusiness()"
-  >
-    <mat-icon>save</mat-icon>
-    Save Business Details
-  </button>
+      type="button"
+      mat-raised-button
+      color="warn"
+      [disabled]="!businessForm.valid"
+      *ngIf="editing && flags.newBusiness"
+      (click)="onSaveBusiness()"
+    >
+      <mat-icon>save</mat-icon>
+      Save Business Details
+    </button>
   </div>
 </form>
