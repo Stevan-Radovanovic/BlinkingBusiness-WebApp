@@ -21,9 +21,15 @@ export class UserWrapComponent implements OnInit {
     });
   }
 
-  openDialog() {
-    this.dialog.open(UserFormComponent, {
-      data: { user: this.users[0], services: this.services },
+  editUser(user: User) {
+    const dialogRef = this.dialog.open(UserFormComponent, {
+      data: { user, services: this.services },
+    });
+  }
+
+  addNewUser() {
+    const dialogRef = this.dialog.open(UserFormComponent, {
+      data: { services: this.services },
     });
   }
 

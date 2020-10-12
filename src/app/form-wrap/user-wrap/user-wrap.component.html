@@ -29,17 +29,27 @@
             <td>{{ user.id }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.roles }}</td>
-            <td>{{ user.services }}</td>
+            <td>{{ user.services.length }} services</td>
             <td>{{ user.status }}</td>
             <td>
               <mat-icon class="action-user" (click)="deleteUser(user.id)"
                 >delete</mat-icon
               >
-              <mat-icon class="action-user">edit</mat-icon>
+              <mat-icon class="action-user" (click)="editUser(user)"
+                >edit</mat-icon
+              >
             </td>
           </tr>
         </tbody>
       </table>
+      <button
+        class="new-user-button"
+        mat-raised-button
+        (click)="addNewUser()"
+        color="warn"
+      >
+        <mat-icon>add</mat-icon>Add New User
+      </button>
     </div>
   </mat-expansion-panel>
 </div>

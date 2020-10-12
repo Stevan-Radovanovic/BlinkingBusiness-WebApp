@@ -36,3 +36,7 @@ mat-panel-title {
   align-items: center;
   flex-direction: column;
 }
+
+.new-user-button {
+  color: black;
+}
