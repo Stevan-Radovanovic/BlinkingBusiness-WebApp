@@ -25,7 +25,8 @@ export class FormWrapComponent implements OnInit {
   constructor(
     private callBroker: CallBrokerService,
     private route: ActivatedRoute,
-    public flags: FlagsService
+    public flags: FlagsService,
+
   ) {}
 
   ngOnInit(): void {

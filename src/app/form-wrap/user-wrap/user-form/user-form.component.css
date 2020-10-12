@@ -1,4 +1,4 @@
-mat-panel-title {
+mat-card-title {
   padding-bottom: 4px;
 }
 
@@ -17,6 +17,15 @@ mat-panel-title {
 .user-logo {
   width: 27px;
   height: 27px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card-actions button {
+  color: black;
 }
 
 @media (max-width: 750px) {

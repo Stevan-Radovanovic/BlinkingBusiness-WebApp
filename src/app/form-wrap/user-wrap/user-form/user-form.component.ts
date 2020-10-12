@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Role } from 'src/app/shared/models/role.model';
 import { ServiceObject } from 'src/app/shared/models/service-object.model';
 import { User } from 'src/app/shared/models/user.model';
@@ -10,24 +11,29 @@ import { User } from 'src/app/shared/models/user.model';
   styleUrls: ['./user-form.component.css'],
 })
 export class UserFormComponent implements OnInit {
-  @Input() user: User;
-  @Input() services: ServiceObject[];
+  //@Input() user: User;
+  //@Input() services: ServiceObject[];
 
   userForm: FormGroup;
   userIdNumbers: number[] = [];
   roles = Role;
+  addingNew = true;
 
-  constructor() {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA)
+    public data: { user: User; services: ServiceObject[] }
+  ) {}
 
   ngOnInit(): void {
-    console.log('User', this.user);
-    this.userIdNumbers = this.user.services.map((value) => {
-      return +value;
-    });
+    console.log(this.data.user);
+    if (this.data.user) {
+      this.addingNew = false;
+      this.userIdNumbers = this.data.user.services.map((value) => {
+        return +value;
+      });
+    }
+
     this.initUserForm();
-    this.userForm.get('services').valueChanges.subscribe((value) => {
-      console.log(value);
-    });
   }
 
   requiredValidator(controlName: string) {
@@ -38,11 +44,20 @@ export class UserFormComponent implements OnInit {
   }
 
   initUserForm() {
-    this.userForm = new FormGroup({
-      name: new FormControl(this.user.name, Validators.required),
-      roles: new FormControl(this.user.roles, Validators.required),
-      services: new FormControl(this.userIdNumbers, Validators.required),
-      status: new FormControl(this.user.status, Validators.required),
-    });
+    if (this.addingNew) {
+      this.userForm = new FormGroup({
+        name: new FormControl('', Validators.required),
+        roles: new FormControl([], Validators.required),
+        services: new FormControl([], Validators.required),
+        status: new FormControl('', Validators.required),
+      });
+    } else {
+      this.userForm = new FormGroup({
+        name: new FormControl(this.data.user.name, Validators.required),
+        roles: new FormControl(this.data.user.roles, Validators.required),
+        services: new FormControl(this.userIdNumbers, Validators.required),
+        status: new FormControl(this.data.user.status, Validators.required),
+      });
+    }
   }
 }

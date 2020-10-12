@@ -42,6 +42,7 @@ import { UserFormComponent } from './form-wrap/user-wrap/user-form/user-form.com
     HttpClientModule,
     SharedModule,
   ],
+  entryComponents: [UserFormComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorsService, multi: true },
   ],

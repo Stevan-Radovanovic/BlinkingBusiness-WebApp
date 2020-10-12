@@ -1,56 +1,75 @@
-<mat-expansion-panel class="user-panel">
-    <mat-expansion-panel-header>
-        <mat-panel-title class="user-title">
-          <img
-          class="user-logo"
-          src="../assets/logo3.png"
-          alt="Logo Placeholder"
-        />
-          User Panel
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <form [formGroup]="userForm">
-        <mat-form-field appearance="fill">
-          <mat-label>User Name *</mat-label>
-          <input matInput formControlName="name" />
-          <mat-error *ngIf="requiredValidator('name')">
-            This field is required
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Services *</mat-label>
-          <mat-select formControlName="services" multiple>
-            <mat-option
-              *ngFor="let service of services"
-              [value]="service.id"
-            >
-              {{ service.name }}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="requiredValidator('services')">
-            This field is required
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Roles *</mat-label>
-          <mat-select formControlName="roles" multiple>
-            <mat-option
-              *ngFor="let role of roles | keyvalue"
-              [value]="role.value"
-            >
-              {{ role.value }}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="requiredValidator('services')">
-            This field is required
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Status *</mat-label>
-          <input matInput formControlName="status" />
-          <mat-error *ngIf="requiredValidator('status')">
-            This field is required
-          </mat-error>
-        </mat-form-field>
-      </form>
-</mat-expansion-panel>
+<mat-card class="user-panel">
+  <mat-card-header>
+    <mat-card-title class="user-title">
+      <img class="user-logo" src="../assets/logo3.png" alt="Logo Placeholder" />
+      User Panel
+    </mat-card-title>
+  </mat-card-header>
+  <form [formGroup]="userForm">
+    <mat-form-field appearance="fill">
+      <mat-label>User Name *</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error *ngIf="requiredValidator('name')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Services *</mat-label>
+      <mat-select formControlName="services" multiple>
+        <mat-option *ngFor="let service of data.services" [value]="service.id">
+          {{ service.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="requiredValidator('services')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Roles *</mat-label>
+      <mat-select formControlName="roles" multiple>
+        <mat-option *ngFor="let role of roles | keyvalue" [value]="role.value">
+          {{ role.value }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="requiredValidator('services')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Status *</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="Activated"> Activated </mat-option>
+        <mat-option value="Deactivated"> Deactivated </mat-option>
+      </mat-select>
+      <mat-error *ngIf="requiredValidator('status')">
+        This field is required
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <mat-card-actions>
+    <button mat-raised-button color="warn" type="button">
+      <mat-icon>cancel</mat-icon>
+      Cancel
+    </button>
+    <button
+      type="button"
+      mat-raised-button
+      color="warn"
+      *ngIf="!addingNew"
+      [disabled]="!userForm.valid"
+    >
+      <mat-icon>update</mat-icon>
+      Update User
+    </button>
+    <button
+      type="button"
+      mat-raised-button
+      color="warn"
+      *ngIf="addingNew"
+      [disabled]="!userForm.valid"
+    >
+      <mat-icon>update</mat-icon>
+      Create User
+    </button>
+  </mat-card-actions>
+</mat-card>
