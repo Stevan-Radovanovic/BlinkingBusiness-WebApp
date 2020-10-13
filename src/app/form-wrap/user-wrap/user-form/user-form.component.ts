@@ -26,6 +26,7 @@ export class UserFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.data.services);
     if (this.data.user) {
       this.addingNew = false;
       this.userIdNumbers = this.data.user.services.map((value) => {
