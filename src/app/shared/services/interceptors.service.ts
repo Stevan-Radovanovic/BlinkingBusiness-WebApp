@@ -8,18 +8,21 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GenericResponse } from '../models/response-models/generic-response.model';
 import { map } from 'rxjs/operators';
+import { FlagsService } from './flags.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InterceptorsService {
-  constructor() {}
+  constructor(private flags: FlagsService) {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     let httpsReq = req.clone();
+
+    this.flags.loading = true;
 
     if (!httpsReq.headers.has('Content-Type')) {
       httpsReq = httpsReq.clone({

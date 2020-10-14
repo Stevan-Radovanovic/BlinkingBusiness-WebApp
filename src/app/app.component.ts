@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './shared/services/auth.service';
+import { FlagsService } from './shared/services/flags.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { AuthService } from './shared/services/auth.service';
 export class AppComponent {
   title = 'blinking';
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, public flags: FlagsService) {}
 
   logOut() {
     this.authService.logOut();

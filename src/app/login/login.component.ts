@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
 import { v4 as uuidv4 } from 'uuid';
 import { CallBrokerService } from '../shared/services/call-broker.service';
+import { FlagsService } from '../shared/services/flags.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     public authService: AuthService,
     public callBroker: CallBrokerService,
-    public router: Router
+    public router: Router,
+    public flags: FlagsService
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +40,7 @@ export class LoginComponent implements OnInit {
         this.authService.loggedIn = true;
         this.authService.user = response.user;
         this.router.navigate(['/business']);
+        this.flags.loading = false;
       },
       () => {
         this.invalidLogIn();

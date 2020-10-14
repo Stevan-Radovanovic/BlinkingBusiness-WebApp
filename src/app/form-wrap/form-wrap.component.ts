@@ -52,6 +52,7 @@ export class FormWrapComponent implements OnInit {
       this.serviceForms.forEach((form) => {
         this.expandServicePanels.push(false);
       });
+      this.flags.loading = false;
     });
   }
 
