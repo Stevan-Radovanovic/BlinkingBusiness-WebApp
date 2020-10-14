@@ -227,8 +227,28 @@ export class ServiceFormComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
+  restoreInitialValues() {
+    this.serviceForm.setValue({
+      serviceConfigName: '', //not in payload?
+      baseRedirectUrl: '', //not in payload?
+      blinkingParams: [], //not in payload?
+      willEmbedInIframe: false, //not in payload?
+      skippableSteps: this.configObject.skippableSteps,
+      stepsThatRequireProofOfDocuments: this.configObject
+        .stepsThatRequireProofOfDocuments,
+      initialSessionConfig: this.configObject.initialSessionConfig,
+      stepsThatRequireAttention: this.configObject.stepsThatRequireAttention,
+      maxNumberOfTries: this.configObject.maxNumberOfTries,
+      shouldAskForFaceEnroll: this.configObject.shouldAskForFaceEnroll,
+      defaultCountry: this.configObject.defaultCountry,
+      additionalDocDescription: '',
+      additionalDocSubType: '',
+    });
+  }
+
   enableEditing() {
     if (this.editing) {
+      this.restoreInitialValues();
       this.disableEditing();
       return;
     }

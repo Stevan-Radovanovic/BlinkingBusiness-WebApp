@@ -154,8 +154,23 @@ export class MainServiceFormComponent implements OnInit {
     });
   }
 
+  restoreInitialValues() {
+    this.serviceForm.setValue({
+      serviceName: this.serviceObject.name,
+      maxNumberOfTries: this.serviceObject.serviceConfiguration
+        .maxNumberOfTries,
+      shouldAskForFaceEnroll: this.serviceObject.serviceConfiguration
+        .shouldAskForFaceEnroll,
+      defaultCountry: this.serviceObject.serviceConfiguration.defaultCountry,
+      allowedCountries: this.serviceObject.serviceConfiguration
+        .allowedCountries,
+      sessionValidityDuration: null, //not in payload?
+    });
+  }
+
   enableEditing() {
     if (this.editing) {
+      this.restoreInitialValues();
       this.disableEditing();
       return;
     }

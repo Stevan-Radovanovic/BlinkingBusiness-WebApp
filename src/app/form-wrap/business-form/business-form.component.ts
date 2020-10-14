@@ -198,8 +198,19 @@ export class BusinessFormComponent implements OnInit {
     });
   }
 
+  restoreInitialValues() {
+    this.businessForm.setValue({
+      favicon: '',
+      logo: '',
+      color: this.businessObject?.businessConfiguration.primaryColor,
+      businessUrl: this.businessObject?.businessUrl,
+      businessName: this.businessObject.name,
+    });
+  }
+
   enableEditing() {
     if (this.editing) {
+      this.restoreInitialValues();
       this.disableEditing();
       return;
     }
