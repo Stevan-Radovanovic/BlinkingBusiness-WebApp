@@ -31,13 +31,13 @@
         mat-raised-button
         color="primary"
         (click)="addNewServiceForm()"
-        [disabled]="flags.newBusiness && !flags.businessConfigCreated"
+        *ng-if="!flags.newBusiness || flags.businessConfigCreated"
       >
         <mat-icon>add</mat-icon>
         Add new Service
       </button>
     </div>
-    <div *ngIf="businessObject">
+    <div *ngIf="businessObject && flags.businessConfigCreated">
       <app-user-wrap
         [users]="businessObject.users"
         [services]="businessObject.services"
