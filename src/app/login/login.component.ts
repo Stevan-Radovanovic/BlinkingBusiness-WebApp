@@ -34,12 +34,10 @@ export class LoginComponent implements OnInit {
     const password = this.authForm.get('password').value;
     this.callBroker.login(username, password).subscribe(
       (response) => {
-        if (response.statusCode === 20001) {
-          localStorage.setItem('token', uuidv4());
-          this.authService.loggedIn = true;
-          this.authService = response.payload.user;
-          this.router.navigate(['/business']);
-        }
+        localStorage.setItem('token', uuidv4());
+        this.authService.loggedIn = true;
+        this.authService.user = response.user;
+        this.router.navigate(['/business']);
       },
       () => {
         this.invalidLogIn();

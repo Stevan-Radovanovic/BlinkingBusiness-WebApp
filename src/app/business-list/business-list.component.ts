@@ -15,9 +15,7 @@ export class BusinessListComponent implements OnInit {
 
   ngOnInit(): void {
     this.callBroker.getAllBusinesses().subscribe((response) => {
-      if (response.statusCode === 20000) {
-        this.businessArray = response.payload;
-      }
+      this.businessArray = response;
     });
   }
 

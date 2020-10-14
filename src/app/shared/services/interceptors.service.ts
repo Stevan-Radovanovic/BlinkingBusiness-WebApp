@@ -1,6 +1,13 @@
-import { HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
+import {
+  HttpEvent,
+  HttpHandler,
+  HttpRequest,
+  HttpResponse,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { GenericResponse } from '../models/response-models/generic-response.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +28,23 @@ export class InterceptorsService {
       });
     }
 
-    return next.handle(httpsReq);
+    return next.handle(httpsReq).pipe(
+      map((event: HttpEvent<any>) => {
+        if (event instanceof HttpResponse) {
+          try {
+            const responseModel: GenericResponse = event.body;
+            if (responseModel.payload) {
+              return event.clone({
+                body: responseModel.payload,
+              });
+            } else {
+              return event;
+            }
+          } catch (e) {
+            throw new Error(e);
+          }
+        }
+      })
+    );
   }
 }

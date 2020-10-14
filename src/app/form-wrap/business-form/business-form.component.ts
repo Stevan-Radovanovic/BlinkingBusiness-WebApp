@@ -242,19 +242,10 @@ export class BusinessFormComponent implements OnInit {
         logoId: 'i3a7b3ad7-0e2b-4ef8-8851-c72858e169d72',
       },
     };
-    const test: BusinessObject = {
-      name: 'Test',
-      businessUrl: 'http://test/api/blinking/user/update',
-      businessConfiguration: {
-        primaryColor: '#FFFFFF',
-        faviconId: 'i3a7b3ad7-0e2b-4ef8-8851-c72858e169d72',
-        logoId: 'i3a7b3ad7-0e2b-4ef8-8851-c72858e169d72',
-      },
-    };
 
-    this.callBroker.addNewBusiness(newBussines).subscribe((result) => {
+    this.callBroker.addNewBusiness(newBussines).subscribe((response) => {
       this.businessObject = newBussines;
-      this.businessObject.id = result.payload.business.id;
+      this.businessObject.id = response.business.id;
     });
 
     this.disableEditing();

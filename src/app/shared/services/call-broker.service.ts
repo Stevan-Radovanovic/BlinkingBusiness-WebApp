@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BusinessObject } from '../models/business-object.model';
-import { ResponseObject } from '../models/response-object.model';
+import { ResponseLogInModel } from '../models/response-models/response-log-in.model';
+import { GenericResponse } from '../models/response-models/generic-response.model';
 import { RouteConstantsService } from './route-constants.service';
+import { ResponseAddNewBusinessModel } from '../models/response-models/response-add-new-business.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,18 +20,18 @@ export class CallBrokerService {
       username,
       password,
     };
-    return this.http.post<ResponseObject>(this.routes.login, body);
+    return this.http.post<ResponseLogInModel>(this.routes.login, body);
   }
 
   getAllBusinesses() {
-    return this.http.get<ResponseObject>(this.routes.getAllBusinesses);
+    return this.http.get<BusinessObject[]>(this.routes.getAllBusinesses);
   }
 
   getBusinessById(businessId: number) {
     const body = {
       businessId,
     };
-    return this.http.post<ResponseObject>(this.routes.getBusinessById, body);
+    return this.http.post<BusinessObject>(this.routes.getBusinessById, body);
   }
 
   getImageById(imageId: string) {
@@ -41,6 +43,9 @@ export class CallBrokerService {
       ...business,
     };
 
-    return this.http.post<ResponseObject>(this.routes.addNewBusiness, body);
+    return this.http.post<ResponseAddNewBusinessModel>(
+      this.routes.addNewBusiness,
+      body
+    );
   }
 }
