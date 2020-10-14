@@ -135,7 +135,7 @@
         [allowedCountries]="serviceForm.get('allowedCountries').value"
         (saved)="onSavedServiceForm($event)"
         (deleting)="deleteServiceConfigForm($event)"
-        [expand]="expandConfigPanels"
+        [expand]="expandConfigPanels[i]"
         [allowedSteps]="
           serviceObject.serviceConfiguration.allowedSteps
             ? serviceObject.serviceConfiguration.allowedSteps

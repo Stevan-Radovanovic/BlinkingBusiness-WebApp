@@ -21,7 +21,7 @@
           (saved)="onSavedServiceForm($event)"
           (deleting)="onDeleteService($event)"
           [serviceObject]="form"
-          [expand]="expandServicePanels"
+          [expand]="expandServicePanels[i]"
         ></app-main-service-form>
       </div>
     </mat-accordion>

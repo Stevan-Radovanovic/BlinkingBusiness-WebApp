@@ -19,7 +19,7 @@ export class FormWrapComponent implements OnInit {
 
   businessObject: BusinessObject;
 
-  expandServicePanels = false;
+  expandServicePanels: boolean[] = [];
   savedServiceForms = 0;
 
   constructor(
@@ -49,6 +49,9 @@ export class FormWrapComponent implements OnInit {
       this.flags.businessConfigCreated = true;
       this.flags.newBusiness = false;
       this.serviceForms = this.businessObject.services;
+      this.serviceForms.forEach((form) => {
+        this.expandServicePanels.push(false);
+      });
     });
   }
 
@@ -135,7 +138,7 @@ export class FormWrapComponent implements OnInit {
       },
     };
     this.serviceForms.push(newService);
-    this.expandServicePanels = true;
+    this.expandServicePanels.push(true);
   }
 
   onDeleteService(id: number) {

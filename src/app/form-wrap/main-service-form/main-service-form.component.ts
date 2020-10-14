@@ -28,7 +28,7 @@ export class MainServiceFormComponent implements OnInit {
   editing = false;
   name = '';
   serviceSaved = false;
-  expandConfigPanels = false;
+  expandConfigPanels: boolean[] = [];
   allowedDefault = [
     'Document type with country',
     'Document type',
@@ -53,6 +53,9 @@ export class MainServiceFormComponent implements OnInit {
   ngOnInit(): void {
     if (this.serviceObject.serviceConfigs) {
       this.serviceConfigForms = this.serviceObject.serviceConfigs;
+      this.serviceConfigForms.forEach((form) => {
+        this.expandConfigPanels.push(false);
+      });
     } else {
       this.serviceConfigForms = [];
     }
@@ -137,7 +140,7 @@ export class MainServiceFormComponent implements OnInit {
       stepsThatRequireAttention: [],
       stepsThatRequireProofOfDocuments: [],
     };
-    this.expandConfigPanels = true;
+    this.expandConfigPanels.push(true);
     this.serviceConfigForms.push(newConfig);
   }
 
