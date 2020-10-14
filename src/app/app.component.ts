@@ -12,7 +12,7 @@ export class AppComponent {
 
   constructor(public authService: AuthService, public flags: FlagsService) {}
 
-  logOut() {
+  logOut(): void {
     this.authService.logOut();
   }
 }

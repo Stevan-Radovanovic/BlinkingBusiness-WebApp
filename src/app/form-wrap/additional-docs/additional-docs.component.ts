@@ -15,11 +15,11 @@ export class AdditionalDocsComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  removeAdditionalDoc(i: number) {
+  removeAdditionalDoc(i: number): void {
     this.additionalDocs.splice(i, 1);
   }
 
-  editAdditionalDoc(doc: AdditionalDoc) {
+  editAdditionalDoc(doc: AdditionalDoc): void {
     const dialogRef = this.dialog.open(EditAdditionalDocComponent, {
       data: { doc },
     });

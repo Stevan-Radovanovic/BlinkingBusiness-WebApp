@@ -56,7 +56,7 @@ export class BusinessFormComponent implements OnInit {
     });
   }
 
-  setPrepopulatedImages() {
+  setPrepopulatedImages(): void {
     if (this.businessObject.businessConfiguration.faviconId) {
       this.faviconPath = this.callBroker.getImageById(
         this.businessObject.businessConfiguration.faviconId
@@ -88,21 +88,21 @@ export class BusinessFormComponent implements OnInit {
     this.businessForm.get('logo').updateValueAndValidity();
   }
 
-  requiredValidator(controlName: string) {
+  requiredValidator(controlName: string): boolean {
     return (
       this.businessForm.get(controlName).hasError('required') &&
       this.businessForm.get(controlName).touched
     );
   }
 
-  patternValidator(controlName: string) {
+  patternValidator(controlName: string): boolean {
     return (
       this.businessForm.get(controlName).hasError('pattern') &&
       this.businessForm.get(controlName).touched
     );
   }
 
-  fileValidator(controlName: string) {
+  fileValidator(controlName: string): boolean {
     return (
       !this.businessForm.get(controlName).hasError('required') &&
       this.businessForm.get(controlName).touched &&
@@ -110,8 +110,10 @@ export class BusinessFormComponent implements OnInit {
     );
   }
 
-  checkFaviconValidity() {
-    if (this.favicon.nativeElement.files.length === 0) return;
+  checkFaviconValidity(): void {
+    if (this.favicon.nativeElement.files.length === 0) {
+      return;
+    }
     const fileSize = this.favicon.nativeElement.files[0].size / 1024 / 1024;
     const fileType = this.favicon.nativeElement.files[0].type;
 
@@ -130,15 +132,17 @@ export class BusinessFormComponent implements OnInit {
       return;
     }
 
-    var reader = new FileReader();
+    const reader = new FileReader();
     reader.onload = (event: any) => {
       this.faviconPath = event.target.result;
     };
     reader.readAsDataURL(this.favicon.nativeElement.files[0]);
   }
 
-  checkLogoValidity() {
-    if (this.logo.nativeElement.files.length === 0) return;
+  checkLogoValidity(): void {
+    if (this.logo.nativeElement.files.length === 0) {
+      return;
+    }
     const fileSize = this.logo.nativeElement.files[0].size / 1024 / 1024;
     const fileType = this.logo.nativeElement.files[0].type;
 
@@ -157,14 +161,14 @@ export class BusinessFormComponent implements OnInit {
       return;
     }
 
-    var reader = new FileReader();
+    const reader = new FileReader();
     reader.onload = (event: any) => {
       this.logoPath = event.target.result;
     };
     reader.readAsDataURL(this.logo.nativeElement.files[0]);
   }
 
-  initBusinessForm() {
+  initBusinessForm(): void {
     this.businessForm = new FormGroup({
       businessName: new FormControl(
         { value: this.businessObject?.name, disabled: true },
@@ -198,7 +202,7 @@ export class BusinessFormComponent implements OnInit {
     });
   }
 
-  restoreInitialValues() {
+  restoreInitialValues(): void {
     this.businessForm.setValue({
       favicon: '',
       logo: '',
@@ -208,7 +212,7 @@ export class BusinessFormComponent implements OnInit {
     });
   }
 
-  enableEditing() {
+  enableEditing(): void {
     if (this.editing) {
       this.restoreInitialValues();
       this.disableEditing();
@@ -221,18 +225,18 @@ export class BusinessFormComponent implements OnInit {
     this.editing = true;
   }
 
-  disableEditing() {
+  disableEditing(): void {
     this.controlNames.forEach((control) => {
       this.businessForm.get(control).disable();
     });
     this.editing = false;
   }
 
-  onUpdateBusiness() {
+  onUpdateBusiness(): void {
     this.disableEditing();
   }
 
-  onSaveBusiness() {
+  onSaveBusiness(): void {
     const newBussines: BusinessObject = {
       name: this.businessForm.get('businessName').value,
       businessUrl: this.businessForm.get('businessUrl').value,

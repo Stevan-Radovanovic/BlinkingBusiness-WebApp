@@ -41,6 +41,15 @@ export class MainServiceFormComponent implements OnInit {
     'Video session',
     'Additional document',
   ];
+  controlNames = [
+    'serviceName',
+    'maxNumberOfTries',
+    'shouldAskForFaceEnroll',
+    'defaultCountry',
+    'allowedCountries',
+    'sessionValidityDuration',
+  ];
+
   @Input() expand: boolean;
   @Input() serviceObject: ServiceObject;
   @Output() saved = new EventEmitter<boolean>();
@@ -72,16 +81,7 @@ export class MainServiceFormComponent implements OnInit {
     });
   }
 
-  controlNames = [
-    'serviceName',
-    'maxNumberOfTries',
-    'shouldAskForFaceEnroll',
-    'defaultCountry',
-    'allowedCountries',
-    'sessionValidityDuration',
-  ];
-
-  initServiceForm() {
+  initServiceForm(): void {
     this.serviceForm = new FormGroup({
       serviceName: new FormControl(
         { value: this.serviceObject.name, disabled: true },
@@ -125,7 +125,7 @@ export class MainServiceFormComponent implements OnInit {
     });
   }
 
-  addServiceConfigForm() {
+  addServiceConfigForm(): void {
     const newConfig: ServiceConfig = {
       serviceConfigId: uuidv4(),
       baseRedirectUrl: '',
@@ -144,17 +144,17 @@ export class MainServiceFormComponent implements OnInit {
     this.serviceConfigForms.push(newConfig);
   }
 
-  onDeleteService() {
+  onDeleteService(): void {
     this.deleting.emit(this.serviceObject.id);
   }
 
-  deleteServiceConfigForm(id: string) {
+  deleteServiceConfigForm(id: string): void {
     this.serviceConfigForms = this.serviceConfigForms.filter((elem) => {
       return elem.serviceConfigId !== id;
     });
   }
 
-  restoreInitialValues() {
+  restoreInitialValues(): void {
     this.serviceForm.setValue({
       serviceName: this.serviceObject.name,
       maxNumberOfTries: this.serviceObject.serviceConfiguration
@@ -164,11 +164,11 @@ export class MainServiceFormComponent implements OnInit {
       defaultCountry: this.serviceObject.serviceConfiguration.defaultCountry,
       allowedCountries: this.serviceObject.serviceConfiguration
         .allowedCountries,
-      sessionValidityDuration: null, //not in payload?
+      sessionValidityDuration: null, // not in payload?
     });
   }
 
-  enableEditing() {
+  enableEditing(): void {
     if (this.editing) {
       this.restoreInitialValues();
       this.disableEditing();
@@ -181,21 +181,21 @@ export class MainServiceFormComponent implements OnInit {
     this.editing = true;
   }
 
-  disableEditing() {
+  disableEditing(): void {
     this.controlNames.forEach((control) => {
       this.serviceForm.get(control).disable();
     });
     this.editing = false;
   }
 
-  requiredValidator(controlName: string) {
+  requiredValidator(controlName: string): boolean {
     return (
       this.serviceForm.get(controlName).hasError('required') &&
       this.serviceForm.get(controlName).touched
     );
   }
 
-  updateServiceDetails() {
+  updateServiceDetails(): void {
     if (!this.serviceSaved) {
       this.serviceSaved = true;
       this.saved.emit(true);
@@ -203,12 +203,12 @@ export class MainServiceFormComponent implements OnInit {
     this.disableEditing();
   }
 
-  saveServiceDetails() {
+  saveServiceDetails(): void {
     this.serviceSaved = true;
     this.disableEditing();
   }
 
-  onSavedServiceForm(saved: boolean) {
+  onSavedServiceForm(saved: boolean): void {
     if (saved) {
       this.savedServiceConfigForms++;
     }

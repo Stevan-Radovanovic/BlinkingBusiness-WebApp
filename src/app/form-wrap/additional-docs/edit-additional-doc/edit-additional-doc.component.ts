@@ -63,14 +63,14 @@ export class EditAdditionalDocComponent implements OnInit {
     public dialogRef: MatDialogRef<EditAdditionalDocComponent>
   ) {}
 
-  requiredValidator(controlName: string) {
+  requiredValidator(controlName: string): boolean {
     return (
       this.docForm.get(controlName).hasError('required') &&
       this.docForm.get(controlName).touched
     );
   }
 
-  initUserForm() {
+  initUserForm(): void {
     this.docForm = new FormGroup({
       subtype: new FormControl(this.data.doc.subType, Validators.required),
       description: new FormControl(
@@ -80,7 +80,7 @@ export class EditAdditionalDocComponent implements OnInit {
     });
   }
 
-  updateAdditionalDoc() {
+  updateAdditionalDoc(): void {
     const updatedAdditional: AdditionalDoc = {
       id: this.data.doc.id,
       subType: this.docForm.get('subtype').value,

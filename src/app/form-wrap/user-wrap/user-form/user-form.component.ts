@@ -11,9 +11,6 @@ import { User } from 'src/app/shared/models/user.model';
   styleUrls: ['./user-form.component.css'],
 })
 export class UserFormComponent implements OnInit {
-  //@Input() user: User;
-  //@Input() services: ServiceObject[];
-
   userForm: FormGroup;
   userIdNumbers: number[] = [];
   roles = Role;
@@ -37,14 +34,14 @@ export class UserFormComponent implements OnInit {
     this.initUserForm();
   }
 
-  requiredValidator(controlName: string) {
+  requiredValidator(controlName: string): boolean {
     return (
       this.userForm.get(controlName).hasError('required') &&
       this.userForm.get(controlName).touched
     );
   }
 
-  updateUser() {
+  updateUser(): void {
     const user: User = {
       id: this.data.user.id,
       name: this.userForm.get('name').value,
@@ -56,7 +53,7 @@ export class UserFormComponent implements OnInit {
     this.dialogRef.close(user);
   }
 
-  createUser() {
+  createUser(): void {
     const user: User = {
       name: this.userForm.get('name').value,
       roles: this.userForm.get('roles').value,
@@ -67,7 +64,7 @@ export class UserFormComponent implements OnInit {
     this.dialogRef.close(user);
   }
 
-  initUserForm() {
+  initUserForm(): void {
     if (this.addingNew) {
       this.userForm = new FormGroup({
         name: new FormControl('', Validators.required),

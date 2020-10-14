@@ -46,8 +46,8 @@ export class ServiceFormComponent implements OnInit {
   skippableSteps: string[] = [];
   skippableStepOptions: string[] = [];
 
-  stepsThatRequireProof: Object[] = [];
-  stepsThatRequireProofOptions: Object[] = [];
+  stepsThatRequireProof: string[] = [];
+  stepsThatRequireProofOptions: string[] = [];
 
   stepsThatRequireAttention: string[] = [];
   stepsThatRequireAttentionOptions: string[] = [];
@@ -165,11 +165,11 @@ export class ServiceFormComponent implements OnInit {
       });
   }
 
-  onDeleteService() {
+  onDeleteService(): void {
     this.deleting.emit(this.configObject.serviceConfigId);
   }
 
-  initServiceForm() {
+  initServiceForm(): void {
     this.serviceForm = new FormGroup({
       serviceConfigName: new FormControl(
         { value: this.configObject.name, disabled: true },
@@ -227,12 +227,12 @@ export class ServiceFormComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
-  restoreInitialValues() {
+  restoreInitialValues(): void {
     this.serviceForm.setValue({
-      serviceConfigName: '', //not in payload?
-      baseRedirectUrl: '', //not in payload?
-      blinkingParams: [], //not in payload?
-      willEmbedInIframe: false, //not in payload?
+      serviceConfigName: '', // not in payload?
+      baseRedirectUrl: '', // not in payload?
+      blinkingParams: [], // not in payload?
+      willEmbedInIframe: false, // not in payload?
       skippableSteps: this.configObject.skippableSteps,
       stepsThatRequireProofOfDocuments: this.configObject
         .stepsThatRequireProofOfDocuments,
@@ -246,7 +246,7 @@ export class ServiceFormComponent implements OnInit {
     });
   }
 
-  enableEditing() {
+  enableEditing(): void {
     if (this.editing) {
       this.restoreInitialValues();
       this.disableEditing();
@@ -258,21 +258,21 @@ export class ServiceFormComponent implements OnInit {
     this.editing = true;
   }
 
-  disableEditing() {
+  disableEditing(): void {
     this.controlNames.forEach((control) => {
       this.serviceForm.get(control).disable();
     });
     this.editing = false;
   }
 
-  requiredValidator(controlName: string) {
+  requiredValidator(controlName: string): boolean {
     return (
       this.serviceForm.get(controlName).hasError('required') &&
       this.serviceForm.get(controlName).touched
     );
   }
 
-  frontBackValidator() {
+  frontBackValidator(): boolean {
     return (
       !this.serviceForm.controls.initialSessionConfig.hasError('required') &&
       this.serviceForm.controls.initialSessionConfig.touched &&
@@ -280,7 +280,7 @@ export class ServiceFormComponent implements OnInit {
     );
   }
 
-  checkValidityProofOfDocs() {
+  checkValidityProofOfDocs(): void {
     if (this.additional) {
       this.serviceForm
         .get('stepsThatRequireProofOfDocuments')
@@ -301,14 +301,14 @@ export class ServiceFormComponent implements OnInit {
     }
   }
 
-  documentDisabler(document: string) {
+  documentDisabler(document: string): boolean {
     return (
       this.serviceForm.get('initialSessionConfig').value === null ||
       this.serviceForm.get('initialSessionConfig').value.includes(document)
     );
   }
 
-  addNewAditionalDocument() {
+  addNewAditionalDocument(): void {
     const addDoc: AdditionalDoc = {
       id: uuidv4(),
       subType: this.serviceForm.get('additionalDocSubType').value,
@@ -322,14 +322,14 @@ export class ServiceFormComponent implements OnInit {
     });
   }
 
-  patternValidator(controlName: string) {
+  patternValidator(controlName: string): boolean {
     return (
       this.serviceForm.get(controlName).hasError('pattern') &&
       this.serviceForm.get(controlName).touched
     );
   }
 
-  saveServiceConfig() {
+  saveServiceConfig(): void {
     if (!this.savedOnce) {
       this.savedOnce = true;
       this.saved.emit(true);
@@ -337,12 +337,14 @@ export class ServiceFormComponent implements OnInit {
     this.disableEditing();
   }
 
-  changeStepOptions(value: string[]) {
+  changeStepOptions(value: string[]): void {
     this.skippableStepOptions = [];
     this.stepsThatRequireAttentionOptions = [];
     this.stepsThatRequireProofOptions = [];
 
-    if (!value) return;
+    if (!value) {
+      return;
+    }
 
     value.forEach((step) => {
       if (this.skippableSteps.includes(step)) {

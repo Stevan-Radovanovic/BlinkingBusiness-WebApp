@@ -56,7 +56,7 @@ export class FormWrapComponent implements OnInit {
     });
   }
 
-  mockFillProperties() {
+  mockFillProperties(): void {
     this.businessObject = {
       name: 'Granice Mlekara',
       businessUrl: 'www.granice.com',
@@ -126,7 +126,7 @@ export class FormWrapComponent implements OnInit {
     ];
   }
 
-  addNewServiceForm() {
+  addNewServiceForm(): void {
     const newService = {
       id: Math.random() + Math.random() * Math.random(),
       name: '',
@@ -142,15 +142,13 @@ export class FormWrapComponent implements OnInit {
     this.expandServicePanels.push(true);
   }
 
-  onDeleteService(id: number) {
+  onDeleteService(id: number): void {
     this.serviceForms = this.serviceForms.filter((elem) => {
       return elem.id !== id;
     });
-
-    this.serviceForms;
   }
 
-  onSavedServiceForm(saved: boolean) {
+  onSavedServiceForm(saved: boolean): void {
     if (saved) {
       this.savedServiceForms++;
     }

@@ -16,28 +16,28 @@ export class UserWrapComponent implements OnInit {
 
   constructor(public dialog: MatDialog, public flags: FlagsService) {}
 
-  deleteUser(id: number) {
+  deleteUser(id: number): void {
     this.users = this.users.filter((user) => {
       return user.id !== id;
     });
   }
 
-  editUser(user: User) {
+  editUser(user: User): void {
     const dialogRef = this.dialog.open(UserFormComponent, {
       data: { user, services: this.services },
     });
 
     dialogRef.afterClosed().subscribe((result: User) => {
       if (result) {
-        const index = this.users.findIndex((user) => {
-          return user.id === result.id;
+        const index = this.users.findIndex((u) => {
+          return u.id === result.id;
         });
         this.users[index] = result;
       }
     });
   }
 
-  addNewUser() {
+  addNewUser(): void {
     const dialogRef = this.dialog.open(UserFormComponent, {
       data: { services: this.services },
     });

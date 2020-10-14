@@ -24,7 +24,7 @@ export class BusinessItemComponent implements OnInit {
     );
   }
 
-  navigateToForm() {
+  navigateToForm(): void {
     this.router.navigateByUrl('form/' + this.businessObject.id);
   }
 }

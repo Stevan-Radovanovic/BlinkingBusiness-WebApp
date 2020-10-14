@@ -24,14 +24,14 @@ export class LoginComponent implements OnInit {
     this.initForm();
   }
 
-  initForm() {
+  initForm(): void {
     this.authForm = new FormGroup({
       userName: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
     });
   }
 
-  logIn() {
+  logIn(): void {
     const username = this.authForm.get('userName').value;
     const password = this.authForm.get('password').value;
     this.callBroker.login(username, password).subscribe((response) => {
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  requiredValidator(controlName: string) {
+  requiredValidator(controlName: string): boolean {
     return (
       this.authForm.get(controlName).hasError('required') &&
       this.authForm.get(controlName).touched

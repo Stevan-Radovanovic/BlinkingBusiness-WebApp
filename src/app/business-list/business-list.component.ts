@@ -25,7 +25,7 @@ export class BusinessListComponent implements OnInit {
     });
   }
 
-  addNewBusiness() {
+  addNewBusiness(): void {
     this.router.navigateByUrl('form/new');
   }
 }
