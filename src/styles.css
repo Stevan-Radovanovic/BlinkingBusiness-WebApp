@@ -37,3 +37,9 @@ form mat-form-field {
   background-color: rgba(0, 0, 0, 0.26) !important;
   color: black !important;
 }
+
+.snackbar {
+  color: #141414;
+  background-color: #ffffff;
+  border: 1px solid #ff2a4e;
+}

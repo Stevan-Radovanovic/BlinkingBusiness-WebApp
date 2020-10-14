@@ -34,25 +34,13 @@ export class LoginComponent implements OnInit {
   logIn() {
     const username = this.authForm.get('userName').value;
     const password = this.authForm.get('password').value;
-    this.callBroker.login(username, password).subscribe(
-      (response) => {
-        localStorage.setItem('token', uuidv4());
-        this.authService.loggedIn = true;
-        this.authService.user = response.user;
-        this.router.navigate(['/business']);
-        this.flags.loading = false;
-      },
-      () => {
-        this.invalidLogIn();
-      }
-    );
-  }
-
-  invalidLogIn() {
-    this.authService.validAuth = false;
-    setTimeout(() => {
-      this.authService.validAuth = true;
-    }, 3000);
+    this.callBroker.login(username, password).subscribe((response) => {
+      localStorage.setItem('token', uuidv4());
+      this.authService.loggedIn = true;
+      this.authService.user = response.user;
+      this.router.navigate(['/business']);
+      this.flags.loading = false;
+    });
   }
 
   requiredValidator(controlName: string) {

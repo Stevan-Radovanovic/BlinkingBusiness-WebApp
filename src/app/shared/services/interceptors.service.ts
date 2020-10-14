@@ -10,12 +10,16 @@ import { Observable, throwError } from 'rxjs';
 import { GenericResponse } from '../models/response-models/generic-response.model';
 import { map, catchError } from 'rxjs/operators';
 import { FlagsService } from './flags.service';
+import { SnackbarService } from './snackbar.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InterceptorsService {
-  constructor(private flags: FlagsService) {}
+  constructor(
+    private flags: FlagsService,
+    private snackBarService: SnackbarService
+  ) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -64,7 +68,9 @@ export class InterceptorsService {
                 case 10055:
                 case 10056:
                 default:
-                  console.log('Error');
+                  this.snackBarService.showSnackBarMessage(
+                    'An Error 400 Occured'
+                  );
                   errorStatusCode400 = -1;
                   break;
               }
@@ -73,10 +79,16 @@ export class InterceptorsService {
               return throwError(error);
             }
           case 401:
+            this.snackBarService.showSnackBarMessage('An Error 401 Occured');
+            break;
           case 404:
+            this.snackBarService.showSnackBarMessage('An Error 404 Occured');
+            break;
           case 500:
+            this.snackBarService.showSnackBarMessage('An Error 500 Occured');
+            break;
           default:
-            console.log('Error');
+            this.snackBarService.showSnackBarMessage('An Error Occured');
             return throwError(error);
         }
       })
