@@ -31,7 +31,7 @@
         mat-raised-button
         color="primary"
         (click)="addNewServiceForm()"
-        *ng-if="!flags.newBusiness || flags.businessConfigCreated"
+        *ngIf="!flags.newBusiness || flags.businessConfigCreated"
       >
         <mat-icon>add</mat-icon>
         Add new Service
