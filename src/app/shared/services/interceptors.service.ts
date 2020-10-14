@@ -1,13 +1,14 @@
 import {
+  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpRequest,
   HttpResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { GenericResponse } from '../models/response-models/generic-response.model';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { FlagsService } from './flags.service';
 
 @Injectable({
@@ -46,6 +47,37 @@ export class InterceptorsService {
           } catch (e) {
             throw new Error(e);
           }
+        }
+      }),
+      catchError((error: HttpErrorResponse) => {
+        this.flags.loading = false;
+        switch (error.status) {
+          case 400:
+            try {
+              let errorStatusCode400 = error.error.statusCode;
+              switch (errorStatusCode400) {
+                case 10001:
+                case 10008:
+                case 10009:
+                case 10011:
+                case 10054:
+                case 10055:
+                case 10056:
+                default:
+                  console.log('Error');
+                  errorStatusCode400 = -1;
+                  break;
+              }
+              return throwError(error);
+            } catch (error) {
+              return throwError(error);
+            }
+          case 401:
+          case 404:
+          case 500:
+          default:
+            console.log('Error');
+            return throwError(error);
         }
       })
     );
