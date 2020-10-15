@@ -61,7 +61,7 @@ mat-card-title {
 }
 
 .divider {
-  border: 1px solid #ccc;
+  border: 1px solid var(--gray-2);
   margin-left: -25px;
   margin-right: -25px;
 }
@@ -90,7 +90,7 @@ mat-panel-title {
 }
 
 .sessionCard {
-  border: 2px solid #ccc;
+  border: 2px solid var(--gray-2);
   margin-bottom: 5px !important;
 }
 

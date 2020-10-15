@@ -4,7 +4,7 @@
 }
 
 .business-card {
-  border: 2px solid #ccc;
+  border: 2px solid var(--gray-2);
 }
 
 .business-wrapper {

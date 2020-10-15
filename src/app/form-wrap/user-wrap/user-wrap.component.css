@@ -23,7 +23,7 @@ mat-panel-title {
 }
 
 .user-card {
-  border: 2px solid #ccc;
+  border: 2px solid var(--gray-2);
   margin-bottom: 5px !important;
 }
 
@@ -42,6 +42,6 @@ mat-panel-title {
 }
 
 .table-border {
-  border: 2px solid #ccc;
+  border: 2px solid var(--gray-2);
   overflow-x: scroll;
 }

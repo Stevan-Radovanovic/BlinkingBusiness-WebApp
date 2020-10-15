@@ -10,6 +10,15 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+:root {
+  --blinking-red: #ff2a4e;
+  --blinking-white: #ffffff;
+  --blinking-black: #141414;
+  --blinking-gray: #4a4a4a;
+  --gray-1: #eee;
+  --gray-2: #ccc;
+}
+
 form mat-form-field {
   width: 100%;
   margin-bottom: 3px;
@@ -30,7 +39,7 @@ form mat-form-field {
 }
 
 .mat-warn {
-  background-color: #ff2a4e !important;
+  background-color: var(--blinking-red) !important;
 }
 
 .mat-button-disabled {
@@ -39,8 +48,8 @@ form mat-form-field {
 }
 
 .snackbar {
-  color: #141414;
-  background-color: #ffffff;
+  color: var(--background-black);
+  background-color: var(--background-white);
   font-weight: bold;
-  border: 1px solid #ff2a4e;
+  border: 1px solid var(--blinking-red);
 }

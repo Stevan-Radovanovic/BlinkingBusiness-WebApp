@@ -3,13 +3,13 @@
 }
 
 .header {
-  color: #ccc;
+  color: var(--gray-2);
   box-shadow: 2px 2px;
 }
 
 .wrapper {
   min-height: 100vh;
-  background-color: #eee;
+  background-color: var(--gray-1);
 }
 
 .log-out {
