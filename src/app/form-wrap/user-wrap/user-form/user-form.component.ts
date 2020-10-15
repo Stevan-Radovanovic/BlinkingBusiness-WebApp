@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Role } from 'src/app/shared/models/role.model';
 import { ServiceObject } from 'src/app/shared/models/service-object.model';
 import { User } from 'src/app/shared/models/user.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-form',
@@ -23,7 +24,6 @@ export class UserFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data.services);
     if (this.data.user) {
       this.addingNew = false;
       this.userIdNumbers = this.data.user.services.map((value) => {
