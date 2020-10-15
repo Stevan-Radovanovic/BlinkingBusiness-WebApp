@@ -34,8 +34,9 @@ form mat-form-field {
   width: 90%;
 }
 
-.mat-icon {
+button .mat-icon {
   color: var(--blinking-red) !important;
+  margin-bottom: 3px !important;
 }
 
 .mat-warn {
