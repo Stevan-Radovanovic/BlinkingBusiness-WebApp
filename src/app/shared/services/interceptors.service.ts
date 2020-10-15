@@ -55,6 +55,7 @@ export class InterceptorsService {
       }),
       catchError((error: HttpErrorResponse) => {
         this.flags.loading = false;
+        console.log(error);
         switch (error.status) {
           case 400:
             try {
@@ -68,9 +69,7 @@ export class InterceptorsService {
                 case 10055:
                 case 10056:
                 default:
-                  this.snackBarService.showSnackBarMessage(
-                    'An Error 400 Occured'
-                  );
+                  this.snackBarService.showSnackBarMessage(error.error.message);
                   errorStatusCode400 = -1;
                   break;
               }
@@ -79,16 +78,16 @@ export class InterceptorsService {
               return throwError(error);
             }
           case 401:
-            this.snackBarService.showSnackBarMessage('An Error 401 Occured');
+            this.snackBarService.showSnackBarMessage(error.error.message);
             break;
           case 404:
-            this.snackBarService.showSnackBarMessage('An Error 404 Occured');
+            this.snackBarService.showSnackBarMessage(error.error.message);
             break;
           case 500:
-            this.snackBarService.showSnackBarMessage('An Error 500 Occured');
+            this.snackBarService.showSnackBarMessage(error.error.message);
             break;
           default:
-            this.snackBarService.showSnackBarMessage('An Error Occured');
+            this.snackBarService.showSnackBarMessage(error.error.message);
             return throwError(error);
         }
       })

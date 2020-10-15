@@ -41,5 +41,6 @@ form mat-form-field {
 .snackbar {
   color: #141414;
   background-color: #ffffff;
+  font-weight: bold;
   border: 1px solid #ff2a4e;
 }
