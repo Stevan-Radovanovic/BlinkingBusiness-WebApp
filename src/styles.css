@@ -35,7 +35,7 @@ form mat-form-field {
 }
 
 .mat-icon {
-  color: black;
+  color: var(--blinking-red) !important;
 }
 
 .mat-warn {
@@ -45,6 +45,11 @@ form mat-form-field {
 .mat-button-disabled {
   background-color: rgba(0, 0, 0, 0.26) !important;
   color: black !important;
+}
+
+button {
+  background-color: var(--blinking-black) !important;
+  color: var(--blinking-red) !important;
 }
 
 .snackbar {
