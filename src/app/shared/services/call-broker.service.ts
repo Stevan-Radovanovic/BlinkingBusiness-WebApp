@@ -5,6 +5,9 @@ import { ResponseLogInModel } from '../models/response-models/response-log-in.mo
 import { GenericResponse } from '../models/response-models/generic-response.model';
 import { RouteConstantsService } from './route-constants.service';
 import { ResponseAddNewBusinessModel } from '../models/response-models/response-add-new-business.model';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { FlagsService } from './flags.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +15,12 @@ import { ResponseAddNewBusinessModel } from '../models/response-models/response-
 export class CallBrokerService {
   constructor(
     private http: HttpClient,
-    private routes: RouteConstantsService
+    private routes: RouteConstantsService,
+    private router: Router,
+    private flags: FlagsService
   ) {}
 
-  login(username: string, password: string) {
+  login(username: string, password: string): Observable<ResponseLogInModel> {
     const body = {
       username,
       password,
@@ -23,22 +28,30 @@ export class CallBrokerService {
     return this.http.post<ResponseLogInModel>(this.routes.login, body);
   }
 
-  getAllBusinesses() {
+  logOut(): void {
+    localStorage.removeItem('token');
+    this.flags.loggedIn = false;
+    this.router.navigateByUrl('/login');
+  }
+
+  getAllBusinesses(): Observable<BusinessObject[]> {
     return this.http.get<BusinessObject[]>(this.routes.getAllBusinesses);
   }
 
-  getBusinessById(businessId: number) {
+  getBusinessById(businessId: number): Observable<BusinessObject> {
     const body = {
       businessId,
     };
     return this.http.post<BusinessObject>(this.routes.getBusinessById, body);
   }
 
-  getImageById(imageId: string) {
+  getImageById(imageId: string): string {
     return this.routes.getImageById + imageId;
   }
 
-  addNewBusiness(business: BusinessObject) {
+  addNewBusiness(
+    business: BusinessObject
+  ): Observable<ResponseAddNewBusinessModel> {
     const body = {
       ...business,
     };

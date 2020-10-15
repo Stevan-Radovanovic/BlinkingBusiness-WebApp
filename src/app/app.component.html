@@ -12,7 +12,7 @@
       color="primary"
       class="log-out"
       (click)="logOut()"
-      *ngIf="this.authService.loggedIn"
+      *ngIf="this.flags.loggedIn"
     >
       <mat-icon>logout</mat-icon>
       Log out

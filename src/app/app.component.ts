@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from './shared/services/auth.service';
+import { CallBrokerService } from './shared/services/call-broker.service';
 import { FlagsService } from './shared/services/flags.service';
 
 @Component({
@@ -10,9 +10,12 @@ import { FlagsService } from './shared/services/flags.service';
 export class AppComponent {
   title = 'blinking';
 
-  constructor(public authService: AuthService, public flags: FlagsService) {}
+  constructor(
+    public callBroker: CallBrokerService,
+    public flags: FlagsService
+  ) {}
 
   logOut(): void {
-    this.authService.logOut();
+    this.callBroker.logOut();
   }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../shared/services/auth.service';
 import { v4 as uuidv4 } from 'uuid';
 import { CallBrokerService } from '../shared/services/call-broker.service';
 import { FlagsService } from '../shared/services/flags.service';
@@ -14,7 +13,6 @@ export class LoginComponent implements OnInit {
   authForm: FormGroup;
 
   constructor(
-    public authService: AuthService,
     public callBroker: CallBrokerService,
     public router: Router,
     public flags: FlagsService
@@ -36,8 +34,8 @@ export class LoginComponent implements OnInit {
     const password = this.authForm.get('password').value;
     this.callBroker.login(username, password).subscribe((response) => {
       localStorage.setItem('token', uuidv4());
-      this.authService.loggedIn = true;
-      this.authService.user = response.user;
+      this.flags.loggedIn = true;
+      console.log(response.user); // for now
       this.router.navigate(['/business']);
       this.flags.loading = false;
     });

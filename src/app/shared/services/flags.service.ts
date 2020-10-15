@@ -10,4 +10,5 @@ export class FlagsService {
   public businessConfigCreated = false;
   public newUser = false;
   public loading = false;
+  public loggedIn = localStorage.getItem('token') !== null;
 }
