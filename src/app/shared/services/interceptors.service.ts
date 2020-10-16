@@ -27,7 +27,9 @@ export class InterceptorsService {
   ): Observable<HttpEvent<any>> {
     let httpsReq = req.clone();
 
-    this.flags.loading = true;
+    setTimeout(() => {
+      this.flags.loading = true;
+    }, 0);
 
     if (!httpsReq.headers.has('Content-Type')) {
       httpsReq = httpsReq.clone({

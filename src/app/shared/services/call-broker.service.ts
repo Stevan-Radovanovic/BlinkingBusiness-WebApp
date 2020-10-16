@@ -8,6 +8,8 @@ import { ResponseAddNewBusinessModel } from '../models/response-models/response-
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { FlagsService } from './flags.service';
+import { ServiceObject } from '../models/service-object.model';
+import { ServiceConfig } from '../models/service-config.model';
 
 @Injectable({
   providedIn: 'root',
@@ -60,5 +62,17 @@ export class CallBrokerService {
       this.routes.addNewBusiness,
       body
     );
+  }
+
+  addNewService(service: ServiceObject): Observable<any> {
+    const body = {};
+
+    return this.http.post<any>(this.routes.addNewService, body);
+  }
+
+  addNewServiceConfig(serviceConfig: ServiceConfig): Observable<any> {
+    const body = {};
+
+    return this.http.post<any>(this.routes.addNewServiceConfig, body);
   }
 }
