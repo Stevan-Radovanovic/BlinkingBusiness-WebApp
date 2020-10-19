@@ -131,7 +131,7 @@
 
   <mat-accordion multi="false">
     <div *ngFor="let serviceConfigForm of serviceConfigForms; let i = index">
-      <app-service-form
+      <app-service-config-form
         [allowedCountries]="serviceForm.get('allowedCountries').value"
         (saved)="onSavedServiceForm($event)"
         (deleting)="deleteServiceConfigForm($event)"
@@ -142,7 +142,7 @@
             : allowedDefault
         "
         [configObject]="serviceConfigForm"
-      ></app-service-form>
+      ></app-service-config-form>
     </div>
   </mat-accordion>
 

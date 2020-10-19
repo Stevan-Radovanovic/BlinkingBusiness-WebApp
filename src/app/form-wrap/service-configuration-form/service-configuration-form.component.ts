@@ -139,6 +139,7 @@ export class ServiceConfigurationFormComponent implements OnInit {
   }
 
   addServiceConfigForm(): void {
+    console.log('wtf');
     const newConfig: ServiceConfig = {
       serviceConfigId: uuidv4(),
       baseRedirectUrl: '',

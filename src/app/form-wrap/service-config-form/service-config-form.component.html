@@ -58,64 +58,64 @@
       <mat-select formControlName="initialSessionConfig" multiple>
         <mat-option
           *ngIf="allowedSteps.indexOf('Document type') != -1"
-          [disabled]="documentDisabler('Document type with country')"
-          value="Document type"
+          [disabled]="documentDisabler('COUNTRY')"
+          value="DOCUMENT"
         >
           Document
         </mat-option>
         <mat-option
           *ngIf="allowedSteps.indexOf('Document type with country') != -1"
-          [disabled]="documentDisabler('Document type')"
-          value="Document type with country"
+          [disabled]="documentDisabler('DOCUMENT')"
+          value="COUNTRY"
         >
           Document with Country
         </mat-option>
         <mat-option
           *ngIf="allowedSteps.indexOf('Front side') != -1"
           [disabled]="
-            !documentDisabler('Document type') &&
-            !documentDisabler('Document type with country')
+            !documentDisabler('DOCUMENT') &&
+            !documentDisabler('COUNTRY')
           "
-          value="Front side"
+          value="FRONT"
         >
           Front Side
         </mat-option>
         <mat-option
           *ngIf="allowedSteps.indexOf('Back side') != -1"
           [disabled]="
-            !documentDisabler('Document type') &&
-            !documentDisabler('Document type with country')
+            !documentDisabler('DOCUMENT') &&
+            !documentDisabler('COUNTRY')
           "
-          value="Back side"
+          value="BACK"
         >
           Back Side
         </mat-option>
         <mat-option
           *ngIf="allowedSteps.indexOf('Address') != -1"
-          value="Address"
+          value="ADDRESS"
           >Address</mat-option
         >
-        <mat-option *ngIf="allowedSteps.indexOf('Face') != -1" value="Face"
+        <mat-option *ngIf="allowedSteps.indexOf('Face') != -1" value="FACE"
           >Face</mat-option
         >
         <mat-option
           *ngIf="allowedSteps.indexOf('Account number') != -1"
-          value="Account number"
+          value="ACCOUNT"
           >Account Number</mat-option
         >
         <mat-option
           *ngIf="allowedSteps.indexOf('Contact data') != -1"
-          value="Contact data"
+          value="CONTACT"
           >Contact Data</mat-option
         >
         <mat-option
           *ngIf="allowedSteps.indexOf('Video session') != -1"
-          value="Video session"
+          value="VIDEO"
           >Video Session</mat-option
         >
         <mat-option
           *ngIf="allowedSteps.indexOf('Additional document') != -1"
-          value="Additional document"
+          value="ADDITIONAL"
           >Additional Documents</mat-option
         >
       </mat-select>
@@ -176,7 +176,7 @@
       <mat-label>Skippable Steps</mat-label>
       <mat-select formControlName="skippableSteps" multiple>
         <mat-option *ngFor="let step of skippableStepOptions" [value]="step">
-          {{ step }}
+          {{ steptype[step] }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -187,7 +187,7 @@
           *ngFor="let step of stepsThatRequireProofOptions"
           [value]="step"
         >
-          {{ step }}
+        {{ steptype[step] }}
         </mat-option>
         <mat-option
           value="Additional Document"
@@ -207,7 +207,7 @@
           *ngFor="let step of stepsThatRequireAttentionOptions"
           [value]="step"
         >
-          {{ step }}
+          {{ steptype[step] }}
         </mat-option>
       </mat-select>
     </mat-form-field>

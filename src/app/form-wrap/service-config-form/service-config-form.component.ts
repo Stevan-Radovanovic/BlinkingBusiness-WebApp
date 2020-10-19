@@ -74,9 +74,9 @@ export class ServiceConfigFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.name = this.configObject.name;
-    this.skippableSteps = ['Account number', 'Contact data'];
-    this.stepsThatRequireAttention = ['Account number', 'Address'];
-    this.stepsThatRequireProof = ['Account number', 'Address'];
+    this.skippableSteps = ['ACCOUNT', 'CONTACT'];
+    this.stepsThatRequireAttention = ['ACCOUNT', 'ADDRESS'];
+    this.stepsThatRequireProof = ['ACCOUNT', 'ADDRESS'];
 
     this.initServiceForm();
     this.changeStepOptions(this.configObject.initialSessionConfig);
@@ -114,16 +114,16 @@ export class ServiceConfigFormComponent implements OnInit {
         }
 
         if (
-          !value.includes('Document type') &&
-          !value.includes('Document type with country') &&
-          (value.includes('Front side') || value.includes('Back side'))
+          !value.includes('DOCUMENT') &&
+          !value.includes('COUNTRY') &&
+          (value.includes('FRONT') || value.includes('BACK'))
         ) {
-          const index1 = value.indexOf('Front side');
+          const index1 = value.indexOf('FRONT');
           if (index1 !== -1) {
             value.splice(index1, 1);
           }
 
-          const index2 = value.indexOf('Back side');
+          const index2 = value.indexOf('BACK');
           if (index2 !== -1) {
             value.splice(index2, 1);
           }
@@ -371,6 +371,8 @@ export class ServiceConfigFormComponent implements OnInit {
     this.skippableStepOptions = [];
     this.stepsThatRequireAttentionOptions = [];
     this.stepsThatRequireProofOptions = [];
+
+    console.log(value);
 
     if (!value) {
       return;
