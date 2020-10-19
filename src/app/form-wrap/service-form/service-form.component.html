@@ -266,11 +266,22 @@
         class="save-button"
         [disabled]="!serviceForm.valid"
         (click)="saveServiceConfig()"
-        *ngIf="editing"
+        *ngIf="editing && newServiceConfig"
       >
         <mat-icon>save</mat-icon>
         Save Service Config
       </button>
+      <button
+      color="primary"
+      mat-raised-button
+      class="save-button"
+      [disabled]="!serviceForm.valid"
+      (click)="updateServiceConfig()"
+      *ngIf="editing && !newServiceConfig"
+    >
+      <mat-icon>update</mat-icon>
+      Update Service Config
+    </button>
       <button
         color="primary"
         class="delete-button"

@@ -31,6 +31,7 @@ export class ServiceFormComponent implements OnInit {
   @Input() expand: boolean;
   @ViewChild('docDesc') additionalDocDesc: ElementRef<HTMLInputElement>;
 
+  newServiceConfig = false;
   editing = false;
   savedOnce = false;
   subtype = SubType;
@@ -87,6 +88,7 @@ export class ServiceFormComponent implements OnInit {
 
     if (this.serviceForm.get('serviceConfigName').value === '') {
       this.enableEditing();
+      this.newServiceConfig = true;
     }
 
     this.serviceForm
@@ -330,12 +332,11 @@ export class ServiceFormComponent implements OnInit {
   }
 
   saveServiceConfig(): void {
-    if (!this.savedOnce) {
-      this.savedOnce = true;
-      this.saved.emit(true);
-    }
+    this.newServiceConfig = false;
     this.disableEditing();
   }
+
+  updateServiceConfig(): void {}
 
   changeStepOptions(value: string[]): void {
     this.skippableStepOptions = [];
