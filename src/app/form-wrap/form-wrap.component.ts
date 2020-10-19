@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Country } from '../shared/models/country.model';
 import { ServiceObject } from '../shared/models/service-object.model';
-import { StepType } from '../shared/models/step-type.model';
+import { StepType } from '../shared/models/enums/step-type.model';
 import { v4 as uuidv4 } from 'uuid';
-import { SubType } from '../shared/models/sub-type.model';
+import { SubType } from '../shared/models/enums/sub-type.model';
 import { BusinessObject } from '../shared/models/business-object.model';
 import { CallBrokerService } from '../shared/services/call-broker.service';
 import { ActivatedRoute } from '@angular/router';
@@ -50,6 +50,7 @@ export class FormWrapComponent implements OnInit {
       this.flags.newBusiness = false;
       this.serviceForms = this.businessObject.services;
       this.serviceForms.forEach((form) => {
+        form.businessId = this.businessObject.id;
         this.expandServicePanels.push(false);
       });
       this.flags.loading = false;
@@ -74,7 +75,7 @@ export class FormWrapComponent implements OnInit {
           defaultCountry: Country.GBR,
           allowedCountries: [Country.GBR, Country.SRB],
           maxNumberOfTries: 3,
-          sessionValidity: 120,
+          sessionTimeValid: 120,
         },
         serviceConfigs: [
           {
@@ -120,7 +121,7 @@ export class FormWrapComponent implements OnInit {
           defaultCountry: Country.SRB,
           allowedCountries: [Country.MNE, Country.SRB],
           maxNumberOfTries: 2,
-          sessionValidity: 121,
+          sessionTimeValid: 121,
         },
       },
     ];
@@ -135,7 +136,7 @@ export class FormWrapComponent implements OnInit {
         defaultCountry: null,
         allowedCountries: [],
         maxNumberOfTries: null,
-        sessionValidity: null,
+        sessionTimeValid: null,
       },
     };
     this.serviceForms.push(newService);

@@ -1,5 +1,5 @@
 import { AdditionalDoc } from './additional-doc.model';
-import { StepType } from './step-type.model';
+import { StepType } from './enums/step-type.model';
 
 export interface ServiceConfig {
   id?: number;

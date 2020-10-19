@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Role } from 'src/app/shared/models/role.model';
+import { Role } from 'src/app/shared/models/enums/role.model';
 import { ServiceObject } from 'src/app/shared/models/service-object.model';
 import { User } from 'src/app/shared/models/user.model';
 import { environment } from 'src/environments/environment';

@@ -11,9 +11,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Country } from 'src/app/shared/models/country.model';
 import { ServiceConfig } from 'src/app/shared/models/service-config.model';
 import { ServiceObject } from 'src/app/shared/models/service-object.model';
-import { StepType } from 'src/app/shared/models/step-type.model';
+import { StepType } from 'src/app/shared/models/enums/step-type.model';
 import { FlagsService } from 'src/app/shared/services/flags.service';
 import { v4 as uuidv4 } from 'uuid';
+import { APIKeyType } from 'src/app/shared/models/enums/api-key-type.model';
+import { ServiceType } from 'src/app/shared/models/enums/service-type.model';
+import { CallBrokerService } from 'src/app/shared/services/call-broker.service';
 
 @Component({
   selector: 'app-main-service-form',
@@ -25,7 +28,9 @@ export class MainServiceFormComponent implements OnInit {
   countries: string[];
   country = Country;
   serviceConfigForms: ServiceConfig[] = [];
+  newService = false;
   editing = false;
+  steptype = StepType;
   name = '';
   serviceSaved = false;
   expandConfigPanels: boolean[] = [];
@@ -57,7 +62,10 @@ export class MainServiceFormComponent implements OnInit {
 
   savedServiceConfigForms = 0;
 
-  constructor(public flags: FlagsService) {}
+  constructor(
+    public flags: FlagsService,
+    public callBroker: CallBrokerService
+  ) {}
 
   ngOnInit(): void {
     if (this.serviceObject.serviceConfigs) {
@@ -68,12 +76,16 @@ export class MainServiceFormComponent implements OnInit {
     } else {
       this.serviceConfigForms = [];
     }
+
+    console.log(this.serviceObject);
     this.name = this.serviceObject.name;
     this.countries = ['Serbia', 'Montenegro', 'United States', 'Great Britain'];
     this.initServiceForm();
 
     if (this.serviceForm.get('serviceName').value === '') {
       this.enableEditing();
+      console.log('1');
+      this.newService = true;
     }
 
     this.serviceForm.get('serviceName').valueChanges.subscribe((value) => {
@@ -117,7 +129,7 @@ export class MainServiceFormComponent implements OnInit {
       ),
       sessionValidityDuration: new FormControl(
         {
-          value: this.serviceObject.serviceConfiguration.sessionValidity,
+          value: this.serviceObject.serviceConfiguration.sessionTimeValid,
           disabled: true,
         },
         [Validators.required]
@@ -206,11 +218,37 @@ export class MainServiceFormComponent implements OnInit {
   saveServiceDetails(): void {
     this.serviceSaved = true;
     this.disableEditing();
+
+    const newService: ServiceObject = {
+      businessId: this.serviceObject.id,
+      serviceName: this.serviceForm.get('serviceName').value,
+      password: 'blink.ing', // hard-code
+      serviceConfiguration: {
+        allowedCountries: this.serviceForm.get('allowedCountries').value,
+        defaultCountry: this.serviceForm.get('defaultCountry').value,
+        maxNumberOfTries: this.serviceForm.get('maxNumberOfTries').value,
+        shouldAskForFaceEnroll: this.serviceForm.get('shouldAskForFaceEnroll')
+          .value,
+        allowedSteps: [this.steptype.ACCOUNT], // hard-code
+        serviceType: [ServiceType.ACCOUNT], // hard-code
+        sessionTimeValid: this.serviceForm.get('sessionValidityDuration').value,
+      },
+      apiKey: {
+        type: [APIKeyType.INTERNAL], // hard-code
+      },
+    };
+    console.log(newService);
+    this.callBroker.addNewService(newService).subscribe((response) => {
+      console.log(response);
+      this.newService = false;
+    });
   }
 
   onSavedServiceForm(saved: boolean): void {
+    /*
     if (saved) {
       this.savedServiceConfigForms++;
     }
+  */
   }
 }

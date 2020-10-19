@@ -4,7 +4,8 @@ import { User } from './user.model';
 export interface BusinessObject {
   id?: number;
   businessId?: string;
-  name: string;
+  name?: string;
+  businessName?: string;
   businessUrl: string;
   userUpdateSchema?: Object;
   requiredSchemaDocuments?: Object;
@@ -36,6 +37,6 @@ export class BusinessClass {
     public businessId: string,
     public businessConfiguration: BusinessConfigurationClass,
     public services: ServiceClass,
-    public users: User[] //this is not yet a class
+    public users: User[] // this is not a class yet
   ) {}
 }

@@ -102,7 +102,7 @@
       class="update-button"
       color="primary"
       [disabled]="!serviceForm.valid"
-      *ngIf="editing && !flags.newBusiness"
+      *ngIf="editing && !newService"
       (click)="updateServiceDetails()"
     >
       <mat-icon>update</mat-icon>
@@ -113,7 +113,7 @@
       class="update-button"
       color="primary"
       [disabled]="!serviceForm.valid"
-      *ngIf="editing && flags.newBusiness"
+      *ngIf="editing && newService"
       (click)="saveServiceDetails()"
     >
       <mat-icon>save</mat-icon>

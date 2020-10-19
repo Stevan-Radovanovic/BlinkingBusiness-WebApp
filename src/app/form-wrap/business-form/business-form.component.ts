@@ -238,7 +238,7 @@ export class BusinessFormComponent implements OnInit {
 
   onSaveBusiness(): void {
     const newBussines: BusinessObject = {
-      name: this.businessForm.get('businessName').value,
+      businessName: this.businessForm.get('businessName').value,
       businessUrl: this.businessForm.get('businessUrl').value,
       businessConfiguration: {
         primaryColor: this.businessForm.get('color').value,

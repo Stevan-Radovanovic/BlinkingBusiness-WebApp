@@ -1,10 +1,16 @@
+import { ApiKey } from './api-key.model';
 import { Badge } from './badge.model';
 import { Country } from './country.model';
 import { ServiceConfig } from './service-config.model';
 
 export interface ServiceObject {
+  businessId?: number;
+  serviceId?: string;
+  password?: string;
+  serviceSecret?: string;
   id?: number;
-  name: string;
+  name?: string;
+  serviceName?: string;
   serviceConfiguration: {
     allowedSteps?: string[];
     allowedCustomerBadges?: Badge[];
@@ -12,9 +18,11 @@ export interface ServiceObject {
     shouldAskForFaceEnroll: boolean;
     defaultCountry: Country;
     maxNumberOfTries: number;
-    sessionValidity?: number;
+    sessionTimeValid?: number;
+    serviceType?: string[];
   };
   serviceConfigs?: ServiceConfig[];
+  apiKey?: ApiKey;
 }
 
 export class ServiceConfigurationClass {

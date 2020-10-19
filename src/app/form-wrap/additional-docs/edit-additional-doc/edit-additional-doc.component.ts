@@ -8,7 +8,7 @@ import {
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdditionalDoc } from 'src/app/shared/models/additional-doc.model';
-import { SubType } from 'src/app/shared/models/sub-type.model';
+import { SubType } from 'src/app/shared/models/enums/sub-type.model';
 
 @Component({
   selector: 'app-edit-additional-doc',
