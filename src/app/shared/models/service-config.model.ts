@@ -1,11 +1,13 @@
 import { AdditionalDoc } from './additional-doc.model';
+import { ConfigType } from './enums/config-type.model';
 import { StepType } from './enums/step-type.model';
 
 export interface ServiceConfig {
-  id?: number;
+  serviceId?: string;
+  configId?: string;
   serviceConfigId?: string;
   name?: string;
-  baseRedirectUrl: string;
+  baseRedirectUrl?: string;
   blinkingParams?: string[];
   willEmbedInIframe?: boolean;
   skippableSteps?: string[];
@@ -16,6 +18,8 @@ export interface ServiceConfig {
   defaultCountry: string;
   additionalDocuments?: AdditionalDoc[];
   maxNumberOfTries: number;
+  configType?: ConfigType[];
+  sessionTimeValid?: number;
 }
 
 export class ServiceConfigClass {

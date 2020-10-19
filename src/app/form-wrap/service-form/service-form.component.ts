@@ -16,6 +16,7 @@ import { StepType } from 'src/app/shared/models/enums/step-type.model';
 import { ServiceConfig } from 'src/app/shared/models/service-config.model';
 import { Country } from 'src/app/shared/models/country.model';
 import { v4 as uuidv4 } from 'uuid';
+import { ConfigType } from 'src/app/shared/models/enums/config-type.model';
 
 @Component({
   selector: 'app-service-form',
@@ -333,6 +334,24 @@ export class ServiceFormComponent implements OnInit {
 
   saveServiceConfig(): void {
     this.newServiceConfig = false;
+    const newServiceConfig: ServiceConfig = {
+      serviceId: 'string' /*this.configObject.serviceId*/,
+      defaultCountry: this.serviceForm.get('defaultCountry').value,
+      maxNumberOfTries: this.serviceForm.get('maxNumberOfTries').value,
+      initialSessionConfig: this.serviceForm.get('initialSessionConfig').value,
+      shouldAskForFaceEnroll: this.serviceForm.get('shouldAskForFaceEnroll')
+        .value,
+      skippableSteps: this.serviceForm.get('skippableSteps').value,
+      stepsThatRequireAttention: this.serviceForm.get(
+        'stepsThatRequireAttention'
+      ).value,
+      stepsThatRequireProofOfDocuments: this.serviceForm.get(
+        'stepsThatRequireProofOfDocuments'
+      ).value,
+      configType: [ConfigType.ACCOUNT],
+      sessionTimeValid: 10, // hard-code
+    };
+    console.log(newServiceConfig);
     this.disableEditing();
   }
 
