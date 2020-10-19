@@ -45,6 +45,7 @@ export class FormWrapComponent implements OnInit {
     }
 
     this.callBroker.getBusinessById(id).subscribe((response) => {
+      console.log(response);
       this.businessObject = response;
       this.flags.businessConfigCreated = true;
       this.flags.newBusiness = false;

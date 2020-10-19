@@ -248,6 +248,7 @@ export class BusinessFormComponent implements OnInit {
     };
 
     this.callBroker.addNewBusiness(newBussines).subscribe((response) => {
+      console.log(response);
       this.businessObject = newBussines;
       this.businessObject.id = response.business.id;
       this.flags.loading = false;

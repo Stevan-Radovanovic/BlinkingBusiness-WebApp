@@ -68,6 +68,7 @@ export class MainServiceFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.serviceObject);
     if (this.serviceObject.serviceConfigs) {
       this.serviceConfigForms = this.serviceObject.serviceConfigs;
       this.serviceConfigForms.forEach((form) => {
@@ -219,8 +220,9 @@ export class MainServiceFormComponent implements OnInit {
     this.serviceSaved = true;
     this.disableEditing();
 
+    console.log(this.serviceObject);
     const newService: ServiceObject = {
-      businessId: this.serviceObject.id,
+      businessId: this.serviceObject.businessId,
       serviceName: this.serviceForm.get('serviceName').value,
       password: 'blink.ing', // hard-code
       serviceConfiguration: {
@@ -241,6 +243,7 @@ export class MainServiceFormComponent implements OnInit {
     this.callBroker.addNewService(newService).subscribe((response) => {
       console.log(response);
       this.newService = false;
+      this.flags.loading = false;
     });
   }
 

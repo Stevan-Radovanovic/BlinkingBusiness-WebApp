@@ -13,7 +13,7 @@ export class RouteConstantsService {
   public addNewBusiness = this.onboardingBaseUrl + '/business/addNewBusiness';
   public addNewService = this.onboardingBaseUrl + '/business/addNewService';
   public addNewServiceConfig =
-    this.onboardingBaseUrl + 'business/addNewServiceConfig';
+    this.onboardingBaseUrl + '/business/addNewServiceConfig';
 
   private mediaServerBaseUrl = 'https://image-handler-dev.blinking.services';
   public getImageById = this.mediaServerBaseUrl + '/media/public/download/';

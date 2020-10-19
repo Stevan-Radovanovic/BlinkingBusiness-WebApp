@@ -65,7 +65,7 @@ export class CallBrokerService {
   }
 
   addNewService(service: ServiceObject): Observable<any> {
-    const body = {};
+    const body = service;
 
     return this.http.post<any>(this.routes.addNewService, body);
   }

@@ -17,6 +17,7 @@ import { ServiceConfig } from 'src/app/shared/models/service-config.model';
 import { Country } from 'src/app/shared/models/country.model';
 import { v4 as uuidv4 } from 'uuid';
 import { ConfigType } from 'src/app/shared/models/enums/config-type.model';
+import { CallBrokerService } from 'src/app/shared/services/call-broker.service';
 
 @Component({
   selector: 'app-service-form',
@@ -228,7 +229,7 @@ export class ServiceFormComponent implements OnInit {
     });
   }
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, public callBroker: CallBrokerService) {}
 
   restoreInitialValues(): void {
     this.serviceForm.setValue({
@@ -352,6 +353,12 @@ export class ServiceFormComponent implements OnInit {
       sessionTimeValid: 10, // hard-code
     };
     console.log(newServiceConfig);
+    this.callBroker
+      .addNewServiceConfig(newServiceConfig)
+      .subscribe((response) => {
+        console.log(response);
+        this.newServiceConfig = false;
+      });
     this.disableEditing();
   }
 
