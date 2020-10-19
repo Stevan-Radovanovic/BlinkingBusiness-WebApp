@@ -74,9 +74,9 @@ export class ServiceConfigFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.name = this.configObject.name;
-    this.skippableSteps = ['ACCOUNT', 'CONTACT'];
-    this.stepsThatRequireAttention = ['ACCOUNT', 'ADDRESS'];
-    this.stepsThatRequireProof = ['ACCOUNT', 'ADDRESS'];
+    this.skippableSteps = ['Account number', 'Address'];
+    this.stepsThatRequireAttention = ['Account number', 'Address'];
+    this.stepsThatRequireProof = ['Account number', 'Address'];
 
     this.initServiceForm();
     this.changeStepOptions(this.configObject.initialSessionConfig);
@@ -114,16 +114,16 @@ export class ServiceConfigFormComponent implements OnInit {
         }
 
         if (
-          !value.includes('DOCUMENT') &&
-          !value.includes('COUNTRY') &&
-          (value.includes('FRONT') || value.includes('BACK'))
+          !value.includes('Document type') &&
+          !value.includes('Document type with country') &&
+          (value.includes('Front side') || value.includes('Back side'))
         ) {
-          const index1 = value.indexOf('FRONT');
+          const index1 = value.indexOf('Front side');
           if (index1 !== -1) {
             value.splice(index1, 1);
           }
 
-          const index2 = value.indexOf('BACK');
+          const index2 = value.indexOf('Back side');
           if (index2 !== -1) {
             value.splice(index2, 1);
           }

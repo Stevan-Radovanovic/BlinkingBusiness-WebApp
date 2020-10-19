@@ -10,10 +10,10 @@ export interface ServiceConfig {
   baseRedirectUrl?: string;
   blinkingParams?: string[];
   willEmbedInIframe?: boolean;
-  skippableSteps?: string[];
-  stepsThatRequireProofOfDocuments?: string[];
+  skippableSteps?: StepType[];
+  stepsThatRequireProofOfDocuments?: StepType[];
   initialSessionConfig: StepType[];
-  stepsThatRequireAttention?: string[];
+  stepsThatRequireAttention?: StepType[];
   shouldAskForFaceEnroll: boolean;
   defaultCountry: string;
   additionalDocuments?: AdditionalDoc[];

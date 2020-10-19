@@ -6,14 +6,16 @@ export function frontBack(control: FormControl): { [s: string]: boolean } {
   }
 
   if (
-    (!control.value.includes('FRONT') || !control.value.includes('BACK')) &&
-    control.value.includes('DOCUMENT')
+    (!control.value.includes('Front side') ||
+      !control.value.includes('Back side')) &&
+    control.value.includes('Document type')
   ) {
     return { frontBack: true };
   }
   if (
-    (!control.value.includes('FRONT') || !control.value.includes('BACK')) &&
-    control.value.includes('COUNTRY')
+    (!control.value.includes('Front side') ||
+      !control.value.includes('Back side')) &&
+    control.value.includes('Document type with country')
   ) {
     return { frontBack: true };
   }
