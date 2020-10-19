@@ -8,7 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Country } from 'src/app/shared/models/country.model';
+import { Country } from 'src/app/shared/models/enums/country.model';
 import { ServiceConfig } from 'src/app/shared/models/service-config.model';
 import { ServiceObject } from 'src/app/shared/models/service-object.model';
 import { StepType } from 'src/app/shared/models/enums/step-type.model';
@@ -19,11 +19,11 @@ import { ServiceType } from 'src/app/shared/models/enums/service-type.model';
 import { CallBrokerService } from 'src/app/shared/services/call-broker.service';
 
 @Component({
-  selector: 'app-main-service-form',
-  templateUrl: './main-service-form.component.html',
-  styleUrls: ['./main-service-form.component.css'],
+  selector: 'app-service-configuration-form',
+  templateUrl: './service-configuration-form.component.html',
+  styleUrls: ['./service-configuration-form.component.css'],
 })
-export class MainServiceFormComponent implements OnInit {
+export class ServiceConfigurationFormComponent implements OnInit {
   serviceForm: FormGroup;
   countries: string[];
   country = Country;

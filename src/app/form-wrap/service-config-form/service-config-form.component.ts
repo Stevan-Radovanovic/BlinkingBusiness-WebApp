@@ -14,18 +14,18 @@ import { AdditionalDoc } from 'src/app/shared/models/additional-doc.model';
 import { SubType } from 'src/app/shared/models/enums/sub-type.model';
 import { StepType } from 'src/app/shared/models/enums/step-type.model';
 import { ServiceConfig } from 'src/app/shared/models/service-config.model';
-import { Country } from 'src/app/shared/models/country.model';
+import { Country } from 'src/app/shared/models/enums/country.model';
 import { v4 as uuidv4 } from 'uuid';
 import { ConfigType } from 'src/app/shared/models/enums/config-type.model';
 import { CallBrokerService } from 'src/app/shared/services/call-broker.service';
 import { skip } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-service-form',
-  templateUrl: './service-form.component.html',
-  styleUrls: ['./service-form.component.css'],
+  selector: 'app-service-config-form',
+  templateUrl: './service-config-form.component.html',
+  styleUrls: ['./service-config-form.component.css'],
 })
-export class ServiceFormComponent implements OnInit {
+export class ServiceConfigFormComponent implements OnInit {
   @Input() allowedCountries: string[] = [];
   @Output() saved = new EventEmitter<boolean>();
   @Output() deleting = new EventEmitter<string>();

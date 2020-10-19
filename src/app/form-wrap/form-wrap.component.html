@@ -17,12 +17,12 @@
     </mat-card>
     <mat-accordion multi="false">
       <div *ngFor="let form of serviceForms; let i = index">
-        <app-main-service-form
+        <app-service-configuration-form
           (saved)="onSavedServiceForm($event)"
           (deleting)="onDeleteService($event)"
           [serviceObject]="form"
           [expand]="expandServicePanels[i]"
-        ></app-main-service-form>
+        ></app-service-configuration-form>
       </div>
     </mat-accordion>
 

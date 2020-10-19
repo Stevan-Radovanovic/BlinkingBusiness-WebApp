@@ -1,6 +1,6 @@
 import { ApiKey } from './api-key.model';
 import { Badge } from './badge.model';
-import { Country } from './country.model';
+import { Country } from './enums/country.model';
 import { ServiceConfig } from './service-config.model';
 
 export interface ServiceObject {
