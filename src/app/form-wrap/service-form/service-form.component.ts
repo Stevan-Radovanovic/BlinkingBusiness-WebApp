@@ -18,6 +18,7 @@ import { Country } from 'src/app/shared/models/country.model';
 import { v4 as uuidv4 } from 'uuid';
 import { ConfigType } from 'src/app/shared/models/enums/config-type.model';
 import { CallBrokerService } from 'src/app/shared/services/call-broker.service';
+import { skip } from 'rxjs/operators';
 
 @Component({
   selector: 'app-service-form',
@@ -335,6 +336,7 @@ export class ServiceFormComponent implements OnInit {
 
   saveServiceConfig(): void {
     this.newServiceConfig = false;
+
     const newServiceConfig: ServiceConfig = {
       serviceId: 'string' /*this.configObject.serviceId*/,
       defaultCountry: this.serviceForm.get('defaultCountry').value,
@@ -351,6 +353,7 @@ export class ServiceFormComponent implements OnInit {
       ).value,
       configType: [ConfigType.ACCOUNT],
       sessionTimeValid: 10, // hard-code
+      initialBlinkingProcess: StepType.ACCOUNT, // hard-code
     };
     console.log(newServiceConfig);
     this.callBroker

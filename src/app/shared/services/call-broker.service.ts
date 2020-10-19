@@ -71,8 +71,8 @@ export class CallBrokerService {
   }
 
   addNewServiceConfig(serviceConfig: ServiceConfig): Observable<any> {
-    const body = {};
-
+    const body = { serviceConfig };
+    console.log(body);
     return this.http.post<any>(this.routes.addNewServiceConfig, body);
   }
 }

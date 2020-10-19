@@ -20,6 +20,7 @@ export interface ServiceConfig {
   maxNumberOfTries: number;
   configType?: ConfigType[];
   sessionTimeValid?: number;
+  initialBlinkingProcess?: StepType;
 }
 
 export class ServiceConfigClass {
