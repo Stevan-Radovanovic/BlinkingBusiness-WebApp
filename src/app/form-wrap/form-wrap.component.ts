@@ -132,6 +132,7 @@ export class FormWrapComponent implements OnInit {
     const newService = {
       id: Math.random() + Math.random() * Math.random(),
       name: '',
+      businessId: this.businessObject.id,
       serviceConfiguration: {
         shouldAskForFaceEnroll: false,
         defaultCountry: null,
