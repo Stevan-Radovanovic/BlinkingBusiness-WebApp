@@ -73,6 +73,10 @@ export class ServiceConfigurationFormComponent implements OnInit {
       this.serviceConfigForms = this.serviceObject.serviceConfigs;
       this.serviceConfigForms.forEach((form) => {
         this.expandConfigPanels.push(false);
+        form.serviceId = this.serviceObject.serviceId
+          ? this.serviceObject.serviceId
+          : this.serviceObject.id;
+        console.log(form.serviceId);
       });
     } else {
       this.serviceConfigForms = [];
@@ -85,7 +89,6 @@ export class ServiceConfigurationFormComponent implements OnInit {
 
     if (this.serviceForm.get('serviceName').value === '') {
       this.enableEditing();
-      console.log('1');
       this.newService = true;
     }
 
@@ -139,10 +142,12 @@ export class ServiceConfigurationFormComponent implements OnInit {
   }
 
   addServiceConfigForm(): void {
-    console.log('wtf');
     const newConfig: ServiceConfig = {
       serviceConfigId: uuidv4(),
       baseRedirectUrl: '',
+      serviceId: this.serviceObject.serviceId
+        ? this.serviceObject.serviceId
+        : this.serviceObject.id,
       defaultCountry: null,
       blinkingParams: [],
       maxNumberOfTries: null,
@@ -221,7 +226,6 @@ export class ServiceConfigurationFormComponent implements OnInit {
     this.serviceSaved = true;
     this.disableEditing();
 
-    console.log(this.serviceObject);
     const newService: ServiceObject = {
       businessId: this.serviceObject.businessId,
       serviceName: this.serviceForm.get('serviceName').value,
@@ -240,9 +244,13 @@ export class ServiceConfigurationFormComponent implements OnInit {
         type: [APIKeyType.INTERNAL], // hard-code
       },
     };
-    console.log(newService);
     this.callBroker.addNewService(newService).subscribe((response) => {
-      console.log(response);
+      this.serviceObject.serviceId = response.serviceId;
+      this.serviceConfigForms.forEach((element) => {
+        element.serviceId = response.serviceId;
+      });
+      console.log('Config forms', this.serviceConfigForms);
+      console.log('Service Object', this.serviceObject);
       this.newService = false;
       this.flags.loading = false;
     });

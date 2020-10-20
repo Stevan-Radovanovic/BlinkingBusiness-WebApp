@@ -19,6 +19,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { ConfigType } from 'src/app/shared/models/enums/config-type.model';
 import { CallBrokerService } from 'src/app/shared/services/call-broker.service';
 import { skip } from 'rxjs/operators';
+import { FlagsService } from 'src/app/shared/services/flags.service';
 
 @Component({
   selector: 'app-service-config-form',
@@ -230,7 +231,11 @@ export class ServiceConfigFormComponent implements OnInit {
     });
   }
 
-  constructor(public dialog: MatDialog, public callBroker: CallBrokerService) {}
+  constructor(
+    public dialog: MatDialog,
+    public callBroker: CallBrokerService,
+    public flags: FlagsService
+  ) {}
 
   restoreInitialValues(): void {
     this.serviceForm.setValue({
@@ -336,9 +341,9 @@ export class ServiceConfigFormComponent implements OnInit {
 
   saveServiceConfig(): void {
     this.newServiceConfig = false;
-
+    console.log(this.configObject);
     const newServiceConfig: ServiceConfig = {
-      serviceId: 'string' /*this.configObject.serviceId*/,
+      serviceId: this.configObject.serviceId /*this.configObject.serviceId*/,
       defaultCountry: this.serviceForm.get('defaultCountry').value,
       maxNumberOfTries: this.serviceForm.get('maxNumberOfTries').value,
       initialSessionConfig: this.serviceForm.get('initialSessionConfig').value,
@@ -353,14 +358,14 @@ export class ServiceConfigFormComponent implements OnInit {
       ).value,
       configType: [ConfigType.ACCOUNT],
       sessionTimeValid: 10, // hard-code
-      initialBlinkingProcess: StepType.ACCOUNT, // hard-code
     };
     console.log(newServiceConfig);
     this.callBroker
       .addNewServiceConfig(newServiceConfig)
       .subscribe((response) => {
-        console.log(response);
         this.newServiceConfig = false;
+        this.flags.loading = false;
+        this.configObject.id = response.serviceConfigId;
       });
     this.disableEditing();
   }

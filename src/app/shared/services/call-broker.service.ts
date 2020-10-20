@@ -64,14 +64,19 @@ export class CallBrokerService {
     );
   }
 
-  addNewService(service: ServiceObject): Observable<any> {
+  addNewService(service: ServiceObject): Observable<{ serviceId: number }> {
     const body = service;
 
-    return this.http.post<any>(this.routes.addNewService, body);
+    return this.http.post<{ serviceId: number }>(
+      this.routes.addNewService,
+      body
+    );
   }
 
-  addNewServiceConfig(serviceConfig: ServiceConfig): Observable<any> {
-    const body = { serviceConfig };
+  addNewServiceConfig(
+    serviceConfig: ServiceConfig
+  ): Observable<{ serviceConfigId: number }> {
+    const body = { newServiceConfig: serviceConfig };
     console.log(body);
     return this.http.post<any>(this.routes.addNewServiceConfig, body);
   }

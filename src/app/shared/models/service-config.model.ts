@@ -3,7 +3,8 @@ import { ConfigType } from './enums/config-type.model';
 import { StepType } from './enums/step-type.model';
 
 export interface ServiceConfig {
-  serviceId?: string;
+  id?: number;
+  serviceId?: number;
   configId?: string;
   serviceConfigId?: string;
   name?: string;

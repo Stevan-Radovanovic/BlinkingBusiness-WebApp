@@ -5,7 +5,7 @@ import { ServiceConfig } from './service-config.model';
 
 export interface ServiceObject {
   businessId?: number;
-  serviceId?: string;
+  serviceId?: number;
   password?: string;
   serviceSecret?: string;
   id?: number;
