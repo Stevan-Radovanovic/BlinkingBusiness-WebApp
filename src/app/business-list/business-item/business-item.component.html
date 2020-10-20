@@ -1,8 +1,8 @@
 <mat-card>
   <mat-card-title>{{ businessObject.name }}</mat-card-title>
   <mat-card-content>
-    <div class="columns help-class">
-      <div class="column is-5">
+    <div class="wrap-class">
+      <div class="column-1">
         <p><strong>Business Url:</strong> {{ businessObject.businessUrl }}</p>
 
         <div>
@@ -19,14 +19,14 @@
         </div>
       </div>
 
-      <div class="display-div column is-4">
+      <div class="display-div">
         <p><strong>Logo:</strong></p>
         <div class="picturePreview">
           <img [src]="logoLink" alt="Logo" />
         </div>
       </div>
 
-      <div class="display-div column is-4">
+      <div class="display-div">
         <p><strong>Favicon:</strong></p>
         <div class="picturePreview">
           <img [src]="faviconLink" alt="Favicon" />
