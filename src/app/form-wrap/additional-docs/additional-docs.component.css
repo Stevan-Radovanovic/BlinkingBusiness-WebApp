@@ -1,3 +1,4 @@
+/*Css classes - start*/
 .accordion {
   width: 98%;
 }
@@ -16,3 +17,4 @@
   border: 2px solid var(--gray-2);
   overflow-x: scroll;
 }
+/*Css classes - end*/

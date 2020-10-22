@@ -1,3 +1,4 @@
+/*Css classes - start*/
 .colorPreview {
   height: 52px;
   width: 52px;
@@ -63,7 +64,9 @@
 .bolded {
   font-weight: bold;
 }
+/*Css classes - end*/
 
+/*Media queries - start*/
 @media (max-width: 750px) {
   .previews-flex {
     justify-content: left;
@@ -71,3 +74,4 @@
     flex-direction: column;
   }
 }
+/*Media queries - end*/

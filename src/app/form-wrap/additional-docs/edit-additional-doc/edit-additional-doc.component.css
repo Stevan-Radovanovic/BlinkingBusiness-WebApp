@@ -1,7 +1,19 @@
+/*Html elements - start*/
 mat-card-title {
   padding-bottom: 4px;
 }
 
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card-actions button {
+  color: black;
+}
+/*Html elements - end*/
+
+/*Css classes - start*/
 .additional-panel {
   border: 2px solid var(--gray-2);
   margin-top: 5px !important;
@@ -18,18 +30,12 @@ mat-card-title {
   width: 27px;
   height: 27px;
 }
+/*Css classes - end*/
 
-mat-card-actions {
-  display: flex;
-  justify-content: center;
-}
-
-mat-card-actions button {
-  color: black;
-}
-
+/*Media queries - start*/
 @media (max-width: 750px) {
   .additional-title {
     font-size: 12pt;
   }
 }
+/*Media queries - end*/

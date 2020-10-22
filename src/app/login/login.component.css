@@ -1,7 +1,4 @@
-.margintop {
-  margin-top: 140px;
-}
-
+/*Html elements - start*/
 mat-card {
   border: 1px solid var(--gray-2);
   box-shadow: 2px 2px;
@@ -22,6 +19,12 @@ mat-card-title img {
   width: 40px;
   height: 40px;
 }
+/*Html elements - end*/
+
+/*Css classes - start*/
+.margintop {
+  margin-top: 140px;
+}
 
 .button-blinking {
   color: black;
@@ -30,3 +33,4 @@ mat-card-title img {
 .login-error {
   text-align: center;
 }
+/*Css classes - end*/

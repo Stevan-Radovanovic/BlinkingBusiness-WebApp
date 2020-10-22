@@ -1,5 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
+/*Html and body settings - start*/
 html,
 body {
   height: 100%;
@@ -9,7 +8,9 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+/*Html and body settings - end*/
 
+/*Root CSS variables*/
 :root {
   --blinking-red: #ff2a4e;
   --blinking-white: #ffffff;
@@ -18,7 +19,9 @@ body {
   --gray-1: #eee;
   --gray-2: #ccc;
 }
+/*------------------*/
 
+/*Global CSS Classes - start*/
 form mat-form-field {
   width: 100%;
   margin-bottom: 3px;
@@ -59,3 +62,4 @@ button {
   font-weight: bold;
   border: 1px solid var(--blinking-red);
 }
+/*Global CSS Classes - end*/

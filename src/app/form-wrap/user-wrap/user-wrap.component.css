@@ -1,3 +1,10 @@
+/*Html elements - start*/
+mat-panel-title {
+  padding-bottom: 4px;
+}
+/*Html elements - end*/
+
+/*Css elements - start*/
 .wrap {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -5,16 +12,6 @@
 
 .user-header {
   font-size: 18pt;
-}
-
-mat-panel-title {
-  padding-bottom: 4px;
-}
-
-@media (max-width: 750px) {
-  .user-header {
-    font-size: 10pt;
-  }
 }
 
 .img-logo {
@@ -45,3 +42,12 @@ mat-panel-title {
   border: 2px solid var(--gray-2);
   overflow-x: scroll;
 }
+/*Css classes - end*/
+
+/*Media queries - start*/
+@media (max-width: 750px) {
+  .user-header {
+    font-size: 10pt;
+  }
+}
+/*Media queries - end*/

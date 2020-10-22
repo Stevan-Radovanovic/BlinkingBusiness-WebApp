@@ -1,3 +1,10 @@
+/*Html elements - start*/
+mat-panel-title {
+  padding-bottom: 4px;
+}
+/*Html elements - end*/
+
+/*Css classes  -start*/
 .flex-div {
   display: flex;
   justify-content: center;
@@ -45,19 +52,6 @@
   width: 35%;
 }
 
-@media (max-width: 750px) {
-  .redirect-div {
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .mini-control-width,
-  .mini-control-width-2,
-  .mini-control-width-3 {
-    width: 100%;
-  }
-}
-
 .top-margin {
   margin-top: 16px;
 }
@@ -94,10 +88,6 @@
   margin-left: 13px;
 }
 
-mat-panel-title {
-  padding-bottom: 4px;
-}
-
 .session-card {
   border: 2px solid var(--gray-2);
   margin-top: 5px !important;
@@ -107,9 +97,25 @@ mat-panel-title {
   font-weight: bold;
   font-size: 16pt;
 }
+/*Css classes  -end*/
 
+/*Media queries - start*/
 @media (max-width: 750px) {
   .service-config-title {
     font-size: 12pt;
   }
 }
+
+@media (max-width: 750px) {
+  .redirect-div {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .mini-control-width,
+  .mini-control-width-2,
+  .mini-control-width-3 {
+    width: 100%;
+  }
+}
+/*Media queries - end*/

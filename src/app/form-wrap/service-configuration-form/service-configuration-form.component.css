@@ -1,10 +1,4 @@
-.face-enroll-checkbox {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  margin-right: 12px;
-}
-
+/*Html elements - start*/
 mat-panel-title {
   align-items: center;
 }
@@ -13,6 +7,23 @@ mat-card-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+mat-panel-description {
+  justify-content: right;
+}
+
+mat-panel-title {
+  padding-bottom: 4px;
+}
+/*Html elements - end*/
+
+/*Css classes - start*/
+.face-enroll-checkbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-right: 12px;
 }
 
 .add-button {
@@ -66,24 +77,6 @@ mat-card-title {
   margin-right: -25px;
 }
 
-mat-panel-description {
-  justify-content: right;
-}
-
-.service-header {
-  font-size: 18pt;
-}
-
-mat-panel-title {
-  padding-bottom: 4px;
-}
-
-@media (max-width: 750px) {
-  .service-header {
-    font-size: 10pt;
-  }
-}
-
 .img-session {
   width: 27px;
   height: 27px;
@@ -101,3 +94,16 @@ mat-panel-title {
 .face-enroll-div {
   width: 37%;
 }
+
+.service-header {
+  font-size: 18pt;
+}
+/*Css classes - end*/
+
+/*Media queries - start*/
+@media (max-width: 750px) {
+  .service-header {
+    font-size: 10pt;
+  }
+}
+/*Media queries - end*/

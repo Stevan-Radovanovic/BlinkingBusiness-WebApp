@@ -1,3 +1,4 @@
+/*Html elements - start*/
 mat-card-actions {
   display: flex;
   justify-content: center;
@@ -13,6 +14,16 @@ mat-panel-description {
   justify-content: right;
 }
 
+mat-icon {
+  color: black;
+}
+
+mat-panel-title {
+  padding-bottom: 4px;
+}
+/*Html elements - end*/
+
+/*Css classes - start*/
 .img-business {
   width: 40px;
   height: 40px;
@@ -33,15 +44,8 @@ mat-panel-description {
   color: black;
 }
 
-mat-icon {
-  color: black;
-}
-
 .form-wrapper {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
-mat-panel-title {
-  padding-bottom: 4px;
-}
+/*Css classes - end*/

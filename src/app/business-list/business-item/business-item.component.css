@@ -1,3 +1,4 @@
+/*Html elements - start*/
 mat-card-title {
   font-weight: bold;
 }
@@ -7,16 +8,19 @@ mat-card {
   border: 2px solid var(--gray-2);
 }
 
+p {
+  font-size: 12pt;
+}
+
+/*Html elements - end*/
+
+/*Css classes - start*/
 .wrap-class {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
   margin-bottom: 20px;
-}
-
-p {
-  font-size: 12pt;
 }
 
 .column-1 {
@@ -56,6 +60,17 @@ p {
   align-items: center;
 }
 
+.more-button-div {
+  display: flex;
+  justify-content: center;
+}
+
+.more-button-div button {
+  color: black;
+}
+/*Css classes - end*/
+
+/*Media queries - start*/
 @media (max-width: 1800px) {
   .display-div {
     align-items: center;
@@ -75,12 +90,4 @@ p {
     margin-bottom: 0px;
   }
 }
-
-.more-button-div {
-  display: flex;
-  justify-content: center;
-}
-
-.more-button-div button {
-  color: black;
-}
+/*Media queries - end*/
