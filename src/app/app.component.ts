@@ -15,6 +15,8 @@ export class AppComponent {
     public flags: FlagsService
   ) {}
 
+  // its ok
+
   logOut(): void {
     this.callBroker.logOut();
   }
