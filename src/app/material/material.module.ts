@@ -16,22 +16,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
-  imports: [
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatDialogModule,
-    MatDividerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatToolbarModule,
-    MatSelectModule,
-    MatIconModule,
-    MatRadioModule,
-    MatExpansionModule,
-    MatTableModule,
-    MatSnackBarModule,
-  ],
   exports: [
     MatButtonModule,
     MatCardModule,

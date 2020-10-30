@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
-import { MaterialModule } from '../material.module';
+import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
 
 

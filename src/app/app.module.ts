@@ -13,7 +13,7 @@ import { BusinessListComponent } from './business-list/business-list.component';
 import { BusinessItemComponent } from './business-list/business-item/business-item.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorsService } from './shared/services/interceptors.service';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './material/material.module';
 import { SharedModule } from './shared/shared.module';
 import { UserWrapComponent } from './form-wrap/user-wrap/user-wrap.component';
 import { UserFormComponent } from './form-wrap/user-wrap/user-form/user-form.component';
