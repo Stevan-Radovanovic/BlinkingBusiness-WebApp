@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceConfigurationFormComponent } from './form-wrap/service-configuration-form/service-configuration-form.component';
-import { LoginComponent } from './login/login.component';
 import { FormWrapComponent } from './form-wrap/form-wrap.component';
 import { BusinessFormComponent } from './form-wrap/business-form/business-form.component';
 import { ServiceConfigFormComponent } from './form-wrap/service-config-form/service-config-form.component';
@@ -19,11 +18,11 @@ import { SharedModule } from './shared/shared.module';
 import { UserWrapComponent } from './form-wrap/user-wrap/user-wrap.component';
 import { UserFormComponent } from './form-wrap/user-wrap/user-form/user-form.component';
 import { EditAdditionalDocComponent } from './form-wrap/additional-docs/edit-additional-doc/edit-additional-doc.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     FormWrapComponent,
     BusinessFormComponent,
     ServiceConfigFormComponent,
@@ -43,6 +42,7 @@ import { EditAdditionalDocComponent } from './form-wrap/additional-docs/edit-add
     MaterialModule,
     HttpClientModule,
     SharedModule,
+    AuthModule
   ],
   entryComponents: [UserFormComponent, EditAdditionalDocComponent],
   providers: [

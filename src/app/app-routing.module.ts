@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 import { FormWrapComponent } from './form-wrap/form-wrap.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { ReverseAuthGuard } from './shared/guards/reverse-auth.guard';

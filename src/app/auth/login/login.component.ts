@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
-import { CallBrokerService } from '../shared/services/call-broker.service';
-import { FlagsService } from '../shared/services/flags.service';
+import { CallBrokerService } from '../../shared/services/call-broker.service';
+import { FlagsService } from '../../shared/services/flags.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
